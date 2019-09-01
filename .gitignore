@@ -1,0 +1,5 @@
+*.log
+*.tsbuildinfo
+!/index.ts
+/index.*
+node_modules
