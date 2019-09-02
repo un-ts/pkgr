@@ -2,6 +2,7 @@ export const globals = {
   dayjs: 'dayjs',
   lodash: '_',
   moment:'moment',
+  qrious:'QRious',
   react: 'React',
   'react-dom': 'ReactDOM',
   'react-router': 'ReactRouter',
