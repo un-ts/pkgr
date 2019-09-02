@@ -1,6 +1,6 @@
 {
   "name": "umd-globals",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Union collections of umd globals mappings.",
   "repository": "git@github.com:JounQin/umd-globals.git",
   "author": "JounQin <admin@1stg.me>",
@@ -9,23 +9,23 @@
     "/index.*"
   ],
   "scripts": {
-    "build": "tsc -b .",
+    "build": "tsc -b",
     "lint": "EFF_NO_LINK_RULES=true eslint . --ext js,md,ts -f friendly",
     "prepublishOnly": "yarn build --force"
   },
   "devDependencies": {
-    "@1stg/babel-preset": "^0.4.2",
-    "@1stg/eslint-config": "^0.5.1",
-    "@1stg/husky-config": "^0.2.0",
-    "@1stg/lint-staged": "^0.4.3",
-    "@1stg/prettier-config": "^0.1.1",
-    "@1stg/tsconfig": "^0.2.0",
+    "@1stg/babel-preset": "^0.5.0",
+    "@1stg/eslint-config": "^0.6.0",
+    "@1stg/husky-config": "^0.3.0",
+    "@1stg/lint-staged": "^0.5.0",
+    "@1stg/prettier-config": "^0.2.0",
+    "@1stg/tsconfig": "^0.3.0",
     "@babel/core": "^7.5.5",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
     "eslint": "^6.3.0",
     "eslint-formatter-friendly": "^7.0.0",
-    "husky": "^3.0.4",
+    "husky": "^3.0.5",
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
     "typescript": "^3.6.2"

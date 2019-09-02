@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@1stg/babel-preset@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.4.2.tgz#00004b651f49ba98f56f72a121de8d8fe98570b6"
-  integrity sha512-0/czXBkqDd8b9zX9qaayGOIcl6D+2i9v7nYSgVFEnrLnNiCIxv3UI5gI9bsgCJmiPye+QVHtjC52ObNCICMgYQ==
+"@1stg/babel-preset@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.5.0.tgz#3ed3671d9dab0540081f498c29f770290cdc003e"
+  integrity sha512-zcYvEhYQ3eqCopd1qCd6VrygCfh5ln3wwGU/pvrG65t1oGmEQE5/FKD+w5Kv4uU98ks3nNLeMEri03Ntvc1Svw==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/preset-env" "^7.5.5"
@@ -16,10 +16,10 @@
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     babel-preset-proposal-typescript "^1.2.6"
 
-"@1stg/eslint-config@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@1stg/eslint-config/-/eslint-config-0.5.1.tgz#a620228192b77d820de07189a9638d952b9db969"
-  integrity sha512-BeL/Q9FmncKB1P8Tfl1D4JkjGnXp8VeCJfped0ojfBmH/gekNuOa/Ec3DAvUP+pO2dag5B8fKeUWR3iAWdcIrg==
+"@1stg/eslint-config@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@1stg/eslint-config/-/eslint-config-0.6.0.tgz#b90645d58424ba2175b107da90d8ef2e8cd2a18f"
+  integrity sha512-ICYqp7R+1gXNbGiEPSrY1NO1xoQm5dx3RoYQXVLNEjR3m4XqG+Mlrs+HVgfKjhX7zjMrDZjl6VHnOw6SzZGIkw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.0.0"
     "@typescript-eslint/eslint-plugin-tslint" "^2.0.0"
@@ -42,25 +42,25 @@
     eslint-plugin-standard "^4.0.1"
     eslint-plugin-vue "^5.2.3"
 
-"@1stg/husky-config@^0.2.0":
+"@1stg/husky-config@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@1stg/husky-config/-/husky-config-0.3.0.tgz#dcf89d1f791dfd04d8d1a3fc1b59ba97c57ed6be"
+  integrity sha512-YKVLG5lc/qKPyY9by/mVPdZLMe3s1FuO1d0mCmCogYl6VTWW/98LW80B4pMcDTmHPBTjZfKUAwgVBIvaYVthBA==
+
+"@1stg/lint-staged@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@1stg/lint-staged/-/lint-staged-0.5.0.tgz#08bd15f1d3217483714ba99f7504fdc29b0ac2e6"
+  integrity sha512-mJeMMcQ/y+E7QhDwO9hGKd9A5EgTuiHV7icOwIZ877t5sewTeY6BvC87ixurrWpb+Nl1PmzNGSmMgcpevXKNZQ==
+
+"@1stg/prettier-config@^0.2.0":
   version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@1stg/husky-config/-/husky-config-0.2.0.tgz#fc30c5fdd2976a4677c8e20a76821c74c8260781"
-  integrity sha512-0HhKXhCnlV4dFqRidc58gIeoNfz6CshygKX74JGMYYNCYd83IXBk25y8NFkZSnlgW8+YLH5ukpavy+c1mVQoRg==
+  resolved "https://registry.yarnpkg.com/@1stg/prettier-config/-/prettier-config-0.2.0.tgz#853c1142834f31d9287cd9e30f2b91d46e4961d6"
+  integrity sha512-wL0qdfsJyHQvOO0vG50StqTSIOX9kauhu6NbLHMgAXE+s3rQ4/N0slwAwYCrqHSwYRVqpeqN8EblYF6UIZiwZQ==
 
-"@1stg/lint-staged@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@1stg/lint-staged/-/lint-staged-0.4.3.tgz#bb3515eb09d76727577bca8af84d7bbf4215fee6"
-  integrity sha512-5HNBI0uVmvwa4qZCY/emVgE2Et5J3im+XqQ7hwR5dmDGJCqwlTV2uFvQNhMGoAe+ac1MAV3gQ//wXG+1itPVoQ==
-
-"@1stg/prettier-config@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@1stg/prettier-config/-/prettier-config-0.1.1.tgz#15a7ca7e27d9545e8adf006c8157abdaba3cce8e"
-  integrity sha512-JoHDYcwqkx3LlxH3vYWBRAPupYSdX+5hQsWFgNaLeDWVdXVr64urS/MrlcxLpWiQXFXZgtQrSqoSSGkX5kiTkA==
-
-"@1stg/tsconfig@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@1stg/tsconfig/-/tsconfig-0.2.0.tgz#d069f0c0c338de7da25419285be8737c92661435"
-  integrity sha512-M3C/RpWRk8eMnGdrMKeBPwmtaEw0PofwRM1DvECsrzLp86wKyI2M6G4jAnOSm4YswHuSGCLrkIN1/H5P/k3rcw==
+"@1stg/tsconfig@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@1stg/tsconfig/-/tsconfig-0.3.0.tgz#a8b3a30e518c6144e2bd7bd27edafb5ae225c04c"
+  integrity sha512-KGiyLPXgp7MO/x/kHvUgIV/k/gW5gUDZWWRphxTef2DarIfwn5yfdNwMOEjWcV/tPQ7DPJYW6LzmpHwGB6thyA==
 
 "@babel/code-frame@7.0.0":
   version "7.0.0"
@@ -2139,9 +2139,9 @@ dot-prop@^3.0.0:
     is-obj "^1.0.0"
 
 electron-to-chromium@^1.3.247:
-  version "1.3.248"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.248.tgz#1f5f950797e192e9a951b8a44fc08974b609adcb"
-  integrity sha512-+hQe6xqpODLw9Nr80KoT0/S+YarjNbI9wgZchkOopJLBLPgAsniK184P0IGVs/0NsoZf4lBnQhOsjen9a47Hrg==
+  version "1.3.249"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.249.tgz#14173f53c046c738198b04e38154ed4fbb309515"
+  integrity sha512-BSNKVkF67cfgwCOJD3/eyIFi001+8mRoazPJYZRpxxtabToCDCef1vhZMDjA6CPfAdgOI0QMOiGLELgJVYP76Q==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -2236,7 +2236,7 @@ eslint-import-resolver-node@^0.3.2:
     debug "^2.6.9"
     resolve "^1.5.0"
 
-eslint-import-resolver-typescript@JounQin/eslint-import-resolver-typescript#feat/resolve_dts:
+"eslint-import-resolver-typescript@github:JounQin/eslint-import-resolver-typescript#feat/resolve_dts":
   version "1.1.1"
   resolved "https://codeload.github.com/JounQin/eslint-import-resolver-typescript/tar.gz/23e2e8cf71ee6c19da9f55e85b2ab34543d2a12e"
   dependencies:
@@ -2300,9 +2300,9 @@ eslint-plugin-jest@^22.16.0:
     "@typescript-eslint/experimental-utils" "^1.13.0"
 
 eslint-plugin-mdx@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-1.4.0.tgz#7bb9f0ddcaaba8295b06d0cbf884cbefe0fa7617"
-  integrity sha512-YPznUlcNKfQmS/J8gb69tM/RtTsGUiiFnN3h8Hlusd7Epcd1772G31SHALK2X1efNOXR3+zE8KCBBxY+SIKhTQ==
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-1.4.1.tgz#c41a85b7cfaecca8ed1de6226aa4f0e4f2d28539"
+  integrity sha512-4tM9is7PfM0VPlNBSH6rrAHvXR1NnouzY4zJPYMtdzooOlQk1MonbGStr5F94oCgl5wlrdgeYOI2H6n451uhxg==
   dependencies:
     cosmiconfig "^5.2.1"
     eslint-mdx "^1.4.0"
@@ -2780,10 +2780,10 @@ html-tags@^2.0.0:
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-2.0.0.tgz#10b30a386085f43cede353cc8fa7cb0deeea668b"
   integrity sha1-ELMKOGCF9Dzt41PMj6fLDe7qZos=
 
-husky@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.4.tgz#10a48ac11ab50859b0939750fa0b4e07ad0bf669"
-  integrity sha512-7Rnt8aJfy+MlV28snmYK7O7vWwtOfeVxV6KhLpUFXlmx5ukQ1nQmNUB7QsAwSgdySB5X+bm7q7JIRgazqBUzKA==
+husky@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.5.tgz#d7db27c346645a8dc52df02aa534a377ad7925e0"
+  integrity sha512-cKd09Jy9cDyNIvAdN2QQAP/oA21sle4FWXjIMDttailpLAYZuBE7WaPmhrkj+afS8Sj9isghAtFvWSQ0JiwOHg==
   dependencies:
     chalk "^2.4.2"
     cosmiconfig "^5.2.1"
