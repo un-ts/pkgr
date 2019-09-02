@@ -16,10 +16,10 @@
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     babel-preset-proposal-typescript "^1.2.6"
 
-"@1stg/eslint-config@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@1stg/eslint-config/-/eslint-config-0.5.1.tgz#a620228192b77d820de07189a9638d952b9db969"
-  integrity sha512-BeL/Q9FmncKB1P8Tfl1D4JkjGnXp8VeCJfped0ojfBmH/gekNuOa/Ec3DAvUP+pO2dag5B8fKeUWR3iAWdcIrg==
+"@1stg/eslint-config@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@1stg/eslint-config/-/eslint-config-0.6.0.tgz#b90645d58424ba2175b107da90d8ef2e8cd2a18f"
+  integrity sha512-ICYqp7R+1gXNbGiEPSrY1NO1xoQm5dx3RoYQXVLNEjR3m4XqG+Mlrs+HVgfKjhX7zjMrDZjl6VHnOw6SzZGIkw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.0.0"
     "@typescript-eslint/eslint-plugin-tslint" "^2.0.0"
@@ -29,7 +29,7 @@
     eslint-config-standard "^14.1.0"
     eslint-config-standard-jsx "^8.1.0"
     eslint-config-standard-react "^9.1.0"
-    eslint-import-resolver-typescript JounQin/eslint-import-resolver-typescript#feat/resolve_dts
+    eslint-import-resolver-typescript "github:JounQin/eslint-import-resolver-typescript#feat/resolve_dts"
     eslint-plugin-babel "^5.3.0"
     eslint-plugin-import "^2.18.2"
     eslint-plugin-jest "^22.16.0"
@@ -2236,8 +2236,9 @@ eslint-import-resolver-node@^0.3.2:
     debug "^2.6.9"
     resolve "^1.5.0"
 
-eslint-import-resolver-typescript@JounQin/eslint-import-resolver-typescript#feat/resolve_dts:
+"eslint-import-resolver-typescript@github:JounQin/eslint-import-resolver-typescript#feat/resolve_dts":
   version "1.1.1"
+  uid "23e2e8cf71ee6c19da9f55e85b2ab34543d2a12e"
   resolved "https://codeload.github.com/JounQin/eslint-import-resolver-typescript/tar.gz/23e2e8cf71ee6c19da9f55e85b2ab34543d2a12e"
   dependencies:
     debug "^4.0.1"
