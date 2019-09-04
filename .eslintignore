@@ -1,2 +1,6 @@
-!/index.ts
 /index.*
+!/index.ts
+/test.*
+!/test.ts
+coverage
+CHANGELOG.md

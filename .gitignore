@@ -1,5 +1,8 @@
 *.log
 *.tsbuildinfo
-!/index.ts
 /index.*
+!/index.ts
+/test.*
+!/test.ts
+coverage
 node_modules

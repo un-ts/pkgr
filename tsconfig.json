@@ -1,9 +1,10 @@
 {
-  "extends": "@1stg/tsconfig",
+  "extends": "./node_modules/@1stg/tsconfig/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "importHelpers": false,
     "module": "commonjs",
     "outDir": "."
   },
-  "files": ["index.ts"]
+  "files": ["index.ts", "test.ts"]
 }

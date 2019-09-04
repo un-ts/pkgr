@@ -15,6 +15,11 @@ install: yarn --frozen-lockfile
 script:
   - yarn lint
   - yarn build
+  - yarn test
+
+after_success:
+  - yarn global add codecov
+  - codecov
 
 deploy:
   provider: script
@@ -22,3 +27,8 @@ deploy:
   script: bash deploy.sh
   on:
     branch: master
+
+after_script:
+  - yarn add -D type-coverage @codechecks/type-coverage-watcher codacy-coverage
+  - yarn codechecks
+  - cat ./coverage/lcov.info | codacy-coverage
