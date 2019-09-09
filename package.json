@@ -21,7 +21,7 @@
     "@1stg/husky-config": "^0.3.0",
     "@1stg/lint-staged": "^0.5.0",
     "@1stg/prettier-config": "^0.2.0",
-    "@1stg/tsconfig": "^0.3.0",
+    "@1stg/tsconfig": "^0.5.0",
     "@babel/core": "^7.5.5",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
