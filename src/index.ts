@@ -3,7 +3,6 @@ export const AS_IS_PKGS = [
   'moment',
   'rxjs',
   // pkgs which has no umd module actually for now
-  'qrcode',
   'tslib',
 ]
 
@@ -60,6 +59,7 @@ export const upperCamelCaseReducer = (
 
 const GLOBALS = {
   lodash: '_',
+  qrcode: 'QRCode',
   qrious: 'QRious',
   'react-dom': 'ReactDOM',
   underscore: '_',
