@@ -57,10 +57,10 @@
   resolved "https://registry.yarnpkg.com/@1stg/prettier-config/-/prettier-config-0.2.0.tgz#853c1142834f31d9287cd9e30f2b91d46e4961d6"
   integrity sha512-wL0qdfsJyHQvOO0vG50StqTSIOX9kauhu6NbLHMgAXE+s3rQ4/N0slwAwYCrqHSwYRVqpeqN8EblYF6UIZiwZQ==
 
-"@1stg/tsconfig@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@1stg/tsconfig/-/tsconfig-0.3.0.tgz#a8b3a30e518c6144e2bd7bd27edafb5ae225c04c"
-  integrity sha512-KGiyLPXgp7MO/x/kHvUgIV/k/gW5gUDZWWRphxTef2DarIfwn5yfdNwMOEjWcV/tPQ7DPJYW6LzmpHwGB6thyA==
+"@1stg/tsconfig@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@1stg/tsconfig/-/tsconfig-0.5.0.tgz#517365d453f99aa8fa258ecad17696b4496b846e"
+  integrity sha512-c5qYRR8/ufH74xeRo7KUAixnsT0oxRu11quMgweKPAart7Y3+KgXWVX1oYmu7RJK6V7/pssYYJJZEGZcZKljxA==
 
 "@babel/code-frame@7.0.0":
   version "7.0.0"
