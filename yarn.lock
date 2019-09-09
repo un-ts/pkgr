@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@1stg/babel-preset@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.5.0.tgz#3ed3671d9dab0540081f498c29f770290cdc003e"
-  integrity sha512-zcYvEhYQ3eqCopd1qCd6VrygCfh5ln3wwGU/pvrG65t1oGmEQE5/FKD+w5Kv4uU98ks3nNLeMEri03Ntvc1Svw==
+"@1stg/babel-preset@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.6.0.tgz#965cc2a587aa75d03601adb1a528cfc22fe78d7c"
+  integrity sha512-fp/Ok4oO8sNXcJtONhF0vrtmV72/W1NQgd96sDmcYeWiQmh/1sa2LGlcb09O4Fjbv6iT2nHUVuf89uwV+8BILw==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/preset-env" "^7.5.5"
@@ -14,7 +14,7 @@
     "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
     "@vue/babel-preset-jsx" "^1.1.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
-    babel-preset-proposal-typescript "^1.2.6"
+    babel-preset-proposal-typescript "^1.3.0"
 
 "@1stg/eslint-config@^0.6.0":
   version "0.6.0"
@@ -139,10 +139,22 @@
     "@babel/traverse" "^7.4.4"
     "@babel/types" "^7.4.4"
 
-"@babel/helper-create-class-features-plugin@^7.4.4", "@babel/helper-create-class-features-plugin@^7.5.5":
+"@babel/helper-create-class-features-plugin@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.5.5.tgz#401f302c8ddbc0edd36f7c6b2887d8fa1122e5a4"
   integrity sha512-ZsxkyYiRA7Bg+ZTRpPvB6AbOFKTFFK4LrvTet8lInm0V468MWCaSYJE+I7v2z2r8KNLtYiV+K5kTCnR7dvyZjg==
+  dependencies:
+    "@babel/helper-function-name" "^7.1.0"
+    "@babel/helper-member-expression-to-functions" "^7.5.5"
+    "@babel/helper-optimise-call-expression" "^7.0.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/helper-replace-supers" "^7.5.5"
+    "@babel/helper-split-export-declaration" "^7.4.4"
+
+"@babel/helper-create-class-features-plugin@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.6.0.tgz#769711acca889be371e9bc2eb68641d55218021f"
+  integrity sha512-O1QWBko4fzGju6VoVvrZg0RROCVifcLxiApnGP3OWfWzvxRZFCoBD81K5ur5e3bVY2Vf/5rIJm8cqPKn8HUJng==
   dependencies:
     "@babel/helper-function-name" "^7.1.0"
     "@babel/helper-member-expression-to-functions" "^7.5.5"
@@ -322,10 +334,10 @@
     "@babel/helper-create-class-features-plugin" "^7.5.5"
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-proposal-do-expressions@^7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-do-expressions/-/plugin-proposal-do-expressions-7.5.0.tgz#ceb594d4a618545b00aa0b5cd61cad4aaaeb7a5a"
-  integrity sha512-xe0QQrhm+DGj6H23a6XtwkJNimy1fo71O/YVBfrfvfSl0fsq9T9dfoQBIY4QceEIdUo7u9s7OPEdsWEuizfGeg==
+"@babel/plugin-proposal-do-expressions@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-do-expressions/-/plugin-proposal-do-expressions-7.6.0.tgz#192953fed8620d13d12a61f68defd26f41059193"
+  integrity sha512-qJDaoBDbLySwU1tG0jbAomOwz8W1PEiiiK0iLQAnHLr4PYIMVX4ltDGkj3uAKx4HDs1WJ0tozGW1zAQjuTIiWg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-do-expressions" "^7.2.0"
@@ -395,10 +407,10 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-optional-catch-binding" "^7.2.0"
 
-"@babel/plugin-proposal-optional-chaining@^7.2.0":
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.2.0.tgz#ae454f4c21c6c2ce8cb2397dc332ae8b420c5441"
-  integrity sha512-ea3Q6edZC/55wEBVZAEz42v528VulyO0eir+7uky/sT4XRcdkWJcFi1aPtitTlwUzGnECWJNExWww1SStt+yWw==
+"@babel/plugin-proposal-optional-chaining@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.6.0.tgz#e9bf1f9b9ba10c77c033082da75f068389041af8"
+  integrity sha512-kj4gkZ6qUggkprRq3Uh5KP8XnE1MdIO0J7MhdDX8+rAbB6dJ2UrensGIS+0NPZAaaJ1Vr0PN6oLUgXMU1uMcSg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-optional-chaining" "^7.2.0"
@@ -419,12 +431,12 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-pipeline-operator" "^7.5.0"
 
-"@babel/plugin-proposal-private-methods@^7.4.4":
-  version "7.4.4"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-private-methods/-/plugin-proposal-private-methods-7.4.4.tgz#307b7db29d8ae2d259e7c0e6e665b1922d7ac856"
-  integrity sha512-EIV4fDVP3XwdizJ/H6308Km+d8xdLAUCAvsY8mjxhat9I3vNgssGhZuhgn/jw7IK5/91sN8PHtVGxMjeTSrSng==
+"@babel/plugin-proposal-private-methods@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-private-methods/-/plugin-proposal-private-methods-7.6.0.tgz#19ddc493c7b5d47afdd4291e740c609a83c9fae4"
+  integrity sha512-G/qjXbdYXxQfDPPu2h7L48SkgO2H2MXoFkCPg+9nFFyMXRCN+ASm/iOT8o/2i3+YhnjFiz5tie+F5Xswvfm/LQ==
   dependencies:
-    "@babel/helper-create-class-features-plugin" "^7.4.4"
+    "@babel/helper-create-class-features-plugin" "^7.6.0"
     "@babel/helper-plugin-utils" "^7.0.0"
 
 "@babel/plugin-proposal-throw-expressions@^7.2.0":
@@ -2089,23 +2101,23 @@ babel-preset-jest@^24.9.0:
     "@babel/plugin-syntax-object-rest-spread" "^7.0.0"
     babel-plugin-jest-hoist "^24.9.0"
 
-babel-preset-proposal-typescript@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/babel-preset-proposal-typescript/-/babel-preset-proposal-typescript-1.2.6.tgz#31c9294bff659ad1c6d2a3a269f9b6116348faf3"
-  integrity sha512-iRwWvNWRZ6uXt/GSeZiXUNtlJD+a7Iayge3TcbJwnq8sGku8+BxcOHlzvHMdJ5p1aZw+MasBKMxZQH0iCWANAw==
+babel-preset-proposal-typescript@^1.3.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-proposal-typescript/-/babel-preset-proposal-typescript-1.4.0.tgz#04ab61397a442e8d4b6b5ff471903d6693e6fd8c"
+  integrity sha512-efvvswmPcwI4VNmkhpZOiaxPdorwvlht+Cw87VLfzIrYL9SyKtyApklTiqcRzxC6kYQP2iyi0hrd4SVkwyy9ug==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
-    "@babel/plugin-proposal-do-expressions" "^7.5.0"
+    "@babel/plugin-proposal-do-expressions" "^7.6.0"
     "@babel/plugin-proposal-function-bind" "^7.2.0"
     "@babel/plugin-proposal-function-sent" "^7.5.0"
     "@babel/plugin-proposal-json-strings" "^7.2.0"
     "@babel/plugin-proposal-logical-assignment-operators" "^7.2.0"
     "@babel/plugin-proposal-nullish-coalescing-operator" "^7.4.4"
-    "@babel/plugin-proposal-optional-chaining" "^7.2.0"
+    "@babel/plugin-proposal-optional-chaining" "^7.6.0"
     "@babel/plugin-proposal-partial-application" "^7.4.4"
     "@babel/plugin-proposal-pipeline-operator" "^7.5.0"
-    "@babel/plugin-proposal-private-methods" "^7.4.4"
+    "@babel/plugin-proposal-private-methods" "^7.6.0"
     "@babel/plugin-proposal-throw-expressions" "^7.2.0"
     "@babel/plugin-syntax-decorators" "^7.2.0"
     "@babel/plugin-syntax-dynamic-import" "^7.2.0"
