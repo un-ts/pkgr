@@ -18,8 +18,9 @@ script:
   - yarn test
 
 after_success:
-  - yarn global add codecov
+  - yarn global add codecov codacy-coverage
   - codecov
+  - cat ./coverage/lcov.info | codacy-coverage
 
 deploy:
   provider: script
@@ -29,6 +30,5 @@ deploy:
     branch: master
 
 after_script:
-  - yarn add -D @codechecks/client @codechecks/build-size-watcher @codechecks/type-coverage-watcher codacy-coverage
+  - yarn add -D @codechecks/client @codechecks/build-size-watcher @codechecks/type-coverage-watcher
   - yarn codechecks
-  - cat ./coverage/lcov.info | yarn codacy-coverage

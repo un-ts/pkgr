@@ -73,7 +73,7 @@ export const getGlobals = ({
   asIsPkgs?: string[]
   upperCamelCasePkgs?: string[]
   globals?: StringMap
-} = {}) => {
+} = {}): StringMap => {
   return {
     ...GLOBALS,
     ...AS_IS_PKGS.reduce(asIsReducer, {}),
