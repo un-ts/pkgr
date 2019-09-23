@@ -76,22 +76,23 @@
     remark-preset-lint-recommended "^3.0.3"
     remark-preset-prettier "^0.2.0"
 
-"@1stg/rollup-config@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@1stg/rollup-config/-/rollup-config-0.8.0.tgz#fb977de7e49ed179b58d59c31979a10ec01f772a"
-  integrity sha512-GnYqQA6OIog3ppN/Tq3R5a0M/V2Jz5i07MdNWkZniAWdC0OpEb3co7mJZH+sO7scs4WDfpvfvM4jpqKMbw1Gwg==
+"@1stg/rollup-config@^0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@1stg/rollup-config/-/rollup-config-0.9.5.tgz#c918cad1ca8687773168f5159deafc66dbd3e074"
+  integrity sha512-7w1nrfmAI0dPlv3dVG7p3RlOLrXvimEZ/hppwdCx43NM4vzFbrMGkBQVwClQkZJJp6FEBqSailozdduYNbWbVA==
   dependencies:
     "@babel/preset-env" "^7.6.0"
     builtin-modules "^3.1.0"
+    commander "^3.0.1"
     lodash "^4.17.15"
     rollup-plugin-babel "^4.3.3"
     rollup-plugin-commonjs "^10.1.0"
     rollup-plugin-json "^4.0.0"
     rollup-plugin-node-resolve "^5.2.0"
     rollup-plugin-replace "^2.2.0"
-    rollup-plugin-terser "^5.1.1"
+    rollup-plugin-terser "^5.1.2"
     rollup-plugin-typescript "^1.0.1"
-    umd-globals "^0.2.0"
+    umd-globals "^0.3.0"
 
 "@1stg/tsconfig@^0.5.0":
   version "0.5.0"
@@ -2622,6 +2623,11 @@ commander@^2.20.0, commander@~2.20.0:
   version "2.20.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
   integrity sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
+
+commander@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.1.tgz#4595aec3530525e671fb6f85fb173df8ff8bf57a"
+  integrity sha512-UNgvDd+csKdc9GD4zjtkHKQbT8Aspt2jCBqNSPp53vAS0L1tS9sXB2TCEOPHJ7kt9bN/niWkYj8T3RQSoMXdSQ==
 
 compare-func@^1.3.1:
   version "1.3.2"
@@ -7190,10 +7196,10 @@ rollup-plugin-replace@^2.2.0:
     magic-string "^0.25.2"
     rollup-pluginutils "^2.6.0"
 
-rollup-plugin-terser@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-terser/-/rollup-plugin-terser-5.1.1.tgz#e9d2545ec8d467f96ba99b9216d2285aad8d5b66"
-  integrity sha512-McIMCDEY8EU6Y839C09UopeRR56wXHGdvKKjlfiZG/GrP6wvZQ62u2ko/Xh1MNH2M9WDL+obAAHySljIZYCuPQ==
+rollup-plugin-terser@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-terser/-/rollup-plugin-terser-5.1.2.tgz#3e41256205cb75f196fc70d4634227d1002c255c"
+  integrity sha512-sWKBCOS+vUkRtHtEiJPAf+WnBqk/C402fBD9AVHxSIXMqjsY7MnYWKYEUqGixtr0c8+1DjzUEPlNgOYQPVrS1g==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     jest-worker "^24.6.0"
@@ -8022,10 +8028,10 @@ uglify-js@^3.1.4:
     commander "~2.20.0"
     source-map "~0.6.1"
 
-umd-globals@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/umd-globals/-/umd-globals-0.2.0.tgz#fbd1cc49deecb1672badbb50a7072af060e89989"
-  integrity sha512-wjv8yCjwGbDAFCErTSa5a0NGM7Sjytu83bV38bdCiPhNFxId+/+6H64yQOL0xIM2kXJqxLFR4u0F9QsyqpMdZw==
+umd-globals@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/umd-globals/-/umd-globals-0.3.0.tgz#650ef00b93df9f9f4152fd74da02464f886e623b"
+  integrity sha512-9eKjtI3oV9L36uql8bwmmCS1Gkxi0kX0SvX9CrdW83pt5o+7Dbybf3j1rJSCD9cT0/2RH69ckbDzZoeoFTcTIg==
 
 unherit@^1.0.4:
   version "1.1.2"
