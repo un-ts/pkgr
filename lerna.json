@@ -23,6 +23,7 @@
     "publish": {
       "ignoreChanges": [
         "test",
+        "tsconfig.json",
         "*.md"
       ]
     }

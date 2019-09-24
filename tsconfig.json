@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "@1stg/tsconfig",
   "compilerOptions": {
     "incremental": false,
     "noEmit": true
@@ -7,6 +7,9 @@
   "references": [
     {
       "path": "packages/umd-globals"
+    },
+    {
+      "path": "packages/named-exports"
     }
   ]
 }

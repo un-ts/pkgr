@@ -4,3 +4,4 @@
 coverage
 lib
 node_modules
+/packages/named-exports/index.ts

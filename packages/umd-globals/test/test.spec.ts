@@ -8,7 +8,7 @@ import _, {
 } from '../index'
 
 describe('umd globals', () => {
-  it('default export and globals named export should be same exactly ', () =>
+  it('default export and `globals` named export should be same exactly ', () =>
     expect(_).toBe(globals))
 
   it('should be a string map', () =>
