@@ -1,6 +1,7 @@
 export const AS_IS_PKGS = [
   'dayjs',
   'moment',
+  'prettier',
   'rxjs',
   // pkgs which has no umd module actually for now
   'tslib',
