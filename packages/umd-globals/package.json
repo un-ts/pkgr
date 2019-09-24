@@ -22,6 +22,9 @@
     "rollup",
     "rollup-config"
   ],
+  "scripts": {
+    "bootstrap": "tsc --module commonjs --outDir lib/cjs"
+  },
   "publishConfig": {
     "access": "public"
   },
