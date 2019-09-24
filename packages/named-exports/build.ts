@@ -76,7 +76,7 @@ namedExports
     `),
     ),
   )
-  .catch(e => {
+  .catch((e: Error) => {
     console.error(e)
     process.exitCode = 1
   })
