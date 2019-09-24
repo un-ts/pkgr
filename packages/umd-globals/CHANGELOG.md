@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rx-ts/pkgr/compare/@pkgr/umd-globals@0.1.0...@pkgr/umd-globals@0.2.0) (2019-09-24)
+
+
+### Bug Fixes
+
+* **umd-globals:** incorrect npm and david badges/links in documentation ([e87e420](https://github.com/rx-ts/pkgr/commit/e87e420))
+
+
+### Features
+
+* add @pkgr/named-exports package ([28e8da2](https://github.com/rx-ts/pkgr/commit/28e8da2))
+
+
+
+
+
 # 0.1.0 (2019-09-24)
 
 
