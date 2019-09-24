@@ -1,12 +1,12 @@
-# umd-globals
+# @pkgr/umd-globals
 
-[![npm](https://img.shields.io/npm/v/pkgr/umd-globals.svg)](https://www.npmjs.com/package/@pkgr/umd-globals)
-![npm bundle size](https://img.shields.io/bundlephobia/min/prettier-plugin-pkg)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/prettier-plugin-pkg)
+[![npm](https://img.shields.io/npm/v/@pkgr/umd-globals.svg)](https://www.npmjs.com/package/@pkgr/umd-globals)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@pkgr/umd-globals)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@pkgr/umd-globals)
 
-[![David Peer](https://img.shields.io/david/peer/rx-ts/pkgr.svg)](https://david-dm.org/rx-ts/pkgr?type=peer)
-[![David](https://img.shields.io/david/rx-ts/pkgr.svg)](https://david-dm.org/rx-ts/pkgr)
-[![David Dev](https://img.shields.io/david/dev/rx-ts/pkgr.svg)](https://david-dm.org/rx-ts/pkgr?type=dev)
+[![David Peer](https://img.shields.io/david/peer/rx-ts/pkgr.svg?path=packages/umd-globals)](https://david-dm.org/rx-ts/pkgr?path=packages/umd-globals&type=peer)
+[![David](https://img.shields.io/david/rx-ts/pkgr.svg?path=packages/umd-globals)](https://david-dm.org/rx-ts/pkgr?path=packages/umd-globals)
+[![David Dev](https://img.shields.io/david/dev/rx-ts/pkgr.svg?path=packages/umd-globals)](https://david-dm.org/rx-ts/pkgr?path=packages/umd-globals&type=dev)
 
 > Union collections of umd globals mappings.
 
