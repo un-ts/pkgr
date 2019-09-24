@@ -1,0 +1,22 @@
+{
+  "name": "@rxts/pkgr",
+  "version": 2,
+  "alias": [
+    "pkgr.now.sh"
+  ],
+  "github": {
+    "silent": true
+  },
+  "builds": [
+    {
+      "src": "*.md",
+      "use": "@now/md"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/*",
+      "dest": "README.html"
+    }
+  ]
+}

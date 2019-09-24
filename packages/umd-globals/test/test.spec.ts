@@ -5,7 +5,7 @@ import _, {
   asIsReducer,
   upperCamelCaseReducer,
   getGlobals,
-} from '../src'
+} from '../index'
 
 describe('umd globals', () => {
   it('default export and globals named export should be same exactly ', () =>
