@@ -19,8 +19,10 @@ const PKGS: Array<Pkg | string> = [
     core: 'prettier',
     extra: 'parser-*',
   },
+  'prop-types',
   'react',
   'react-dom',
+  'react-is',
 ]
 
 const combinePkg = (pkg: string, exports: {}) =>
