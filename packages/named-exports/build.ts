@@ -16,6 +16,10 @@ interface Pkg {
 
 const PKGS: Array<Pkg | string> = [
   {
+    core: 'fbjs',
+    extra: 'lib/*.js',
+  },
+  {
     core: 'prettier',
     extra: 'parser-*',
   },
@@ -34,7 +38,9 @@ const combinePkg = (pkg: string, exports: {}) =>
 const namedExports = PKGS.reduce(async (exported, pkg) => {
   const exports = await exported
   const { core, extra }: Pkg = typeof pkg === 'string' ? { core: pkg } : pkg
-  combinePkg(core, exports)
+  try {
+    combinePkg(core, exports)
+  } catch {}
   if (extra != null) {
     const extras = Array.isArray(extra) ? extra : [extra]
     for (const sub of extras) {

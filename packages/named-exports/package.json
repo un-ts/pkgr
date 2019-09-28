@@ -14,6 +14,8 @@
   "unpkg": "lib/umd",
   "types": "lib",
   "files": [
+    "!*tsbuildinfo",
+    "!lib/cjs/",
     "lib"
   ],
   "keywords": [
