@@ -1,3 +1,6 @@
 {
-  "extends": "@1stg/eslint-config/recommended"
+  "extends": "@1stg/eslint-config/recommended",
+  "rules": {
+    "@typescript-eslint/unbound-method": 0
+  }
 }

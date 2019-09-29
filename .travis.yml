@@ -18,7 +18,6 @@ before_install:
 install: yarn --frozen-lockfile
 
 script:
-  - yarn lerna run bootstrap
   - yarn build
   - yarn lint
   - yarn test

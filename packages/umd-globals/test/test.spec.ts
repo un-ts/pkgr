@@ -1,10 +1,10 @@
 import _, {
+  asIsReducer,
+  getGlobals,
   globals,
   normalizePkg,
   upperCamelCase,
-  asIsReducer,
   upperCamelCaseReducer,
-  getGlobals,
 } from '../index'
 
 describe('umd globals', () => {

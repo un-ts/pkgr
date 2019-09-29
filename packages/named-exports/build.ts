@@ -1,13 +1,11 @@
 /* eslint-disable node/no-extraneous-import */
 
 import { writeFile } from 'fs'
-import path from 'path'
-import { promisify } from 'util'
-
-import glob from 'tiny-glob'
-
-import prettier from 'prettier'
 import isGlob from 'is-glob'
+import path from 'path'
+import prettier from 'prettier'
+import glob from 'tiny-glob'
+import { promisify } from 'util'
 
 interface Pkg {
   core: string

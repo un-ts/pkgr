@@ -14,8 +14,6 @@
   "unpkg": "lib/umd",
   "types": "lib",
   "files": [
-    "!*tsbuildinfo",
-    "!lib/cjs/",
     "lib"
   ],
   "keywords": [
@@ -26,7 +24,6 @@
     "rollup-plugin-commonjs"
   ],
   "scripts": {
-    "bootstrap": "yarn build && tsc --module commonjs --outDir lib/cjs",
     "build": "ts-node -O '{\"module\":\"commonjs\"}' build"
   },
   "publishConfig": {

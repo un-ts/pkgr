@@ -1,15 +1,18 @@
 {
-  "extends": "@1stg/tsconfig/tsconfig",
+  "extends": "@1stg/tsconfig/node",
   "compilerOptions": {
     "incremental": false,
     "noEmit": true
   },
   "references": [
     {
-      "path": "packages/umd-globals"
+      "path": "packages/rollup"
     },
     {
       "path": "packages/named-exports"
+    },
+    {
+      "path": "packages/umd-globals"
     }
   ]
 }
