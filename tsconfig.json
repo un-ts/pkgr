@@ -6,6 +6,9 @@
   },
   "references": [
     {
+      "path": "packages/imagemin"
+    },
+    {
       "path": "packages/rollup"
     },
     {
