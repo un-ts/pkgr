@@ -10,11 +10,9 @@
     "node": ">=7.0.0"
   },
   "bin": {
-    "r": "cli.js"
+    "r": "lib/cli.js"
   },
-  "module": "lib",
   "files": [
-    "*.js",
     "lib"
   ],
   "peerDependencies": {
@@ -28,9 +26,8 @@
     "builtin-modules": "^3.1.0",
     "commander": "^3.0.2",
     "debug": "^4.1.1",
-    "esm": "^3.2.25",
     "jsox": "^1.1.115",
-    "lodash-es": "^4.17.15",
+    "lodash": "^4.17.15",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
@@ -43,5 +40,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "sideEffects": false
 }

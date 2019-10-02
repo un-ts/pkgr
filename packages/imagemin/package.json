@@ -10,13 +10,14 @@
     "node": ">=8.0.0"
   },
   "bin": {
-    "i": "cli.js"
+    "i": "lib/cli.js"
   },
+  "main": "lib/cjs",
+  "module": "lib",
   "es2015": "lib/es2015",
   "fesm5": "lib/esm",
   "types": "lib",
   "dependencies": {
-    "esm": "^3.2.25",
     "imagemin": "^7.0.0",
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-jpegtran": "^6.0.0",
@@ -29,5 +30,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "sideEffects": false
 }

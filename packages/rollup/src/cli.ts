@@ -1,7 +1,8 @@
+#!/bin/node
 import program from 'commander'
 import debug from 'debug'
 import JSOX from 'jsox'
-import { pick } from 'lodash-es'
+import { pick } from 'lodash'
 import { InputOptions, OutputOptions, rollup, watch } from 'rollup'
 
 import config, { ConfigOptions } from './config'

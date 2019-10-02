@@ -1,6 +1,8 @@
 {
   "extends": "@1stg/tsconfig/composite",
   "compilerOptions": {
+    "importHelpers": false,
+    "module": "commonjs",
     "rootDir": "src",
     "outDir": "lib"
   }
