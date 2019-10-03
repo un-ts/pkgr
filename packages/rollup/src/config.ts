@@ -9,7 +9,7 @@ import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
 import debug from 'debug'
 import fs from 'fs'
-import { flatMap } from 'lodash'
+import flatMap from 'lodash/flatMap'
 import path from 'path'
 import {
   ModuleFormat,
