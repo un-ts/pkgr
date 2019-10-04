@@ -26,35 +26,41 @@ declare module 'jsox' {
 }
 
 declare module 'rollup-plugin-babel' {
-  // eslint-disable-next-line node/no-extraneous-import
   import { TransformOptions } from '@babel/core'
   import { Plugin, WatcherOptions } from 'rollup'
 
-  export interface BabelOptions extends TransformOptions, WatcherOptions {
-    target?: string
+  namespace babel {
+    interface BabelOptions extends TransformOptions, WatcherOptions {
+      target?: string
+    }
+
+    interface Babel extends Plugin {
+      (options?: BabelOptions): Plugin
+    }
   }
 
-  interface Babel extends Plugin {
-    (options?: BabelOptions): Plugin
-  }
-
-  const babel: Babel
+  const babel: babel.Babel
 
   export = babel
 }
 
 declare module 'rollup-plugin-typescript' {
-  import { Plugin } from 'rollup'
+  import { Plugin, WatcherOptions } from 'rollup'
+  import { CompilerOptions } from 'typescript'
 
-  export interface TypeScriptOptions {
-    target?: string
+  namespace typescript {
+    interface TypeScriptOptions extends CompilerOptions {
+      jsx?: string
+      module?: string
+      target?: string
+    }
+
+    interface TypeScript extends Plugin {
+      (options?: TypeScriptOptions): Plugin
+    }
   }
 
-  interface TypeScript extends Plugin {
-    (options?: TypeScriptOptions): Plugin
-  }
-
-  const typescript: TypeScript
+  const typescript: typescript.TypeScript
 
   export = typescript
 }

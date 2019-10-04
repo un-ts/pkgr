@@ -25,7 +25,7 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
 import replace from 'rollup-plugin-replace'
 import { terser } from 'rollup-plugin-terser'
-import typescript from 'rollup-plugin-typescript'
+import typescript, { TypeScriptOptions } from 'rollup-plugin-typescript'
 import url from 'rollup-plugin-url'
 
 const info = debug('r:info')
@@ -139,6 +139,7 @@ export interface ConfigOptions {
   globals?: StringMap
   aliases?: StringMap | AliasOptions['entries']
   sourceMap?: boolean
+  typescript?: TypeScriptOptions
   postcss?: PostCssPluginOptions
   prod?: boolean
 }
@@ -154,6 +155,7 @@ const config = ({
   globals: umdGlobals,
   aliases = [],
   sourceMap = false,
+  typescript: typescriptOptions,
   postcss: postcssOpts,
   prod = process.env.NODE_ENV === PRODUCTION,
 }: ConfigOptions = {}) => {
@@ -265,6 +267,9 @@ const config = ({
           }),
           isTsAvailable && isTsInput
             ? typescript({
+                jsx: 'react',
+                module: 'esnext',
+                ...typescriptOptions,
                 target: isEsVersion ? format : 'es5',
               })
             : babel({

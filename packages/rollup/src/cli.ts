@@ -57,7 +57,13 @@ program
     '-w, --watch [boolean]',
     'whether to enable watch mode for development',
   )
-  .option('--postcss [JSOX]', 'options for rollup-plugin-postcss', JSOX.parse)
+  // FIXME: should be removed this option and PR to `rollup-plugin-typescript` instead
+  .option(
+    '-t, --typescript [JSOX]',
+    'Overrides the TypeScript compiler options for `rollup-plugin-typescript`',
+    JSOX.parse,
+  )
+  .option('--postcss [JSOX]', 'options for `rollup-plugin-postcss`', JSOX.parse)
   .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js) bundle together at the same time',
@@ -76,6 +82,7 @@ const options: ConfigOptions = pick(
   'globals',
   'aliases',
   'sourceMap',
+  'typescript',
   'postcss',
   'prod',
 )
