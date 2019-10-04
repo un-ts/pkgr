@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.2.3...@pkgr/rollup@0.2.4) (2019-10-04)
+
+
+### Bug Fixes
+
+* **rollup:** set jsx: react and module: esnext automatically ([fa34ab8](https://github.com/rx-ts/pkgr/commit/fa34ab8))
+
+
+
+
+
 ## [0.2.3](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.2.2...@pkgr/rollup@0.2.3) (2019-10-03)
 
 
