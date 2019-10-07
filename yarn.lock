@@ -63,12 +63,12 @@
   resolved "https://registry.yarnpkg.com/@1stg/husky-config/-/husky-config-0.3.0.tgz#dcf89d1f791dfd04d8d1a3fc1b59ba97c57ed6be"
   integrity sha512-YKVLG5lc/qKPyY9by/mVPdZLMe3s1FuO1d0mCmCogYl6VTWW/98LW80B4pMcDTmHPBTjZfKUAwgVBIvaYVthBA==
 
-"@1stg/lint-staged@^0.8.4":
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/@1stg/lint-staged/-/lint-staged-0.8.4.tgz#facbc38cb5cf5198a29b1da5550c2da3b0b6e45b"
-  integrity sha512-qY1XEp1OCC07jxrqx+f03l4ca5k3TeilCP9qyHvNux7hvWpXevzmpXArRTWSl3JHaV7A0W//MbkKqr7u/GL85g==
+"@1stg/lint-staged@^0.8.6":
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/@1stg/lint-staged/-/lint-staged-0.8.6.tgz#d836667e149af90d803963f13e25cfb8a44909cb"
+  integrity sha512-lpSwLWe7zyvLDNoOu6t5kK3/XiAkHKpnXAYRYqIxaumqGujfStb2hALzJSXBfp+6hjnK7/spVhu/gt7/YX1z+A==
   dependencies:
-    "@prettier/plugin-pug" "^1.0.3"
+    "@prettier/plugin-pug" "^1.0.4"
     prettier-plugin-sh "^0.2.0"
     prettier-plugin-toml "^0.3.1"
 
@@ -2296,6 +2296,14 @@
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@prettier/plugin-pug/-/plugin-pug-1.0.3.tgz#9c4d08f39c2443d63d04cee1a6d000fc75cdf1a4"
   integrity sha512-v1tV3mwQCpoImzQuqZsobLylTAHztaJB6iPgr5TZpEkmLeN121Pq9fxiff2bMSW6CPHZDta9ZcbYHzX/NqynCA==
+  dependencies:
+    prettier "~1.18.2"
+    pug-lexer "~4.1.0"
+
+"@prettier/plugin-pug@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@prettier/plugin-pug/-/plugin-pug-1.0.4.tgz#13adc5aab2d99db42b68ac43f678c8803916ee95"
+  integrity sha512-EXy486byBalEdVUM5KynFazQ0Ay0tiRjAqS/4Pg9zU/4/e/dALSq9YUJdwdnHKo96iwqiEJfpgQnPg/Wg4Wm/A==
   dependencies:
     prettier "~1.18.2"
     pug-lexer "~4.1.0"
