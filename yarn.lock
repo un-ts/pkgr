@@ -28,10 +28,10 @@
     "@commitlint/config-conventional" "^8.2.0"
     "@commitlint/config-lerna-scopes" "^8.2.0"
 
-"@1stg/eslint-config@^0.12.18":
-  version "0.12.18"
-  resolved "https://registry.yarnpkg.com/@1stg/eslint-config/-/eslint-config-0.12.18.tgz#1c202f4d028a6614f0c84830cc4bc0c6a1c08310"
-  integrity sha512-Xaz/Csu9XKWBhX6TkyAvSDQtdNjLsaeyWcNY5dOHrRS0Ju7DzcoMMh+8t1sj8zz0FKfcfG48KtXMzUsXLalWsw==
+"@1stg/eslint-config@^0.12.20":
+  version "0.12.20"
+  resolved "https://registry.yarnpkg.com/@1stg/eslint-config/-/eslint-config-0.12.20.tgz#202eda93f2a7291f914804ad7b934da0c527027e"
+  integrity sha512-l8l4SlCGlirEKbmvfIwquiXZitmOmUKYMJCocgwJpoEboLvzU3FnoSAcZHsGizgQJzUrl1QxGCrZAYrYcoCyjQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.3.2"
     "@typescript-eslint/eslint-plugin-tslint" "^2.3.2"
@@ -42,7 +42,7 @@
     eslint-config-standard-jsx "^8.1.0"
     eslint-config-standard-react "^9.2.0"
     eslint-formatter-friendly "^7.0.0"
-    eslint-import-resolver-ts "^0.4.0"
+    eslint-import-resolver-ts "^0.4.2"
     eslint-plugin-babel "^5.3.0"
     eslint-plugin-import "^2.18.2"
     eslint-plugin-jest "^22.17.0"
@@ -50,8 +50,8 @@
     eslint-plugin-node "^10.0.0"
     eslint-plugin-prettier "^3.1.1"
     eslint-plugin-promise "^4.2.1"
-    eslint-plugin-react "^7.15.0"
-    eslint-plugin-react-hooks "^2.1.1"
+    eslint-plugin-react "^7.16.0"
+    eslint-plugin-react-hooks "^2.1.2"
     eslint-plugin-standard "^4.0.1"
     eslint-plugin-vue "^5.2.3"
     is-glob "^4.0.1"
@@ -4970,10 +4970,10 @@ eslint-import-resolver-node@^0.3.2:
     debug "^2.6.9"
     resolve "^1.5.0"
 
-eslint-import-resolver-ts@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/eslint-import-resolver-ts/-/eslint-import-resolver-ts-0.4.0.tgz#9862cd60c01f90001c07e3eb071db455ce875b8b"
-  integrity sha512-aq8E6YRs+v4gzMtbmvkXWT11J+MVayYBWaEp14U+l8ktw0CKFUkwa3YbEdnuRy7fymFr7uqRAoNCY0xwLhrP7w==
+eslint-import-resolver-ts@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-ts/-/eslint-import-resolver-ts-0.4.2.tgz#cd1a4a31144d15b5b6ec7aa88920df4b0e07a385"
+  integrity sha512-M5WH0xJ3nnwSZZ8f6J550elDmsf/86mau66irHm+qBr5n0soqfuKqr41Qd6oZNBCY6FoSAkiLgnVFEvXAoBvZA==
   dependencies:
     debug "^4.1.1"
     is-glob "^4.0.1"
@@ -5088,10 +5088,10 @@ eslint-plugin-promise@^4.2.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-4.2.1.tgz#845fd8b2260ad8f82564c1222fce44ad71d9418a"
   integrity sha512-VoM09vT7bfA7D+upt+FjeBO5eHIJQBUWki1aPvB+vbNiHS3+oGIJGIeyBtKQTME6UPXXy3vV07OL1tHd3ANuDw==
 
-eslint-plugin-react-hooks@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.1.1.tgz#b416390b642113f444ee175b667c3222a045a98e"
-  integrity sha512-AYitPYzwHyKpZKpzMH5sCkld68vP8wn29Lq716h4jk1ll9Gp4BBFoPq/iCjBBT35eXFJvOPjgMlvhIXFB0OhXg==
+eslint-plugin-react-hooks@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.1.2.tgz#1358d2acb2c5e02b7e90c37e611ac258a488e3a7"
+  integrity sha512-ZR+AyesAUGxJAyTFlF3MbzeVHAcQTFQt1fFVe5o0dzY/HFoj1dgQDMoIkiM+ltN/HhlHBYX4JpJwYonjxsyQMA==
 
 eslint-plugin-react@>=7.0.0:
   version "7.14.3"
@@ -5108,10 +5108,10 @@ eslint-plugin-react@>=7.0.0:
     prop-types "^15.7.2"
     resolve "^1.10.1"
 
-eslint-plugin-react@^7.15.0:
-  version "7.15.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.15.1.tgz#db5f8ed66c6ba46922518f08e1df9dac52ccaa49"
-  integrity sha512-YotSItgMPwLGlr3df44MGVyXnHkmKcpkHTzpte3QwJtocr3nFqCXCuoxFZeBtnT8RHdj038NlTvam3dcAFrMcA==
+eslint-plugin-react@^7.16.0:
+  version "7.16.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.16.0.tgz#9928e4f3e2122ed3ba6a5b56d0303ba3e41d8c09"
+  integrity sha512-GacBAATewhhptbK3/vTP09CbFrgUJmBSaaRcWdbQLFvUZy9yVcQxigBNHGPU/KE2AyHpzj3AWXpxoMTsIDiHug==
   dependencies:
     array-includes "^3.0.3"
     doctrine "^2.1.0"
