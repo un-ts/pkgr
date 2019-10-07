@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@1stg/babel-preset@^0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.7.2.tgz#8d14543cc6642273bce055d11f4a2ab810c80091"
-  integrity sha512-zc1l6TrBUEgdF7rMjIpFqDHARXIGZaxAXh4qHkRyVfO+iWz5BmZ1y8dXwfMPdzIAxm4GQ08TsvKrMZZ5BUezHw==
+"@1stg/babel-preset@^0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.7.4.tgz#42b52032e81dba18c6fb29d486355246f7cd685a"
+  integrity sha512-VJGHBBAmosPTkZppsBSz5ok/EYDk6J4oCvUHJCxmOmprxNB2QUbG68+edCbBlPUSry/WD8pNYr4FuTxOIN4zDw==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
@@ -16,6 +16,7 @@
     "@vue/babel-preset-jsx" "^1.1.0"
     babel-plugin-import "^1.12.2"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
+    babel-plugin-transform-remove-console "^6.9.4"
     babel-preset-proposal-typescript "^1.4.1"
     core-js "^3.2.1"
     fast-async "^7.0.6"
@@ -3218,6 +3219,11 @@ babel-plugin-transform-react-remove-prop-types@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.4.24.tgz#f2edaf9b4c6a5fbe5c1d678bfb531078c1555f3a"
   integrity sha512-eqj0hVcJUR57/Ug2zE1Yswsw4LhuqqHhD+8v120T1cl3kjg76QwtyBrdIk4WVwK+lAhBJVYCd/v+4nc4y+8JsA==
+
+babel-plugin-transform-remove-console@^6.9.4:
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-remove-console/-/babel-plugin-transform-remove-console-6.9.4.tgz#b980360c067384e24b357a588d807d3c83527780"
+  integrity sha1-uYA2DAZzhOJLNXpYjYB9PINSd4A=
 
 babel-polyfill@6.26.0:
   version "6.26.0"
