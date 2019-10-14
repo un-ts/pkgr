@@ -39,7 +39,7 @@
     "@types/is-glob": "^4.0.1",
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.144",
-    "@types/node": "^12.7.9",
+    "@types/node": "^12.7.12",
     "@types/prettier": "^1.18.2",
     "@types/rollup-plugin-json": "^3.0.2",
     "@types/rollup-plugin-postcss": "^2.0.0",
