@@ -7,7 +7,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=10.0.0"
   },
   "bin": {
     "r": "lib/cli.js"
@@ -16,7 +16,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "rollup": "^1.22.0"
+    "rollup": "^1.25.1"
   },
   "dependencies": {
     "@babel/preset-env": "^7.6.3",
