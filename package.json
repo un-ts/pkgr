@@ -24,7 +24,7 @@
   "devDependencies": {
     "@1stg/babel-preset": "^0.7.9",
     "@1stg/commitlint-config": "^0.1.2",
-    "@1stg/eslint-config": "^0.12.21",
+    "@1stg/eslint-config": "^0.12.22",
     "@1stg/husky-config": "^0.3.2",
     "@1stg/lint-staged": "^0.8.11",
     "@1stg/prettier-config": "^0.4.3",
@@ -75,10 +75,16 @@
       "@1stg"
     ]
   },
+  "eslintConfig": {
+    "extends": "@1stg/eslint-config/recommended",
+    "rules": {
+      "@typescript-eslint/unbound-method": 0
+    }
+  },
   "eslintIgnore": [
     "coverage",
     "lib",
-    "CHANGELOG.md",
+    "packages/*/CHANGELOG.md",
     "packages/named-exports/index.ts",
     "node_modules",
     "!/.*.js"
