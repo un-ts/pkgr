@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.2.6...@pkgr/rollup@0.3.0) (2019-10-21)
+
+
+### Features
+
+* **rollup:** drop node 8 support because of rollup-plugin-url@3 ([ca993ad](https://github.com/rx-ts/pkgr/commit/ca993adf120032945ec8a2c62dcbd2cb5318cce9))
+
+
+
+
+
 ## [0.2.6](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.2.5...@pkgr/rollup@0.2.6) (2019-10-20)
 
 **Note:** Version bump only for package @pkgr/rollup
