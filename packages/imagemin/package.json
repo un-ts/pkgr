@@ -17,6 +17,9 @@
   "es2015": "lib/es2015",
   "fesm5": "lib/esm",
   "types": "lib",
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "imagemin": "^7.0.0",
     "imagemin-gifsicle": "^6.0.1",
