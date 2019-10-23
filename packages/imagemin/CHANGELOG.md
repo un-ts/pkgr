@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.1.3...@pkgr/imagemin@0.1.4) (2019-10-23)
+
+
+### Bug Fixes
+
+* **imagemin:** should only include lib directory into npm pkg ([780e5da](https://github.com/rx-ts/pkgr/commit/780e5dae349b7b2d613effd5af047823fa59d030))
+
+
+
+
+
 ## [0.1.3](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.1.2...@pkgr/imagemin@0.1.3) (2019-10-20)
 
 **Note:** Version bump only for package @pkgr/imagemin
