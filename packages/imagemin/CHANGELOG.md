@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.1.4...@pkgr/imagemin@0.2.0) (2019-10-23)
+
+
+### Features
+
+* **imagemin:** add glob support for input filenames ([25bd46f](https://github.com/rx-ts/pkgr/commit/25bd46f75cf5063ed3418ae11ece5d007ce17f60))
+
+
+
+
+
 ## [0.1.4](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.1.3...@pkgr/imagemin@0.1.4) (2019-10-23)
 
 
