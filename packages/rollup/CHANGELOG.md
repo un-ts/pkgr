@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.3.0...@pkgr/rollup@0.4.0) (2019-10-24)
+
+
+### Features
+
+* **rollup:** add rollup-plugin-copy support :tada: ([36cdd54](https://github.com/rx-ts/pkgr/commit/36cdd54de912403373834d860eafb2c1b7038239))
+
+
+
+
+
 # [0.3.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.2.6...@pkgr/rollup@0.3.0) (2019-10-21)
 
 
