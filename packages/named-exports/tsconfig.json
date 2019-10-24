@@ -1,6 +1,7 @@
 {
-  "extends": "@1stg/tsconfig/composite",
+  "extends": "@1stg/tsconfig/lib",
   "compilerOptions": {
+    "composite": true,
     "outDir": "lib"
   },
   "files": ["index.ts"]

@@ -49,6 +49,11 @@ program
     JSOX.parse,
   )
   .option(
+    '-c, --copies <JSOX>',
+    'targets setting or whole CopyOptions for rollup-plugin-copy, could be array or object',
+    JSOX.parse,
+  )
+  .option(
     '-s, --source-map <boolean>',
     'whether or not to enable sourceMap generation for CommonJS modules, which may cause performance issue',
     false,

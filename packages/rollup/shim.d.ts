@@ -21,6 +21,31 @@ declare module '@rxts/rollup-plugin-alias' {
   export = alias
 }
 
+declare module 'rollup-plugin-copy' {
+  import { Plugin } from 'rollup'
+
+  namespace copy {}
+
+  export interface CopyOptions {
+    targets?: Array<{
+      src: string | string[]
+      dest: string | string[]
+      rename?: string | ((name: string, extension: string) => string)
+    }>
+    verbose?: boolean
+    hook?: string
+    copyOnce?: string
+  }
+
+  export interface Copy extends Plugin {
+    (options: CopyOptions): Plugin
+  }
+
+  const copy: Copy
+
+  export = copy
+}
+
 declare module 'jsox' {
   export = JSON
 }

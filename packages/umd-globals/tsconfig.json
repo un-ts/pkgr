@@ -1,6 +1,7 @@
 {
   "extends": "@1stg/tsconfig/composite",
   "compilerOptions": {
+    "composite": true,
     "outDir": "lib"
   },
   "exclude": ["lib", "test"]

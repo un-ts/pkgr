@@ -20,6 +20,7 @@ import {
 } from 'rollup'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
+import copy, { CopyOptions } from 'rollup-plugin-copy'
 import json from 'rollup-plugin-json'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
@@ -30,7 +31,11 @@ import url from 'rollup-plugin-url'
 
 const info = debug('r:info')
 
-const PRODUCTION = 'production'
+const DEV = 'development'
+const PROD = 'production'
+
+const { NODE_ENV = DEV } = process.env
+const __DEV__ = NODE_ENV === DEV
 
 const STYLE_EXTENSIONS = [
   '.css',
@@ -138,11 +143,27 @@ export interface ConfigOptions {
   externals?: string[]
   globals?: StringMap
   aliases?: StringMap | AliasOptions['entries']
+  copies?: StringMap | CopyOptions['targets'] | CopyOptions
   sourceMap?: boolean
   typescript?: TypeScriptOptions
   postcss?: PostCssPluginOptions
   prod?: boolean
 }
+
+export const COPY_OPTIONS_KEYS: Array<keyof CopyOptions> = [
+  'targets',
+  'verbose',
+  'hook',
+  'copyOnce',
+]
+
+const isCopyOptions = (
+  copies: ConfigOptions['copies'],
+): copies is CopyOptions =>
+  !Array.isArray(copies) &&
+  Object.keys(copies!).every(key =>
+    COPY_OPTIONS_KEYS.includes(key as keyof CopyOptions),
+  )
 
 const config = ({
   formats,
@@ -154,10 +175,11 @@ const config = ({
   externals = [],
   globals: umdGlobals,
   aliases = [],
+  copies = [],
   sourceMap = false,
   typescript: typescriptOptions,
   postcss: postcssOpts,
-  prod = process.env.NODE_ENV === PRODUCTION,
+  prod = process.env.NODE_ENV === PROD,
 }: ConfigOptions = {}) => {
   const pkgsPath = path.resolve(
     typeof monorepo === 'string' ? monorepo : 'packages',
@@ -172,6 +194,30 @@ const config = ({
   const globals = getGlobals({
     globals: umdGlobals,
   })
+
+  const aliasOptions = {
+    resolve: EXTENSIONS.concat(ASSETS_EXTENSIONS),
+    entries: Array.isArray(aliases)
+      ? aliases.map(({ find, replacement }) => ({
+          find: tryRegExp(find),
+          replacement,
+        }))
+      : Object.entries(aliases).map(([find, replacement]) => ({
+          find: tryRegExp(find),
+          replacement,
+        })),
+  }
+
+  const copyOptions: CopyOptions = isCopyOptions(copies)
+    ? copies
+    : {
+        targets: Array.isArray(copies)
+          ? copies
+          : Object.entries(copies).map(([src, dest]) => ({
+              src,
+              dest,
+            })),
+      }
 
   const configs = flatMap(pkgs, pkg => {
     const pkgPath = path.resolve(monorepo ? pkgsPath : '', pkg)
@@ -253,18 +299,7 @@ const config = ({
           external.some(pkg => id === pkg || id.startsWith(pkg + '/')),
         onwarn,
         plugins: [
-          alias({
-            resolve: EXTENSIONS.concat(ASSETS_EXTENSIONS),
-            entries: Array.isArray(aliases)
-              ? aliases.map(({ find, replacement }) => ({
-                  find: tryRegExp(find),
-                  replacement,
-                }))
-              : Object.entries(aliases).map(([find, replacement]) => ({
-                  find: tryRegExp(find),
-                  replacement,
-                })),
-          }),
+          alias(aliasOptions),
           isTsAvailable && isTsInput
             ? typescript({
                 jsx: 'react',
@@ -293,16 +328,23 @@ const config = ({
             node: !!node,
           }),
           cjs(sourceMap),
+          copy(copyOptions),
           BASIC_PLUGINS,
           postcss(postcssOpts),
+          // __DEV__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
           prod
             ? [
                 replace({
-                  'process.env.NODE_ENV': JSON.stringify(PRODUCTION),
+                  __DEV__: JSON.stringify(false),
+                  'process.env.NODE_ENV': JSON.stringify(PROD),
                 }),
                 terser(),
               ]
-            : [],
+            : [
+                replace({
+                  __DEV__: JSON.stringify(__DEV__),
+                }),
+              ],
         ),
       }
 
