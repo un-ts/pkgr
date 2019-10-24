@@ -21,10 +21,10 @@
 
 ```sh
 # yarn
-yarn add -D umd-globals
+yarn add -D @pkgr/umd-globals
 
 # npm
-npm i -D umd-globals
+npm i -D @pkgr/umd-globals
 ```
 
 ## Usage

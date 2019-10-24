@@ -1,3 +1,4 @@
+import { entries } from '@pkgr/es-modules'
 import { namedExports } from '@pkgr/named-exports'
 import {
   StringMap,
@@ -197,7 +198,7 @@ const config = ({
 
   const aliasOptions = {
     resolve: EXTENSIONS.concat(ASSETS_EXTENSIONS),
-    entries: Array.isArray(aliases)
+    entries: (Array.isArray(aliases)
       ? aliases.map(({ find, replacement }) => ({
           find: tryRegExp(find),
           replacement,
@@ -205,7 +206,8 @@ const config = ({
       : Object.entries(aliases).map(([find, replacement]) => ({
           find: tryRegExp(find),
           replacement,
-        })),
+        }))
+    ).concat(entries),
   }
 
   const copyOptions: CopyOptions = isCopyOptions(copies)

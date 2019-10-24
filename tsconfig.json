@@ -6,13 +6,16 @@
   },
   "references": [
     {
+      "path": "packages/es-modules"
+    },
+    {
       "path": "packages/imagemin"
     },
     {
-      "path": "packages/rollup"
+      "path": "packages/named-exports"
     },
     {
-      "path": "packages/named-exports"
+      "path": "packages/rollup"
     },
     {
       "path": "packages/umd-globals"

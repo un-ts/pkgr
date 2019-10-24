@@ -1,26 +1,4 @@
 // tslint:disable ordered-imports
-declare module '@rxts/rollup-plugin-alias' {
-  import { Plugin } from 'rollup'
-
-  namespace alias {}
-
-  export interface AliasOptions {
-    resolve?: string[]
-    entries?: Array<{
-      find: string | RegExp
-      replacement: string
-    }>
-  }
-
-  export interface Alias extends Plugin {
-    (options: AliasOptions): Plugin
-  }
-
-  const alias: Alias
-
-  export = alias
-}
-
 declare module 'rollup-plugin-copy' {
   import { Plugin } from 'rollup'
 

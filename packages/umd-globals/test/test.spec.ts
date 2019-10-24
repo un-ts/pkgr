@@ -5,7 +5,7 @@ import _, {
   normalizePkg,
   upperCamelCase,
   upperCamelCaseReducer,
-} from '../index'
+} from '..'
 
 describe('umd globals', () => {
   it('default export and `globals` named export should be same exactly ', () =>

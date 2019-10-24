@@ -1,4 +1,4 @@
-import _, { namedExports } from '../index'
+import _, { namedExports } from '..'
 
 describe('named exports', () => {
   it('default export and `namedExports` named export should be same exactly ', () =>
