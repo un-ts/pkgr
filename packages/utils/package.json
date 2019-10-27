@@ -1,0 +1,23 @@
+{
+  "name": "@pkgr/utils",
+  "version": "0.0.0",
+  "description": "Shared utils for `@pkgr` packages or any package else",
+  "repository": "git+https://github.com/rx-ts/pkgr.git",
+  "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/utils",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "main": "lib",
+  "types": "lib",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "cross-spawn": "^7.0.1",
+    "open": "^7.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}

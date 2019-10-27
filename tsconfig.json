@@ -1,7 +1,8 @@
 {
-  "extends": "@1stg/tsconfig/node",
+  "extends": "./tsconfig.base",
   "compilerOptions": {
     "incremental": false,
+    "module": "commonjs",
     "noEmit": true
   },
   "references": [
@@ -19,6 +20,12 @@
     },
     {
       "path": "packages/umd-globals"
+    },
+    {
+      "path": "packages/utils"
+    },
+    {
+      "path": "packages/webpack"
     }
   ]
 }
