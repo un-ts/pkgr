@@ -18,9 +18,9 @@ before_install:
 install: yarn --frozen-lockfile
 
 script:
-  - yarn lerna run build
   - yarn test
   - yarn build
+  - yarn ts-node --files packages/webpack/src/cli -p
   - yarn lint
 
 after_success:
