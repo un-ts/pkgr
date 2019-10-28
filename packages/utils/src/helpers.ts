@@ -13,6 +13,8 @@ export const isPkgAvailable = (pkg: string) => !!tryPkg(pkg)
 
 export const isTsAvailable = isPkgAvailable('typescript')
 
+export const isAngularAvailable = isPkgAvailable('@angular/core')
+
 export const isReactAvailable = isPkgAvailable('react')
 
 export const isMdxAvailable =
