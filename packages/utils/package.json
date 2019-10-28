@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Shared utils for `@pkgr` packages or any package else",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/utils",
