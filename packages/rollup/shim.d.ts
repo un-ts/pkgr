@@ -1,3 +1,4 @@
+/* eslint-disable import/no-duplicates */
 // tslint:disable ordered-imports
 declare module 'rollup-plugin-copy' {
   import { Plugin } from 'rollup'

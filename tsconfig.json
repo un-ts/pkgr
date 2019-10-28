@@ -3,26 +3,27 @@
   "compilerOptions": {
     "incremental": false,
     "module": "commonjs",
-    "noEmit": true
+    "noEmit": true,
+    "typeRoots": ["./node_modules/@types", "./node_modules/@d-ts"]
   },
   "references": [
     {
       "path": "packages/es-modules"
     },
     {
-      "path": "packages/imagemin"
-    },
-    {
       "path": "packages/named-exports"
     },
     {
-      "path": "packages/rollup"
+      "path": "packages/utils"
     },
     {
       "path": "packages/umd-globals"
     },
     {
-      "path": "packages/utils"
+      "path": "packages/imagemin"
+    },
+    {
+      "path": "packages/rollup"
     },
     {
       "path": "packages/webpack"

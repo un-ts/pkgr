@@ -26,11 +26,15 @@ import LazyCompileWebpackPlugin from 'lazy-compile-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { resolve } from 'path'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
+import { VueLoaderPlugin } from 'vue-loader'
 import webpack, { Configuration } from 'webpack'
 
 const info = debug('w:info')
 
 export interface ConfigOptions {
+  entry?: string
+  type?: 'angular' | 'react' | 'vue'
+  outputDir?: string
   copies?: Array<
     | string
     | {
@@ -38,8 +42,6 @@ export interface ConfigOptions {
         to?: string
       }
   >
-  entry?: string
-  outputDir?: string
   prod?: boolean
 }
 
@@ -55,35 +57,23 @@ const extraLoaderOptions: Record<string, {}> = {
   },
 }
 
-const babelLoader = [
-  'cache-loader',
-  'thread-loader',
-  {
-    loader: 'babel-loader',
-    options: {
-      cacheDirectory: true,
-      presets: [
-        [
-          '@1stg',
-          {
-            typescript: true,
-            react: isReactAvailable,
-            vue: isVueAvailable,
-          },
-        ],
-      ],
-    },
-  },
-]
-
 export default ({
+  entry = 'src',
+  type,
   copies = [],
-  entry = tryFile(
-    ['index', 'main', 'app'].map(_ => tryExtensions(resolve('src/' + _))),
-  ),
   prod = __PROD__,
 }: ConfigOptions = {}) => {
-  const pkgFile = findUp(resolve(entry))
+  entry = tryFile(
+    ['index', 'main', 'app'].map(_ =>
+      tryExtensions(resolve([entry, _].join('/'))),
+    ),
+  )
+
+  const react = type === 'react' || (!type && isReactAvailable)
+  const vue = type === 'vue' || (!type && isVueAvailable)
+
+  const pkgFile = findUp(entry)
+
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const pkg: Record<string, string> = pkgFile ? require(pkgFile) : {}
 
@@ -91,9 +81,34 @@ export default ({
 
   const sourceMap = !prod
 
+  const babelLoader = [
+    'cache-loader',
+    'thread-loader',
+    {
+      loader: 'babel-loader',
+      options: {
+        cacheDirectory: true,
+        presets: [
+          [
+            '@1stg',
+            {
+              typescript: true,
+              react,
+              vue,
+            },
+          ],
+        ],
+      },
+    },
+  ]
+
   const baseCssLoaders = (modules = false, extraLoader?: string) =>
     [
-      prod ? MiniCssExtractPlugin.loader : 'style-loader',
+      prod
+        ? MiniCssExtractPlugin.loader
+        : vue
+        ? 'vue-style-loader'
+        : 'style-loader',
       'cache-loader',
       {
         loader: 'css-loader',
@@ -133,12 +148,10 @@ export default ({
     },
   ]
 
-  const svgLoader = isReactAvailable
-    ? '@svgr/webpack'
-    : isVueAvailable && 'vue-svg-loader'
+  const svgLoader = react ? '@svgr/webpack' : vue && 'vue-svg-loader'
 
   const template =
-    tryExtensions(resolve(entry, 'index'), ['.pug', '.html', '.ejs']) ||
+    tryExtensions(resolve(entry, '../index'), ['.pug', '.html', '.ejs']) ||
     resolve(__dirname, '../index.pug')
 
   const config: Configuration = {
@@ -152,7 +165,7 @@ export default ({
       historyApiFallback: true,
     },
     entry: {
-      app: [!prod && 'react-hot-loader/patch', entry].filter(identify),
+      app: [!prod && react && 'react-hot-loader/patch', entry].filter(identify),
     },
     node: {
       fs: 'empty',
@@ -162,14 +175,14 @@ export default ({
         {},
         alias,
         prod ||
-          (isReactAvailable && {
+          (react && {
             'react-dom': '@hot-loader/react-dom',
           }),
       ),
       extensions: [
         '.ts',
         '.tsx',
-        isVueAvailable && '.vue',
+        vue && '.vue',
         isMdxAvailable && '.mdx',
         '.js',
         '.jsx',
@@ -230,7 +243,8 @@ export default ({
         {
           test: /\.[jt]sx?$/,
           use: babelLoader,
-          exclude: NODE_MODULES_REG,
+          exclude: file =>
+            NODE_MODULES_REG.test(file) && !/\.vue(\.js)?$/.test(file),
         },
         {
           test: /\.html$/,
@@ -250,6 +264,10 @@ export default ({
               loader: 'pug-plain-loader',
             },
           ],
+        },
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
         },
       ],
     },
@@ -276,6 +294,7 @@ export default ({
       new MiniCssExtractPlugin({
         filename: `[name].[${hashType}].css`,
       }),
+      vue && new VueLoaderPlugin(),
     ].filter(identify),
     optimization: {
       runtimeChunk: {

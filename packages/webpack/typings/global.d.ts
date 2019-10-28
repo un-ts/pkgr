@@ -1,5 +1,4 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { Plugin } from 'webpack'
 
 declare global {
   const __DEV__: boolean

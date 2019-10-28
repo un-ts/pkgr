@@ -19,7 +19,11 @@ const parseArrayArgs = (curr: string, prev?: string[]) => {
 program
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   .version(require('../package.json').version)
-  .option('-i, --input <filename>', 'input entry file path')
+  .option('-e, --entry <filename>', 'input entry file path')
+  .option(
+    '-t, --type <enum>',
+    'app type, could be angular, react, vue currently',
+  )
   .option('--exclude <path>', 'exclude package(s) for monorepo', parseArrayArgs)
   .option('-o, --output-dir [output]', 'output destination directory')
   .option(
@@ -59,7 +63,8 @@ program
 
 const options: ConfigOptions = pick(
   program,
-  'input',
+  'entry',
+  'type',
   'exclude',
   'outputDir',
   'formats',

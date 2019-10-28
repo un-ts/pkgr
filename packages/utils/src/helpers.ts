@@ -1,6 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 
+import { CWD, EXTENSIONS } from './constants'
+
 export const tryPkg = (pkg: string) => {
   try {
     return require.resolve(pkg)
@@ -9,13 +11,14 @@ export const tryPkg = (pkg: string) => {
 
 export const isPkgAvailable = (pkg: string) => !!tryPkg(pkg)
 
-export const isTsAvailable = tryPkg('typescript')
+export const isTsAvailable = isPkgAvailable('typescript')
 
-export const isReactAvailable = tryPkg('react')
+export const isReactAvailable = isPkgAvailable('react')
 
-export const isMdxAvailable = tryPkg('@mdx/mdx') || tryPkg('@mdx/react')
+export const isMdxAvailable =
+  isPkgAvailable('@mdx/mdx') || isPkgAvailable('@mdx/react')
 
-export const isVueAvailable = tryPkg('vue')
+export const isVueAvailable = isPkgAvailable('vue')
 
 export const tryFile = (filePath?: string | string[]) => {
   if (typeof filePath === 'string') {
@@ -31,15 +34,8 @@ export const tryFile = (filePath?: string | string[]) => {
   return ''
 }
 
-// eslint-disable-next-line node/no-deprecated-api
-export const EXTENSIONS = Object.keys(require.extensions)
-
-if (isTsAvailable) {
-  EXTENSIONS.unshift('.ts', '.tsx')
-}
-
 export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
-  const ext = extensions.find(ext => fs.existsSync(filepath + ext))
+  const ext = extensions.concat('').find(ext => fs.existsSync(filepath + ext))
   return ext ? filepath + ext : ''
 }
 
@@ -50,14 +46,12 @@ export const identify = <T>(
   (T extends boolean ? false : boolean) | '' | null | undefined
 > => !!_
 
-const cwd = process.cwd()
-
 export const findUp = (searchEntry: string, searchFile = 'package.json') => {
   console.assert(path.isAbsolute(searchEntry))
 
   if (
     !tryFile(searchEntry) ||
-    (searchEntry !== cwd && !searchEntry.startsWith(cwd + path.sep))
+    (searchEntry !== CWD && !searchEntry.startsWith(CWD + path.sep))
   ) {
     return ''
   }
@@ -74,7 +68,7 @@ export const findUp = (searchEntry: string, searchFile = 'package.json') => {
       return searched
     }
     searchEntry = path.resolve(searchEntry, '..')
-  } while (searchEntry === cwd || searchEntry.startsWith(cwd + path.sep))
+  } while (searchEntry === CWD || searchEntry.startsWith(CWD + path.sep))
 
   return ''
 }
