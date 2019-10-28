@@ -20,7 +20,6 @@ install: yarn --frozen-lockfile
 script:
   - yarn test
   - yarn build
-  - yarn ts-node --files packages/webpack/src/cli -p
   - yarn lint
 
 after_success:

@@ -277,6 +277,20 @@ export default ({
         filename: `[name].[${hashType}].css`,
       }),
     ].filter(identify),
+    optimization: {
+      runtimeChunk: {
+        name: 'manifest',
+      },
+      splitChunks: {
+        cacheGroups: {
+          vendors: {
+            chunks: 'initial',
+            name: 'vendors',
+            test: /node_modules/,
+          },
+        },
+      },
+    },
   }
 
   info('config: %O', config)

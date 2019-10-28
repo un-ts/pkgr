@@ -11,7 +11,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build && run-p build:**",
+    "build": "lerna run build && run-p build:* && ts-node --files packages/webpack/src/cli -p",
     "build:r": "ts-node --files packages/rollup/src/cli -e named --exclude utils -p",
     "build:ts": "tsc -b",
     "clean": "rimraf packages/*/{lib,*.tsbuildinfo}",
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@1stg/babel-preset": "^0.7.10",
     "@1stg/commitlint-config": "^0.1.2",
-    "@1stg/eslint-config": "^0.13.2",
+    "@1stg/eslint-config": "^0.13.3",
     "@1stg/husky-config": "^0.3.2",
     "@1stg/lint-staged": "^0.8.11",
     "@1stg/prettier-config": "^0.4.3",
@@ -75,7 +75,7 @@
     "react-dom": "^16.11.0",
     "react-is": "^16.11.0",
     "rimraf": "^3.0.0",
-    "rollup": "^1.25.2",
+    "rollup": "^1.26.0",
     "rxjs": "^6.5.3",
     "tiny-glob": "^0.2.6",
     "ts-jest": "^24.1.0",
@@ -87,7 +87,7 @@
     "zone.js": "^0.10.2"
   },
   "resolutions": {
-    "rollup": "^1.25.1",
+    "rollup": "^1.26.0",
     "typescript": "^3.7.1-rc"
   },
   "commitlint": {
