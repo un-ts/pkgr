@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/rx-ts/pkgr/compare/@pkgr/es-modules@0.2.0...@pkgr/es-modules@0.2.1) (2019-10-28)
+
+
+### Bug Fixes
+
+* remove element-ui as es module, add sw support for webpack ([3303c5c](https://github.com/rx-ts/pkgr/commit/3303c5c6f5912a12bde732c425675739ffe2444a))
+
+
+
+
+
 # [0.2.0](https://github.com/rx-ts/pkgr/compare/@pkgr/es-modules@0.1.0...@pkgr/es-modules@0.2.0) (2019-10-28)
 
 
