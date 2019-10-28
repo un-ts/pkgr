@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.6.0...@pkgr/rollup@0.6.1) (2019-10-28)
+
+**Note:** Version bump only for package @pkgr/rollup
+
+
+
+
+
 # [0.6.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.4.0...@pkgr/rollup@0.6.0) (2019-10-28)
 
 
