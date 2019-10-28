@@ -16,7 +16,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "rollup": ">=1.0.0"
+    "rollup": ">=1.26.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.6.3",
