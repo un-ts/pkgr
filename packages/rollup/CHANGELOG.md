@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.5.0...@pkgr/rollup@0.5.1) (2019-10-28)
+
+
+### Bug Fixes
+
+* **rollup:** use @pkgr/utils to simplify codes, rollup as dependency ([8a3f64d](https://github.com/rx-ts/pkgr/commit/8a3f64d58a0484cb893e2dff466abbd928723508))
+* **webpack:** support vue app seamlessly :tada: ([42661b3](https://github.com/rx-ts/pkgr/commit/42661b395b37a5f035cccc1dff695ae888b7f241))
+
+
+
+
+
 # [0.5.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.4.0...@pkgr/rollup@0.5.0) (2019-10-24)
 
 
