@@ -6,6 +6,7 @@ import {
   normalizePkg,
   upperCamelCase,
 } from '@pkgr/umd-globals'
+import { EXTENSIONS, PROD, __DEV__, __PROD__, tryPkg } from '@pkgr/utils'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
 import debug from 'debug'
@@ -31,12 +32,6 @@ import typescript, { TypeScriptOptions } from 'rollup-plugin-typescript'
 import url from 'rollup-plugin-url'
 
 const info = debug('r:info')
-
-const DEV = 'development'
-const PROD = 'production'
-
-const { NODE_ENV = DEV } = process.env
-const __DEV__ = NODE_ENV === DEV
 
 const STYLE_EXTENSIONS = [
   '.css',
@@ -93,19 +88,7 @@ const BASIC_PLUGINS = [
 
 const DEFAULT_FORMATS = ['cjs', 'es2015', 'esm']
 
-let isTsAvailable = false
-
-try {
-  // eslint-disable-next-line node/no-extraneous-require
-  isTsAvailable = !!require.resolve('typescript')
-} catch (e) {}
-
-// eslint-disable-next-line node/no-deprecated-api
-const EXTENSIONS = Object.keys(require.extensions)
-
-if (isTsAvailable) {
-  EXTENSIONS.unshift('.ts', '.tsx')
-}
+const isTsAvailable = tryPkg('typescript')
 
 const tryExtensions = (filepath: string) => {
   const ext = EXTENSIONS.find(ext => fs.existsSync(filepath + ext))
@@ -180,7 +163,7 @@ const config = ({
   sourceMap = false,
   typescript: typescriptOptions,
   postcss: postcssOpts,
-  prod = process.env.NODE_ENV === PROD,
+  prod = __PROD__,
 }: ConfigOptions = {}) => {
   const pkgsPath = path.resolve(
     typeof monorepo === 'string' ? monorepo : 'packages',

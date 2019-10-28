@@ -119,15 +119,13 @@ const configs = config(options)
 
 if (program.watch) {
   startWatcher(configs)
-  // eslint-disable-next-line no-process-exit
-  process.exit(0)
+} else {
+  Promise.all(
+    configs.map(opts =>
+      rollup(opts).then(bundle => bundle.write(opts as OutputOptions)),
+    ),
+  ).catch(e => {
+    console.error(e)
+    process.exitCode = 1
+  })
 }
-
-Promise.all(
-  configs.map(opts =>
-    rollup(opts).then(bundle => bundle.write(opts as OutputOptions)),
-  ),
-).catch(e => {
-  console.error(e)
-  process.exitCode = 1
-})
