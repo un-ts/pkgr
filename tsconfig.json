@@ -3,8 +3,7 @@
   "compilerOptions": {
     "incremental": false,
     "module": "commonjs",
-    "noEmit": true,
-    "typeRoots": ["./node_modules/@types", "./node_modules/@d-ts"]
+    "noEmit": true
   },
   "references": [
     {

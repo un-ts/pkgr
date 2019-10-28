@@ -9,7 +9,6 @@ export type ModuleDefinition =
 export type ModuleDefinitions = Record<string, ModuleDefinition>
 
 export const MODULE_DEFINITIONS: ModuleDefinitions = {
-  '@ant-design/pro-layout': '@ant-design/pro-layout/es',
   dayjs: {
     target: 'dayjs/esm',
     exact: false,

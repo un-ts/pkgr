@@ -11,13 +11,17 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "rimraf dist && lerna run build && run-s build:ts build:r build:w",
+    "build": "lerna run build && run-s build:ts build:r build:w",
     "build:r": "ts-node --files packages/rollup/src/cli -e named --exclude utils -p",
     "build:ts": "tsc -b",
-    "build:w": "ts-node --files packages/webpack/src/cli -e src/react -p",
+    "build:w": "rimraf dist && run-p build:w:*",
+    "build:w:angular": "ts-node --files packages/webpack/src/cli -e src/angular -o dist/angular -t angular -p",
+    "build:w:react": "ts-node --files packages/webpack/src/cli -e src/react -o dist/react -t react -p",
+    "build:w:vue": "ts-node --files packages/webpack/src/cli -e src/vue -o dist/vue -t vue -p",
     "clean": "rimraf packages/*/{lib,*.tsbuildinfo}",
-    "debug": "cross-env DEBUG=w:* yarn dev:vue",
-    "dev:react": "ts-node -T --files packages/webpack/src/cli -e src/react",
+    "debug": "cross-env DEBUG=w:* yarn dev:angular",
+    "dev:angular": "ts-node -T --files packages/webpack/src/cli -e src/angular -t angular",
+    "dev:react": "ts-node -T --files packages/webpack/src/cli -e src/react -t react",
     "dev:vue": "ts-node -T --files packages/webpack/src/cli -e src/vue -t vue",
     "lint": "run-p lint:*",
     "lint:es": "cross-env PARSER_NO_WATCH=true eslint . --cache --ext js,md,ts -f friendly",
@@ -30,15 +34,19 @@
   "devDependencies": {
     "@1stg/babel-preset": "^0.7.10",
     "@1stg/commitlint-config": "^0.1.2",
-    "@1stg/eslint-config": "^0.13.3",
+    "@1stg/eslint-config": "^0.13.4",
     "@1stg/husky-config": "^0.3.2",
     "@1stg/lint-staged": "^0.8.11",
     "@1stg/prettier-config": "^0.4.3",
     "@1stg/remark-config": "^0.2.2",
     "@1stg/tsconfig": "^0.6.1",
     "@1stg/tslint-config": "^0.4.4",
+    "@angular/common": "^8.2.12",
     "@angular/compiler": "^8.2.12",
+    "@angular/compiler-cli": "^8.2.12",
     "@angular/core": "^8.2.12",
+    "@angular/platform-browser": "^8.2.12",
+    "@angular/platform-browser-dynamic": "^8.2.12",
     "@babel/core": "^7.6.4",
     "@babel/types": "^7.6.3",
     "@commitlint/cli": "^8.2.0",
@@ -80,6 +88,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-is": "^16.11.0",
+    "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3",
     "serve": "^11.2.0",
@@ -88,14 +97,14 @@
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "type-coverage": "^2.3.0",
-    "typescript": "^3.7.1-rc",
+    "typescript": "~3.5.3",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
     "zone.js": "^0.10.2"
   },
   "resolutions": {
     "rollup": "^1.26.0",
-    "typescript": "^3.7.1-rc"
+    "typescript": "~3.5.3"
   },
   "commitlint": {
     "extends": [

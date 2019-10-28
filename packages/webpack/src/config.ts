@@ -1,3 +1,4 @@
+import { AngularCompilerPlugin } from '@ngtools/webpack'
 import { alias } from '@pkgr/es-modules'
 import {
   DEV,
@@ -7,6 +8,7 @@ import {
   __PROD__,
   findUp,
   identify,
+  isAngularAvailable,
   isMdxAvailable,
   isReactAvailable,
   isTsAvailable,
@@ -59,6 +61,7 @@ const extraLoaderOptions: Record<string, {}> = {
 
 export default ({
   entry = 'src',
+  outputDir = 'dist',
   type,
   copies = [],
   prod = __PROD__,
@@ -69,6 +72,7 @@ export default ({
     ),
   )
 
+  const angular = type === 'angular' || (!type && isAngularAvailable)
   const react = type === 'react' || (!type && isReactAvailable)
   const vue = type === 'vue' || (!type && isVueAvailable)
 
@@ -81,26 +85,25 @@ export default ({
 
   const sourceMap = !prod
 
-  const babelLoader = [
-    'cache-loader',
-    'thread-loader',
-    {
-      loader: 'babel-loader',
-      options: {
-        cacheDirectory: true,
-        presets: [
-          [
-            '@1stg',
-            {
-              typescript: true,
-              react,
-              vue,
-            },
-          ],
+  const baseBabelLoader = {
+    loader: 'babel-loader',
+    options: {
+      cacheDirectory: true,
+      presets: [
+        [
+          '@1stg',
+          {
+            typescript: true,
+            metadata: angular,
+            react,
+            vue,
+          },
         ],
-      },
+      ],
     },
-  ]
+  }
+
+  const babelLoader = ['cache-loader', 'thread-loader', baseBabelLoader]
 
   const baseCssLoaders = (modules = false, extraLoader?: string) =>
     [
@@ -196,6 +199,7 @@ export default ({
     },
     output: {
       filename: `[name].[${hashType}].js`,
+      path: resolve(outputDir),
     },
     module: {
       rules: [
@@ -203,6 +207,28 @@ export default ({
           parser: {
             system: false,
           },
+        },
+        {
+          test: /\.[jt]sx?$/,
+          oneOf: [
+            angular && {
+              test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+              use: ['cache-loader', baseBabelLoader, '@ngtools/webpack'],
+            },
+            {
+              use: babelLoader,
+            },
+          ].filter(identify),
+          exclude: (file: string) =>
+            NODE_MODULES_REG.test(file) && !/\.vue(\.js)?$/.test(file),
+        },
+        {
+          test: /\.mdx?$/,
+          use: babelLoader.concat('@mdx-js/loader'),
+        },
+        vue && {
+          test: /\.vue$/,
+          loader: 'vue-loader',
         },
         {
           test: /\.css$/,
@@ -237,16 +263,6 @@ export default ({
           loader: 'url-loader',
         },
         {
-          test: /\.mdx?$/,
-          use: babelLoader.concat('@mdx-js/loader'),
-        },
-        {
-          test: /\.[jt]sx?$/,
-          use: babelLoader,
-          exclude: file =>
-            NODE_MODULES_REG.test(file) && !/\.vue(\.js)?$/.test(file),
-        },
-        {
           test: /\.html$/,
           loader: 'html-loader',
           options: {
@@ -265,17 +281,23 @@ export default ({
             },
           ],
         },
-        {
-          test: /\.vue$/,
-          loader: 'vue-loader',
-        },
-      ],
+      ].filter(identify),
     },
     plugins: [
       new webpack.DefinePlugin({
         __DEV__: !prod && __DEV__,
         __PROD__: prod,
       }),
+      angular &&
+        new AngularCompilerPlugin({
+          compilerOptions: {
+            emitDecoratorMetadata: true,
+            target: 8, // represents esnext
+          },
+          mainPath: entry,
+          tsConfigPath: tsconfigFile,
+          sourceMap: !prod,
+        }),
       new CaseSensitivePathsWebpackPlugin(),
       new CopyWebpackPlugin(
         copies.concat(tryFile(resolve(entry, '../public'))).filter(identify),

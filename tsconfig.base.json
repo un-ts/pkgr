@@ -1,6 +1,7 @@
 {
   "extends": "@1stg/tsconfig/lib",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./node_modules/@d-ts"]
   }
 }
