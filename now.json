@@ -9,14 +9,14 @@
   },
   "builds": [
     {
-      "src": "*.md",
-      "use": "@now/md"
+      "src": "package.json",
+      "use": "@now/static-build"
     }
   ],
   "routes": [
     {
       "src": "/*",
-      "dest": "README.html"
+      "dest": "react/index.html"
     }
   ]
 }

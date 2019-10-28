@@ -13,7 +13,6 @@ export const MODULE_DEFINITIONS: ModuleDefinitions = {
     target: 'dayjs/esm',
     exact: false,
   },
-  'element-ui': 'element-ui/src',
   lodash: 'lodash-es',
   systemjs: 'systemjs/dist/system',
 }

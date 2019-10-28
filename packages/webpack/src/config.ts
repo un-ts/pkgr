@@ -2,6 +2,7 @@ import { AngularCompilerPlugin } from '@ngtools/webpack'
 import { alias } from '@pkgr/es-modules'
 import {
   DEV,
+  EXTENSIONS,
   NODE_MODULES_REG,
   PROD,
   __DEV__,
@@ -30,6 +31,7 @@ import { resolve } from 'path'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import webpack, { Configuration } from 'webpack'
+import { GenerateSW } from 'workbox-webpack-plugin'
 
 const info = debug('w:info')
 
@@ -48,6 +50,7 @@ export interface ConfigOptions {
 }
 
 const tsconfigFile = tryFile([
+  'tsconfig.app.json',
   'tsconfig.base.json',
   'tsconfig.json',
   tryPkg('@1stg/tsconfig')!,
@@ -182,14 +185,9 @@ export default ({
             'react-dom': '@hot-loader/react-dom',
           }),
       ),
-      extensions: [
-        '.ts',
-        '.tsx',
-        vue && '.vue',
-        isMdxAvailable && '.mdx',
-        '.js',
-        '.jsx',
-      ].filter(identify),
+      extensions: ['.ts', '.tsx', vue && '.vue', isMdxAvailable && '.mdx']
+        .concat(EXTENSIONS)
+        .filter(identify),
       plugins: [
         isTsAvailable &&
           new TsconfigPathsWebpackPlugin({
@@ -209,7 +207,7 @@ export default ({
           },
         },
         {
-          test: /\.[jt]sx?$/,
+          test: /\.m?[jt]sx?$/,
           oneOf: [
             angular && {
               test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
@@ -220,7 +218,8 @@ export default ({
             },
           ].filter(identify),
           exclude: (file: string) =>
-            NODE_MODULES_REG.test(file) && !/\.vue(\.js)?$/.test(file),
+            NODE_MODULES_REG.test(file) &&
+            !/\.(mjs|jsx|tsx?|vue\.js)$/.test(file),
         },
         {
           test: /\.mdx?$/,
@@ -303,6 +302,19 @@ export default ({
         copies.concat(tryFile(resolve(entry, '../public'))).filter(identify),
       ),
       new FriendlyErrorsWebpackPlugin(),
+      prod &&
+        new GenerateSW({
+          cacheId: pkg.name + (type ? '-' + type : ''),
+          clientsClaim: true,
+          skipWaiting: true,
+          exclude: [/\.map$/, /index.html$/],
+          runtimeCaching: [
+            {
+              urlPattern: /\/api\//,
+              handler: 'NetworkFirst',
+            },
+          ],
+        }),
       new HtmlWebpackPlugin({
         title: [pkg.name, pkg.description].filter(identify).join(' - '),
         template,
@@ -327,7 +339,7 @@ export default ({
           vendors: {
             chunks: 'initial',
             name: 'vendors',
-            test: /node_modules/,
+            test: NODE_MODULES_REG,
           },
         },
       },
