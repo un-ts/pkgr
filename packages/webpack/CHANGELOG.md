@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.2.2...@pkgr/webpack@0.2.3) (2019-10-29)
+
+
+### Bug Fixes
+
+* **webpack:** build apps successfully ([149e175](https://github.com/rx-ts/pkgr/commit/149e17503aa53e6bf6f91fc1e1fbb625e5de9404))
+* **webpack:** seamless css support for all frameworks :tada: ([75bcf4a](https://github.com/rx-ts/pkgr/commit/75bcf4adab4883c8722309ea912e6bcf217db42c))
+* **webpack:** support css modules for angular at the same time ([8998cdc](https://github.com/rx-ts/pkgr/commit/8998cdcf10f578ab8e961a6560f177c7c2397b3c))
+
+
+
+
+
 ## [0.2.2](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.2.1...@pkgr/webpack@0.2.2) (2019-10-29)
 
 

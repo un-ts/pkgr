@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.1.3...@pkgr/utils@0.1.4) (2019-10-29)
+
+
+### Bug Fixes
+
+* **webpack:** seamless css support for all frameworks :tada: ([75bcf4a](https://github.com/rx-ts/pkgr/commit/75bcf4adab4883c8722309ea912e6bcf217db42c))
+
+
+
+
+
 ## [0.1.3](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.1.2...@pkgr/utils@0.1.3) (2019-10-29)
 
 
