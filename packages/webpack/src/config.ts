@@ -136,7 +136,7 @@ export default ({
 
   const baseCssLoaders = (modules = false, extraLoader?: string) =>
     [
-      prod
+      prod && (!angular || modules)
         ? MiniCssExtractPlugin.loader
         : angular && !modules
         ? 'exports-loader?exports.toString()'
@@ -304,6 +304,7 @@ export default ({
           loader: 'html-loader',
           options: {
             minimize: prod,
+            caseSensitive: true,
           },
         },
         {
@@ -368,7 +369,7 @@ export default ({
       }),
       new HtmlWebpackHarddiskPlugin(),
       prod && new HtmlWebpackInlineSourcePlugin(),
-      __DEV__ && new LazyCompileWebpackPlugin(),
+      __DEV__ && !prod && new LazyCompileWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: filenamePrefix + 'css',
       }),
