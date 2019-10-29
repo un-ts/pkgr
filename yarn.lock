@@ -118,10 +118,10 @@
     tslint-plugin-prettier "^2.0.1"
     tslint-react "^4.1.0"
 
-"@angular-devkit/core@8.3.14":
-  version "8.3.14"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-8.3.14.tgz#b42716a0de44c8f2785a18ae5562ec2f76543c9b"
-  integrity sha512-+IYLbtCxwIpaieRj0wurEXBzZ/fDSdWbyrCfajzDerzsxqghNcafAXSazHXWwISqtbr/pAOuqUNR+mEk2XBz3Q==
+"@angular-devkit/core@8.3.15":
+  version "8.3.15"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-8.3.15.tgz#54629457e81c75952e6075d64214e2ada5e39efa"
+  integrity sha512-FYUYNcggvRm7glfmqsRgBA1N6ubkINVx2nquZZX10AeCIs4MRqlG4UsddFbOvVckIF/4Q+tBK5P/NngpP1zGXA==
   dependencies:
     ajv "6.10.2"
     fast-json-stable-stringify "2.0.0"
@@ -2367,12 +2367,12 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@ngtools/webpack@^8.3.14":
-  version "8.3.14"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-8.3.14.tgz#ecac2651d2da7407f60acfb24ba03c460a79af1d"
-  integrity sha512-eIU3W3T4YxiExkS/c09FkqQpnKeIuUFFnxyfdG40zospt28B6V5ZaEVw2z5+2CjxJlDUTUYZlhPiV9Rwadp3jg==
+"@ngtools/webpack@^8.3.15":
+  version "8.3.15"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-8.3.15.tgz#1b523e56693bc459accc734a0d9b93f3e1d1b6b2"
+  integrity sha512-eenlDUIlB1sjmNgioq2gFG2wt9rpgouQBOdjN/PKigglo4XvCPrJYN5XhcinL9Douy28HCTmPHo8+IjMgQChOA==
   dependencies:
-    "@angular-devkit/core" "8.3.14"
+    "@angular-devkit/core" "8.3.15"
     enhanced-resolve "4.1.0"
     rxjs "6.4.0"
     tree-kill "1.2.1"
@@ -16163,7 +16163,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@>=2.8.3, typescript@^3.4.3, typescript@~3.5.3, typescript@~3.6.4:
+typescript@>=2.8.3, typescript@^3.4.3, typescript@~3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==

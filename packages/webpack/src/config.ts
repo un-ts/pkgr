@@ -10,7 +10,6 @@ import {
   findUp,
   identify,
   isAngularAvailable,
-  isMdxAvailable,
   isReactAvailable,
   isTsAvailable,
   isVueAvailable,
@@ -49,7 +48,7 @@ export interface ConfigOptions {
   prod?: boolean
 }
 
-const tsconfigFile = tryFile([
+let tsconfigFile = tryFile([
   'tsconfig.app.json',
   'tsconfig.base.json',
   'tsconfig.json',
@@ -87,6 +86,10 @@ export default ({
   const hashType = prod ? 'contenthash' : 'hash'
 
   const sourceMap = !prod
+
+  if (prod) {
+    tsconfigFile = tryFile('tsconfig.prod.json') || tsconfigFile
+  }
 
   const baseBabelLoader = {
     loader: 'babel-loader',
@@ -185,7 +188,7 @@ export default ({
             'react-dom': '@hot-loader/react-dom',
           }),
       ),
-      extensions: ['.ts', '.tsx', vue && '.vue', isMdxAvailable && '.mdx']
+      extensions: ['.ts', '.tsx', vue && '.vue', '.mdx']
         .concat(EXTENSIONS)
         .filter(identify),
       plugins: [
@@ -222,7 +225,7 @@ export default ({
             !/\.(mjs|jsx|tsx?|vue\.js)$/.test(file),
         },
         {
-          test: /\.mdx?$/,
+          test: /\.mdx$/,
           use: babelLoader.concat('@mdx-js/loader'),
         },
         vue && {
@@ -238,7 +241,7 @@ export default ({
           oneOf: cssLoaders('less'),
         },
         {
-          test: /\.s[a|c]ss$/,
+          test: /\.s[ac]ss$/,
           oneOf: cssLoaders('sass'),
         },
         {
@@ -249,7 +252,7 @@ export default ({
           test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
           oneOf: [
             svgLoader && {
-              issuer: /\.[jt]sx?$/,
+              issuer: /\.m?[jt]sx?$/,
               loader: svgLoader,
             },
             {
