@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.6.2...@pkgr/rollup@0.6.3) (2019-10-29)
+
+
+### Bug Fixes
+
+* use tslib for node pkgs as possible, add tsconfig.prod.json support ([ed49383](https://github.com/rx-ts/pkgr/commit/ed49383b1869c7a24ac765a16b3fba2579773dc1))
+* **rollup:** change rollup-plugin-replace to @rollup/plugin-replace ([1b312af](https://github.com/rx-ts/pkgr/commit/1b312af863da5c33a21d4eeb5d09a8a91deafcec))
+
+
+
+
+
 ## [0.6.2](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.6.1...@pkgr/rollup@0.6.2) (2019-10-28)
 
 **Note:** Version bump only for package @pkgr/rollup

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.2.0...@pkgr/imagemin@0.3.0) (2019-10-29)
+
+
+### Bug Fixes
+
+* use tslib for node pkgs as possible, add tsconfig.prod.json support ([ed49383](https://github.com/rx-ts/pkgr/commit/ed49383b1869c7a24ac765a16b3fba2579773dc1))
+
+
+### Features
+
+* **rollup:** add rollup-plugin-copy support :tada: ([36cdd54](https://github.com/rx-ts/pkgr/commit/36cdd54de912403373834d860eafb2c1b7038239))
+
+
+
+
+
 # [0.2.0](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.1.4...@pkgr/imagemin@0.2.0) (2019-10-23)
 
 
