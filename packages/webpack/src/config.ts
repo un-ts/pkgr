@@ -3,6 +3,7 @@ import { alias } from '@pkgr/es-modules'
 import {
   DEV,
   EXTENSIONS,
+  NODE_ENV,
   NODE_MODULES_REG,
   PROD,
   __DEV__,
@@ -26,7 +27,8 @@ import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import LazyCompileWebpackPlugin from 'lazy-compile-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { resolve } from 'path'
+import { resolve, sep } from 'path'
+import { sync } from 'postcss-load-config'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import webpack, { Configuration } from 'webpack'
@@ -48,7 +50,7 @@ export interface ConfigOptions {
   prod?: boolean
 }
 
-let tsconfigFile = tryFile([
+const baseTsconfigFile = tryFile([
   'tsconfig.app.json',
   'tsconfig.base.json',
   'tsconfig.json',
@@ -60,6 +62,8 @@ const extraLoaderOptions: Record<string, {}> = {
     javascriptEnabled: true,
   },
 }
+
+const configsPath = resolve(__dirname, '../.config')
 
 export default ({
   entry = 'src',
@@ -78,18 +82,12 @@ export default ({
   const react = type === 'react' || (!type && isReactAvailable)
   const vue = type === 'vue' || (!type && isVueAvailable)
 
-  const pkgFile = findUp(entry)
-
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const pkg: Record<string, string> = pkgFile ? require(pkgFile) : {}
-
   const hashType = prod ? 'contenthash' : 'hash'
+  const filenamePrefix = `[name].[${hashType}].`
 
   const sourceMap = !prod
 
-  if (prod) {
-    tsconfigFile = tryFile('tsconfig.prod.json') || tsconfigFile
-  }
+  const tsconfigFile = tryFile('tsconfig.prod.json') || baseTsconfigFile
 
   const baseBabelLoader = {
     loader: 'babel-loader',
@@ -111,10 +109,37 @@ export default ({
 
   const babelLoader = ['cache-loader', 'thread-loader', baseBabelLoader]
 
+  let postcssConfig:
+    | {
+        path: string
+        ctx: {
+          env: string
+        }
+      }
+    | undefined
+
+  const postcssCtx = {
+    env: prod ? PROD : NODE_ENV,
+  }
+
+  try {
+    postcssConfig = {
+      path: resolve(sync(postcssCtx).file, '..') + sep,
+      ctx: postcssCtx,
+    }
+  } catch {
+    postcssConfig = {
+      path: configsPath + sep,
+      ctx: postcssCtx,
+    }
+  }
+
   const baseCssLoaders = (modules = false, extraLoader?: string) =>
     [
       prod
         ? MiniCssExtractPlugin.loader
+        : angular
+        ? 'exports-loader?exports.toString()'
         : vue
         ? 'vue-style-loader'
         : 'style-loader',
@@ -136,10 +161,11 @@ export default ({
         loader: 'postcss-loader',
         options: {
           sourceMap,
+          config: postcssConfig,
         },
       },
       extraLoader && {
-        loader: extraLoader,
+        loader: extraLoader + '-loader',
         options: {
           ...extraLoaderOptions[extraLoader],
           sourceMap,
@@ -153,7 +179,7 @@ export default ({
       use: baseCssLoaders(false, extraLoader),
     },
     {
-      use: baseCssLoaders(true, extraLoader),
+      use: baseCssLoaders(!angular, extraLoader),
     },
   ]
 
@@ -162,6 +188,11 @@ export default ({
   const template =
     tryExtensions(resolve(entry, '../index'), ['.pug', '.html', '.ejs']) ||
     resolve(__dirname, '../index.pug')
+
+  const pkgFile = findUp(entry)
+
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const pkg: Record<string, string> = pkgFile ? require(pkgFile) : {}
 
   const config: Configuration = {
     mode: prod ? PROD : DEV,
@@ -199,7 +230,7 @@ export default ({
       ].filter(identify),
     },
     output: {
-      filename: `[name].[${hashType}].js`,
+      filename: filenamePrefix + 'js',
       path: resolve(outputDir),
     },
     module: {
@@ -279,7 +310,11 @@ export default ({
               loader: 'pug-loader',
             },
             {
+              resourceQuery: /^\?vue/,
               loader: 'pug-plain-loader',
+            },
+            {
+              use: ['raw-loader', 'pug-plain-loader'],
             },
           ],
         },
@@ -302,7 +337,9 @@ export default ({
         }),
       new CaseSensitivePathsWebpackPlugin(),
       new CopyWebpackPlugin(
-        copies.concat(tryFile(resolve(entry, '../public'))).filter(identify),
+        copies
+          .concat(tryFile(resolve(entry, '../public'), true))
+          .filter(identify),
       ),
       new FriendlyErrorsWebpackPlugin(),
       prod &&
@@ -326,10 +363,10 @@ export default ({
         minify: prod as false,
       }),
       new HtmlWebpackHarddiskPlugin(),
-      new HtmlWebpackInlineSourcePlugin(),
-      !prod && new LazyCompileWebpackPlugin(),
+      prod && new HtmlWebpackInlineSourcePlugin(),
+      __DEV__ && new LazyCompileWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: `[name].[${hashType}].css`,
+        filename: filenamePrefix + 'css',
       }),
       vue && new VueLoaderPlugin(),
     ].filter(identify),

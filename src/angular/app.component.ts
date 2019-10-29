@@ -1,10 +1,19 @@
-import { Component } from '@angular/core'
+import { Component, OnDestroy } from '@angular/core'
+import { Subject, interval } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
 
 @Component({
   selector: '#app',
-  template: `
-    Hello World
-  `,
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
 })
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
-export class AppComponent {}
+export class AppComponent implements OnDestroy {
+  destroy$ = new Subject<void>()
+
+  counter$ = interval(1000).pipe(takeUntil(this.destroy$))
+
+  ngOnDestroy() {
+    this.destroy$.next()
+    this.destroy$.complete()
+  }
+}

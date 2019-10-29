@@ -22,13 +22,16 @@ export const isMdxAvailable =
 
 export const isVueAvailable = isPkgAvailable('vue')
 
-export const tryFile = (filePath?: string | string[]) => {
+export const tryFile = (filePath?: string | string[], includeDir?: boolean) => {
   if (typeof filePath === 'string') {
-    return fs.existsSync(filePath) ? filePath : ''
+    return fs.existsSync(filePath) &&
+      (includeDir || fs.statSync(filePath).isFile())
+      ? filePath
+      : ''
   }
 
   for (const file of filePath || []) {
-    if (tryFile(file)) {
+    if (tryFile(file, includeDir)) {
       return file
     }
   }
@@ -37,8 +40,8 @@ export const tryFile = (filePath?: string | string[]) => {
 }
 
 export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
-  const ext = extensions.concat('').find(ext => fs.existsSync(filepath + ext))
-  return ext ? filepath + ext : ''
+  const ext = extensions.concat('').find(ext => tryFile(filepath + ext))
+  return ext == null ? '' : filepath + ext
 }
 
 export const identify = <T>(
@@ -52,7 +55,7 @@ export const findUp = (searchEntry: string, searchFile = 'package.json') => {
   console.assert(path.isAbsolute(searchEntry))
 
   if (
-    !tryFile(searchEntry) ||
+    !tryFile(searchEntry, true) ||
     (searchEntry !== CWD && !searchEntry.startsWith(CWD + path.sep))
   ) {
     return ''

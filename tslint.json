@@ -2,7 +2,7 @@
   "extends": "@1stg/tslint-config/eslint",
   "linterOptions": {
     "exclude": [
-      "**/lib.**",
+      "**/lib/**",
       "**/node_modules/**",
       "packages/named-exports/index.ts"
     ]
