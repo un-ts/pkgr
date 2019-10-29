@@ -1,27 +1,6 @@
 /* eslint-disable import/no-duplicates */
-declare module '*.css' {
-  const styles: Record<string, string>
-  export = styles
-}
-
-declare module '*.less' {
-  const styles: Record<string, string>
-  export = styles
-}
-
-declare module '*.scss' {
-  const styles: Record<string, string>
-  export = styles
-}
-
-declare module '*.svg' {
-  import React from 'react'
-  const Component: React.ComponentType
-  export = Component
-}
-
+// tslint:disable: ordered-imports
 declare module 'html-webpack-harddisk-plugin' {
-  // tslint:disable-next-line: ordered-imports
   import { Plugin } from 'webpack'
   class HtmlWebpackHarddiskPlugin extends Plugin {}
   export = HtmlWebpackHarddiskPlugin

@@ -138,7 +138,7 @@ export default ({
     [
       prod
         ? MiniCssExtractPlugin.loader
-        : angular
+        : angular && !modules
         ? 'exports-loader?exports.toString()'
         : vue
         ? 'vue-style-loader'
@@ -175,8 +175,12 @@ export default ({
 
   const cssLoaders = (extraLoader?: string) => [
     {
-      test: /(globals?|node_modules)/,
+      test: /\b(globals?|node_modules)\b/,
       use: baseCssLoaders(false, extraLoader),
+    },
+    {
+      test: /\.(m|modules?)\.[a-z]+$/,
+      use: baseCssLoaders(true, extraLoader),
     },
     {
       use: baseCssLoaders(!angular, extraLoader),
