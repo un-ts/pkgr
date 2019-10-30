@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack-mdx",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Seamless mdx related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack-mdx",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.1",
-    "@pkgr/webpack-react": "^0.0.0"
+    "@pkgr/webpack-react": "^0.1.0"
   },
   "publishConfig": {
     "access": "public"
