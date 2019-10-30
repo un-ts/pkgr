@@ -87,7 +87,8 @@ export default ({
 
   const sourceMap = !prod
 
-  const tsconfigFile = tryFile('tsconfig.prod.json') || baseTsconfigFile
+  const tsconfigFile =
+    (prod && tryFile('tsconfig.prod.json')) || baseTsconfigFile
 
   const baseBabelLoader = {
     loader: 'babel-loader',
@@ -337,7 +338,8 @@ export default ({
             target: 8, // represents esnext
           },
           mainPath: entry,
-          tsConfigPath: tsconfigFile,
+          tsConfigPath:
+            tryFile(resolve(entry, '../tsconfig.json')) || tsconfigFile,
           sourceMap: !prod,
         }),
       new CaseSensitivePathsWebpackPlugin(),
@@ -362,6 +364,7 @@ export default ({
         }),
       new HtmlWebpackPlugin({
         title: [pkg.name, pkg.description].filter(identify).join(' - '),
+        type,
         template,
         alwaysWriteToDisk: true,
         inlineSource: /(^|[\\/])manifest\.\w+\.js$/,

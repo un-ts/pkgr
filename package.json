@@ -29,7 +29,7 @@
     "lint": "run-p lint:*",
     "lint:es": "cross-env PARSER_NO_WATCH=true eslint . --cache --ext js,md,ts -f friendly",
     "lint:ts": "tslint -p . -t stylish",
-    "postinstall": "t",
+    "postinstall": "t || exit 0",
     "pretest": "lerna run build && yarn clean",
     "serve": "serve dist",
     "test": "jest",

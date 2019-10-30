@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators'
 import styles from './app.m.scss'
 
 @Component({
-  selector: '#app',
+  selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })

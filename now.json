@@ -15,8 +15,11 @@
   ],
   "routes": [
     {
-      "src": "/*",
-      "dest": "react/index.html"
+      "src": "/",
+      "status": 301,
+      "headers": {
+        "Location": "/react"
+      }
     }
   ]
 }
