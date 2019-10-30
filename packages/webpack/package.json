@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Seamless webpack bundler wrapper for apps and libraries",
   "repository": "git@github.com:rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack",
@@ -32,8 +32,8 @@
     "cache-loader": "^4.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "commander": "^3.0.2",
-    "core-js": "^3.3.5",
     "copy-webpack-plugin": "^5.0.4",
+    "core-js": "^3.3.5",
     "css-loader": "^3.2.0",
     "debug": "^4.1.1",
     "exports-loader": "^0.7.0",
