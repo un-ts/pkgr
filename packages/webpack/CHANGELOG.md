@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.2.4...@pkgr/webpack@0.2.5) (2019-10-30)
+
+
+### Bug Fixes
+
+* **webpack:** change angular app selector to app-root ([77744d6](https://github.com/rx-ts/pkgr/commit/77744d634ea0c23b200d76bde9879e7ab9a5b8af))
+
+
+
+
+
 ## [0.2.4](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.2.3...@pkgr/webpack@0.2.4) (2019-10-30)
 
 **Note:** Version bump only for package @pkgr/webpack
