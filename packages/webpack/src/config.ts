@@ -13,6 +13,7 @@ import {
   isAngularAvailable,
   isPkgAvailable,
   isReactAvailable,
+  isSvelteAvailable,
   isTsAvailable,
   isVueAvailable,
   tryExtensions,
@@ -39,7 +40,7 @@ const info = debug('w:info')
 
 export interface ConfigOptions {
   entry?: string
-  type?: 'angular' | 'react' | 'vue'
+  type?: 'angular' | 'react' | 'svelte' | 'vue'
   outputDir?: string
   copies?: Array<
     | string
@@ -85,6 +86,9 @@ export default ({
   const react =
     type === 'react' ||
     (!type && isReactAvailable && isPkgAvailable('@pkgr/webpack-react'))
+  const svelte =
+    type === 'svelte' ||
+    (!type && isSvelteAvailable && isPkgAvailable('@pkgr/webpack-svelte'))
   const vue =
     type === 'vue' ||
     (!type && isVueAvailable && isPkgAvailable('@pkgr/webpack-vue'))
@@ -233,9 +237,25 @@ export default ({
             'react-dom': '@hot-loader/react-dom',
           }),
       ),
-      extensions: ['.ts', '.tsx', vue && '.vue', mdx && '.mdx']
+      extensions: [
+        '.ts',
+        '.tsx',
+        vue && '.vue',
+        svelte && '.svelte',
+        mdx && '.mdx',
+      ]
         .concat(EXTENSIONS)
         .filter(identify),
+      mainFields: [
+        svelte && 'svelte',
+        'browser',
+        'module',
+        'esnext',
+        'es2015',
+        'fesm',
+        'fesm5',
+        'main',
+      ].filter(identify),
       plugins: [
         isTsAvailable &&
           new TsconfigPathsWebpackPlugin({
@@ -272,6 +292,10 @@ export default ({
         mdx && {
           test: /\.mdx$/,
           use: babelLoader.concat('@mdx-js/loader'),
+        },
+        svelte && {
+          test: /\.svelte$/,
+          loader: 'svelte-loader',
         },
         vue && {
           test: /\.vue$/,

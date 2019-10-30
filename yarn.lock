@@ -1295,15 +1295,28 @@
   resolved "https://registry.yarnpkg.com/@d-ts/bin/-/bin-0.3.3.tgz#8803685c0d46c8e0f95fdf26088532e8ca12132b"
   integrity sha512-Sd2o0j0QQHRRpv+Aj/xLeyOacy8pXeGz1QplDm5kr1jaPdAPlPayRTmir//2oel+J2v5e/C0s5/GiOTEZisK7Q==
 
-"@d-ts/core@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@d-ts/core/-/core-0.5.1.tgz#6c473f748a5ba986fd0ec23a6347d67ac11aa7ef"
-  integrity sha512-Fxsp7c8IMWjh6N4ut+/qVA8gh31xXzIiY4l8ZML9l8pTab9AbiMXKMRgCQxcJbvXZ4wtZ2ZR1aUHRH3tU4thnw==
+"@d-ts/core@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@d-ts/core/-/core-0.6.0.tgz#95f4cccc870630acaf24bcdc8e2f35e262702830"
+  integrity sha512-/QJxYV6CQdsTtkiSHFG+lsgMXYCyXiAe63n9AvXEs61HwNIuGCKzQaVuNs8Dp7Fh4wHTMCKMjIC3PnDx4qbMQg==
 
-"@d-ts/vue@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@d-ts/vue/-/vue-0.2.3.tgz#2772e6622e6b893550068e4a516a1ecf8587b55b"
-  integrity sha512-srzR8SyCInDmG7OPKn5UFjeypYjIVC52Jjit6YKULqGzJXKai4xI5WZw3N5w958VCU0jCGIcoLPyvNtwKxgZ3A==
+"@d-ts/svelte@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@d-ts/svelte/-/svelte-0.1.0.tgz#4ae5718fe7c2312745fe616b5250a11aac6e3b5a"
+  integrity sha512-GwqooXX33xJI5V6Pxow7PkAGyWuQz8cDNtC7liukiY8OnE37CK+V/eI+owpUmAYQ59baTOnyBgJlJbJTqY5LHg==
+
+"@d-ts/vue@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@d-ts/vue/-/vue-0.3.0.tgz#4d7f0a6726ac315e4f022a886c2982cb12393a2f"
+  integrity sha512-XP4QMQUFC//ak8Azgw6UUi6lUQfTrmvam+PMP1S2LmJhtAVBzqt3Fgbd1hR9yB2GkG/w4oghg5huPhoBBzeOCQ==
+
+"@d-ts/webpack-plugins@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@d-ts/webpack-plugins/-/webpack-plugins-0.1.1.tgz#0f95b4bd97dc4a48e360de74cb8cecc594802a54"
+  integrity sha512-/2t1ppt26v7OkkjCPZlq4GAwNyIYgfHlDnw8axpHrHgu79h5YyoInaj+o1wLjizmA9eBJbl/b9lqyzSBkAx94A==
+  dependencies:
+    "@types/html-webpack-plugin" "*"
+    "@types/webpack" "*"
 
 "@emotion/cache@^10.0.17":
   version "10.0.19"
@@ -2934,7 +2947,7 @@
     "@types/relateurl" "*"
     "@types/uglify-js" "*"
 
-"@types/html-webpack-plugin@^3.2.1":
+"@types/html-webpack-plugin@*":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@types/html-webpack-plugin/-/html-webpack-plugin-3.2.1.tgz#d3401407261ec82cb0fc380df28e57c94e851e4d"
   integrity sha512-H8Pj1/Urx6qlUednZpNsveDVUsO63gQdu5DLaAf9t7iG0iyK0OS4XKFG5v1PSG1Nek9S65BrPrKt8DfEib02ng==
@@ -16071,6 +16084,24 @@ supports-color@^6.1.0:
   integrity sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
   dependencies:
     has-flag "^3.0.0"
+
+svelte-dev-helper@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/svelte-dev-helper/-/svelte-dev-helper-1.1.9.tgz#7d187db5c6cdbbd64d75a32f91b8998bde3273c3"
+  integrity sha1-fRh9tcbNu9ZNdaMvkbiZi94yc8M=
+
+svelte-loader@^2.13.6:
+  version "2.13.6"
+  resolved "https://registry.yarnpkg.com/svelte-loader/-/svelte-loader-2.13.6.tgz#3d5efd5886c2bab034606d5af0cce659da3ee555"
+  integrity sha512-7uf7ZQdPAl+lwb1ldUYJFY/raZRUCuaNx7lMJ+F16jrVwN1+c35C2pBMGIY0mCqdKm5sm45jqELJJLGM3UG9Pw==
+  dependencies:
+    loader-utils "^1.1.0"
+    svelte-dev-helper "^1.1.9"
+
+svelte@^3.12.1:
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.12.1.tgz#ddfacd43272ac3255907c682b74ee7d3d8b06b0c"
+  integrity sha512-t29WJNjHIqfrdMcVXqIyRfgLEaNz7MihKXTpb8qHlbzvf0WyOOIhIlwIGvl6ahJ9+9CLJwz0sjhFNAmPgo8BHg==
 
 svg-parser@^2.0.0:
   version "2.0.2"

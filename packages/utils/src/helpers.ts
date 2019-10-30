@@ -15,10 +15,12 @@ export const isTsAvailable = isPkgAvailable('typescript')
 
 export const isAngularAvailable = isPkgAvailable('@angular/core')
 
-export const isReactAvailable = isPkgAvailable('react')
-
 export const isMdxAvailable =
   isPkgAvailable('@mdx/mdx') || isPkgAvailable('@mdx/react')
+
+export const isReactAvailable = isPkgAvailable('react')
+
+export const isSvelteAvailable = isPkgAvailable('svelte')
 
 export const isVueAvailable = isPkgAvailable('vue')
 
