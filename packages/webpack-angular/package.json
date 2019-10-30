@@ -1,0 +1,20 @@
+{
+  "name": "@pkgr/webpack-angular",
+  "version": "0.0.0",
+  "description": "Seamless angular related plugin for @pkgr/webpack",
+  "repository": "git+https://github.com/rx-ts/pkgr.git",
+  "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack-angular",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": "^8.2.12",
+    "@pkgr/webpack": "^0.2.5"
+  },
+  "dependencies": {
+    "@ngtools/webpack": "^8.3.15"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}

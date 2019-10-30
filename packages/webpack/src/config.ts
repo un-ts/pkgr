@@ -11,6 +11,7 @@ import {
   findUp,
   identify,
   isAngularAvailable,
+  isPkgAvailable,
   isReactAvailable,
   isTsAvailable,
   isVueAvailable,
@@ -78,9 +79,17 @@ export default ({
     ),
   )
 
-  const angular = type === 'angular' || (!type && isAngularAvailable)
-  const react = type === 'react' || (!type && isReactAvailable)
-  const vue = type === 'vue' || (!type && isVueAvailable)
+  const angular =
+    type === 'angular' ||
+    (!type && isAngularAvailable && isPkgAvailable('@pkgr/webpack-angular'))
+  const react =
+    type === 'react' ||
+    (!type && isReactAvailable && isPkgAvailable('@pkgr/webpack-react'))
+  const vue =
+    type === 'vue' ||
+    (!type && isVueAvailable && isPkgAvailable('@pkgr/webpack-vue'))
+
+  const mdx = isPkgAvailable('@pkgr/webpack-mdx')
 
   const hashType = prod ? 'contenthash' : 'hash'
   const filenamePrefix = `[name].[${hashType}].`
@@ -224,7 +233,7 @@ export default ({
             'react-dom': '@hot-loader/react-dom',
           }),
       ),
-      extensions: ['.ts', '.tsx', vue && '.vue', '.mdx']
+      extensions: ['.ts', '.tsx', vue && '.vue', mdx && '.mdx']
         .concat(EXTENSIONS)
         .filter(identify),
       plugins: [
@@ -260,7 +269,7 @@ export default ({
             NODE_MODULES_REG.test(file) &&
             !/\.(mjs|jsx|tsx?|vue\.js)$/.test(file),
         },
-        {
+        mdx && {
           test: /\.mdx$/,
           use: babelLoader.concat('@mdx-js/loader'),
         },

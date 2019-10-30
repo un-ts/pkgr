@@ -1,0 +1,22 @@
+{
+  "name": "@pkgr/webpack-react",
+  "version": "0.0.0",
+  "description": "Seamless angular related plugin for @pkgr/webpack",
+  "repository": "git+https://github.com/rx-ts/pkgr.git",
+  "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack-react",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@pkgr/webpack": "^0.2.5",
+    "react": "^16.11.0"
+  },
+  "dependencies": {
+    "@hot-loader/react-dom": "^16.10.2",
+    "@svgr/webpack": "^4.3.3",
+    "react-hot-loader": "^4.12.15"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}
