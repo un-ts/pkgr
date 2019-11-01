@@ -32,7 +32,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { resolve, sep } from 'path'
 import { sync } from 'postcss-load-config'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
-import { VueLoaderPlugin } from 'vue-loader'
 import webpack, { Configuration } from 'webpack'
 import { GenerateSW } from 'workbox-webpack-plugin'
 
@@ -409,7 +408,8 @@ export default ({
       new MiniCssExtractPlugin({
         filename: filenamePrefix + 'css',
       }),
-      vue && new VueLoaderPlugin(),
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      vue && new (require('vue-loader/lib/plugin'))(),
     ].filter(identify),
     optimization: {
       runtimeChunk: {
