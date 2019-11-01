@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.0...@pkgr/webpack@0.4.1) (2019-11-01)
+
+
+### Bug Fixes
+
+* **webpack:** vue-loader should be required later ([5a9f1da](https://github.com/rx-ts/pkgr/commit/5a9f1dac19154799e9a19e1a3682c9d024ce0c0f))
+
+
+
+
+
 # [0.4.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.3.0...@pkgr/webpack@0.4.0) (2019-10-30)
 
 
