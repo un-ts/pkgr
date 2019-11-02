@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.2.1...@pkgr/utils@0.2.2) (2019-11-02)
+
+
+### Bug Fixes
+
+* **utils:** add missing openChrome.applescript into npm pkg ([4eaf5f9](https://github.com/rx-ts/pkgr/commit/4eaf5f94494f9817cb0704050067f9532cada014))
+
+
+
+
+
 ## [0.2.1](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.2.0...@pkgr/utils@0.2.1) (2019-11-02)
 
 
