@@ -96,6 +96,7 @@ function startBrowserProcess(
 
   // Fallback to open
   // (It will always open new tab)
+  // tslint:disable-next-line no-try-promise
   try {
     const options = { app: browser, wait: false }
     open(url, options).catch(() => {}) // Prevent `unhandledRejection` error.

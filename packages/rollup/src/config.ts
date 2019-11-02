@@ -9,7 +9,14 @@ import {
   normalizePkg,
   upperCamelCase,
 } from '@pkgr/umd-globals'
-import { EXTENSIONS, PROD, __DEV__, __PROD__, tryPkg } from '@pkgr/utils'
+import {
+  EXTENSIONS,
+  PROD,
+  __DEV__,
+  __PROD__,
+  identify,
+  tryPkg,
+} from '@pkgr/utils'
 import replace from '@rollup/plugin-replace'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
@@ -81,11 +88,6 @@ const cjs = (sourceMap: boolean) =>
     namedExports,
     sourceMap,
   })
-
-const BASIC_PLUGINS = [
-  json(),
-  url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
-]
 
 const DEFAULT_FORMATS = ['cjs', 'es2015', 'esm']
 
@@ -323,39 +325,35 @@ ConfigOptions = {}): RollupOptions[] => {
                   ],
                 ],
               }),
-        ].concat(
           resolve({
             deps,
             node: !!node,
           }),
           cjs(sourceMap),
           copy(copyOptions),
-          BASIC_PLUGINS,
+          json(),
+          url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
           postcss(postcssOpts),
-          // __DEV__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
-          prod
-            ? [
-                replace(
-                  define
-                    ? {
-                        ...defineValues,
-                        __DEV__: JSON.stringify(false),
-                        __PROD__: JSON.stringify(true),
-                        'process.env.NODE_ENV': JSON.stringify(PROD),
-                      }
-                    : undefined,
-                ),
-                terser(),
-              ]
-            : replace(
-                define
+        ].concat(
+          [
+            // __DEV__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
+            define &&
+              replace(
+                prod
                   ? {
+                      ...defineValues,
+                      __DEV__: JSON.stringify(false),
+                      __PROD__: JSON.stringify(true),
+                      'process.env.NODE_ENV': JSON.stringify(PROD),
+                    }
+                  : {
                       ...defineValues,
                       __DEV__: JSON.stringify(__DEV__),
                       __PROD__: JSON.stringify(__PROD__),
-                    }
-                  : undefined,
+                    },
               ),
+            prod && terser(),
+          ].filter(identify),
         ),
       }
     })

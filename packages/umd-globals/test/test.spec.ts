@@ -7,6 +7,8 @@ import _, {
   upperCamelCaseReducer,
 } from '..'
 
+const UPPER_CAMEL_CASE = 'upper-camel-case'
+
 describe('umd globals', () => {
   it('default export and `globals` named export should be same exactly ', () =>
     expect(_).toBe(globals))
@@ -48,8 +50,8 @@ describe('reducer', () => {
     expect(asIsReducer('as-is')).toStrictEqual({
       'as-is': 'as-is',
     })
-    expect(upperCamelCaseReducer('upper-camel-case')).toStrictEqual({
-      'upper-camel-case': 'UpperCamelCase',
+    expect(upperCamelCaseReducer(UPPER_CAMEL_CASE)).toStrictEqual({
+      [UPPER_CAMEL_CASE]: 'UpperCamelCase',
     })
   })
   it('should work with single object param', () => {
@@ -57,9 +59,9 @@ describe('reducer', () => {
       'as-is': 'as-is',
     })
     expect(
-      upperCamelCaseReducer({ 'upper-camel-case': 'UpperCamelCase' }),
+      upperCamelCaseReducer({ [UPPER_CAMEL_CASE]: 'UpperCamelCase' }),
     ).toStrictEqual({
-      'upper-camel-case': 'UpperCamelCase',
+      [UPPER_CAMEL_CASE]: 'UpperCamelCase',
     })
   })
 })

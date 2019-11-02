@@ -22,8 +22,6 @@ declare global {
   }
 }
 
-if (process.env.NODE_ENV === 'development') {
-  if (window.ng && !window.ng.probe) {
-    window.ng.probe = noop
-  }
+if (process.env.NODE_ENV === 'development' && window.ng && !window.ng.probe) {
+  window.ng.probe = noop
 }

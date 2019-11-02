@@ -1,3 +1,6 @@
+// tslint:disable no-big-function
+import { resolve, sep } from 'path'
+
 import { AngularCompilerPlugin } from '@ngtools/webpack'
 import { alias } from '@pkgr/es-modules'
 import {
@@ -29,7 +32,6 @@ import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import LazyCompileWebpackPlugin from 'lazy-compile-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { resolve, sep } from 'path'
 import { sync } from 'postcss-load-config'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import webpack, { Configuration } from 'webpack'
@@ -39,6 +41,7 @@ const info = debug('w:info')
 
 export interface ConfigOptions {
   entry?: string
+  // tslint:disable-next-line max-union-size
   type?: 'angular' | 'react' | 'svelte' | 'vue'
   outputDir?: string
   copies?: Array<
@@ -66,13 +69,16 @@ const extraLoaderOptions: Record<string, {}> = {
 
 const configsPath = resolve(__dirname, '../.config')
 
+const CACHE_LOADER = 'cache-loader'
+
 export default ({
   entry = 'src',
   outputDir = 'dist',
   type,
   copies = [],
   prod = __PROD__,
-}: ConfigOptions = {}) => {
+}: // eslint-disable-next-line sonarjs/cognitive-complexity
+ConfigOptions = {}) => {
   entry = tryFile(
     ['index', 'main', 'app'].map(_ =>
       tryExtensions(resolve([entry, _].join('/'))),
@@ -120,7 +126,7 @@ export default ({
     },
   }
 
-  const babelLoader = ['cache-loader', 'thread-loader', baseBabelLoader]
+  const babelLoader = [CACHE_LOADER, 'thread-loader', baseBabelLoader]
 
   let postcssConfig:
     | {
@@ -156,7 +162,7 @@ export default ({
         : vue
         ? 'vue-style-loader'
         : 'style-loader',
-      'cache-loader',
+      CACHE_LOADER,
       {
         loader: 'css-loader',
         options: {
@@ -278,7 +284,7 @@ export default ({
           oneOf: [
             angular && {
               test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-              use: ['cache-loader', baseBabelLoader, '@ngtools/webpack'],
+              use: [CACHE_LOADER, baseBabelLoader, '@ngtools/webpack'],
             },
             {
               use: babelLoader,

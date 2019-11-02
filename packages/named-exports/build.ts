@@ -1,11 +1,12 @@
 /* eslint-disable node/no-extraneous-import */
 
 import { writeFile } from 'fs'
-import isGlob from 'is-glob'
 import path from 'path'
+import { promisify } from 'util'
+
+import isGlob from 'is-glob'
 import prettier from 'prettier'
 import glob from 'tiny-glob'
-import { promisify } from 'util'
 
 interface Pkg {
   core: string
@@ -33,6 +34,7 @@ const combinePkg = (pkg: string, exports: {}) =>
     [pkg]: Object.keys(require(pkg)).filter(key => !/^[_$]/.test(key)),
   })
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const namedExports = PKGS.reduce(async (exported, pkg) => {
   const exports = await exported
   const { core, extra }: Pkg = typeof pkg === 'string' ? { core: pkg } : pkg

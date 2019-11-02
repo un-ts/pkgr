@@ -24,7 +24,7 @@ export const isSvelteAvailable = isPkgAvailable('svelte')
 
 export const isVueAvailable = isPkgAvailable('vue')
 
-export const tryFile = (filePath?: string | string[], includeDir?: boolean) => {
+export const tryFile = (filePath?: string | string[], includeDir = false) => {
   if (typeof filePath === 'string') {
     return fs.existsSync(filePath) &&
       (includeDir || fs.statSync(filePath).isFile())
@@ -50,6 +50,7 @@ export const identify = <T>(
   _: T,
 ): _ is Exclude<
   T,
+  // tslint:disable-next-line max-union-size
   (T extends boolean ? false : boolean) | '' | null | undefined
 > => !!_
 
