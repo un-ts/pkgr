@@ -70,6 +70,12 @@ program
   )
   .option('--postcss [JSOX]', 'options for `rollup-plugin-postcss`', JSOX.parse)
   .option(
+    '-d, --define [boolean|JSOX]',
+    'options for `rollup-plugin-replace`, enable `__DEV__` and `__PROD__` by default',
+    JSOX.parse,
+    true,
+  )
+  .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js) bundle together at the same time',
   )

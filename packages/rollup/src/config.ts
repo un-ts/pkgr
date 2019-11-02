@@ -1,3 +1,6 @@
+import fs from 'fs'
+import path from 'path'
+
 import { entries } from '@pkgr/es-modules'
 import { namedExports } from '@pkgr/named-exports'
 import {
@@ -11,9 +14,7 @@ import replace from '@rollup/plugin-replace'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
 import debug from 'debug'
-import fs from 'fs'
 import flatMap from 'lodash/flatMap'
-import path from 'path'
 import {
   ModuleFormat,
   OutputOptions,
@@ -131,6 +132,7 @@ export interface ConfigOptions {
   sourceMap?: boolean
   typescript?: TypeScriptOptions
   postcss?: PostCssPluginOptions
+  define?: boolean | {}
   prod?: boolean
 }
 
@@ -149,7 +151,7 @@ const isCopyOptions = (
     COPY_OPTIONS_KEYS.includes(key as keyof CopyOptions),
   )
 
-const config = ({
+export const config = ({
   formats,
   monorepo,
   input,
@@ -163,8 +165,10 @@ const config = ({
   sourceMap = false,
   typescript: typescriptOptions,
   postcss: postcssOpts,
+  define,
   prod = __PROD__,
-}: ConfigOptions = {}) => {
+}: // eslint-disable-next-line sonarjs/cognitive-complexity
+ConfigOptions = {}): RollupOptions[] => {
   const pkgsPath = path.resolve(
     typeof monorepo === 'string' ? monorepo : 'packages',
   )
@@ -266,21 +270,33 @@ const config = ({
       return pkgGlobals
     }, globals)
 
+    let defineValues: {} | undefined
+
+    if (define) {
+      defineValues = Object.entries(define).reduce(
+        (acc, [key, value]) =>
+          Object.assign(acc, {
+            [key]: JSON.stringify(value),
+          }),
+        {},
+      )
+    }
+
     return pkgFormats.map(format => {
       const isEsVersion = /^es(\d+|next)$/.test(format) && format !== 'es5'
-      const options: RollupOptions = {
+      return {
         input: pkgInput,
         output: {
           file: path.resolve(
             pkgPath,
             `${pkgOutputDir}${format}${prod ? '.min' : ''}.js`,
           ),
-          format: isEsVersion ? 'esm' : format,
+          format: isEsVersion ? 'esm' : (format as ModuleFormat),
           name: pkgGlobals[name] || upperCamelCase(normalizePkg(name)),
           globals,
           exports,
-        } as RollupOptions['output'],
-        external: id =>
+        },
+        external: (id: string) =>
           external.some(pkg => id === pkg || id.startsWith(pkg + '/')),
         onwarn,
         plugins: [
@@ -319,21 +335,29 @@ const config = ({
           // __DEV__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
           prod
             ? [
-                replace({
-                  __DEV__: JSON.stringify(false),
-                  'process.env.NODE_ENV': JSON.stringify(PROD),
-                }),
+                replace(
+                  define
+                    ? {
+                        ...defineValues,
+                        __DEV__: JSON.stringify(false),
+                        __PROD__: JSON.stringify(true),
+                        'process.env.NODE_ENV': JSON.stringify(PROD),
+                      }
+                    : undefined,
+                ),
                 terser(),
               ]
-            : [
-                replace({
-                  __DEV__: JSON.stringify(__DEV__),
-                }),
-              ],
+            : replace(
+                define
+                  ? {
+                      ...defineValues,
+                      __DEV__: JSON.stringify(__DEV__),
+                      __PROD__: JSON.stringify(__PROD__),
+                    }
+                  : undefined,
+              ),
         ),
       }
-
-      return options
     })
   })
 
