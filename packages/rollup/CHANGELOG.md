@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.7.0...@pkgr/rollup@0.8.0) (2019-11-03)
+
+
+### Features
+
+* **rollup:** support glob/regexp/function externals option, close [#38](https://github.com/rx-ts/pkgr/issues/38) ([b4a1a6b](https://github.com/rx-ts/pkgr/commit/b4a1a6bb5403b201fee7fde779fd25a01285c2c2))
+
+
+
+
+
 # [0.7.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.6.7...@pkgr/rollup@0.7.0) (2019-11-03)
 
 
