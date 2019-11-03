@@ -35,7 +35,7 @@ program
     'Specify export mode (auto, default, named, none)',
   )
   .option(
-    '-x, --externals <package>',
+    '-x, --external, --externals <package>',
     'extra external packages, peerDependencies, and dependencies for node by default',
     parseArrayArgs,
   )
@@ -90,6 +90,7 @@ const options: ConfigOptions = pick(
   'formats',
   'monorepo',
   'exports',
+  'external',
   'externals',
   'globals',
   'aliases',

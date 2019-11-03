@@ -15,6 +15,7 @@ import {
   PROD,
   __DEV__,
   __PROD__,
+  arrayify,
   identify,
   isTsAvailable,
   monorepoPkgs,
@@ -131,6 +132,11 @@ const onwarn = (warning: string | RollupWarning, warn: WarningHandler) => {
 
 export type Format = 'cjs' | 'es2015' | 'es5' | 'esm' | 'umd'
 
+export type External =
+  | string
+  | string[]
+  | ((id: string, collectedExternals?: string[]) => boolean)
+
 export interface ConfigOptions {
   formats?: ModuleFormat[]
   monorepo?: boolean | string[]
@@ -138,7 +144,8 @@ export interface ConfigOptions {
   exclude?: string[]
   outputDir?: string
   exports?: OutputOptions['exports']
-  externals?: string[] | ((id: string, collected?: string[]) => boolean)
+  external?: External
+  externals?: External
   globals?: StringMap
   aliases?: StringMap | AliasOptions['entries']
   copies?: StringMap | CopyOptions['targets'] | CopyOptions
@@ -171,7 +178,8 @@ export const config = ({
   exclude = [],
   outputDir = 'lib',
   exports,
-  externals = [],
+  external,
+  externals = external || [],
   globals: umdGlobals,
   aliases = [],
   copies = [],
@@ -266,10 +274,10 @@ ConfigOptions = {}): RollupOptions[] => {
 
     const deps = Object.keys(dependencies)
 
-    const external =
+    const collectedExternals =
       typeof externals === 'function'
         ? []
-        : externals.concat(
+        : arrayify(externals).concat(
             Object.keys(peerDependencies),
             node ? deps.concat(builtinModules) : [],
           )
@@ -279,7 +287,7 @@ ConfigOptions = {}): RollupOptions[] => {
       formats && formats.length
         ? formats
         : DEFAULT_FORMATS.concat(node ? [] : 'umd')
-    const pkgGlobals = external.reduce((pkgGlobals, pkg) => {
+    const pkgGlobals = collectedExternals.reduce((pkgGlobals, pkg) => {
       if (pkgGlobals[pkg] == null) {
         pkgGlobals[pkg] = upperCamelCase(normalizePkg(pkg))
       }
@@ -314,14 +322,13 @@ ConfigOptions = {}): RollupOptions[] => {
         },
         external(id: string) {
           if (typeof externals === 'function') {
-            return externals.call(this, id, external)
+            return externals.call(this, id, collectedExternals)
           }
-          return external.some(pkg => {
+          return collectedExternals.some(pkg => {
             const pkgRegExp = tryRegExp(pkg)
             return pkgRegExp instanceof RegExp
               ? pkgRegExp.test(id)
-              : // TODO: should we drop glob support in favor of regexp?
-              isGlob(pkg)
+              : isGlob(pkg)
               ? isMatch(id, pkg)
               : id === pkg || id.startsWith(pkg + '/')
           })
