@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.3.1...@pkgr/utils@0.3.2) (2019-11-03)
+
+
+### Bug Fixes
+
+* **rollup:** support `external` alias and single string type ([c4e21be](https://github.com/rx-ts/pkgr/commit/c4e21be1d701ec940f59549f910064326b6ec156))
+
+
+
+
+
 ## [0.3.1](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.3.0...@pkgr/utils@0.3.1) (2019-11-03)
 
 

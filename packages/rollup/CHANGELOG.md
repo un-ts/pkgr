@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.1...@pkgr/rollup@0.8.2) (2019-11-03)
+
+
+### Bug Fixes
+
+* **rollup:** support `external` alias and single string type ([c4e21be](https://github.com/rx-ts/pkgr/commit/c4e21be1d701ec940f59549f910064326b6ec156))
+
+
+
+
+
 ## [0.8.1](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.0...@pkgr/rollup@0.8.1) (2019-11-03)
 
 
