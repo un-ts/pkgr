@@ -30,27 +30,6 @@
     stylelint "^11.1.1"
     tslib "^1.10.0"
 
-"@1stg/babel-preset@^0.7.10":
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.7.10.tgz#097273d038e0a171750708ffc9c988f4744e60b9"
-  integrity sha512-FIzH7WeQY82bz0f5PEHjR4njI3QR/WCA6EGxIySNgOHkfFDti7q0RYTY2D0vtZ2RQWT5k9bC32+BV51a9pePrg==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.0.0"
-    "@babel/plugin-proposal-class-properties" "^7.5.5"
-    "@babel/plugin-proposal-decorators" "^7.6.0"
-    "@babel/preset-env" "^7.6.3"
-    "@babel/preset-react" "^7.6.3"
-    "@babel/preset-typescript" "^7.6.0"
-    "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
-    "@vue/babel-preset-jsx" "^1.1.0"
-    babel-plugin-import "^1.12.2"
-    babel-plugin-transform-react-remove-prop-types "^0.4.24"
-    babel-plugin-transform-remove-console "^6.9.4"
-    babel-plugin-transform-typescript-metadata "^0.2.2"
-    babel-preset-proposal-typescript "^1.4.5"
-    core-js "^3.2.1"
-    fast-async "^7.0.6"
-
 "@1stg/babel-preset@^0.8.1":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.8.1.tgz#3123df58ddcb9dc49f85dc69780e819362ce136a"
@@ -138,20 +117,6 @@
     prettier "^1.18.2"
     prettier-plugin-sh "^0.2.1"
     prettier-plugin-toml "^0.3.1"
-
-"@1stg/postcss-config@^0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@1stg/postcss-config/-/postcss-config-0.3.5.tgz#29a4a96574afc5188e45b6877788ad6028f9f3d5"
-  integrity sha512-YndHh1cKeG2BLE6uhN3nNn+36R0qZadmfzlnP3uSUGz7jI7cN5hkYpzcwdt+DuT5WuXjJHvZ1J+mKgFXlgDHdA==
-  dependencies:
-    autoprefixer "^9.7.0"
-    cssnano "^4.1.10"
-    cssnano-preset-advanced "^4.0.7"
-    postcss-import "^12.0.1"
-    postcss-modules "^1.4.1"
-    postcss-normalize "^8.0.1"
-    postcss-preset-env "^6.7.0"
-    postcss-url "^8.0.0"
 
 "@1stg/postcss-config@^0.4.0":
   version "0.4.0"
@@ -3398,7 +3363,7 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-jsx@^1.1.0", "@vue/babel-preset-jsx@^1.1.1":
+"@vue/babel-preset-jsx@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@vue/babel-preset-jsx/-/babel-preset-jsx-1.1.1.tgz#3a74642ca0ecea10aae13649df5ff70f9d24a6f5"
   integrity sha512-SeyndwQZc8MAOkhbJaC34ocTwcKekKkwrwnTMC3YF8VmGp5IQWW5gPIU66bqO9WFBXFA3J3ANsUbP2pj8q8KdQ==
@@ -5376,11 +5341,6 @@ commander@^2.11.0, commander@^2.12.1, commander@^2.20.0, commander@~2.20.3:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.2.tgz#6837c3fb677ad9933d1cfba42dd14d5117d6b39e"
-  integrity sha512-Gar0ASD4BDyKC4hl4DwHqDrmvjoxWKZigVnAbn5H1owvm4CxCPdb0HQDehwNYMJpla5+M2tPmPARzhtYuwpHow==
-
 commander@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.0.0.tgz#e782b6afe6a0f1b1408be59429919e1305160e3f"
@@ -5727,7 +5687,7 @@ core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.10.tgz#8a5b8391f8cc7013da703411ce5b585706300d7f"
   integrity sha512-I39t74+4t+zau64EN1fE5v2W31Adtc/REhzWN+gWRRXg6WH5qAsZm62DHpQ1+Yhe4047T55jvzz7MUqF/dBBlA==
 
-core-js@^3.2.1, core-js@^3.3.5, core-js@^3.3.6:
+core-js@^3.3.5, core-js@^3.3.6:
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.3.6.tgz#6ad1650323c441f45379e176ed175c0d021eac92"
   integrity sha512-u4oM8SHwmDuh5mWZdDg9UwNVq5s1uqq6ZDLLIs07VY+VJU91i3h4f3K/pgFvtUQPGdeStrZ+odKyfyt4EnKHfA==
@@ -10398,10 +10358,9 @@ lazy-cache@^1.0.3:
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
   integrity sha1-odePw6UEdMuAhF07O24dpJpEbo4=
 
-lazy-compile-webpack-plugin@^0.1.8:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/lazy-compile-webpack-plugin/-/lazy-compile-webpack-plugin-0.1.9.tgz#5583e1b0793b5894514c36f7ab0ef290dcf96333"
-  integrity sha512-hQwEwPLiI+PcFfo2C6klTJ0S/4AN5ClsfAmx93FPO4Xc42HLjDk/QfuPeuFfyWDnrRG508X/T6SB+3U3CYEbbQ==
+lazy-compile-webpack-plugin@JounQin/lazy-compile-webpack-plugin#patch-1:
+  version "0.1.10"
+  resolved "https://codeload.github.com/JounQin/lazy-compile-webpack-plugin/tar.gz/ecb1edd3f1768012f2c694ab934aca593a556b1a"
   dependencies:
     detect-port-alt "^1.1.6"
     loader-utils "^1.2.3"

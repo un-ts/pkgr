@@ -344,6 +344,7 @@ ConfigOptions = {}) => {
           options: {
             minimize: prod,
             caseSensitive: true,
+            exportAsEs6Default: true,
           },
         },
         {

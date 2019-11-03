@@ -18,8 +18,8 @@
     "index.pug"
   ],
   "dependencies": {
-    "@1stg/babel-preset": "^0.7.10",
-    "@1stg/postcss-config": "^0.3.5",
+    "@1stg/babel-preset": "^0.8.1",
+    "@1stg/postcss-config": "^0.4.0",
     "@babel/core": "^7.6.4",
     "@pkgr/es-modules": "^0.2.1",
     "@pkgr/umd-globals": "^0.3.0",
@@ -27,7 +27,7 @@
     "babel-loader": "^8.0.6",
     "cache-loader": "^4.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
-    "commander": "^3.0.2",
+    "commander": "^4.0.0",
     "copy-webpack-plugin": "^5.0.4",
     "core-js": "^3.3.5",
     "css-loader": "^3.2.0",
@@ -40,7 +40,7 @@
     "html-webpack-inline-source-plugin": "^0.0.10",
     "html-webpack-plugin": "^3.2.0",
     "jsox": "^1.1.115",
-    "lazy-compile-webpack-plugin": "^0.1.8",
+    "lazy-compile-webpack-plugin": "JounQin/lazy-compile-webpack-plugin#patch-1",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "lodash": "^4.17.15",
