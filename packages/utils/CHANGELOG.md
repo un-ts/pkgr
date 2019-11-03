@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.3.0...@pkgr/utils@0.3.1) (2019-11-03)
+
+
+### Bug Fixes
+
+* **rollup:** pass collected externals also for function externals ([a49bdf4](https://github.com/rx-ts/pkgr/commit/a49bdf426d613dd2be312757c8e57f7ed626703c)), closes [#39](https://github.com/rx-ts/pkgr/issues/39) [#38](https://github.com/rx-ts/pkgr/issues/38) [#issuecomment-549130017](https://github.com/rx-ts/pkgr/issues/issuecomment-549130017)
+
+
+
+
+
 # [0.3.0](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.2.2...@pkgr/utils@0.3.0) (2019-11-03)
 
 
