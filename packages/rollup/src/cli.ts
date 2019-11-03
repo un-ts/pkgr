@@ -26,8 +26,9 @@ program
     parseArrayArgs,
   )
   .option(
-    '-m, --monorepo <false | path>',
-    'whether consider the project as a monorepo, or custom the packages path',
+    '-m, --monorepo <false | glob | paths>',
+    'whether try to resolve the project as a monorepo automatically, or custom the packages path',
+    JSOX.parse,
   )
   .option(
     '-e, --exports <mode>',
@@ -64,13 +65,13 @@ program
   )
   // FIXME: should be removed this option and PR to `rollup-plugin-typescript` instead
   .option(
-    '-t, --typescript [JSOX]',
+    '-t, --typescript <JSOX>',
     'Overrides the TypeScript compiler options for `rollup-plugin-typescript`',
     JSOX.parse,
   )
-  .option('--postcss [JSOX]', 'options for `rollup-plugin-postcss`', JSOX.parse)
+  .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
   .option(
-    '-d, --define [boolean|JSOX]',
+    '-d, --define [boolean | JSOX]',
     'options for `rollup-plugin-replace`, enable `__DEV__` and `__PROD__` by default',
     JSOX.parse,
     true,

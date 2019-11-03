@@ -1,11 +1,21 @@
 import fs from 'fs'
-import path from 'path'
+import path, { resolve } from 'path'
+
+import isGlob from 'is-glob'
+import globSync from 'tiny-glob/sync'
 
 import { CWD, EXTENSIONS } from './constants'
 
 export const tryPkg = (pkg: string) => {
   try {
     return require.resolve(pkg)
+  } catch {}
+}
+
+export const tryRequirePkg = <T>(pkg: string): T | undefined => {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    return require(pkg)
   } catch {}
 }
 
@@ -44,6 +54,33 @@ export const tryFile = (filePath?: string | string[], includeDir = false) => {
 export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
   const ext = extensions.concat('').find(ext => tryFile(filepath + ext))
   return ext == null ? '' : filepath + ext
+}
+
+export const tryGlob = (
+  paths: string[],
+  options:
+    | {
+        absolute?: boolean
+        baseDir?: string
+      }
+    | string = {},
+) => {
+  const { absolute = true, baseDir = CWD } =
+    typeof options === 'string' ? { baseDir: options } : options
+  return paths.reduce<string[]>(
+    (acc, pkg) =>
+      acc
+        .concat(
+          isGlob(pkg)
+            ? globSync(pkg, {
+                absolute,
+                cwd: baseDir,
+              })
+            : tryFile(resolve(baseDir, pkg), true),
+        )
+        .filter(Boolean),
+    [],
+  )
 }
 
 export const identify = <T>(

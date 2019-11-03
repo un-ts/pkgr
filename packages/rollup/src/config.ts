@@ -10,12 +10,16 @@ import {
   upperCamelCase,
 } from '@pkgr/umd-globals'
 import {
+  CWD,
   EXTENSIONS,
   PROD,
   __DEV__,
   __PROD__,
   identify,
+  monorepoPkgs,
+  tryGlob,
   tryPkg,
+  tryRequirePkg,
 } from '@pkgr/utils'
 import replace from '@rollup/plugin-replace'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
@@ -122,7 +126,7 @@ export type Format = 'cjs' | 'es2015' | 'es5' | 'esm' | 'umd'
 
 export interface ConfigOptions {
   formats?: ModuleFormat[]
-  monorepo?: boolean | string
+  monorepo?: boolean | string[]
   input?: string
   exclude?: string[]
   outputDir?: string
@@ -171,15 +175,16 @@ export const config = ({
   prod = __PROD__,
 }: // eslint-disable-next-line sonarjs/cognitive-complexity
 ConfigOptions = {}): RollupOptions[] => {
-  const pkgsPath = path.resolve(
-    typeof monorepo === 'string' ? monorepo : 'packages',
-  )
+  let pkgs =
+    monorepo === false
+      ? [CWD]
+      : Array.isArray(monorepo)
+      ? tryGlob(monorepo)
+      : monorepoPkgs
 
-  if (monorepo !== false) {
-    monorepo = fs.existsSync(pkgsPath)
+  if (monorepo == null && !pkgs.length) {
+    pkgs = [CWD]
   }
-
-  const pkgs = monorepo ? fs.readdirSync(pkgsPath) : ['']
 
   const globals = getGlobals({
     globals: umdGlobals,
@@ -211,8 +216,7 @@ ConfigOptions = {}): RollupOptions[] => {
       }
 
   const configs = flatMap(pkgs, pkg => {
-    const pkgPath = path.resolve(monorepo ? pkgsPath : '', pkg)
-    const srcPath = path.resolve(pkgPath, 'src')
+    const srcPath = path.resolve(pkg, 'src')
 
     let pkgInput = input
     let pkgOutputDir = outputDir
@@ -221,37 +225,37 @@ ConfigOptions = {}): RollupOptions[] => {
       pkgInput = 'index'
     }
 
-    pkgInput = tryExtensions(path.resolve(pkgPath, pkgInput || 'src/index'))
-
-    const isAbsolute = path.isAbsolute(pkgInput)
+    pkgInput = tryExtensions(path.resolve(pkg, pkgInput || 'src/index'))
 
     if (pkgOutputDir && !pkgOutputDir.endsWith('/')) {
       pkgOutputDir = pkgOutputDir + '/'
     }
 
+    if (!fs.existsSync(pkgInput) || !pkgInput.startsWith(pkg)) {
+      return []
+    }
+
+    const pkgJson = tryRequirePkg<{
+      name: string
+      engines: StringMap
+      dependencies: StringMap
+      peerDependencies: StringMap
+    }>(path.resolve(pkg, 'package.json'))
+
     if (
-      !fs.existsSync(pkgInput) ||
-      (isAbsolute && !pkgInput.startsWith(pkgPath))
+      !pkgJson ||
+      exclude.includes(pkgJson.name) ||
+      tryGlob(exclude, path.resolve(pkg, '..')).includes(pkg)
     ) {
       return []
     }
 
     const {
       name,
-      engines: { node } = {},
+      engines: { node = null } = {},
       dependencies = {},
       peerDependencies = {},
-    }: {
-      name: string
-      engines: StringMap
-      dependencies: StringMap
-      peerDependencies: StringMap
-      // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-    } = require(path.resolve(pkgPath, 'package.json'))
-
-    if (exclude.includes(name) || exclude.includes(pkg)) {
-      return []
-    }
+    } = pkgJson
 
     const deps = Object.keys(dependencies)
 
@@ -290,7 +294,7 @@ ConfigOptions = {}): RollupOptions[] => {
         input: pkgInput,
         output: {
           file: path.resolve(
-            pkgPath,
+            pkg,
             `${pkgOutputDir}${format}${prod ? '.min' : ''}.js`,
           ),
           format: isEsVersion ? 'esm' : (format as ModuleFormat),

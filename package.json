@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "lerna run build && run-s build:ts build:r build:w",
-    "build:r": "ts-node --files packages/rollup/src/cli -e named --exclude utils,webpack-angular,webpack-react,webpack-svelte,webpack-vue -p",
+    "build:r": "ts-node --files packages/rollup/src/cli -e named --exclude utils,webpack-* -p",
     "build:ts": "tsc -b",
     "build:w": "rimraf dist && run-p build:w:*",
     "build:w:angular": "yarn w:build -e src/angular -o dist/angular -t angular -p",
@@ -77,6 +77,7 @@
     "@types/webpack-dev-server": "^3.4.0",
     "@types/webpack-env": "^1.14.1",
     "@types/workbox-webpack-plugin": "^4.1.0",
+    "commander": "^4.0.0",
     "core-js": "^3.3.6",
     "fbjs": "^1.0.0",
     "is-glob": "^4.0.1",
