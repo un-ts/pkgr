@@ -1,3 +1,4 @@
+// tslint:disable: no-big-function
 import fs from 'fs'
 import path from 'path'
 
@@ -16,16 +17,19 @@ import {
   __DEV__,
   __PROD__,
   identify,
+  isTsAvailable,
   monorepoPkgs,
+  tryExtensions,
   tryGlob,
-  tryPkg,
   tryRequirePkg,
 } from '@pkgr/utils'
 import replace from '@rollup/plugin-replace'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
 import debug from 'debug'
+import isGlob from 'is-glob'
 import flatMap from 'lodash/flatMap'
+import { isMatch } from 'micromatch'
 import {
   ModuleFormat,
   OutputOptions,
@@ -95,23 +99,27 @@ const cjs = (sourceMap: boolean) =>
 
 const DEFAULT_FORMATS = ['cjs', 'es2015', 'esm']
 
-const isTsAvailable = tryPkg('typescript')
-
-const tryExtensions = (filepath: string) => {
-  const ext = EXTENSIONS.find(ext => fs.existsSync(filepath + ext))
-  return ext ? filepath + ext : filepath
-}
+const regExpCacheMap = new Map<string | RegExp, string | RegExp>()
 
 const tryRegExp = (exp: string | RegExp) => {
-  if (typeof exp !== 'string' || !(exp = exp.trim())) {
-    return exp
+  if (typeof exp === 'string' && (exp = exp.trim())) {
+    const cached = regExpCacheMap.get(exp)
+    if (cached != null) {
+      return cached
+    }
+
+    const matched = /^\/(.*)\/([gimsuy]*)$/.exec(exp)
+    if (matched) {
+      try {
+        const regExp = new RegExp(matched[1], matched[2])
+        regExpCacheMap.set(exp, regExp)
+        return regExp
+      } catch {}
+    }
+
+    regExpCacheMap.set(exp, exp)
   }
-  const matched = /^\/(.*)\/([gimsuy]*)$/.exec(exp)
-  if (matched) {
-    try {
-      return new RegExp(matched[1], matched[2])
-    } catch {}
-  }
+
   return exp
 }
 
@@ -131,7 +139,7 @@ export interface ConfigOptions {
   exclude?: string[]
   outputDir?: string
   exports?: OutputOptions['exports']
-  externals?: string[]
+  externals?: string[] | ((id: string) => boolean)
   globals?: StringMap
   aliases?: StringMap | AliasOptions['entries']
   copies?: StringMap | CopyOptions['targets'] | CopyOptions
@@ -231,7 +239,7 @@ ConfigOptions = {}): RollupOptions[] => {
       pkgOutputDir = pkgOutputDir + '/'
     }
 
-    if (!fs.existsSync(pkgInput) || !pkgInput.startsWith(pkg)) {
+    if (!pkgInput || !pkgInput.startsWith(pkg)) {
       return []
     }
 
@@ -259,10 +267,13 @@ ConfigOptions = {}): RollupOptions[] => {
 
     const deps = Object.keys(dependencies)
 
-    const external = externals.concat(
-      Object.keys(peerDependencies),
-      node ? deps.concat(builtinModules) : [],
-    )
+    const external =
+      typeof externals === 'function'
+        ? []
+        : externals.concat(
+            Object.keys(peerDependencies),
+            node ? deps.concat(builtinModules) : [],
+          )
 
     const isTsInput = /\.tsx?/.test(pkgInput)
     const pkgFormats =
@@ -302,8 +313,18 @@ ConfigOptions = {}): RollupOptions[] => {
           globals,
           exports,
         },
-        external: (id: string) =>
-          external.some(pkg => id === pkg || id.startsWith(pkg + '/')),
+        external:
+          typeof externals === 'function'
+            ? externals
+            : (id: string) =>
+                external.some(pkg => {
+                  const pkgRegExp = tryRegExp(pkg)
+                  return pkgRegExp instanceof RegExp
+                    ? pkgRegExp.test(id)
+                    : isGlob(pkg)
+                    ? isMatch(id, pkg)
+                    : id === pkg || id.startsWith(pkg + '/')
+                }),
         onwarn,
         plugins: [
           alias(aliasOptions),
