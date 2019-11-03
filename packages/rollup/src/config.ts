@@ -1,4 +1,3 @@
-// tslint:disable: no-big-function
 import fs from 'fs'
 import path from 'path'
 
@@ -139,7 +138,7 @@ export interface ConfigOptions {
   exclude?: string[]
   outputDir?: string
   exports?: OutputOptions['exports']
-  externals?: string[] | ((id: string) => boolean)
+  externals?: string[] | ((id: string, collected?: string[]) => boolean)
   globals?: StringMap
   aliases?: StringMap | AliasOptions['entries']
   copies?: StringMap | CopyOptions['targets'] | CopyOptions
@@ -313,18 +312,20 @@ ConfigOptions = {}): RollupOptions[] => {
           globals,
           exports,
         },
-        external:
-          typeof externals === 'function'
-            ? externals
-            : (id: string) =>
-                external.some(pkg => {
-                  const pkgRegExp = tryRegExp(pkg)
-                  return pkgRegExp instanceof RegExp
-                    ? pkgRegExp.test(id)
-                    : isGlob(pkg)
-                    ? isMatch(id, pkg)
-                    : id === pkg || id.startsWith(pkg + '/')
-                }),
+        external(id: string) {
+          if (typeof externals === 'function') {
+            return externals.call(this, id, external)
+          }
+          return external.some(pkg => {
+            const pkgRegExp = tryRegExp(pkg)
+            return pkgRegExp instanceof RegExp
+              ? pkgRegExp.test(id)
+              : // TODO: should we drop glob support in favor of regexp?
+              isGlob(pkg)
+              ? isMatch(id, pkg)
+              : id === pkg || id.startsWith(pkg + '/')
+          })
+        },
         onwarn,
         plugins: [
           alias(aliasOptions),
@@ -361,7 +362,7 @@ ConfigOptions = {}): RollupOptions[] => {
           postcss(postcssOpts),
         ].concat(
           [
-            // __DEV__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
+            // __DEV__ and __PROD__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
             define &&
               replace(
                 prod
