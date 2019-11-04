@@ -1,4 +1,3 @@
-// tslint:disable no-big-function
 import { resolve, sep } from 'path'
 
 import { AngularCompilerPlugin } from '@ngtools/webpack'
@@ -411,7 +410,16 @@ ConfigOptions = {}) => {
       }),
       new HtmlWebpackHarddiskPlugin(),
       prod && new HtmlWebpackInlineSourcePlugin(),
-      __DEV__ && !prod && new LazyCompileWebpackPlugin(),
+      __DEV__ &&
+        !prod &&
+        new LazyCompileWebpackPlugin({
+          ignores: angular
+            ? [
+                /\b(html|raw|to-string)-loader\b/,
+                /\bexports-loader[^?]*\?exports\.toString\(\)/,
+              ]
+            : undefined,
+        }),
       new MiniCssExtractPlugin({
         filename: filenamePrefix + 'css',
       }),
