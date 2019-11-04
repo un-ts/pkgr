@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@1stg/app-config@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@1stg/app-config/-/app-config-0.1.5.tgz#698b2f4bd05298ece7e7061f3abae3f755476d1b"
-  integrity sha512-wONs58oXgxOFaXvUOdyNBjo7nRHqumzdmTAHfL5R2S40pm8xI7mC6cx0AlOk+uIxdhb5g+cnSHQXQua43rB7sg==
+"@1stg/app-config@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@1stg/app-config/-/app-config-0.1.7.tgz#22b3467562c25fba69c0cb19159281e864a37b39"
+  integrity sha512-dQLFCto/UXuIzHFB0YMrcO5UfBXPIyjmGWdzdAnP/AgCgh+rEhwJMy6oiKA2H+6e47cUFaJG79CmqlO/7hLgBg==
   dependencies:
-    "@1stg/babel-preset" "^0.8.2"
+    "@1stg/babel-preset" "^0.9.1"
     "@1stg/browserslist-config" "^0.3.1"
     "@1stg/commitlint-config" "^0.2.1"
     "@1stg/eslint-config" "^0.14.4"
@@ -30,7 +30,7 @@
     stylelint "^11.1.1"
     tslib "^1.10.0"
 
-"@1stg/babel-preset@^0.8.1", "@1stg/babel-preset@^0.8.2":
+"@1stg/babel-preset@^0.8.1":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.8.2.tgz#d46c272c64d51c73fe0e005ae8e7724f2973e86b"
   integrity sha512-5TH1kyVnEgpPODFtPU1gpk95/kihLMtnF4wLZE1T/gvN6tiShKTxqlDvZgandCpSk4eMM3cuCAuGv8Zd4rtfLQ==
@@ -42,6 +42,28 @@
     "@babel/preset-react" "^7.6.3"
     "@babel/preset-typescript" "^7.6.0"
     "@pkgr/utils" "^0.3.0"
+    "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
+    "@vue/babel-preset-jsx" "^1.1.1"
+    babel-plugin-import "^1.12.2"
+    babel-plugin-transform-react-remove-prop-types "^0.4.24"
+    babel-plugin-transform-remove-console "^6.9.4"
+    babel-plugin-transform-typescript-metadata "^0.2.2"
+    babel-preset-proposal-typescript "^1.4.5"
+    core-js "^3.3.6"
+    fast-async "^7.0.6"
+
+"@1stg/babel-preset@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.9.1.tgz#6061d124f22868a09fa21bc4bdc60840bbf2e39b"
+  integrity sha512-zJh74eLwkfvLHWZ5jeLgiU9HP+wJiEdQMmSQFw65Ai5QPR08V46iPT7n+0tjk9CTswjfAUi1eXwKxqgu+nlBGw==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-proposal-class-properties" "^7.5.5"
+    "@babel/plugin-proposal-decorators" "^7.6.0"
+    "@babel/preset-env" "^7.6.3"
+    "@babel/preset-react" "^7.6.3"
+    "@babel/preset-typescript" "^7.6.0"
+    "@pkgr/utils" "^0.3.2"
     "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
     "@vue/babel-preset-jsx" "^1.1.1"
     babel-plugin-import "^1.12.2"
