@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.7...@pkgr/webpack@0.4.8) (2019-11-04)
+
+
+### Bug Fixes
+
+* **webpack:** support latest version of lazy-compile-webpack-plugin ([8b85d88](https://github.com/rx-ts/pkgr/commit/8b85d888ecf24c8f24438f62380a33120304cd4c))
+
+
+
+
+
 ## [0.4.7](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.6...@pkgr/webpack@0.4.7) (2019-11-03)
 
 **Note:** Version bump only for package @pkgr/webpack
