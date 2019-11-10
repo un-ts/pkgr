@@ -16,7 +16,7 @@
     "lib"
   ],
   "dependencies": {
-    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-env": "^7.7.1",
     "@pkgr/es-modules": "^0.2.1",
     "@pkgr/named-exports": "^0.4.0",
     "@pkgr/umd-globals": "^0.3.0",
@@ -30,7 +30,7 @@
     "jsox": "^1.1.115",
     "lodash": "^4.17.15",
     "micromatch": "^4.0.2",
-    "rollup": "^1.26.3",
+    "rollup": "^1.26.4",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-copy": "^3.1.0",

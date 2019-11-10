@@ -130,7 +130,7 @@ if (program.watch) {
 } else {
   Promise.all(
     configs.map(opts =>
-      rollup(opts).then(bundle => bundle.write(opts as OutputOptions)),
+      rollup(opts).then(bundle => bundle.write(opts.output as OutputOptions)),
     ),
   ).catch(e => {
     console.error(e)

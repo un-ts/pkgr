@@ -5,7 +5,7 @@
     "pkgr.now.sh"
   ],
   "github": {
-    "silent": true
+    "silent": false
   },
   "builds": [
     {
