@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.2...@pkgr/rollup@0.8.3) (2019-11-10)
+
+
+### Bug Fixes
+
+* **rollup:** use opts.output for build.write ([eb0b3bf](https://github.com/rx-ts/pkgr/commit/eb0b3bf15743eeaad1f335d7a2250f0b9e461fab))
+
+
+
+
+
 ## [0.8.2](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.1...@pkgr/rollup@0.8.2) (2019-11-03)
 
 
