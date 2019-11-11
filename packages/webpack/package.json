@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@1stg/babel-preset": "^0.9.1",
-    "@1stg/postcss-config": "^0.4.0",
+    "@1stg/postcss-config": "^0.4.1",
     "@babel/core": "^7.6.4",
     "@pkgr/es-modules": "^0.2.1",
     "@pkgr/umd-globals": "^0.3.0",

@@ -120,7 +120,7 @@
     prettier-plugin-sh "^0.2.2"
     prettier-plugin-toml "^0.3.1"
 
-"@1stg/postcss-config@^0.4.0", "@1stg/postcss-config@^0.4.1":
+"@1stg/postcss-config@^0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@1stg/postcss-config/-/postcss-config-0.4.1.tgz#53f58b9b3b009b4287be4e8b83c5ef33aeabe621"
   integrity sha512-V/yXF0Z2OctRJPpFWfWaB/jRT+hhxHhd9iHD9fQTgfBQ7DLmkqRa2uuMQLaQS2ZkhlX0vbuII3cEAcEjahgHxg==
