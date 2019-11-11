@@ -30,7 +30,7 @@
     stylelint "^11.1.1"
     tslib "^1.10.0"
 
-"@1stg/babel-preset@^0.9.1", "@1stg/babel-preset@^0.9.2":
+"@1stg/babel-preset@^0.9.2":
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.9.2.tgz#f1c7018ce8889293db05c0eb504313490069a82f"
   integrity sha512-z8mTkoQz2eZcsTNwVRCow+6OGfZuMK0xQPlgUixLoZsMEIL4ONDLlv9buuIYdSIk63/IkrAXn8pV5/ZtxiIX0w==
@@ -120,7 +120,7 @@
     prettier-plugin-sh "^0.2.2"
     prettier-plugin-toml "^0.3.1"
 
-"@1stg/postcss-config@^0.4.0", "@1stg/postcss-config@^0.4.1":
+"@1stg/postcss-config@^0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@1stg/postcss-config/-/postcss-config-0.4.1.tgz#53f58b9b3b009b4287be4e8b83c5ef33aeabe621"
   integrity sha512-V/yXF0Z2OctRJPpFWfWaB/jRT+hhxHhd9iHD9fQTgfBQ7DLmkqRa2uuMQLaQS2ZkhlX0vbuII3cEAcEjahgHxg==
@@ -286,7 +286,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@>=7.2.2", "@babel/core@^7.1.0", "@babel/core@^7.4.5", "@babel/core@^7.6.4", "@babel/core@^7.7.2":
+"@babel/core@>=7.2.2", "@babel/core@^7.1.0", "@babel/core@^7.4.5", "@babel/core@^7.7.2":
   version "7.7.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.7.2.tgz#ea5b99693bcfc058116f42fa1dd54da412b29d91"
   integrity sha512-eeD7VEZKfhK1KUXGiyPFettgF3m513f8FoBSWiQ1xTvl1RAopLs42Wp9+Ze911I6H0N9lNqJMDgoZT7gHsipeQ==
@@ -1602,7 +1602,7 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@hot-loader/react-dom@^16.10.2":
+"@hot-loader/react-dom@^16.11.0":
   version "16.11.0"
   resolved "https://registry.yarnpkg.com/@hot-loader/react-dom/-/react-dom-16.11.0.tgz#c0b483923b289db5431516f56ee2a69448ebf9bd"
   integrity sha512-cIOVB8YgT4EVCNiXK+gGuYl6adW/TKlW3N7GvgY5QgpL2NTWagF/oJxVscHSdR3O7NjJsoxdseB5spqwCHNIhA==
@@ -2484,7 +2484,7 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@ngtools/webpack@^8.3.15":
+"@ngtools/webpack@^8.3.18":
   version "8.3.18"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-8.3.18.tgz#be0cc9c61b73119c35021d15ec44ecd59f820b54"
   integrity sha512-n3a5IpetPyHEeEcksUf2Ul+hgPfnVnMzvRva/QoTJpLfL1ZpIUAHBeB7qWa5OtJEC87rtLJ2JOc/8nJ9xDCcEQ==
@@ -17035,10 +17035,10 @@ ts-lib-utils@^2.2.0:
     glob "7"
     tslib "1"
 
-ts-node@^8.4.1:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.4.1.tgz#270b0dba16e8723c9fa4f9b4775d3810fd994b4f"
-  integrity sha512-5LpRN+mTiCs7lI5EtbXmF/HfMeCjzt7DH9CZwtkr6SywStrNQC723wG+aOWFiLNn7zT3kD/RnFqi3ZUfr4l5Qw==
+ts-node@^8.5.0:
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.5.0.tgz#bc7d5a39133d222bf25b1693651e4d893785f884"
+  integrity sha512-fbG32iZEupNV2E2Fd2m2yt1TdAwR3GTCrJQBHDevIiEBNy1A8kqnyl1fv7jmRmmbtcapFab2glZXHJvfD1ed0Q==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
