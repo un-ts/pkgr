@@ -8,7 +8,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@pkgr/webpack": "^0.2.5",
-    "svelte": ">=3.0.0"
+    "svelte": ">=3.13.0"
   },
   "dependencies": {
     "svelte-loader": "^2.13.6"
