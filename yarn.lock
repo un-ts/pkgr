@@ -30,7 +30,7 @@
     stylelint "^11.1.1"
     tslib "^1.10.0"
 
-"@1stg/babel-preset@^0.9.1", "@1stg/babel-preset@^0.9.2":
+"@1stg/babel-preset@^0.9.2":
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/@1stg/babel-preset/-/babel-preset-0.9.2.tgz#f1c7018ce8889293db05c0eb504313490069a82f"
   integrity sha512-z8mTkoQz2eZcsTNwVRCow+6OGfZuMK0xQPlgUixLoZsMEIL4ONDLlv9buuIYdSIk63/IkrAXn8pV5/ZtxiIX0w==
