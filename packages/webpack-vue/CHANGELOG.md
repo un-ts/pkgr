@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-vue@0.2.1...@pkgr/webpack-vue@0.2.2) (2019-11-11)
+
+
+### Bug Fixes
+
+* **dpes:** bump (dev)Dependencies, loose peer version scope ([84d0ee9](https://github.com/rx-ts/pkgr/commit/84d0ee9aec46b5aca921d587badd2bfea7ea7d30))
+
+
+
+
+
 ## [0.2.1](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-vue@0.2.0...@pkgr/webpack-vue@0.2.1) (2019-11-10)
 
 
