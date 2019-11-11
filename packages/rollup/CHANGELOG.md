@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.3...@pkgr/rollup@0.8.4) (2019-11-11)
+
+
+### Bug Fixes
+
+* **rollup:** migrate rollup-plugin-json to @rollup/plugin-json ([2f1c1b3](https://github.com/rx-ts/pkgr/commit/2f1c1b371eb12aecdcb24e107e5e0180a418ffc1))
+
+
+
+
+
 ## [0.8.3](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.2...@pkgr/rollup@0.8.3) (2019-11-10)
 
 
