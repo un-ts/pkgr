@@ -8,7 +8,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=8.0.0",
-    "@pkgr/webpack": "^0.2.5"
+    "@pkgr/webpack": "^0.4.10"
   },
   "dependencies": {
     "@ngtools/webpack": "^8.3.18"

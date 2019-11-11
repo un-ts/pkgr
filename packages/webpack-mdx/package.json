@@ -7,7 +7,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "peerDependencies": {
-    "@pkgr/webpack": "^0.2.5"
+    "@pkgr/webpack": "^0.4.10"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.1",
