@@ -23,6 +23,7 @@ import {
   tryGlob,
   tryRequirePkg,
 } from '@pkgr/utils'
+import json from '@rollup/plugin-json'
 import replace from '@rollup/plugin-replace'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
@@ -40,7 +41,6 @@ import {
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
-import json from 'rollup-plugin-json'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
@@ -330,7 +330,7 @@ ConfigOptions = {}): RollupOptions[] => {
               ? pkgRegExp.test(id)
               : isGlob(pkg)
               ? isMatch(id, pkg)
-              : id === pkg || id.startsWith(pkg + '/')
+              : id === pkg || id.startsWith(`${pkg}/`)
           })
         },
         onwarn,
