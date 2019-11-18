@@ -13,7 +13,7 @@
   "dependencies": {
     "@hot-loader/react-dom": "^16.11.0",
     "@svgr/webpack": "^4.3.3",
-    "react-hot-loader": "^4.12.15"
+    "react-hot-loader": "^4.12.18"
   },
   "publishConfig": {
     "access": "public"
