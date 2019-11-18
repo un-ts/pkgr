@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-angular@0.1.2...@pkgr/webpack-angular@0.1.3) (2019-11-18)
+
+
+### Bug Fixes
+
+* **deps:** bump (dev)Dependencies ([46231df](https://github.com/rx-ts/pkgr/commit/46231df4592b709b60a73e271b007cc2eaa6a50a))
+
+
+
+
+
 ## [0.1.2](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-angular@0.1.1...@pkgr/webpack-angular@0.1.2) (2019-11-11)
 
 **Note:** Version bump only for package @pkgr/webpack-angular

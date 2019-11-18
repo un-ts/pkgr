@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.10...@pkgr/webpack@0.4.11) (2019-11-18)
+
+
+### Bug Fixes
+
+* **deps:** bump (dev)Dependencies ([46231df](https://github.com/rx-ts/pkgr/commit/46231df4592b709b60a73e271b007cc2eaa6a50a))
+
+
+
+
+
 ## [0.4.10](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.9...@pkgr/webpack@0.4.10) (2019-11-11)
 
 
