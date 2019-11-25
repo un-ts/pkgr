@@ -63,7 +63,7 @@
     "@types/friendly-errors-webpack-plugin": "^0.1.2",
     "@types/is-glob": "^4.0.1",
     "@types/jest": "^24.0.23",
-    "@types/lodash": "^4.14.148",
+    "@types/lodash": "^4.14.149",
     "@types/micromatch": "^3.1.1",
     "@types/mini-css-extract-plugin": "^0.8.0",
     "@types/node": "^12.12.8",
