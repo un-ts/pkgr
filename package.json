@@ -69,7 +69,7 @@
     "@types/node": "^12.12.15",
     "@types/postcss-load-config": "^2.0.1",
     "@types/prettier": "^1.18.3",
-    "@types/react": "^16.9.11",
+    "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
     "@types/resolve": "^0.0.8",
     "@types/rollup-plugin-postcss": "^2.0.0",
