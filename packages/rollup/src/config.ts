@@ -25,6 +25,7 @@ import {
 } from '@pkgr/utils'
 import json from '@rollup/plugin-json'
 import replace from '@rollup/plugin-replace'
+import url from '@rollup/plugin-url'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
 import debug from 'debug'
@@ -45,7 +46,6 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import typescript, { TypeScriptOptions } from 'rollup-plugin-typescript'
-import url from 'rollup-plugin-url'
 
 const info = debug('r:info')
 
@@ -123,8 +123,8 @@ const tryRegExp = (exp: string | RegExp) => {
   return exp
 }
 
-const onwarn = (warning: string | RollupWarning, warn: WarningHandler) => {
-  if (typeof warning !== 'string' && warning.code === 'THIS_IS_UNDEFINED') {
+const onwarn = (warning: RollupWarning, warn: WarningHandler) => {
+  if (warning.code === 'THIS_IS_UNDEFINED') {
     return
   }
   warn(warning)

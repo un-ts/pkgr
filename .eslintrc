@@ -1,0 +1,7 @@
+{
+  "extends": "@1stg",
+  "rules": {
+    "@typescript-eslint/no-unnecessary-condition": 0,
+    "@typescript-eslint/unbound-method": 0
+  }
+}

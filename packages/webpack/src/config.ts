@@ -216,6 +216,10 @@ ConfigOptions = {}) => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const pkg: Record<string, string> = pkgFile ? require(pkgFile) : {}
 
+  const copyOptions = copies
+    .concat(tryFile(resolve(entry, '../public'), true))
+    .filter(identify)
+
   const config: Configuration = {
     mode: prod ? PROD : DEV,
     devtool: !prod && 'cheap-module-eval-source-map',
@@ -381,11 +385,7 @@ ConfigOptions = {}) => {
           sourceMap: !prod,
         }),
       new CaseSensitivePathsWebpackPlugin(),
-      new CopyWebpackPlugin(
-        copies
-          .concat(tryFile(resolve(entry, '../public'), true))
-          .filter(identify),
-      ),
+      copyOptions.length && new CopyWebpackPlugin(copyOptions),
       new FriendlyErrorsWebpackPlugin(),
       prod &&
         new GenerateSW({

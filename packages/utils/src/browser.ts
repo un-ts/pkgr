@@ -100,6 +100,7 @@ function startBrowserProcess(
   // tslint:disable-next-line no-try-promise
   try {
     const options = { app: browser, wait: false }
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     open(url, options).catch(() => {}) // Prevent `unhandledRejection` error.
     return true
   } catch (err) {
