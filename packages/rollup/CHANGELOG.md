@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.6](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.5...@pkgr/rollup@0.8.6) (2019-12-11)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies, migrate to @rollup/plugin-url ([8e9cc6f](https://github.com/rx-ts/pkgr/commit/8e9cc6fbab8facf71e445e4e4921f2c419a4792f))
+
+
+
+
+
 ## [0.8.5](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.4...@pkgr/rollup@0.8.5) (2019-11-18)
 
 
