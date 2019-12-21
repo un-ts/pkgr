@@ -8,11 +8,11 @@
   "license": "MIT",
   "peerDependencies": {
     "@pkgr/webpack": "^0.4.10",
-    "vue": ">=2.0.0",
-    "vue-template-compiler": ">=2.0.0"
+    "vue": ">=2.6.11",
+    "vue-template-compiler": ">=2.6.11"
   },
   "dependencies": {
-    "vue-loader": "^15.7.2",
+    "vue-loader": "^15.8.3",
     "vue-style-loader": "^4.1.2",
     "vue-svg-loader": "^0.15.0"
   },

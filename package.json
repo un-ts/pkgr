@@ -99,8 +99,8 @@
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "type-coverage": "^2.3.1",
-    "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
     "yarn-deduplicate": "^1.1.1",
     "zone.js": "^0.10.2"
   },
