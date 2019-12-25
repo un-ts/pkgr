@@ -10,7 +10,7 @@
     "@pkgr/webpack": "^0.4.10"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.5.1",
+    "@mdx-js/loader": "^1.5.3",
     "@pkgr/webpack-react": "^0.2.3"
   },
   "publishConfig": {

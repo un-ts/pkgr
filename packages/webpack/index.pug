@@ -6,7 +6,4 @@ html(lang='zh-cmn-Hans-CN')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     title #{ htmlWebpackPlugin.options.title }
   body
-    if htmlWebpackPlugin.options.type === 'angular'
-      app-root
-    else
-      #app
+    #app

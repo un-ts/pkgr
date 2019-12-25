@@ -24,6 +24,7 @@ import {
   tryRequirePkg,
 } from '@pkgr/utils'
 import json from '@rollup/plugin-json'
+import nodeResolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import url from '@rollup/plugin-url'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
@@ -42,7 +43,6 @@ import {
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
-import nodeResolve from 'rollup-plugin-node-resolve'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import typescript, { TypeScriptOptions } from 'rollup-plugin-typescript'
