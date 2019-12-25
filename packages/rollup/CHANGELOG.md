@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.7](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.6...@pkgr/rollup@0.8.7) (2019-12-25)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies, remove named flag for cjs ([d1c0381](https://github.com/rx-ts/pkgr/commit/d1c03815fb0061065113be22c45e64443013d89c))
+
+
+
+
+
 ## [0.8.6](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.8.5...@pkgr/rollup@0.8.6) (2019-12-11)
 
 

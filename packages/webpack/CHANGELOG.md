@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.13](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.12...@pkgr/webpack@0.4.13) (2019-12-25)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies, remove named flag for cjs ([d1c0381](https://github.com/rx-ts/pkgr/commit/d1c03815fb0061065113be22c45e64443013d89c))
+
+
+
+
+
 ## [0.4.12](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.11...@pkgr/webpack@0.4.12) (2019-12-11)
 
 
