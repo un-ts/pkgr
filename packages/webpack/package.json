@@ -54,7 +54,7 @@
     "raw-loader": "^4.0.0",
     "sass": "^1.24.0",
     "sass-loader": "^8.0.0",
-    "style-loader": "^1.1.1",
+    "style-loader": "^1.1.2",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "thread-loader": "^2.1.3",
