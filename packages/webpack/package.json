@@ -30,7 +30,7 @@
     "commander": "^4.0.1",
     "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.6.1",
-    "css-loader": "^3.4.0",
+    "css-loader": "^3.4.1",
     "debug": "^4.1.1",
     "exports-loader": "^0.7.0",
     "file-loader": "^5.0.2",
