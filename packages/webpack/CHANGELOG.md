@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.14](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.13...@pkgr/webpack@0.4.14) (2020-01-09)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies, migrate rollup plugins ([53150a6](https://github.com/rx-ts/pkgr/commit/53150a6994799795dacc3b368aa7ca7276964598))
+
+
+
+
+
 ## [0.4.13](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.12...@pkgr/webpack@0.4.13) (2019-12-25)
 
 

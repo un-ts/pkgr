@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-angular@0.1.5...@pkgr/webpack-angular@0.1.6) (2020-01-09)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies, migrate rollup plugins ([53150a6](https://github.com/rx-ts/pkgr/commit/53150a6994799795dacc3b368aa7ca7276964598))
+
+
+
+
+
 ## [0.1.5](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-angular@0.1.4...@pkgr/webpack-angular@0.1.5) (2019-12-25)
 
 
