@@ -5,7 +5,7 @@
     "pkgr.now.sh"
   ],
   "github": {
-    "silent": false
+    "silent": true
   },
   "builds": [
     {
@@ -13,13 +13,11 @@
       "use": "@now/static-build"
     }
   ],
-  "routes": [
+  "redirects": [
     {
-      "src": "/",
-      "status": 301,
-      "headers": {
-        "Location": "/react"
-      }
+      "source": "/",
+      "destination": "/react"
     }
-  ]
+  ],
+  "trailingSlash": true
 }
