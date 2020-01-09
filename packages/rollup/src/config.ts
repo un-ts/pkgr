@@ -23,9 +23,11 @@ import {
   tryGlob,
   tryRequirePkg,
 } from '@pkgr/utils'
+import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
+import typescript, { RollupTypescriptOptions } from '@rollup/plugin-typescript'
 import url from '@rollup/plugin-url'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
@@ -41,11 +43,9 @@ import {
   WarningHandler,
 } from 'rollup'
 import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
-import typescript, { TypeScriptOptions } from 'rollup-plugin-typescript'
 
 const info = debug('r:info')
 
@@ -150,7 +150,7 @@ export interface ConfigOptions {
   aliases?: StringMap | AliasOptions['entries']
   copies?: StringMap | CopyOptions['targets'] | CopyOptions
   sourceMap?: boolean
-  typescript?: TypeScriptOptions
+  typescript?: RollupTypescriptOptions
   postcss?: PostCssPluginOptions
   define?: boolean | {}
   prod?: boolean

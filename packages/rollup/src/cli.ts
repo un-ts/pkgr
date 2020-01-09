@@ -115,10 +115,6 @@ const startWatcher = (configs: InputOptions[]) => {
       case 'ERROR':
         console.error(event)
         break
-      case 'FATAL':
-        console.error(event)
-        watcher.close()
-        break
     }
   })
 }
