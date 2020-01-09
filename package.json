@@ -14,7 +14,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "build": "lerna run build && run-s build:ts build:r build:w",
+    "build": "run-s build:lib build:w",
+    "build:lib": "lerna run build && run-s build:ts build:r",
     "build:r": "ts-node --files packages/rollup/src/cli --exclude utils,webpack-* -p",
     "build:ts": "tsc -b",
     "build:w": "rimraf dist && run-p build:w:*",
