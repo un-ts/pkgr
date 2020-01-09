@@ -1,7 +1,7 @@
 # @rxts/pkgr
 
-[![Travis](https://img.shields.io/travis/com/rx-ts/pkgr.svg)](https://travis-ci.com/rx-ts/pkgr)
-[![Codacy Grade](https://img.shields.io/codacy/grade/2601a933adb74c84ae36224ed0cdc035)](https://www.codacy.com/app/rx-ts/pkgr)
+[![GitHub Actions](https://github.com/rx-ts/pkgr/workflows/Node%20CI/badge.svg)](https://github.com/rx-ts/pkgr/actions?query=workflow%3A%22Node+CI%22)
+[![Codacy Grade](https://img.shields.io/codacy/grade/e012072b46aa451ab27205427fb5a00f)](https://www.codacy.com/gh/rx-ts/pkgr)
 [![Codecov](https://img.shields.io/codecov/c/gh/rx-ts/pkgr)](https://codecov.io/gh/rx-ts/pkgr)
 [![type-coverage](https://img.shields.io/badge/dynamic/json.svg?label=type-coverage&prefix=%E2%89%A5&suffix=%&query=$.typeCoverage.atLeast&uri=https%3A%2F%2Fraw.githubusercontent.com%2Frx-ts%2Fpkgr%2Fmaster%2Fpackage.json)](https://github.com/plantain-00/type-coverage)
 [![GitHub release](https://img.shields.io/github/release/rx-ts/pkgr)](https://github.com/rx-ts/pkgr/releases)

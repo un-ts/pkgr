@@ -46,7 +46,7 @@ program
   )
   .option(
     '-a, --aliases <JSOX>',
-    'entries setting for rollup-plugin-alias, could be array or object',
+    'entries setting for @rxts/rollup-plugin-alias, could be array or object',
     JSOX.parse,
   )
   .option(

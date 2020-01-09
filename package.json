@@ -33,10 +33,10 @@
     "lint:ts": "tslint -p . -t stylish",
     "lint:tsc": "tsc --noEmit",
     "postinstall": "yarn-deduplicate && t || exit 0",
-    "pretest": "lerna run build && yarn clean",
+    "pretest": "yarn clean",
     "serve": "serve dist",
     "test": "jest",
-    "type-coverage": "type-coverage --cache --detail --ignore-files *.d.ts --strict",
+    "type-coverage": "type-coverage --cache --detail --ignore-catch --ignore-files '*.d.ts' --strict",
     "w:build": "ts-node --files packages/webpack/src/cli",
     "w:dev": "ts-node -T --files packages/webpack/src/cli"
   },
@@ -134,6 +134,6 @@
     "extends": "@1stg"
   },
   "typeCoverage": {
-    "atLeast": 100
+    "atLeast": 96
   }
 }
