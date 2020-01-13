@@ -16,7 +16,7 @@
     "lib"
   ],
   "dependencies": {
-    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-env": "^7.8.3",
     "@pkgr/es-modules": "^0.2.1",
     "@pkgr/named-exports": "^0.4.0",
     "@pkgr/umd-globals": "^0.3.0",
