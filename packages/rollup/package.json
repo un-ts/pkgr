@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/rollup",
-  "version": "0.8.10",
+  "version": "0.9.0",
   "description": "Seamless Rollup bundler wrapper for libraries",
   "repository": "git@github.com:rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/rollup",
@@ -18,9 +18,9 @@
   "dependencies": {
     "@babel/preset-env": "^7.8.3",
     "@pkgr/es-modules": "^0.2.1",
-    "@pkgr/named-exports": "^0.4.0",
+    "@pkgr/named-exports": "^0.4.1",
     "@pkgr/umd-globals": "^0.3.0",
-    "@pkgr/utils": "^0.3.4",
+    "@pkgr/utils": "^0.3.5",
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-json": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",

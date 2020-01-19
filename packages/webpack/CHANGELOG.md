@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.16...@pkgr/webpack@0.5.0) (2020-01-19)
+
+
+### Bug Fixes
+
+* eslint issues from unicorn ([505f5ef](https://github.com/rx-ts/pkgr/commit/505f5ef3197cc239df4ddcdb4e1d4bb197bc6b77))
+
+
+### Features
+
+* **rollup:** support custom terser options ([c296fb4](https://github.com/rx-ts/pkgr/commit/c296fb46a7ad9a49af4e0cdc5f8c089edd7b1c2f))
+
+
+
+
+
 ## [0.4.16](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.14...@pkgr/webpack@0.4.16) (2020-01-09)
 
 **Note:** Version bump only for package @pkgr/webpack

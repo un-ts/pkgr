@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.3.4...@pkgr/utils@0.3.5) (2020-01-19)
+
+
+### Bug Fixes
+
+* eslint issues from unicorn ([505f5ef](https://github.com/rx-ts/pkgr/commit/505f5ef3197cc239df4ddcdb4e1d4bb197bc6b77))
+
+
+
+
+
 ## [0.3.4](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.3.3...@pkgr/utils@0.3.4) (2019-12-11)
 
 

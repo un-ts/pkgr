@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/rx-ts/pkgr/compare/@pkgr/named-exports@0.4.0...@pkgr/named-exports@0.4.1) (2020-01-19)
+
+
+### Bug Fixes
+
+* eslint issues from unicorn ([505f5ef](https://github.com/rx-ts/pkgr/commit/505f5ef3197cc239df4ddcdb4e1d4bb197bc6b77))
+
+
+
+
+
 # 0.4.0 (2019-11-02)
 
 
