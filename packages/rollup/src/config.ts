@@ -44,7 +44,7 @@ import {
 import babel from 'rollup-plugin-babel'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
-import { terser } from 'rollup-plugin-terser'
+import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
 import typescript, { TypeScriptOptions } from 'rollup-plugin-typescript'
 
 const info = debug('r:info')
@@ -153,6 +153,7 @@ export interface ConfigOptions {
   typescript?: TypeScriptOptions
   postcss?: PostCssPluginOptions
   define?: boolean | {}
+  terser?: TerserOptions
   prod?: boolean
 }
 
@@ -187,6 +188,7 @@ export const config = ({
   typescript: typescriptOptions,
   postcss: postcssOpts,
   define,
+  terser: terserOptions,
   prod = __PROD__,
 }: // eslint-disable-next-line sonarjs/cognitive-complexity
 ConfigOptions = {}): RollupOptions[] => {
@@ -197,7 +199,7 @@ ConfigOptions = {}): RollupOptions[] => {
       ? tryGlob(monorepo)
       : monorepoPkgs
 
-  if (monorepo == null && !pkgs.length) {
+  if (monorepo == null && pkgs.length === 0) {
     pkgs = [CWD]
   }
 
@@ -284,7 +286,7 @@ ConfigOptions = {}): RollupOptions[] => {
 
     const isTsInput = /\.tsx?/.test(pkgInput)
     const pkgFormats =
-      formats && formats.length
+      formats && formats.length > 0
         ? formats
         : DEFAULT_FORMATS.concat(node ? [] : 'umd')
     const pkgGlobals = collectedExternals.reduce((pkgGlobals, pkg) => {
@@ -385,7 +387,7 @@ ConfigOptions = {}): RollupOptions[] => {
                       __PROD__: JSON.stringify(__PROD__),
                     },
               ),
-            prod && terser(),
+            prod && terser(terserOptions),
           ].filter(identify),
         ),
       }

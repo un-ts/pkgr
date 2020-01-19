@@ -76,6 +76,7 @@ program
     JSOX.parse,
     true,
   )
+  .option('--terser <JSOX>', 'options for `rollup-plugin-terser`', JSOX.parse)
   .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js) bundle together at the same time',
@@ -97,6 +98,7 @@ const options: ConfigOptions = pick(
   'sourceMap',
   'typescript',
   'postcss',
+  'terser',
   'prod',
 )
 
