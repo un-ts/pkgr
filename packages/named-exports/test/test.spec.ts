@@ -14,6 +14,6 @@ describe('named exports', () => {
 
   it('should not include any private member nor property', () =>
     expect(
-      Object.values(namedExports).every(_ => _.every(_ => !/^[_$]/.test(_))),
+      Object.values(namedExports).every(_ => _.every(_ => !/^[$_]/.test(_))),
     ).toBeTruthy())
 })

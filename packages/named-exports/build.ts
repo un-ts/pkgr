@@ -31,7 +31,7 @@ const PKGS: Array<Pkg | string> = [
 const combinePkg = (pkg: string, exports: {}) =>
   Object.assign(exports, {
     // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-    [pkg]: Object.keys(require(pkg)).filter(key => !/^[_$]/.test(key)),
+    [pkg]: Object.keys(require(pkg)).filter(key => !/^[$_]/.test(key)),
   })
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
@@ -49,7 +49,7 @@ const namedExports = PKGS.reduce(async (exported, pkg) => {
         const matched = await glob(sub, {
           cwd,
         })
-        if (matched.length) {
+        if (matched.length > 0) {
           matched.forEach(match => {
             try {
               const pathWithExt = [core, match].join('/')

@@ -405,7 +405,7 @@ ConfigOptions = {}) => {
         type,
         template,
         alwaysWriteToDisk: true,
-        inlineSource: /(^|[\\/])manifest\.\w+\.js$/,
+        inlineSource: /(^|[/\\])manifest\.\w+\.js$/,
         minify: prod as false,
       }),
       new HtmlWebpackHarddiskPlugin(),
