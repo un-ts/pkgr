@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.5.0...@pkgr/webpack@0.5.1) (2020-01-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.6.4 ([8f8f08d](https://github.com/rx-ts/pkgr/commit/8f8f08d671a29d4aedc8c156cc5d3e8c2bb49a58))
+
+
+
+
+
 # [0.5.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.4.16...@pkgr/webpack@0.5.0) (2020-01-19)
 
 
