@@ -199,10 +199,10 @@
   dependencies:
     tslib "^1.10.0"
 
-"@1stg/tslint-config@^0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@1stg/tslint-config/-/tslint-config-0.5.8.tgz#61f0e0809f80e8c880df4ba6e1708ccfd2560322"
-  integrity sha512-W9a+Gu6ctXK6uAGZbNGzU0nGWAKOb/FocOQOGhaCOi7w4Sm012pLpvjKl3Udv6R9B4ZgGked3XvlFvhdkELd5w==
+"@1stg/tslint-config@^0.5.9":
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/@1stg/tslint-config/-/tslint-config-0.5.9.tgz#800fe995acc57b39de95c1f4125f2daaabfd7eff"
+  integrity sha512-Vj/8v5XwoSQTJ27m3/IYZmHU7l+KUBkXV5bOEV6UrOUQzTeD1iZHIzvMwsW3GD36DXBwIJ2JEvTYYHfwmAHbCg==
   dependencies:
     codelyzer "^5.2.1"
     rxjs-tslint "^0.1.7"
@@ -210,7 +210,7 @@
     tslint-config-eslint "^0.2.1"
     tslint-config-prettier "^1.18.0"
     tslint-plugin-prettier "^2.1.0"
-    tslint-react "^4.1.0"
+    tslint-react "^4.2.0"
     tslint-sonarts "^1.9.0"
 
 "@angular-devkit/core@8.3.23":
@@ -17450,10 +17450,10 @@ tslint-plugin-prettier@^2.1.0:
     lines-and-columns "^1.1.6"
     tslib "^1.7.1"
 
-tslint-react@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-4.1.0.tgz#7153b724a8cfbea52423d0ffa469e8eba3bcc834"
-  integrity sha512-Y7CbFn09X7Mpg6rc7t/WPbmjx9xPI8p1RsQyiGCLWgDR6sh3+IBSlT+bEkc0PSZcWwClOkqq2wPsID8Vep6szQ==
+tslint-react@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-4.2.0.tgz#41b16e0438365f8d3ed4120501f02cabff9fd1e4"
+  integrity sha512-lO22+FKr9ZZGueGiuALzvZE/8ANoDoCHGCknX1Ge3ALrfcLQHQ1VGdyb1scZXQFdEQEfwBTIU40r5BUlJpn0JA==
   dependencies:
     tsutils "^3.9.1"
 
