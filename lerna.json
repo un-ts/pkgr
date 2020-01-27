@@ -22,9 +22,9 @@
     },
     "publish": {
       "ignoreChanges": [
-        "test",
-        "tsconfig.json",
-        "*.md"
+        "**/test/**",
+        "**/tsconfig.json",
+        "**/*.md"
       ]
     }
   }

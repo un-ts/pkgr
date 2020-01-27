@@ -1,7 +1,8 @@
 {
-  "extends": "@1stg/tsconfig/lib",
+  "extends": "@1stg/tsconfig/node",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./node_modules/@d-ts"]
   },
   "angularCompilerOptions": {
     "disableTypeScriptVersionCheck": true
