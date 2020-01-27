@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.3.3...@pkgr/imagemin@0.3.4) (2020-01-27)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies ([1d2727d](https://github.com/rx-ts/pkgr/commit/1d2727d9a14ff65e7a46c049feb9aec6824b78bf))
+
+
+
+
+
 ## [0.3.3](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.3.2...@pkgr/imagemin@0.3.3) (2019-12-25)
 
 
