@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.9.1...@pkgr/rollup@0.9.2) (2020-01-28)
+
+
+### Bug Fixes
+
+* **rollup:** migrate to @rollup/plugin-typescript successfully ([19c0eb2](https://github.com/rx-ts/pkgr/commit/19c0eb24c76ef7a55271d8a52cbfde46616189d4))
+
+
+
+
+
 ## [0.9.1](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.9.0...@pkgr/rollup@0.9.1) (2020-01-27)
 
 
