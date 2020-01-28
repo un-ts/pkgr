@@ -7,7 +7,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=8.0.0"
   },
   "bin": {
     "i": "lib/cli.js"
@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "imagemin": "^7.0.1",
-    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-gifsicle": ">=6.0.1",
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
