@@ -121,6 +121,7 @@ ConfigOptions = {}) => {
             metadata: angular,
             react,
             vue,
+            isTSX: mdx,
           },
         ],
       ],
