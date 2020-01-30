@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.9](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-react@0.2.8...@pkgr/webpack-react@0.2.9) (2020-01-30)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies, supoort md as mdx ([d588722](https://github.com/rx-ts/pkgr/commit/d58872294ba3341a5810a52bd93df55fdf3081d6))
+
+
+
+
+
 ## [0.2.8](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-react@0.2.7...@pkgr/webpack-react@0.2.8) (2020-01-27)
 
 

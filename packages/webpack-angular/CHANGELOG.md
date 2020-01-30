@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-angular@0.2.0...@pkgr/webpack-angular@0.2.1) (2020-01-30)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies, supoort md as mdx ([d588722](https://github.com/rx-ts/pkgr/commit/d58872294ba3341a5810a52bd93df55fdf3081d6))
+
+
+
+
+
 # [0.2.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-angular@0.1.8...@pkgr/webpack-angular@0.2.0) (2020-01-19)
 
 

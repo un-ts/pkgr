@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack-svelte",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Seamless svelte related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack-svelte",

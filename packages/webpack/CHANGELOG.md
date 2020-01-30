@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.5.1...@pkgr/webpack@0.5.2) (2020-01-30)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies ([1d2727d](https://github.com/rx-ts/pkgr/commit/1d2727d9a14ff65e7a46c049feb9aec6824b78bf))
+* **deps:** bump all (dev)Dependencies, supoort md as mdx ([d588722](https://github.com/rx-ts/pkgr/commit/d58872294ba3341a5810a52bd93df55fdf3081d6))
+
+
+
+
+
 ## [0.5.1](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.5.0...@pkgr/webpack@0.5.1) (2020-01-20)
 
 

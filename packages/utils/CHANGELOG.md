@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.6](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.3.5...@pkgr/utils@0.3.6) (2020-01-30)
+
+
+### Bug Fixes
+
+* **deps:** bump all (dev)Dependencies, supoort md as mdx ([d588722](https://github.com/rx-ts/pkgr/commit/d58872294ba3341a5810a52bd93df55fdf3081d6))
+
+
+
+
+
 ## [0.3.5](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.3.4...@pkgr/utils@0.3.5) (2020-01-19)
 
 
