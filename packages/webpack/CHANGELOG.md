@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.4 (2020-01-30)
+
+**Note:** Version bump only for package @pkgr/webpack
+
+
+
+
+
 ## [0.5.3](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.5.2...@pkgr/webpack@0.5.3) (2020-01-30)
 
 

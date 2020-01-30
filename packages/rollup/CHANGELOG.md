@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.4 (2020-01-30)
+
+**Note:** Version bump only for package @pkgr/rollup
+
+
+
+
+
 ## [0.9.3](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.9.2...@pkgr/rollup@0.9.3) (2020-01-30)
 
 

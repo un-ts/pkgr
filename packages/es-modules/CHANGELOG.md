@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.2 (2020-01-30)
+
+**Note:** Version bump only for package @pkgr/es-modules
+
+
+
+
+
 ## [0.2.1](https://github.com/rx-ts/pkgr/compare/@pkgr/es-modules@0.2.0...@pkgr/es-modules@0.2.1) (2019-10-28)
 
 
