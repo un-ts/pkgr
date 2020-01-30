@@ -1,6 +1,5 @@
 import { resolve, sep } from 'path'
 
-import { AngularCompilerPlugin } from '@ngtools/webpack'
 import { alias } from '@pkgr/es-modules'
 import {
   DEV,
@@ -21,6 +20,7 @@ import {
   tryExtensions,
   tryFile,
   tryPkg,
+  tryRequirePkg,
 } from '@pkgr/utils'
 import CaseSensitivePathsWebpackPlugin from 'case-sensitive-paths-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
@@ -69,6 +69,8 @@ const extraLoaderOptions: Record<string, {}> = {
 const configsPath = resolve(__dirname, '../.config')
 
 const CACHE_LOADER = 'cache-loader'
+
+const NGTOOLS_WEBPACK = '@ngtools/webpack'
 
 export default ({
   entry = 'src',
@@ -213,8 +215,7 @@ ConfigOptions = {}) => {
 
   const pkgFile = findUp(entry)
 
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const pkg: Record<string, string> = pkgFile ? require(pkgFile) : {}
+  const pkg = pkgFile ? tryRequirePkg<Record<string, string>>(pkgFile)! : {}
 
   const copyOptions = copies
     .concat(tryFile(resolve(entry, '../public'), true))
@@ -287,7 +288,7 @@ ConfigOptions = {}) => {
           oneOf: [
             angular && {
               test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-              use: [CACHE_LOADER, baseBabelLoader, '@ngtools/webpack'],
+              use: [CACHE_LOADER, baseBabelLoader, NGTOOLS_WEBPACK],
             },
             {
               use: babelLoader,
@@ -373,17 +374,6 @@ ConfigOptions = {}) => {
         __DEV__: !prod && __DEV__,
         __PROD__: prod,
       }),
-      angular &&
-        new AngularCompilerPlugin({
-          compilerOptions: {
-            emitDecoratorMetadata: true,
-            target: 8, // represents esnext
-          },
-          mainPath: entry,
-          tsConfigPath:
-            tryFile(resolve(entry, '../tsconfig.json')) || tsconfigFile,
-          sourceMap: !prod,
-        }),
       new CaseSensitivePathsWebpackPlugin(),
       copyOptions.length && new CopyWebpackPlugin(copyOptions),
       new FriendlyErrorsWebpackPlugin(),
@@ -423,8 +413,25 @@ ConfigOptions = {}) => {
       new MiniCssExtractPlugin({
         filename: filenamePrefix + 'css',
       }),
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      vue && new (require('vue-loader/lib/plugin'))(),
+      angular &&
+        // @ts-ignore
+        new (tryRequirePkg<{
+          AngularCompilerPlugin: import('@ngtools/webpack').AngularCompilerPlugin
+        }>(NGTOOLS_WEBPACK)!.AngularCompilerPlugin)({
+          compilerOptions: {
+            emitDecoratorMetadata: true,
+            target: 8, // represents esnext
+          },
+          mainPath: entry,
+          tsConfigPath:
+            tryFile(resolve(entry, '../tsconfig.json')) || tsconfigFile,
+          sourceMap: !prod,
+        }),
+      vue &&
+        // @ts-ignore
+        new (tryRequirePkg<import('vue-loader').VueLoaderPlugin>(
+          'vue-loader/lib/plugin',
+        )!)(),
     ].filter(identify),
     optimization: {
       runtimeChunk: {
