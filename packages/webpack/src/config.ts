@@ -298,7 +298,7 @@ ConfigOptions = {}) => {
             !/\.(mjs|jsx|tsx?|vue\.js)$/.test(file),
         },
         mdx && {
-          test: /\.mdx$/,
+          test: /\.mdx?$/,
           use: babelLoader.concat('@mdx-js/loader'),
         },
         svelte && {

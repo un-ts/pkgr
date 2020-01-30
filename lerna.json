@@ -24,7 +24,9 @@
       "ignoreChanges": [
         "**/test/**",
         "**/tsconfig.json",
-        "**/*.md"
+        "**/.*",
+        "**/*.md",
+        "**/*.tsbuildinfo"
       ]
     }
   }
