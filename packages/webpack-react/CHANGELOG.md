@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.11 (2020-01-30)
+
+
+### Bug Fixes
+
+* **webpack:** set isTSX from mdx value ([0ba49c0](https://github.com/rx-ts/pkgr/commit/0ba49c0e2a553e02afb62e6b655b9d90eb514cba))
+
+
+
+
+
 ## 0.2.10 (2020-01-30)
 
 **Note:** Version bump only for package @pkgr/webpack-react
