@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.3](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.5.2...@pkgr/webpack@0.5.3) (2020-01-30)
+
+
+### Bug Fixes
+
+* **webpack:** AngularCompilerPlugin should be required lazily ([e03ca6e](https://github.com/rx-ts/pkgr/commit/e03ca6e6c60e0691c4aa6bc1e8aaa08c7831a432))
+
+
+
+
+
 ## [0.5.2](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.5.1...@pkgr/webpack@0.5.2) (2020-01-30)
 
 
