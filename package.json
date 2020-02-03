@@ -42,9 +42,9 @@
     "w:dev": "ts-node -T --files packages/webpack/src/cli"
   },
   "devDependencies": {
-    "@1stg/app-config": "^0.1.23",
-    "@1stg/lib-config": "^0.1.21",
-    "@1stg/tslint-config": "^0.5.10",
+    "@1stg/app-config": "^0.3.0",
+    "@1stg/lib-config": "^0.3.0",
+    "@1stg/tslint-config": "^0.7.0",
     "@angular/common": "^8.2.14",
     "@angular/compiler": "^8.2.14",
     "@angular/compiler-cli": "^8.2.14",
@@ -69,7 +69,7 @@
     "@types/lodash": "^4.14.149",
     "@types/micromatch": "^4.0.1",
     "@types/mini-css-extract-plugin": "^0.9.0",
-    "@types/node": "^13.5.2",
+    "@types/node": "^13.7.0",
     "@types/postcss-load-config": "^2.0.1",
     "@types/prettier": "^1.19.0",
     "@types/react": "^16.9.19",
@@ -77,8 +77,8 @@
     "@types/resolve": "^1.14.0",
     "@types/rollup-plugin-postcss": "^2.0.0",
     "@types/rollup__plugin-url": "npm:@types/rollup-plugin-url",
-    "@types/webpack": "^4.41.3",
-    "@types/webpack-dev-server": "^3.9.0",
+    "@types/webpack": "^4.41.4",
+    "@types/webpack-dev-server": "^3.10.0",
     "@types/webpack-env": "^1.15.1",
     "@types/workbox-webpack-plugin": "^4.1.0",
     "core-js": "^3.6.4",
@@ -107,7 +107,7 @@
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "eslint-plugin-prettier": "^3.1.2",
-    "rollup": "^1.30.1",
+    "rollup": "^1.31.0",
     "typescript": "~3.5.3"
   },
   "commitlint": {

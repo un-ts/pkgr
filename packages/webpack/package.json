@@ -18,8 +18,8 @@
     "index.pug"
   ],
   "dependencies": {
-    "@1stg/babel-preset": "^0.9.8",
-    "@1stg/postcss-config": "^0.5.2",
+    "@1stg/babel-preset": "^0.11.0",
+    "@1stg/postcss-config": "^0.7.0",
     "@babel/core": "^7.8.4",
     "@pkgr/es-modules": "^0.2.3",
     "@pkgr/umd-globals": "^0.3.2",
@@ -27,7 +27,7 @@
     "babel-loader": "^8.0.6",
     "cache-loader": "^4.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
-    "commander": "^4.1.0",
+    "commander": "^4.1.1",
     "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.6.4",
     "css-loader": "^3.4.2",
@@ -62,7 +62,7 @@
     "tslib": "^1.10.0",
     "url-loader": "^3.0.0",
     "webpack": "^4.41.5",
-    "webpack-dev-server": "^3.10.1",
+    "webpack-dev-server": "^3.10.2",
     "workbox-webpack-plugin": "^5.0.0"
   },
   "publishConfig": {
