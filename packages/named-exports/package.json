@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/named-exports",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Union `namedExports` definitions for rollup-plugin-commonjs",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/named-exports",
