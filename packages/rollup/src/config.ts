@@ -46,6 +46,7 @@ import babel from 'rollup-plugin-babel'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
+import vue, { VuePluginOptions } from 'rollup-plugin-vue'
 
 const info = debug('r:info')
 
@@ -152,6 +153,7 @@ export interface ConfigOptions {
   sourceMap?: boolean
   typescript?: RollupTypescriptOptions
   postcss?: PostCssPluginOptions
+  vue?: VuePluginOptions
   define?: boolean | {}
   terser?: TerserOptions
   prod?: boolean
@@ -186,7 +188,8 @@ export const config = ({
   copies = [],
   sourceMap = false,
   typescript: typescriptOptions,
-  postcss: postcssOpts,
+  postcss: postcssOptions,
+  vue: vueOptions,
   define,
   terser: terserOptions,
   prod = __PROD__,
@@ -368,7 +371,8 @@ ConfigOptions = {}): RollupOptions[] => {
           copy(copyOptions),
           json(),
           url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
-          postcss(postcssOpts),
+          postcss(postcssOptions),
+          vue(vueOptions),
         ].concat(
           [
             // __DEV__ and __PROD__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production

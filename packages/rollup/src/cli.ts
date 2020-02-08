@@ -70,6 +70,7 @@ program
     JSOX.parse,
   )
   .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
+  .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', JSOX.parse)
   .option(
     '-d, --define [boolean | JSOX]',
     'options for `rollup-plugin-replace`, enable `__DEV__` and `__PROD__` by default',
@@ -98,6 +99,7 @@ const options: ConfigOptions = pick(
   'sourceMap',
   'typescript',
   'postcss',
+  'vue',
   'terser',
   'prod',
 )
