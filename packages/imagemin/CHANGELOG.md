@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2020-02-08)
+
+
+### Features
+
+* **rollup:** add rollup-plugin-vue support ([4a31cff](https://github.com/rx-ts/pkgr/commit/4a31cff46d04c0d4182bcb249ea86ec77d2a0b57))
+
+
+
+
+
 ## 0.3.8 (2020-02-03)
 
 **Note:** Version bump only for package @pkgr/imagemin
