@@ -2683,6 +2683,82 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@pkgr/es-modules@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@pkgr/es-modules/-/es-modules-0.2.4.tgz#8972bb41c93bad4a5ca6b9126f3b9ffbcb14c742"
+  integrity sha512-lxq2VPLe5xDwyFqcF2QiUF1IOpKRgp7GwiXwqdxYCjwSy0CnEmcrrHDedvgKxyNLy72MtYen2TZI36NxIO1T9w==
+
+"@pkgr/imagemin@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@pkgr/imagemin/-/imagemin-0.3.8.tgz#b5246922b8706f636f680705d37a977f07a0bfad"
+  integrity sha512-qYJaNfuinYSQOZUtbxbxcnFkd116qI8BOovHjb4uj02Zdln8EnOxqsjGMgON4laaqwCZdIPNivPm3fnvUwD4Iw==
+  dependencies:
+    imagemin "^7.0.1"
+    imagemin-gifsicle ">=6.0.1"
+    imagemin-jpegtran "^6.0.0"
+    imagemin-mozjpeg "^8.0.0"
+    imagemin-optipng "^7.1.0"
+    imagemin-pngquant "^8.0.0"
+    imagemin-svgo "^7.0.0"
+    imagemin-upng "^2.0.1"
+    imagemin-webp "^5.1.0"
+    is-glob "^4.0.1"
+    tiny-glob "^0.2.6"
+    tslib "^1.10.0"
+
+"@pkgr/named-exports@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@pkgr/named-exports/-/named-exports-0.4.4.tgz#21935981987a975099374211a9dd0779b9d2d763"
+  integrity sha512-4f4nDwZ021arVuFL+ZkF1Tsbe7Hkfds1B19uleUOVHyxg3xH+gKFVnJ37Ub4IT13jd6YbrtUam2s08ACq+xv6A==
+
+"@pkgr/rollup@^0.9.6":
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@pkgr/rollup/-/rollup-0.9.6.tgz#ebd72641b10487f07144d2f3412444d1fe02e6fc"
+  integrity sha512-+by2PjbkrW5qE49A6KZpEJkEie5o9Xv+9iz5jpFngjAVNw0ossAK6fLVoYpQKOiW2yKF+jVLreXLlz5GMiXIyg==
+  dependencies:
+    "@babel/preset-env" "^7.8.4"
+    "@pkgr/es-modules" "^0.2.4"
+    "@pkgr/named-exports" "^0.4.4"
+    "@pkgr/umd-globals" "^0.3.3"
+    "@pkgr/utils" "^0.3.9"
+    "@rollup/plugin-commonjs" "^11.0.2"
+    "@rollup/plugin-json" "^4.0.2"
+    "@rollup/plugin-node-resolve" "^7.1.0"
+    "@rollup/plugin-replace" "^2.3.1"
+    "@rollup/plugin-typescript" "^3.0.0"
+    "@rollup/plugin-url" "^4.0.2"
+    "@rxts/rollup-plugin-alias" "^0.1.1"
+    builtin-modules "^3.1.0"
+    commander "^4.1.1"
+    debug "^4.1.1"
+    is-glob "^4.0.1"
+    jsox "^1.1.121"
+    lodash "^4.17.15"
+    micromatch "^4.0.2"
+    rollup "^1.31.0"
+    rollup-plugin-babel "^4.3.3"
+    rollup-plugin-copy "^3.3.0"
+    rollup-plugin-postcss "^2.0.6"
+    rollup-plugin-terser "^5.2.0"
+    tslib "^1.10.0"
+
+"@pkgr/umd-globals@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@pkgr/umd-globals/-/umd-globals-0.3.3.tgz#0561a28324fb7134bf2720a2f53bb14c324d5e91"
+  integrity sha512-VSTUWdDci3J03aw3Q7D2CqNRBhh1fFWk4Lsz1u3DnDkFXs06NPHIPRe2zIYqMrwqx+vfmVPg+Q5QjYeX2tLZzA==
+
+"@pkgr/utils@^0.3.9":
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-0.3.9.tgz#9d420a1f78646f4e66c06ea51287edbf40d22231"
+  integrity sha512-h1i46p/XRHtfnApca4S7AvxyL785EqgHgnHvM6uWe/2dIbM/PhgvTiujYDwxvTdqOQ9mj3/yIM2x41/+WRhBfw==
+  dependencies:
+    chalk "^3.0.0"
+    cross-spawn "^7.0.1"
+    is-glob "^4.0.1"
+    open "^7.0.2"
+    tiny-glob "^0.2.6"
+    tslib "^1.10.0"
+
 "@prettier/plugin-pug@^1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@prettier/plugin-pug/-/plugin-pug-1.1.5.tgz#6e84e0a105d70f60389913d07be79c9cfbd1a1e3"
@@ -2715,7 +2791,7 @@
   dependencies:
     "@rollup/pluginutils" "^3.0.4"
 
-"@rollup/plugin-node-resolve@^7.1.1":
+"@rollup/plugin-node-resolve@^7.1.0", "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-7.1.1.tgz#8c6e59c4b28baf9d223028d0e450e06a485bb2b7"
   integrity sha512-14ddhD7TnemeHE97a4rLOhobfYvUVcaYuqTnL8Ti7Jxi9V9Jr5LY7Gko4HZ5k4h4vqQM0gBQt6tsp9xXW94WPA==
@@ -15669,10 +15745,17 @@ rimraf@2.6.3:
   dependencies:
     glob "^7.1.3"
 
-rimraf@^3.0.0, rimraf@^3.0.1:
+rimraf@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-3.0.1.tgz#48d3d4cb46c80d388ab26cd61b1b466ae9ae225a"
   integrity sha512-IQ4ikL8SjBiEDZfk+DFVwqRK8md24RWMEJkdSlgNLkyyAImcjf8SWvU1qFMDOb4igBClbTQ/ugPqXcRwdFTxZw==
+  dependencies:
+    glob "^7.1.3"
+
+rimraf@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-3.0.2.tgz#f1a5402ba6220ad52cc1282bac1ae3aa49fd061a"
+  integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
   dependencies:
     glob "^7.1.3"
 
