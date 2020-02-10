@@ -7,7 +7,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/core": ">=8.0.0",
+    "@angular/core": ">=9.0.0",
     "@pkgr/webpack": "^0.5.1"
   },
   "dependencies": {
