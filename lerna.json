@@ -22,12 +22,14 @@
     },
     "publish": {
       "ignoreChanges": [
-        "**/test/**",
         "**/.*",
         "**/*.md",
         "**/*.tsbuildinfo",
-        "**/tsconfig.json",
-        "package.json"
+        "**/coverage/**",
+        "**/dist/**",
+        "**/node_modules/**",
+        "**/test/**",
+        "**/tsconfig.json"
       ]
     }
   }

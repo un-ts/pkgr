@@ -17,6 +17,7 @@ import {
   __PROD__,
   arrayify,
   identify,
+  isPkgAvailable,
   isTsAvailable,
   monorepoPkgs,
   tryExtensions,
@@ -372,9 +373,9 @@ ConfigOptions = {}): RollupOptions[] => {
           json(),
           url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
           postcss(postcssOptions),
-          vue(vueOptions),
         ].concat(
           [
+            isPkgAvailable('vue-template-compiler') && vue(vueOptions),
             // __DEV__ and __PROD__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
             define &&
               replace(
