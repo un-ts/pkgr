@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.1 (2020-02-13)
+
+
+### Bug Fixes
+
+* **rollup:** check vue-template-compiler availability ([22edff2](https://github.com/rx-ts/pkgr/commit/22edff2dfb97fe071ff8b9ad4fce4f0c99d09419))
+
+
+
+
+
 # 0.6.0 (2020-02-08)
 
 
