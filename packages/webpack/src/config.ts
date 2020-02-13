@@ -36,6 +36,15 @@ import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import webpack, { Configuration } from 'webpack'
 import { GenerateSW } from 'workbox-webpack-plugin'
 
+const NGTOOLS_WEBPACK = '@ngtools/webpack'
+
+const { AngularCompilerPlugin } = tryRequirePkg<{
+  AngularCompilerPlugin: import('@ngtools/webpack').AngularCompilerPlugin
+}>(NGTOOLS_WEBPACK) || { AngularCompilerPlugin: null }
+const VueLoaderPlugin = tryRequirePkg<import('vue-loader').VueLoaderPlugin>(
+  'vue-loader/lib/plugin',
+)
+
 const info = debug('w:info')
 
 export interface ConfigOptions {
@@ -50,6 +59,7 @@ export interface ConfigOptions {
         to?: string
       }
   >
+  preferCssModules?: boolean
   prod?: boolean
 }
 
@@ -70,13 +80,12 @@ const configsPath = resolve(__dirname, '../.config')
 
 const CACHE_LOADER = 'cache-loader'
 
-const NGTOOLS_WEBPACK = '@ngtools/webpack'
-
 export default ({
   entry = 'src',
   outputDir = 'dist',
   type,
   copies = [],
+  preferCssModules,
   prod = __PROD__,
 }: // eslint-disable-next-line sonarjs/cognitive-complexity
 ConfigOptions = {}) => {
@@ -196,15 +205,15 @@ ConfigOptions = {}) => {
 
   const cssLoaders = (extraLoader?: string) => [
     {
-      test: /\b(globals?|node_modules)\b/,
+      test: /(\.(component|g)\.[\w-]+$)|\b(globals?|node_modules)\b/,
       use: baseCssLoaders(false, extraLoader),
     },
     {
-      test: /\.(m|modules?)\.[a-z]+$/,
+      test: /\.(m|modules?)\.[\w-]+$/,
       use: baseCssLoaders(true, extraLoader),
     },
     {
-      use: baseCssLoaders(!angular, extraLoader),
+      use: baseCssLoaders(preferCssModules, extraLoader),
     },
   ]
 
@@ -285,7 +294,7 @@ ConfigOptions = {}) => {
           },
         },
         {
-          test: /\.m?[jt]sx?$/,
+          test: /\.(m?j|t)sx?$/,
           oneOf: [
             angular && {
               test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
@@ -415,10 +424,9 @@ ConfigOptions = {}) => {
         filename: filenamePrefix + 'css',
       }),
       angular &&
+        AngularCompilerPlugin &&
         // @ts-ignore
-        new (tryRequirePkg<{
-          AngularCompilerPlugin: import('@ngtools/webpack').AngularCompilerPlugin
-        }>(NGTOOLS_WEBPACK)!.AngularCompilerPlugin)({
+        new AngularCompilerPlugin({
           compilerOptions: {
             emitDecoratorMetadata: true,
             target: 8, // represents esnext
@@ -429,10 +437,9 @@ ConfigOptions = {}) => {
           sourceMap: !prod,
         }),
       vue &&
+        VueLoaderPlugin &&
         // @ts-ignore
-        new (tryRequirePkg<import('vue-loader').VueLoaderPlugin>(
-          'vue-loader/lib/plugin',
-        )!)(),
+        new VueLoaderPlugin(),
     ].filter(identify),
     optimization: {
       runtimeChunk: {

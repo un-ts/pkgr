@@ -24,13 +24,7 @@ program
     '-t, --type <enum>',
     'app type, could be angular, react, vue currently',
   )
-  .option('--exclude <path>', 'exclude package(s) for monorepo', parseArrayArgs)
   .option('-o, --output-dir [output]', 'output destination directory')
-  .option(
-    '-f, --formats <format>',
-    'Type of output (amd, cjs, esm, iife, umd, and es versions like es2015)',
-    parseArrayArgs,
-  )
   .option(
     '-m, --monorepo <false | path>',
     'whether consider the project as a monorepo, or custom the packages path',
@@ -55,6 +49,7 @@ program
     'targets setting or whole CopyOptions for copy-webpack-plugin, could be array or object',
     JSOX.parse,
   )
+  .option('--preferCssModules <boolean>', 'prefer css modules or global styles')
   .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js for lib) bundle together at the same time',
@@ -65,14 +60,13 @@ const options: ConfigOptions = pick(
   program,
   'entry',
   'type',
-  'exclude',
   'outputDir',
-  'formats',
   'monorepo',
   'externals',
   'globals',
   'aliases',
-  'sourceMap',
+  'copies',
+  'preferCssModules',
   'prod',
 )
 

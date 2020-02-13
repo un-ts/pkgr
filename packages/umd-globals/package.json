@@ -14,7 +14,8 @@
   "unpkg": "lib/umd",
   "types": "lib",
   "files": [
-    "lib"
+    "lib",
+    "!*.tsbuildinfo"
   ],
   "keywords": [
     "umd",

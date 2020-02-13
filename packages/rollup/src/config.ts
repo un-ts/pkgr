@@ -17,7 +17,6 @@ import {
   __PROD__,
   arrayify,
   identify,
-  isPkgAvailable,
   isTsAvailable,
   monorepoPkgs,
   tryExtensions,
@@ -47,7 +46,13 @@ import babel from 'rollup-plugin-babel'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
-import vue, { VuePluginOptions } from 'rollup-plugin-vue'
+
+// eslint-disable-next-line @typescript-eslint/no-type-alias
+type VuePluginOptions = import('rollup-plugin-vue').VuePluginOptions
+
+const vue = tryRequirePkg<(opts?: Partial<VuePluginOptions>) => Plugin>(
+  'rollup-plugin-vue',
+)
 
 const info = debug('r:info')
 
@@ -101,7 +106,7 @@ const cjs = (sourceMap: boolean) =>
 
 const DEFAULT_FORMATS = ['cjs', 'es2015', 'esm']
 
-const regExpCacheMap = new Map<string | RegExp, string | RegExp>()
+const regExpCacheMap = new Map<string, string | RegExp>()
 
 const tryRegExp = (exp: string | RegExp) => {
   if (typeof exp === 'string' && (exp = exp.trim())) {
@@ -375,7 +380,7 @@ ConfigOptions = {}): RollupOptions[] => {
           postcss(postcssOptions),
         ].concat(
           [
-            isPkgAvailable('vue-template-compiler') && vue(vueOptions),
+            vue && vue(vueOptions),
             // __DEV__ and __PROD__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
             define &&
               replace(
