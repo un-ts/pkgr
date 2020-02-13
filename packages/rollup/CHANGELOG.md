@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.2 (2020-02-13)
+
+
+### Bug Fixes
+
+* use tryRequirePkg to simplify codes ([914d2fa](https://github.com/rx-ts/pkgr/commit/914d2fa9d6de6dfd94d55d21d01aa4d2152a51fc))
+
+
+
+
+
 ## 0.10.1 (2020-02-13)
 
 
