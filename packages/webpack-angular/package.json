@@ -11,7 +11,7 @@
     "@pkgr/webpack": "^0.5.1"
   },
   "dependencies": {
-    "@ngtools/webpack": "^9.0.2"
+    "@ngtools/webpack": "^9.0.3"
   },
   "publishConfig": {
     "access": "public"

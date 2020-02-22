@@ -27,12 +27,12 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
     "imagemin-pngquant": "^8.0.0",
-    "imagemin-svgo": "^7.0.0",
-    "imagemin-upng": "^2.0.1",
+    "imagemin-svgo": "^7.1.0",
+    "imagemin-upng": "^2.0.2",
     "imagemin-webp": "^5.1.0",
     "is-glob": "^4.0.1",
     "tiny-glob": "^0.2.6",
-    "tslib": "^1.10.0"
+    "tslib": "^1.11.0"
   },
   "publishConfig": {
     "access": "public"

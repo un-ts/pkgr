@@ -3,8 +3,5 @@
   "compilerOptions": {
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "./node_modules/@d-ts"]
-  },
-  "angularCompilerOptions": {
-    "disableTypeScriptVersionCheck": true
   }
 }

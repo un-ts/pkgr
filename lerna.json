@@ -22,14 +22,9 @@
     },
     "publish": {
       "ignoreChanges": [
-        "**/.*",
         "**/*.md",
         "**/*.tsbuildinfo",
-        "**/coverage/**",
-        "**/dist/**",
-        "**/node_modules/**",
-        "**/test/**",
-        "**/tsconfig.json"
+        "**/test/**"
       ]
     }
   }
