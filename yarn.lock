@@ -1402,10 +1402,10 @@
   resolved "https://registry.yarnpkg.com/@d-ts/rollup-plugins/-/rollup-plugins-0.3.3.tgz#85f4693a558b08890b012c1831f54cc08ba7fae0"
   integrity sha512-O9aU3hhxzjY5TNNAS80scmA6ZHJyy3/Xx3i1C+QI5w0upZ6tlLaHRAjtrxOwVUhehfSkjtFyX9yNwKWSWD+JtA==
 
-"@d-ts/svelte@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@d-ts/svelte/-/svelte-0.2.2.tgz#c147d771af841723afaa10e1e6c5cb6d59a1bf09"
-  integrity sha512-eGpGIPcRgFj6iToy9tmFcgd7tY3Mf1GWehEp1wz6Lsf8RBT52ZzoN1SWUl1C4Mexwg0d2DDWSEq6ih6NjQG5dA==
+"@d-ts/svelte@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@d-ts/svelte/-/svelte-0.2.3.tgz#9e247d0f20e0277041ed23b43cb3499a5ba974c6"
+  integrity sha512-YnaNPiQX3uCnPCJ9vp0lZ/EttCaYx9zbu5R67zhc4zz84jyRN5oWSumbVJVlDxxCVJbGRnTrUtv/BhcCQBbQXw==
 
 "@d-ts/vue@^0.4.2":
   version "0.4.2"
