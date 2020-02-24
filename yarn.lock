@@ -1407,10 +1407,10 @@
   resolved "https://registry.yarnpkg.com/@d-ts/svelte/-/svelte-0.2.3.tgz#9e247d0f20e0277041ed23b43cb3499a5ba974c6"
   integrity sha512-YnaNPiQX3uCnPCJ9vp0lZ/EttCaYx9zbu5R67zhc4zz84jyRN5oWSumbVJVlDxxCVJbGRnTrUtv/BhcCQBbQXw==
 
-"@d-ts/vue@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@d-ts/vue/-/vue-0.4.2.tgz#b179bd693e3f74e0e94096a670f69fa13030717e"
-  integrity sha512-VGomc7cPc83yAqIia6/zU6o1ha1hPAy/gURvcmn6uC9TYk6dQxL3QGNNoFwdrxwH3rFxf8/AaNVTSIVojAJSSA==
+"@d-ts/vue@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@d-ts/vue/-/vue-0.4.3.tgz#0c42074d899ea11ebd5b6044b58b7aaa77746f3a"
+  integrity sha512-qghHYTKW+oEUsdEFc7Qp4K8pGxL2RVH3eMrTrI/KsCSkvsK+ejMk7oZOT0CciW9QNQV/KRhHcahNamhLLCvxUw==
 
 "@d-ts/webpack-plugins@^0.3.3":
   version "0.3.3"
