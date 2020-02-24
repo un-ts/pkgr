@@ -1392,10 +1392,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@d-ts/core@^0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@d-ts/core/-/core-0.7.2.tgz#f473063fcde10d464cee780a79f896ec2dba1ac4"
-  integrity sha512-qrwBnVTeQ8fj2rg1LJJGujqlMgcJ81CPxJby2y6nRIp9j6IUTYwv4+4g7DEXCRCRMvMRkFgXerrshW9W9s7DLw==
+"@d-ts/core@^0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@d-ts/core/-/core-0.7.3.tgz#0904e74a68252e6085c4fbc3c7fdd7a801b1d933"
+  integrity sha512-+lw1IBzbGh0xhisn3h2aTcKovqqwEU7YtBTdYnjtel6pgmEiskVx5BExn3Mh5QWUpUreFT52kZgih2nMVPMYaQ==
 
 "@d-ts/rollup-plugins@^0.3.3":
   version "0.3.3"
