@@ -1397,10 +1397,10 @@
   resolved "https://registry.yarnpkg.com/@d-ts/core/-/core-0.7.2.tgz#f473063fcde10d464cee780a79f896ec2dba1ac4"
   integrity sha512-qrwBnVTeQ8fj2rg1LJJGujqlMgcJ81CPxJby2y6nRIp9j6IUTYwv4+4g7DEXCRCRMvMRkFgXerrshW9W9s7DLw==
 
-"@d-ts/rollup-plugins@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@d-ts/rollup-plugins/-/rollup-plugins-0.3.2.tgz#f8b366dab368043ca50193ac60d4d466b58ae6a4"
-  integrity sha512-Tx7Mpa37uNs2gAc8uBINwiw0wEw8oEjePutDlzyxkSrMujwJTr00AL4RkLu2tCYevw0xW9bbn2aVnhl2Qby27A==
+"@d-ts/rollup-plugins@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@d-ts/rollup-plugins/-/rollup-plugins-0.3.3.tgz#85f4693a558b08890b012c1831f54cc08ba7fae0"
+  integrity sha512-O9aU3hhxzjY5TNNAS80scmA6ZHJyy3/Xx3i1C+QI5w0upZ6tlLaHRAjtrxOwVUhehfSkjtFyX9yNwKWSWD+JtA==
 
 "@d-ts/svelte@^0.2.2":
   version "0.2.2"
