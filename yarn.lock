@@ -1412,10 +1412,10 @@
   resolved "https://registry.yarnpkg.com/@d-ts/vue/-/vue-0.4.2.tgz#b179bd693e3f74e0e94096a670f69fa13030717e"
   integrity sha512-VGomc7cPc83yAqIia6/zU6o1ha1hPAy/gURvcmn6uC9TYk6dQxL3QGNNoFwdrxwH3rFxf8/AaNVTSIVojAJSSA==
 
-"@d-ts/webpack-plugins@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@d-ts/webpack-plugins/-/webpack-plugins-0.3.2.tgz#2467e0e63288c3968d57676f3fa508526818bacf"
-  integrity sha512-gul+3wxVB+OIvj5fOScQ7mqHUUA0ulruywO4pbr4z4I+JNYNH3gYywu1/2AH9lA44ryizTNWNSwN/0CewKqBCg==
+"@d-ts/webpack-plugins@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@d-ts/webpack-plugins/-/webpack-plugins-0.3.3.tgz#ad28917383634cdf7eb5002075f2bd5264475d61"
+  integrity sha512-7hc/5iqt6Jukn5ERJ/gem6HzyiyadpLAZKY1InbMjUb02gcObYpgj7JKIzw6gnfBSwNpBekY5ZYZefRl8gaFfg==
   dependencies:
     "@types/html-webpack-plugin" "*"
     "@types/webpack" "*"
