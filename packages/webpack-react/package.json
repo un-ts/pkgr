@@ -8,7 +8,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@pkgr/webpack": "^0.5.1",
-    "react": ">=16.0.0"
+    "react": ">=16.13.0"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.11.0",
