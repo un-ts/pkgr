@@ -79,7 +79,7 @@
     "@types/rollup__plugin-url": "npm:@types/rollup-plugin-url",
     "@types/webpack": "^4.41.6",
     "@types/webpack-dev-server": "^3.10.1",
-    "@types/webpack-env": "^1.15.1",
+    "@types/webpack-env": "^1.15.2",
     "@types/workbox-webpack-plugin": "^4.1.0",
     "core-js": "^3.6.4",
     "fbjs": "^1.0.0",
