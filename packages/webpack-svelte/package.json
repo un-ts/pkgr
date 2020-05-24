@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack-svelte",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Seamless svelte related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack-svelte",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@pkgr/webpack": "^0.5.1",
-    "svelte": ">=3.18.2"
+    "svelte": ">=3.20.1"
   },
   "dependencies": {
     "svelte-loader": "^2.13.6"

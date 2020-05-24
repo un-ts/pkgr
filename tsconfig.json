@@ -8,9 +8,6 @@
       "path": "packages/es-modules"
     },
     {
-      "path": "packages/named-exports"
-    },
-    {
       "path": "packages/utils"
     },
     {

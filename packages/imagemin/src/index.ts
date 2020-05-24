@@ -56,6 +56,7 @@ const plugins: Array<import('imagemin').Plugin> = [
 ].map(([name, opts]) => require(`imagemin-${name}`)(opts))
 
 export default (filename: string): (() => Promise<void>) =>
+  // @ts-ignore
   [...plugins, (it: Buffer) => writeFile(filename, it)].reduce(
     // @ts-ignore
     (acc: Promise<void>, it: () => Promise<void>) => acc.then(it),

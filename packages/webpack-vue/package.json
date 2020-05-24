@@ -12,7 +12,7 @@
     "vue-template-compiler": ">=2.0.0"
   },
   "dependencies": {
-    "vue-loader": "^15.9.0",
+    "vue-loader": "^15.9.2",
     "vue-style-loader": "^4.1.2",
     "vue-svg-loader": "^0.16.0"
   },

@@ -5,7 +5,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - [es-modules](./packages/es-modules/CHANGELOG.md)
 - [imagemin](./packages/imagemin/CHANGELOG.md)
-- [named-exports](./packages/named-exports/CHANGELOG.md)
 - [rollup](./packages/rollup/CHANGELOG.md)
 - [umd-globals](./packages/umd-globals/CHANGELOG.md)
 - [utils](./packages/utils/CHANGELOG.md)

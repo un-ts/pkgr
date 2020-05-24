@@ -32,7 +32,7 @@
     "imagemin-webp": "^5.1.0",
     "is-glob": "^4.0.1",
     "tiny-glob": "^0.2.6",
-    "tslib": "^1.11.0"
+    "tslib": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"

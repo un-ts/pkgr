@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 
 import { entries } from '@pkgr/es-modules'
-import { namedExports } from '@pkgr/named-exports'
 import {
   StringMap,
   getGlobals,
@@ -23,6 +22,7 @@ import {
   tryGlob,
   tryRequirePkg,
 } from '@pkgr/utils'
+import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
@@ -42,7 +42,6 @@ import {
   RollupWarning,
   WarningHandler,
 } from 'rollup'
-import babel from 'rollup-plugin-babel'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
 import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
@@ -100,7 +99,6 @@ const cjs = (sourceMap: boolean) =>
     // see also: https://github.com/rollup/rollup-plugin-commonjs/issues/244#issuecomment-536168280
     // hard-coded temporarily
     ignore: ['invariant', 'react-draggable'],
-    namedExports,
     sourceMap,
   })
 

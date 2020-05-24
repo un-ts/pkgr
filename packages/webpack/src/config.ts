@@ -356,9 +356,20 @@ ConfigOptions = {}) => {
           test: /\.html$/,
           loader: 'html-loader',
           options: {
-            minimize: prod,
-            caseSensitive: true,
-            exportAsEs6Default: true,
+            minimize: prod && {
+              caseSensitive: true,
+              collapseWhitespace: true,
+              conservativeCollapse: true,
+              keepClosingSlash: true,
+              minifyCSS: true,
+              minifyJS: true,
+              removeAttributeQuotes: !angular,
+              removeComments: true,
+              removeScriptTypeAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+              useShortDoctype: true,
+            },
+            esModule: true,
           },
         },
         {
@@ -409,7 +420,8 @@ ConfigOptions = {}) => {
         minify: prod as false,
       }),
       new HtmlWebpackHarddiskPlugin(),
-      prod && new HtmlWebpackInlineSourcePlugin(),
+      // @ts-ignore
+      prod && new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
       __DEV__ &&
         !prod &&
         new LazyCompileWebpackPlugin({

@@ -11,10 +11,7 @@ export const UPPER_CAMEL_CASE_PKGS = ['react', 'react-router', 'redux', 'vue']
 
 export const normalizePkg = (pkg: string) => {
   if (pkg.startsWith('@')) {
-    pkg = pkg
-      .split('/')
-      .slice(1)
-      .join('/')
+    pkg = pkg.split('/').slice(1).join('/')
   }
   return pkg
 }

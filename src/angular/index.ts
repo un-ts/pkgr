@@ -10,9 +10,7 @@ if (process.env.NODE_ENV === 'production') {
   enableProdMode()
 }
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch(console.error)
+platformBrowserDynamic().bootstrapModule(AppModule).catch(console.error)
 
 declare global {
   interface Window {

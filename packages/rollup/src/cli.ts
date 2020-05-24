@@ -71,9 +71,10 @@ program
   )
   .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
   .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', JSOX.parse)
-  .option(
+  .option<boolean | {}>(
     '-d, --define [boolean | JSOX]',
     'options for `rollup-plugin-replace`, enable `__DEV__` and `__PROD__` by default',
+    // @ts-ignore
     JSOX.parse,
     true,
   )
@@ -84,7 +85,7 @@ program
   )
   .parse(process.argv)
 
-const options: ConfigOptions = pick(
+const options = (pick(
   program,
   'input',
   'exclude',
@@ -102,7 +103,7 @@ const options: ConfigOptions = pick(
   'vue',
   'terser',
   'prod',
-)
+) as unknown) as ConfigOptions
 
 info('options: %O', options)
 
