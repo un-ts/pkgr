@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Seamless webpack bundler wrapper for apps and libraries",
   "repository": "git@github.com:rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack",
@@ -22,8 +22,8 @@
     "@1stg/postcss-config": "^0.9.0",
     "@babel/core": "^7.9.6",
     "@pkgr/es-modules": "^0.3.2",
-    "@pkgr/umd-globals": "^0.4.2",
-    "@pkgr/utils": "^0.4.3",
+    "@pkgr/umd-globals": "^0.4.3",
+    "@pkgr/utils": "^0.4.4",
     "babel-loader": "^8.1.0",
     "cache-loader": "^4.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
