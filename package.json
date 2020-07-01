@@ -58,7 +58,7 @@
     "@d-ts/webpack-plugins": "^0.4.0",
     "@types/babel__core": "^7.1.9",
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.4",
-    "@types/copy-webpack-plugin": "^5.0.1",
+    "@types/copy-webpack-plugin": "^5.0.2",
     "@types/cross-spawn": "^6.0.2",
     "@types/debug": "^4.1.5",
     "@types/friendly-errors-webpack-plugin": "^0.1.2",
