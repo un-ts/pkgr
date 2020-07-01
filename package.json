@@ -56,7 +56,7 @@
     "@d-ts/svelte": "^0.2.3",
     "@d-ts/vue": "^0.4.3",
     "@d-ts/webpack-plugins": "^0.4.0",
-    "@types/babel__core": "^7.1.7",
+    "@types/babel__core": "^7.1.9",
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.4",
     "@types/copy-webpack-plugin": "^5.0.1",
     "@types/cross-spawn": "^6.0.2",
