@@ -4,7 +4,7 @@ import { promisify } from 'util'
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
 
-const plugins: Array<import('imagemin').Plugin> = [
+const plugins = ([
   [
     'gifsicle',
     {
@@ -52,8 +52,11 @@ const plugins: Array<import('imagemin').Plugin> = [
       ],
     },
   ],
-  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-].map(([name, opts]) => require(`imagemin-${name}`)(opts))
+] as const).map(
+  ([name, opts]) =>
+    // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-var-requires
+    require(`imagemin-${name}`)(opts) as import('imagemin').Plugin,
+)
 
 export default (filename: string): (() => Promise<void>) =>
   // @ts-ignore

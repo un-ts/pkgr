@@ -52,6 +52,7 @@ export interface ConfigOptions {
   // tslint:disable-next-line max-union-size
   type?: 'angular' | 'react' | 'svelte' | 'vue'
   outputDir?: string
+  externals?: Configuration['externals']
   copies?: Array<
     | string
     | {
@@ -70,6 +71,7 @@ const baseTsconfigFile = tryFile([
   tryPkg('@1stg/tsconfig')!,
 ])
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 const extraLoaderOptions: Record<string, {}> = {
   less: {
     javascriptEnabled: true,
@@ -83,6 +85,7 @@ const CACHE_LOADER = 'cache-loader'
 export default ({
   entry = 'src',
   outputDir = 'dist',
+  externals,
   type,
   copies = [],
   preferCssModules,
@@ -227,7 +230,7 @@ ConfigOptions = {}) => {
 
   const pkg = pkgFile ? tryRequirePkg<Record<string, string>>(pkgFile)! : {}
 
-  const copyOptions = copies
+  const copyPatterns = copies
     .concat(tryFile(resolve(entry, '../public'), true))
     .filter(identify)
 
@@ -247,6 +250,7 @@ ConfigOptions = {}) => {
     node: {
       fs: 'empty',
     },
+    externals,
     resolve: {
       alias: Object.assign(
         {},
@@ -396,7 +400,10 @@ ConfigOptions = {}) => {
         __PROD__: prod,
       }),
       new CaseSensitivePathsWebpackPlugin(),
-      copyOptions.length && new CopyWebpackPlugin(copyOptions),
+      copyPatterns.length &&
+        new CopyWebpackPlugin({
+          patterns: copyPatterns,
+        }),
       new FriendlyErrorsWebpackPlugin(),
       prod &&
         new GenerateSW({

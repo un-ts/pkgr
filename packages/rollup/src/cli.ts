@@ -15,7 +15,7 @@ const parseArrayArgs = (curr: string, prev?: string[]) => {
 }
 
 program
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
   .version(require('../package.json').version)
   .option('-i, --input <filename>', 'input entry file path')
   .option('--exclude <path>', 'exclude package(s) for monorepo', parseArrayArgs)
@@ -33,6 +33,7 @@ program
   .option(
     '-e, --exports <mode>',
     'Specify export mode (auto, default, named, none)',
+    'auto',
   )
   .option(
     '-x, --external, --externals <package>',
@@ -45,7 +46,7 @@ program
     JSOX.parse,
   )
   .option(
-    '-a, --aliases <JSOX>',
+    '-a, --alias-entries <JSOX>',
     'entries setting for @rxts/rollup-plugin-alias, could be array or object',
     JSOX.parse,
   )
@@ -71,7 +72,8 @@ program
   )
   .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
   .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', JSOX.parse)
-  .option<boolean | {}>(
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  .option<boolean | object>(
     '-d, --define [boolean | JSOX]',
     'options for `rollup-plugin-replace`, enable `__DEV__` and `__PROD__` by default',
     // @ts-ignore
@@ -96,7 +98,7 @@ const options = (pick(
   'external',
   'externals',
   'globals',
-  'aliases',
+  'aliasEntries',
   'sourceMap',
   'typescript',
   'postcss',

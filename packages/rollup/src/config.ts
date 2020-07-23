@@ -152,13 +152,13 @@ export interface ConfigOptions {
   external?: External
   externals?: External
   globals?: StringMap
-  aliases?: StringMap | AliasOptions['entries']
+  aliasEntries?: StringMap | AliasOptions['entries']
   copies?: StringMap | CopyOptions['targets'] | CopyOptions
   sourceMap?: boolean
   typescript?: RollupTypescriptOptions
   postcss?: PostCssPluginOptions
   vue?: VuePluginOptions
-  define?: boolean | {}
+  define?: boolean | Record<string, string>
   terser?: TerserOptions
   prod?: boolean
 }
@@ -188,7 +188,7 @@ export const config = ({
   external,
   externals = external || [],
   globals: umdGlobals,
-  aliases = [],
+  aliasEntries = [],
   copies = [],
   sourceMap = false,
   typescript: typescriptOptions,
@@ -216,12 +216,12 @@ ConfigOptions = {}): RollupOptions[] => {
 
   const aliasOptions = {
     resolve: EXTENSIONS.concat(ASSETS_EXTENSIONS),
-    entries: (Array.isArray(aliases)
-      ? aliases.map(({ find, replacement }) => ({
+    entries: (Array.isArray(aliasEntries)
+      ? aliasEntries.map(({ find, replacement }) => ({
           find: tryRegExp(find),
           replacement,
         }))
-      : Object.entries(aliases).map(([find, replacement]) => ({
+      : Object.entries(aliasEntries).map(([find, replacement]) => ({
           find: tryRegExp(find),
           replacement,
         }))
@@ -233,10 +233,12 @@ ConfigOptions = {}): RollupOptions[] => {
     : {
         targets: Array.isArray(copies)
           ? copies
-          : Object.entries(copies).map(([src, dest]) => ({
-              src,
-              dest,
-            })),
+          : Object.entries(copies).map(
+              ([src, dest]: [string, string | string[]]) => ({
+                src,
+                dest,
+              }),
+            ),
       }
 
   const configs = flatMap(pkgs, pkg => {
@@ -303,7 +305,7 @@ ConfigOptions = {}): RollupOptions[] => {
       return pkgGlobals
     }, globals)
 
-    let defineValues: {} | undefined
+    let defineValues: Record<string, string> | undefined
 
     if (define) {
       defineValues = Object.entries(define).reduce(
@@ -328,6 +330,7 @@ ConfigOptions = {}): RollupOptions[] => {
           name: pkgGlobals[name] || upperCamelCase(normalizePkg(name)),
           globals,
           exports,
+          sourcemap: sourceMap,
         },
         external(id: string) {
           if (typeof externals === 'function') {
@@ -347,10 +350,13 @@ ConfigOptions = {}): RollupOptions[] => {
           alias(aliasOptions),
           isTsAvailable && isTsInput
             ? typescript({
+                // @ts-ignore
                 jsx: 'react',
+                // @ts-ignore
                 module: 'esnext',
                 ...typescriptOptions,
                 target: isEsVersion ? format : 'es5',
+                sourceMap,
               })
             : babel({
                 exclude: ['*.min.js', '*.production.js'],

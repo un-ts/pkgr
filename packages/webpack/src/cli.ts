@@ -11,13 +11,8 @@ import config, { ConfigOptions } from './config'
 
 const info = debug('w:info')
 
-const parseArrayArgs = (curr: string, prev?: string[]) => {
-  const next = curr.split(',')
-  return prev ? prev.concat(next) : next
-}
-
 program
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
   .version(require('../package.json').version)
   .option('-e, --entry <filename>', 'input entry file path')
   .option(
@@ -26,22 +21,13 @@ program
   )
   .option('-o, --output-dir [output]', 'output destination directory')
   .option(
-    '-m, --monorepo <false | path>',
-    'whether consider the project as a monorepo, or custom the packages path',
-  )
-  .option(
-    '-x, --externals <package>',
+    '-x, --externals <JSOX>',
     'extra external packages, peerDependencies, and dependencies for node by default',
-    parseArrayArgs,
+    JSOX.parse,
   )
   .option(
     '-g, --globals <JSOX>',
     'JSON string to be parsed as umd globals map',
-    JSOX.parse,
-  )
-  .option(
-    '-a, --aliases <JSOX>',
-    'entries setting for rollup-plugin-alias, could be array or object',
     JSOX.parse,
   )
   .option(
@@ -61,10 +47,8 @@ const options: ConfigOptions = pick(
   'entry',
   'type',
   'outputDir',
-  'monorepo',
   'externals',
   'globals',
-  'aliases',
   'copies',
   'preferCssModules',
   'prod',
