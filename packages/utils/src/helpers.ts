@@ -14,7 +14,7 @@ export const tryPkg = (pkg: string) => {
 
 export const tryRequirePkg = <T>(pkg: string): T | undefined => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-return
     return require(pkg)
   } catch {}
 }

@@ -77,7 +77,7 @@ function startBrowserProcess(
         stdio: 'ignore',
       })
       return true
-    } catch (err) {
+    } catch {
       // Ignore errors.
     }
   }
@@ -103,7 +103,7 @@ function startBrowserProcess(
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     open(url, options).catch(() => {}) // Prevent `unhandledRejection` error.
     return true
-  } catch (err) {
+  } catch {
     return false
   }
 }
