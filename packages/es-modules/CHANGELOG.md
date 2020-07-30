@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/rx-ts/pkgr/compare/@pkgr/es-modules@0.3.2...@pkgr/es-modules@0.3.3) (2020-07-30)
+
+
+### Bug Fixes
+
+* **es-modules:** lodash es module definition ([7f1429f](https://github.com/rx-ts/pkgr/commit/7f1429fc50cfe711038b46028668db5525015f00))
+
+
+
+
+
 ## 0.3.2 (2020-02-13)
 
 

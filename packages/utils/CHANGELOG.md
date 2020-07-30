@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.4.4...@pkgr/utils@0.4.5) (2020-07-30)
+
+
+### Bug Fixes
+
+* **es-modules:** lodash es module definition ([7f1429f](https://github.com/rx-ts/pkgr/commit/7f1429fc50cfe711038b46028668db5525015f00))
+
+
+
+
+
 ## [0.4.4](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.4.3...@pkgr/utils@0.4.4) (2020-05-24)
 
 **Note:** Version bump only for package @pkgr/utils
