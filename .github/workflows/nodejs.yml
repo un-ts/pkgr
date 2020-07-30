@@ -71,6 +71,8 @@ jobs:
       - name: Publish GitHub Release and npm Package
         if: matrix.os == 'macOS-latest' && github.event_name == 'push' && github.ref	== 'refs/heads/master'
         run: |
+          git config --global user.email action@github.com
+          git config --global user.name "GitHub Actions"
           git remote set-url origin "https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
           git checkout master
           npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
