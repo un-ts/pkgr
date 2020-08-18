@@ -44,12 +44,12 @@
     "@1stg/app-config": "^0.5.5",
     "@1stg/lib-config": "^0.5.5",
     "@1stg/tslint-config": "^0.8.5",
-    "@angular/common": "^10.0.5",
-    "@angular/compiler": "^10.0.5",
-    "@angular/compiler-cli": "^10.0.5",
-    "@angular/core": "^10.0.5",
-    "@angular/platform-browser": "^10.0.5",
-    "@angular/platform-browser-dynamic": "^10.0.5",
+    "@angular/common": "^10.0.10",
+    "@angular/compiler": "^10.0.10",
+    "@angular/compiler-cli": "^10.0.10",
+    "@angular/core": "^10.0.10",
+    "@angular/platform-browser": "^10.0.10",
+    "@angular/platform-browser-dynamic": "^10.0.10",
     "@babel/types": "^7.10.5",
     "@d-ts/core": "^0.7.3",
     "@d-ts/rollup-plugins": "^0.4.0",
@@ -98,7 +98,7 @@
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11",
     "yarn-deduplicate": "^2.1.1",
-    "zone.js": "^0.10.3"
+    "zone.js": "^0.11.0"
   },
   "resolutions": {
     "rollup": "^2.22.2"
