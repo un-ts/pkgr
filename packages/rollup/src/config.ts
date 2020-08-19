@@ -43,7 +43,7 @@ import {
   WarningHandler,
 } from 'rollup'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
-import postcss, { PostCssPluginOptions } from 'rollup-plugin-postcss'
+import postcss, { PostCSSPluginConf } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
 
 // eslint-disable-next-line @typescript-eslint/no-type-alias
@@ -75,9 +75,9 @@ const IMAGE_EXTENSIONS = [
 ]
 const ASSETS_EXTENSIONS = STYLE_EXTENSIONS.concat(IMAGE_EXTENSIONS)
 
-const resolve = ({ deps, node }: { deps?: string[]; node?: boolean } = {}) =>
+const resolve = ({ deps, node }: { deps: string[]; node?: boolean }) =>
   nodeResolve({
-    dedupe: node ? undefined : deps,
+    dedupe: node ? [] : deps,
     mainFields: [
       !node && 'browser',
       'esnext',
@@ -156,7 +156,7 @@ export interface ConfigOptions {
   copies?: StringMap | CopyOptions['targets'] | CopyOptions
   sourceMap?: boolean
   typescript?: RollupTypescriptOptions
-  postcss?: PostCssPluginOptions
+  postcss?: Readonly<PostCSSPluginConf>
   vue?: VuePluginOptions
   define?: boolean | Record<string, string>
   terser?: TerserOptions
@@ -192,7 +192,7 @@ export const config = ({
   copies = [],
   sourceMap = false,
   typescript: typescriptOptions,
-  postcss: postcssOptions,
+  postcss: postcssOptions = {},
   vue: vueOptions,
   define,
   terser: terserOptions,
