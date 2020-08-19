@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.6](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.10.5...@pkgr/rollup@0.10.6) (2020-08-19)
+
+
+### Bug Fixes
+
+* **rollup:** dedupe should not be undefined ([6b774ce](https://github.com/rx-ts/pkgr/commit/6b774ce1c7ff182034a3605afbc76126e256f83b))
+
+
+
+
+
 ## [0.10.5](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.10.4...@pkgr/rollup@0.10.5) (2020-07-30)
 
 **Note:** Version bump only for package @pkgr/rollup
