@@ -78,7 +78,7 @@
     "@types/rollup__plugin-url": "npm:@types/rollup-plugin-url",
     "@types/webpack": "^4.41.21",
     "@types/webpack-dev-server": "^3.11.0",
-    "@types/webpack-env": "^1.15.2",
+    "@types/webpack-env": "^1.15.3",
     "@types/workbox-webpack-plugin": "^5.1.4",
     "core-js": "^3.6.4",
     "lerna": "^3.22.1",
