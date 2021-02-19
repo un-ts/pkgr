@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.10.6...@pkgr/rollup@0.11.0) (2021-02-19)
+
+
+### Features
+
+* bump (dev)Dependencies expect @rollup/plugin-typescript ([d49518b](https://github.com/rx-ts/pkgr/commit/d49518bfea6f7ee58f05a39a1162e95defe57f81))
+
+
+
+
+
 ## [0.10.6](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.10.5...@pkgr/rollup@0.10.6) (2020-08-19)
 
 

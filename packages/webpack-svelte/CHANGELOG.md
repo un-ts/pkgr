@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-svelte@0.2.4...@pkgr/webpack-svelte@0.3.0) (2021-02-19)
+
+
+### Features
+
+* bump (dev)Dependencies expect @rollup/plugin-typescript ([d49518b](https://github.com/rx-ts/pkgr/commit/d49518bfea6f7ee58f05a39a1162e95defe57f81))
+
+
+
+
+
 ## [0.2.4](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-svelte@0.2.2...@pkgr/webpack-svelte@0.2.4) (2020-05-24)
 
 **Note:** Version bump only for package @pkgr/webpack-svelte
