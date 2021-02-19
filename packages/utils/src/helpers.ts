@@ -1,5 +1,5 @@
 import fs from 'fs'
-import path, { resolve } from 'path'
+import path from 'path'
 
 import isGlob from 'is-glob'
 import globSync from 'tiny-glob/sync'
@@ -52,7 +52,7 @@ export const tryFile = (filePath?: string | string[], includeDir = false) => {
 }
 
 export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
-  const ext = extensions.concat('').find(ext => tryFile(filepath + ext))
+  const ext = [...extensions, ''].find(ext => tryFile(filepath + ext))
   return ext == null ? '' : filepath + ext
 }
 
@@ -69,16 +69,15 @@ export const tryGlob = (
     typeof options === 'string' ? { baseDir: options } : options
   return paths.reduce<string[]>(
     (acc, pkg) =>
-      acc
-        .concat(
-          isGlob(pkg)
-            ? globSync(pkg, {
-                absolute,
-                cwd: baseDir,
-              })
-            : tryFile(resolve(baseDir, pkg), true),
-        )
-        .filter(Boolean),
+      [
+        ...acc,
+        ...(isGlob(pkg)
+          ? globSync(pkg, {
+              absolute,
+              cwd: baseDir,
+            })
+          : [tryFile(path.resolve(baseDir, pkg), true)]),
+      ].filter(Boolean),
     [],
   )
 }

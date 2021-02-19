@@ -9,5 +9,4 @@ import { AppComponent } from './app.component'
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class AppModule {}

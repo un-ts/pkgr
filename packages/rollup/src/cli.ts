@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { tryRequirePkg } from '@pkgr/utils'
 import program from 'commander'
 import debug from 'debug'
 import JSOX from 'jsox'
@@ -11,12 +12,11 @@ const info = debug('r:info')
 
 const parseArrayArgs = (curr: string, prev?: string[]) => {
   const next = curr.split(',')
-  return prev ? prev.concat(next) : next
+  return prev ? [...prev, ...next] : next
 }
 
 program
-  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
-  .version(require('../package.json').version)
+  .version(tryRequirePkg<{ version: string }>('../package.json')!.version)
   .option('-i, --input <filename>', 'input entry file path')
   .option('--exclude <path>', 'exclude package(s) for monorepo', parseArrayArgs)
   .option('-o, --output-dir [output]', 'output destination directory')
@@ -64,10 +64,14 @@ program
     '-w, --watch [boolean]',
     'whether to enable watch mode for development',
   )
-  // FIXME: should be removed this option and PR to `rollup-plugin-typescript` instead
+  .option(
+    '-b, --babel <JSOX>',
+    'Overrides the Babel plugin options for `@rollup/plugin-babel`',
+    JSOX.parse,
+  )
   .option(
     '-t, --typescript <JSOX>',
-    'Overrides the TypeScript compiler options for `rollup-plugin-typescript`',
+    'Overrides the TypeScript compiler options for `@rollup/plugin-typescript`',
     JSOX.parse,
   )
   .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
@@ -75,20 +79,20 @@ program
   // eslint-disable-next-line @typescript-eslint/ban-types
   .option<boolean | object>(
     '-d, --define [boolean | JSOX]',
-    'options for `rollup-plugin-replace`, enable `__DEV__` and `__PROD__` by default',
+    'options for `@rollup/plugin-replace`, enable `__DEV__` and `__PROD__` by default',
     // @ts-ignore
     JSOX.parse,
     true,
   )
-  .option('--terser <JSOX>', 'options for `rollup-plugin-terser`', JSOX.parse)
+  .option('--terser <JSOX>', 'options for `@rollup/plugin-terser`', JSOX.parse)
   .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js) bundle together at the same time',
   )
   .parse(process.argv)
 
-const options = (pick(
-  program,
+const options = pick(
+  program.opts(),
   'input',
   'exclude',
   'outputDir',
@@ -100,12 +104,13 @@ const options = (pick(
   'globals',
   'aliasEntries',
   'sourceMap',
+  'babel',
   'typescript',
   'postcss',
   'vue',
   'terser',
   'prod',
-) as unknown) as ConfigOptions
+) as ConfigOptions
 
 info('options: %O', options)
 
@@ -128,14 +133,14 @@ const startWatcher = (configs: InputOptions[]) => {
 
 const configs = config(options)
 
-if (program.watch) {
+if (options.watch) {
   startWatcher(configs)
 } else {
   Promise.all(
     configs.map(opts =>
       rollup(opts).then(bundle => bundle.write(opts.output as OutputOptions)),
     ),
-  ).catch(e => {
+  ).catch((e: Error) => {
     console.error(e)
     process.exitCode = 1
   })

@@ -1,1 +1,1 @@
-module.exports = require('@1stg/postcss-config')
+module.exports = require('@1stg/postcss-config')()

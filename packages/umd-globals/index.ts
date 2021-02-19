@@ -23,18 +23,16 @@ export interface StringMap {
 export const asIsReducer = (
   globals: string | StringMap,
   pkg?: string,
-): StringMap =>
-  Object.assign(
-    {},
-    typeof globals === 'string'
-      ? {
-          [globals]: normalizePkg(globals),
-        }
-      : globals,
-    pkg && {
-      [pkg]: normalizePkg(pkg),
-    },
-  )
+): StringMap => ({
+  ...(typeof globals === 'string'
+    ? {
+        [globals]: normalizePkg(globals),
+      }
+    : globals),
+  ...(pkg && {
+    [pkg]: normalizePkg(pkg),
+  }),
+})
 
 export const upperCamelCase = (pkg: string) =>
   pkg.replace(/(^|-)([a-z])/g, (_, _$1: string, $2: string) => $2.toUpperCase())
@@ -42,18 +40,16 @@ export const upperCamelCase = (pkg: string) =>
 export const upperCamelCaseReducer = (
   globals: string | StringMap,
   pkg?: string,
-): StringMap =>
-  Object.assign(
-    {},
-    typeof globals === 'string'
-      ? {
-          [globals]: upperCamelCase(normalizePkg(globals)),
-        }
-      : globals,
-    pkg && {
-      [pkg]: upperCamelCase(normalizePkg(pkg)),
-    },
-  )
+): StringMap => ({
+  ...(typeof globals === 'string'
+    ? {
+        [globals]: upperCamelCase(normalizePkg(globals)),
+      }
+    : globals),
+  ...(pkg && {
+    [pkg]: upperCamelCase(normalizePkg(pkg)),
+  }),
+})
 
 const GLOBALS = {
   lodash: '_',

@@ -14,12 +14,12 @@ process.argv
             glob(file, {
               filesOnly: true,
             }),
-          ]).then(([files, matched]) => files.concat(matched))
-        : files.then(files => files.concat(file)),
+          ]).then(([files, matched]) => [...files, ...matched])
+        : files.then(files => [...files, file]),
     Promise.resolve<string[]>([]),
   )
   .then(files => Promise.all(files.map(imagemin)))
-  .catch(e => {
+  .catch((e: Error) => {
     console.error(e)
     process.exitCode = 1
   })

@@ -2,7 +2,7 @@
   "name": "@rxts/pkgr",
   "version": 2,
   "alias": [
-    "pkgr.now.sh"
+    "pkgr.vercel.app"
   ],
   "github": {
     "silent": true
@@ -10,7 +10,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@now/static-build"
+      "use": "@vercel/static-build"
     }
   ],
   "redirects": [

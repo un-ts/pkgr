@@ -10,7 +10,5 @@ export const NODE_MODULES_REG = /[/\\]node_modules[/\\]/
 
 export const CWD = process.cwd()
 
-export const EXTENSIONS = ['.ts', '.tsx'].concat(
-  // eslint-disable-next-line node/no-deprecated-api
-  Object.keys(require.extensions),
-)
+// eslint-disable-next-line node/no-deprecated-api
+export const EXTENSIONS = ['.ts', '.tsx', ...Object.keys(require.extensions)]

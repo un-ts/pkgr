@@ -92,7 +92,7 @@ function startBrowserProcess(
 
   // If there are arguments, they must be passed as array with the browser
   if (typeof browser === 'string' && args.length > 0) {
-    browser = [browser].concat(args)
+    browser = [browser, ...args]
   }
 
   // Fallback to open
