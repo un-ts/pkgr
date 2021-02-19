@@ -1,10 +1,9 @@
-import { resolve, sep } from 'path'
+import path from 'path'
 
 import { alias } from '@pkgr/es-modules'
 import {
   DEV,
   EXTENSIONS,
-  NODE_ENV,
   NODE_MODULES_REG,
   PROD,
   __DEV__,
@@ -27,7 +26,6 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import debug from 'debug'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
-import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import LazyCompileWebpackPlugin from 'lazy-compile-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
@@ -36,10 +34,16 @@ import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import webpack, { Configuration } from 'webpack'
 import { GenerateSW } from 'workbox-webpack-plugin'
 
+import { InlineChunkHtmlPlugin } from './inline-chunk-html-plugin'
+
+// eslint-disable-next-line sonarjs/no-duplicate-string
 const NGTOOLS_WEBPACK = '@ngtools/webpack'
 
+// eslint-disable-next-line @typescript-eslint/no-type-alias
+type AngularCompilerPlugin = import('@ngtools/webpack').AngularCompilerPlugin
+
 const { AngularCompilerPlugin } = tryRequirePkg<{
-  AngularCompilerPlugin: import('@ngtools/webpack').AngularCompilerPlugin
+  AngularCompilerPlugin: AngularCompilerPlugin
 }>(NGTOOLS_WEBPACK) || { AngularCompilerPlugin: null }
 const VueLoaderPlugin = tryRequirePkg<import('vue-loader').VueLoaderPlugin>(
   'vue-loader/lib/plugin',
@@ -78,7 +82,7 @@ const extraLoaderOptions: Record<string, {}> = {
   },
 }
 
-const configsPath = resolve(__dirname, '../.config')
+const configsPath = path.resolve(__dirname, '../.config')
 
 const CACHE_LOADER = 'cache-loader'
 
@@ -94,7 +98,7 @@ export default ({
 ConfigOptions = {}) => {
   entry = tryFile(
     ['index', 'main', 'app'].map(_ =>
-      tryExtensions(resolve([entry, _].join('/'))),
+      tryExtensions(path.resolve([entry, _].join('/'))),
     ),
   )
 
@@ -113,8 +117,7 @@ ConfigOptions = {}) => {
 
   const mdx = isPkgAvailable('@pkgr/webpack-mdx')
 
-  const hashType = prod ? 'contenthash' : 'hash'
-  const filenamePrefix = `[name].[${hashType}].`
+  const filenamePrefix = `[name].[contenthash].`
 
   const sourceMap = !prod
 
@@ -142,29 +145,12 @@ ConfigOptions = {}) => {
 
   const babelLoader = [CACHE_LOADER, 'thread-loader', baseBabelLoader]
 
-  let postcssConfig:
-    | {
-        path: string
-        ctx: {
-          env: string
-        }
-      }
-    | undefined
-
-  const postcssCtx = {
-    env: prod ? PROD : NODE_ENV,
-  }
+  let postcssConfig: string | undefined
 
   try {
-    postcssConfig = {
-      path: resolve(sync(postcssCtx).file, '..') + sep,
-      ctx: postcssCtx,
-    }
+    postcssConfig = path.resolve(sync().file, '..') + path.sep
   } catch {
-    postcssConfig = {
-      path: configsPath + sep,
-      ctx: postcssCtx,
-    }
+    postcssConfig = configsPath + path.sep
   }
 
   const baseCssLoaders = (modules = false, extraLoader?: string) =>
@@ -172,7 +158,7 @@ ConfigOptions = {}) => {
       prod && (!angular || modules)
         ? MiniCssExtractPlugin.loader
         : angular && !modules
-        ? 'exports-loader?exports.toString()'
+        ? 'raw-loader'
         : vue
         ? 'vue-style-loader'
         : 'style-loader',
@@ -181,8 +167,8 @@ ConfigOptions = {}) => {
         loader: 'css-loader',
         options: {
           importLoaders: extraLoader ? 1 : 2,
-          localsConvention: 'camelCaseOnly',
           modules: modules && {
+            exportLocalsConvention: 'camelCaseOnly',
             localIdentName: prod
               ? '[hash:base64:10]'
               : '[path][name]__[local]---[hash:base64:5]',
@@ -194,7 +180,9 @@ ConfigOptions = {}) => {
         loader: 'postcss-loader',
         options: {
           sourceMap,
-          config: postcssConfig,
+          postcssOptions: {
+            config: postcssConfig,
+          },
         },
       },
       extraLoader && {
@@ -223,20 +211,21 @@ ConfigOptions = {}) => {
   const svgLoader = react ? '@svgr/webpack' : vue && 'vue-svg-loader'
 
   const template =
-    tryExtensions(resolve(entry, '../index'), ['.pug', '.html', '.ejs']) ||
-    resolve(__dirname, '../index.pug')
+    tryExtensions(path.resolve(entry, '../index'), ['.pug', '.html', '.ejs']) ||
+    path.resolve(__dirname, '../index.pug')
 
   const pkgFile = findUp(entry)
 
   const pkg = pkgFile ? tryRequirePkg<Record<string, string>>(pkgFile)! : {}
 
-  const copyPatterns = copies
-    .concat(tryFile(resolve(entry, '../public'), true))
-    .filter(identify)
+  const copyPatterns = [
+    ...copies,
+    tryFile(path.resolve(entry, '../public'), true),
+  ].filter(identify)
 
   const config: Configuration = {
     mode: prod ? PROD : DEV,
-    devtool: !prod && 'cheap-module-eval-source-map',
+    devtool: !prod && 'eval-cheap-module-source-map',
     devServer: {
       clientLogLevel: 'warning',
       host: '0.0.0.0',
@@ -247,28 +236,23 @@ ConfigOptions = {}) => {
     entry: {
       app: [!prod && react && 'react-hot-loader/patch', entry].filter(identify),
     },
-    node: {
-      fs: 'empty',
-    },
     externals,
     resolve: {
-      alias: Object.assign(
-        {},
-        alias,
-        prod ||
+      alias: {
+        ...alias,
+        ...((prod && {}) ||
           (react && {
             'react-dom': '@hot-loader/react-dom',
-          }),
-      ),
+          })),
+      },
       extensions: [
         '.ts',
         '.tsx',
         vue && '.vue',
         svelte && '.svelte',
         mdx && '.mdx',
-      ]
-        .concat(EXTENSIONS)
-        .filter(identify),
+        ...EXTENSIONS,
+      ].filter(identify),
       mainFields: [
         svelte && 'svelte',
         'browser',
@@ -279,6 +263,7 @@ ConfigOptions = {}) => {
         'fesm5',
         'main',
       ].filter(identify),
+      // @ts-ignore
       plugins: [
         isTsAvailable &&
           new TsconfigPathsWebpackPlugin({
@@ -288,10 +273,14 @@ ConfigOptions = {}) => {
     },
     output: {
       filename: filenamePrefix + 'js',
-      path: resolve(outputDir),
+      path: path.resolve(outputDir),
     },
     module: {
       rules: [
+        vue && {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+        },
         {
           parser: {
             system: false,
@@ -314,15 +303,11 @@ ConfigOptions = {}) => {
         },
         mdx && {
           test: /\.mdx?$/,
-          use: babelLoader.concat('@mdx-js/loader'),
+          use: [...babelLoader, '@mdx-js/loader'],
         },
         svelte && {
           test: /\.svelte$/,
           loader: 'svelte-loader',
-        },
-        vue && {
-          test: /\.vue$/,
-          loader: 'vue-loader',
         },
         {
           test: /\.css$/,
@@ -400,7 +385,7 @@ ConfigOptions = {}) => {
         __PROD__: prod,
       }),
       new CaseSensitivePathsWebpackPlugin(),
-      copyPatterns.length &&
+      copyPatterns.length > 0 &&
         new CopyWebpackPlugin({
           patterns: copyPatterns,
         }),
@@ -424,11 +409,11 @@ ConfigOptions = {}) => {
         template,
         alwaysWriteToDisk: true,
         inlineSource: /(^|[/\\])manifest\.\w+\.js$/,
-        minify: prod as false,
+        minify: prod,
       }),
       new HtmlWebpackHarddiskPlugin(),
-      // @ts-ignore
-      prod && new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
+      prod &&
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/^manifest.+\.js$/]),
       __DEV__ &&
         !prod &&
         new LazyCompileWebpackPlugin({
@@ -448,13 +433,13 @@ ConfigOptions = {}) => {
         new AngularCompilerPlugin({
           compilerOptions: {
             emitDecoratorMetadata: true,
-            target: 8, // represents esnext
+            target: 99, // represents esnext
           },
           mainPath: entry,
           tsConfigPath:
-            tryFile(resolve(entry, '../tsconfig.json')) || tsconfigFile,
+            tryFile(path.resolve(entry, '../tsconfig.json')) || tsconfigFile,
           sourceMap: !prod,
-        }),
+        } as import('@ngtools/webpack').AngularCompilerPluginOptions),
       vue &&
         VueLoaderPlugin &&
         // @ts-ignore

@@ -22,7 +22,7 @@ import {
   tryGlob,
   tryRequirePkg,
 } from '@pkgr/utils'
-import babel from '@rollup/plugin-babel'
+import babel, { BabelInputOptions } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
@@ -47,7 +47,7 @@ import postcss, { PostCSSPluginConf } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
 
 // eslint-disable-next-line @typescript-eslint/no-type-alias
-type VuePluginOptions = import('rollup-plugin-vue').VuePluginOptions
+type VuePluginOptions = import('rollup-plugin-vue').Options
 
 const vue = tryRequirePkg<(opts?: Partial<VuePluginOptions>) => Plugin>(
   'rollup-plugin-vue',
@@ -155,12 +155,14 @@ export interface ConfigOptions {
   aliasEntries?: StringMap | AliasOptions['entries']
   copies?: StringMap | CopyOptions['targets'] | CopyOptions
   sourceMap?: boolean
+  babel?: BabelInputOptions
   typescript?: RollupTypescriptOptions
   postcss?: Readonly<PostCSSPluginConf>
   vue?: VuePluginOptions
   define?: boolean | Record<string, string>
   terser?: TerserOptions
   prod?: boolean
+  watch?: boolean
 }
 
 export const COPY_OPTIONS_KEYS: Array<keyof CopyOptions> = [
@@ -191,6 +193,7 @@ export const config = ({
   aliasEntries = [],
   copies = [],
   sourceMap = false,
+  babel: babelOptions,
   typescript: typescriptOptions,
   postcss: postcssOptions = {},
   vue: vueOptions,
@@ -215,17 +218,19 @@ ConfigOptions = {}): RollupOptions[] => {
   })
 
   const aliasOptions = {
-    resolve: EXTENSIONS.concat(ASSETS_EXTENSIONS),
-    entries: (Array.isArray(aliasEntries)
-      ? aliasEntries.map(({ find, replacement }) => ({
-          find: tryRegExp(find),
-          replacement,
-        }))
-      : Object.entries(aliasEntries).map(([find, replacement]) => ({
-          find: tryRegExp(find),
-          replacement,
-        }))
-    ).concat(entries),
+    resolve: [...EXTENSIONS, ...ASSETS_EXTENSIONS],
+    entries: [
+      ...(Array.isArray(aliasEntries)
+        ? aliasEntries.map(({ find, replacement }) => ({
+            find: tryRegExp(find),
+            replacement,
+          }))
+        : Object.entries(aliasEntries).map(([find, replacement]) => ({
+            find: tryRegExp(find),
+            replacement,
+          }))),
+      ...entries,
+    ],
   }
 
   const copyOptions: CopyOptions = isCopyOptions(copies)
@@ -288,10 +293,11 @@ ConfigOptions = {}): RollupOptions[] => {
     const collectedExternals =
       typeof externals === 'function'
         ? []
-        : arrayify(externals).concat(
-            Object.keys(peerDependencies),
-            node ? deps.concat(builtinModules) : [],
-          )
+        : [
+            ...arrayify(externals),
+            ...Object.keys(peerDependencies),
+            ...(node ? [...deps, ...builtinModules] : []),
+          ]
 
     const isTsInput = /\.tsx?/.test(pkgInput)
     const pkgFormats =
@@ -309,7 +315,7 @@ ConfigOptions = {}): RollupOptions[] => {
 
     if (define) {
       defineValues = Object.entries(define).reduce(
-        (acc, [key, value]) =>
+        (acc, [key, value]: [string, string]) =>
           Object.assign(acc, {
             [key]: JSON.stringify(value),
           }),
@@ -359,10 +365,11 @@ ConfigOptions = {}): RollupOptions[] => {
                 sourceMap,
               })
             : babel({
+                babelHelpers: 'runtime',
                 exclude: ['*.min.js', '*.production.js'],
                 presets: [
                   [
-                    '@babel/preset-env',
+                    '@babel/env',
                     isEsVersion
                       ? {
                           targets: {
@@ -372,6 +379,8 @@ ConfigOptions = {}): RollupOptions[] => {
                       : undefined,
                   ],
                 ],
+                plugins: ['@babel/transform-runtime'],
+                ...babelOptions,
               }),
           resolve({
             deps,
@@ -382,8 +391,7 @@ ConfigOptions = {}): RollupOptions[] => {
           json(),
           url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
           postcss(postcssOptions),
-        ].concat(
-          [
+          ...[
             vue && vue(vueOptions),
             // __DEV__ and __PROD__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
             define &&
@@ -403,7 +411,7 @@ ConfigOptions = {}): RollupOptions[] => {
               ),
             prod && terser(terserOptions),
           ].filter(identify),
-        ),
+        ],
       }
     })
   })
@@ -417,9 +425,10 @@ ConfigOptions = {}): RollupOptions[] => {
 }
 
 export default (options: ConfigOptions = {}) => {
-  const configs = config(options).concat(
-    options.prod ? config(Object.assign({}, options, { prod: false })) : [],
-  )
+  const configs = [
+    ...config(options),
+    ...(options.prod ? config({ ...options, prod: false }) : []),
+  ]
 
   info('configs: %O', configs)
 

@@ -1,8 +1,4 @@
 import fs from 'fs'
-import { promisify } from 'util'
-
-const readFile = promisify(fs.readFile)
-const writeFile = promisify(fs.writeFile)
 
 const plugins = ([
   [
@@ -58,10 +54,7 @@ const plugins = ([
     require(`imagemin-${name}`)(opts) as import('imagemin').Plugin,
 )
 
-export default (filename: string): (() => Promise<void>) =>
-  // @ts-ignore
-  [...plugins, (it: Buffer) => writeFile(filename, it)].reduce(
-    // @ts-ignore
-    (acc: Promise<void>, it: () => Promise<void>) => acc.then(it),
-    readFile(filename),
-  )
+export default (filename: string) =>
+  plugins
+    .reduce((acc, it) => acc.then(it), fs.promises.readFile(filename))
+    .then(it => fs.promises.writeFile(filename, it))

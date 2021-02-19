@@ -4,7 +4,7 @@ import program from 'commander'
 import debug from 'debug'
 import JSOX from 'jsox'
 import pick from 'lodash/pick'
-import webpack, { Compiler, Stats } from 'webpack'
+import webpack, { Compiler, StatsCompilation } from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 
 import config, { ConfigOptions } from './config'
@@ -42,8 +42,8 @@ program
   )
   .parse(process.argv)
 
-const options: ConfigOptions = pick(
-  program,
+const options = pick(
+  program.opts(),
   'entry',
   'type',
   'outputDir',
@@ -52,7 +52,7 @@ const options: ConfigOptions = pick(
   'copies',
   'preferCssModules',
   'prod',
-)
+) as ConfigOptions
 
 info('options: %O', options)
 
@@ -76,12 +76,12 @@ const webpackConfig = config(options)
 
 const compiler = webpack(webpackConfig)
 
-const handlerError = (error: Error | Stats.ToJsonOutput) => {
+const handlerError = (error: Error | StatsCompilation) => {
   console.error(error)
   process.exitCode = 1
 }
 
-if (__DEV__ && !program.prod) {
+if (__DEV__ && !options.prod) {
   startWatcher(compiler)
 } else {
   compiler.run((error, stats) => {
@@ -89,7 +89,7 @@ if (__DEV__ && !program.prod) {
       return handlerError(error)
     }
 
-    if (stats.hasErrors()) {
+    if (stats?.hasErrors()) {
       return handlerError(stats.toJson())
     }
   })

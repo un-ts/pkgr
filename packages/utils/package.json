@@ -6,6 +6,9 @@
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/utils",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
+  "engines": {
+    "node": "*"
+  },
   "main": "lib",
   "types": "lib",
   "files": [
