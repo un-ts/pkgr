@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-react@0.4.0...@pkgr/webpack-react@0.4.1) (2021-02-20)
+
+**Note:** Version bump only for package @pkgr/webpack-react
+
+
+
+
+
 # [0.4.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-react@0.3.3...@pkgr/webpack-react@0.4.0) (2021-02-19)
 
 
