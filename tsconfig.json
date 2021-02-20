@@ -1,7 +1,7 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "@1stg/tsconfig/tsconfig",
   "compilerOptions": {
-    "incremental": false
+    "noEmit": true
   },
   "references": [
     {

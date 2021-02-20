@@ -1597,6 +1597,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
+"@d-ts/bin@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@d-ts/bin/-/bin-1.0.0.tgz#c5118a5d015d37b594382aa8f9539263640c03fd"
+  integrity sha512-Cpwwl36JywXDMlaRBiEW3BNh/8gvYpUkxAv5LPivzY9EkxwVaTyH6Q2jL559KARIZucK7R4VrEayXYZPocuqbw==
+
 "@d-ts/core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@d-ts/core/-/core-1.0.0.tgz#7ee80698661dfcb0bc40821a77404b9021d257f1"

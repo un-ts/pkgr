@@ -19,7 +19,9 @@ import {
   isTsAvailable,
   monorepoPkgs,
   tryExtensions,
+  tryFile,
   tryGlob,
+  tryPkg,
   tryRequirePkg,
 } from '@pkgr/utils'
 import babel, { RollupBabelInputPluginOptions } from '@rollup/plugin-babel'
@@ -175,8 +177,9 @@ export const COPY_OPTIONS_KEYS: Array<keyof CopyOptions> = [
 const isCopyOptions = (
   copies: ConfigOptions['copies'],
 ): copies is CopyOptions =>
+  !!copies &&
   !Array.isArray(copies) &&
-  Object.keys(copies!).every(key =>
+  Object.keys(copies).every(key =>
     COPY_OPTIONS_KEYS.includes(key as keyof CopyOptions),
   )
 
@@ -360,13 +363,18 @@ ConfigOptions = {}): RollupOptions[] => {
                 jsx: 'react',
                 // @ts-ignore
                 module: 'esnext',
+                tsconfig:
+                  // FIXME: should prefer next one
+                  tryFile('tsconfig.base.json') ||
+                  tryFile(path.resolve(pkg, 'tsconfig.json')) ||
+                  tryPkg('@1stg/tsconfig'),
                 ...typescriptOptions,
                 target: isEsVersion ? format : 'es5',
                 sourceMap,
               })
             : babel({
                 babelHelpers: 'runtime',
-                exclude: ['*.min.js', '*.production.js'],
+                exclude: ['*.min.js', '*.prod.js', '*.production.js'],
                 presets: [
                   [
                     '@babel/env',
