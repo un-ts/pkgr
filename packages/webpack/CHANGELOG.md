@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.7.3...@pkgr/webpack@0.8.0) (2021-02-20)
+
+
+### Features
+
+* **webpack:** support file entry directly ([ccfd372](https://github.com/rx-ts/pkgr/commit/ccfd372d8313da4eae3d073b253bbf3ebf28d763))
+
+
+
+
+
 ## [0.7.3](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.7.2...@pkgr/webpack@0.7.3) (2021-02-20)
 
 
