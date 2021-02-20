@@ -36,7 +36,7 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-loader": "^2.0.0",
     "html-webpack-harddisk-plugin": "^2.0.0",
-    "html-webpack-plugin": "^5.1.0",
+    "html-webpack-plugin": "^5.2.0",
     "jsox": "^1.1.121",
     "lazy-compile-webpack-plugin": "^0.1.11",
     "less-loader": "^8.0.0",

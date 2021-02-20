@@ -6,9 +6,6 @@
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack-mdx",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
-  "peerDependencies": {
-    "@pkgr/webpack": "^0.5.1"
-  },
   "dependencies": {
     "@mdx-js/loader": "^1.6.4",
     "@pkgr/webpack-react": "^0.4.0"

@@ -39,15 +39,12 @@ import { InlineChunkHtmlPlugin } from './inline-chunk-html-plugin'
 // eslint-disable-next-line sonarjs/no-duplicate-string
 const NGTOOLS_WEBPACK = '@ngtools/webpack'
 
-// eslint-disable-next-line @typescript-eslint/no-type-alias
-type AngularCompilerPlugin = import('@ngtools/webpack').AngularCompilerPlugin
-
 const { AngularCompilerPlugin } = tryRequirePkg<{
-  AngularCompilerPlugin: AngularCompilerPlugin
+  AngularCompilerPlugin: typeof import('@ngtools/webpack').AngularCompilerPlugin
 }>(NGTOOLS_WEBPACK) || { AngularCompilerPlugin: null }
-const VueLoaderPlugin = tryRequirePkg<import('vue-loader').VueLoaderPlugin>(
-  'vue-loader/lib/plugin',
-)
+const VueLoaderPlugin = tryRequirePkg<
+  typeof import('vue-loader').VueLoaderPlugin
+>('vue-loader/lib/plugin')
 
 const info = debug('w:info')
 
@@ -379,6 +376,8 @@ ConfigOptions = {}) => {
         },
       ].filter(identify),
     },
+    // ignore temporarily due to webpack 4 compatible plugins
+    // @ts-ignore
     plugins: [
       new webpack.DefinePlugin({
         __DEV__: !prod && __DEV__,
@@ -429,7 +428,6 @@ ConfigOptions = {}) => {
       }),
       angular &&
         AngularCompilerPlugin &&
-        // @ts-ignore
         new AngularCompilerPlugin({
           compilerOptions: {
             emitDecoratorMetadata: true,
@@ -440,10 +438,7 @@ ConfigOptions = {}) => {
             tryFile(path.resolve(entry, '../tsconfig.json')) || tsconfigFile,
           sourceMap: !prod,
         } as import('@ngtools/webpack').AngularCompilerPluginOptions),
-      vue &&
-        VueLoaderPlugin &&
-        // @ts-ignore
-        new VueLoaderPlugin(),
+      vue && VueLoaderPlugin && new VueLoaderPlugin(),
     ].filter(identify),
     optimization: {
       runtimeChunk: {

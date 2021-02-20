@@ -22,7 +22,7 @@ import {
   tryGlob,
   tryRequirePkg,
 } from '@pkgr/utils'
-import babel, { BabelInputOptions } from '@rollup/plugin-babel'
+import babel, { RollupBabelInputPluginOptions } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
@@ -155,7 +155,7 @@ export interface ConfigOptions {
   aliasEntries?: StringMap | AliasOptions['entries']
   copies?: StringMap | CopyOptions['targets'] | CopyOptions
   sourceMap?: boolean
-  babel?: BabelInputOptions
+  babel?: RollupBabelInputPluginOptions
   typescript?: RollupTypescriptOptions
   postcss?: Readonly<PostCSSPluginConf>
   vue?: VuePluginOptions

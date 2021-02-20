@@ -7,11 +7,11 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "peerDependencies": {
-    "@pkgr/webpack": "^0.5.1",
     "vue": ">=2.0.0",
     "vue-template-compiler": ">=2.0.0"
   },
   "dependencies": {
+    "@pkgr/webpack": "^0.5.1",
     "vue-loader": "^15.9.2",
     "vue-style-loader": "^4.1.2",
     "vue-svg-loader": "^0.16.0"

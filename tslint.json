@@ -1,5 +1,5 @@
 {
-  "extends": "@1stg/tslint-config/eslint",
+  "extends": ["@1stg/tslint-config/eslint"],
   "rules": {
     "no-useless-cast": false
   },
