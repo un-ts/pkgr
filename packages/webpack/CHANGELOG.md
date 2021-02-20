@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.7.2...@pkgr/webpack@0.7.3) (2021-02-20)
+
+
+### Bug Fixes
+
+* rollup/webpack is cjs module ([369e151](https://github.com/rx-ts/pkgr/commit/369e151987eec1a2b164c80aada965c18c3841b1))
+
+
+
+
+
 ## [0.7.2](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.7.1...@pkgr/webpack@0.7.2) (2021-02-20)
 
 **Note:** Version bump only for package @pkgr/webpack
