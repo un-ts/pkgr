@@ -94,8 +94,8 @@ export default ({
 }: // eslint-disable-next-line sonarjs/cognitive-complexity
 ConfigOptions = {}) => {
   entry = tryFile(
-    ['index', 'main', 'app'].map(_ =>
-      tryExtensions(path.resolve([entry, _].join('/'))),
+    ['', 'index', 'main', 'app'].map(_ =>
+      tryExtensions(path.resolve(entry, _)),
     ),
   )
 
@@ -437,7 +437,7 @@ ConfigOptions = {}) => {
           tsConfigPath:
             tryFile(path.resolve(entry, '../tsconfig.json')) || tsconfigFile,
           sourceMap: !prod,
-        } as import('@ngtools/webpack').AngularCompilerPluginOptions),
+        }),
       vue && VueLoaderPlugin && new VueLoaderPlugin(),
     ].filter(identify),
     optimization: {
