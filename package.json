@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@1stg/app-config": "^1.1.2",
-    "@1stg/lib-config": "^1.1.8",
+    "@1stg/lib-config": "^1.2.6",
     "@1stg/tslint-config": "^1.2.0",
     "@angular/common": "^11.2.7",
     "@angular/compiler": "^11.2.7",
