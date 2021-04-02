@@ -65,7 +65,7 @@
     "@types/friendly-errors-webpack-plugin": "^0.1.2",
     "@types/imagemin": "^7.0.0",
     "@types/is-glob": "^4.0.1",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.168",
     "@types/micromatch": "^4.0.1",
     "@types/mini-css-extract-plugin": "^1.2.2",
