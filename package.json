@@ -41,7 +41,7 @@
     "w:dev": "ts-node -T --files packages/webpack/src/cli"
   },
   "devDependencies": {
-    "@1stg/app-config": "^1.1.2",
+    "@1stg/app-config": "^1.5.0",
     "@1stg/lib-config": "^1.2.6",
     "@1stg/tslint-config": "^1.2.0",
     "@angular/common": "^11.2.7",
