@@ -2,5 +2,5 @@ import App from './App.svelte'
 
 // eslint-disable-next-line no-new
 new App({
-  target: document.querySelector('#app') as HTMLElement,
+  target: document.querySelector('#app')!,
 })

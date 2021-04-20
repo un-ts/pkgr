@@ -121,6 +121,6 @@ export const arrayify = <T, R = T extends Array<infer S> ? S : T>(
   ...args: T[]
 ) =>
   args.reduce<R[]>((arr, curr) => {
-    arr.push(...(Array.isArray(curr) ? curr : [curr]))
+    arr.push(...(Array.isArray(curr) ? curr : curr == null ? [] : [curr]))
     return arr
   }, [])

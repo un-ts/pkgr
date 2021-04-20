@@ -10,8 +10,8 @@
     "@angular/core": ">=8.0.0"
   },
   "dependencies": {
-    "@ngtools/webpack": "^11.2.1",
-    "@pkgr/webpack": "^0.5.1"
+    "@ngtools/webpack": "^11.2.9",
+    "@pkgr/webpack": "^0.8.0"
   },
   "publishConfig": {
     "access": "public"

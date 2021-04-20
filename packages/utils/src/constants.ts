@@ -10,5 +10,5 @@ export const NODE_MODULES_REG = /[/\\]node_modules[/\\]/
 
 export const CWD = process.cwd()
 
-// eslint-disable-next-line node/no-deprecated-api
+// eslint-disable-next-line node/no-deprecated-api, sonar/deprecation
 export const EXTENSIONS = ['.ts', '.tsx', ...Object.keys(require.extensions)]

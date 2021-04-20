@@ -40,6 +40,7 @@ import { isMatch } from 'micromatch'
 import {
   ModuleFormat,
   OutputOptions,
+  Plugin,
   RollupOptions,
   RollupWarning,
   WarningHandler,

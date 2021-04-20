@@ -1,3 +1,5 @@
+// based on https://github.com/facebook/create-react-app/blob/master/packages/react-dev-utils/openBrowser.js
+
 import { execSync } from 'child_process'
 
 import chalk from 'chalk'
@@ -90,18 +92,19 @@ function startBrowserProcess(
     browser = undefined
   }
 
-  // If there are arguments, they must be passed as array with the browser
-  if (typeof browser === 'string' && args.length > 0) {
-    browser = [browser, ...args]
-  }
-
   // Fallback to open
   // (It will always open new tab)
-  // tslint:disable-next-line no-try-promise
+  // eslint-disable-next-line sonar/no-try-promise
   try {
-    const options = { app: browser, wait: false }
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    open(url, options).catch(() => {}) // Prevent `unhandledRejection` error.
+    open(url, {
+      app: browser
+        ? {
+            name: browser,
+            arguments: args,
+          }
+        : undefined,
+      wait: false,
+    }).catch(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function -- Prevent `unhandledRejection` error.
     return true
   } catch {
     return false

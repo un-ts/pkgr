@@ -50,7 +50,7 @@ const plugins = ([
   ],
 ] as const).map(
   ([name, opts]) =>
-    // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-var-requires
+    // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-var-requires
     require(`imagemin-${name}`)(opts) as import('imagemin').Plugin,
 )
 

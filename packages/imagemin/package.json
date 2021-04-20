@@ -26,13 +26,13 @@
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
-    "imagemin-pngquant": "^9.0.0",
-    "imagemin-svgo": "^8.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^9.0.0",
     "imagemin-upng": "^2.0.2",
     "imagemin-webp": "^6.0.0",
     "is-glob": "^4.0.1",
     "tiny-glob": "^0.2.6",
-    "tslib": "^2.0.0"
+    "tslib": "^2.2.0"
   },
   "publishConfig": {
     "access": "public"

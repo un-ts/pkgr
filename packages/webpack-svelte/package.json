@@ -7,11 +7,11 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "peerDependencies": {
-    "svelte": ">=3.20.1"
+    "svelte": ">=3.0.0"
   },
   "dependencies": {
-    "@pkgr/webpack": "^0.5.1",
-    "svelte-loader": "^3.0.0"
+    "@pkgr/webpack": "^0.8.0",
+    "svelte-loader": "^3.1.1"
   },
   "publishConfig": {
     "access": "public"

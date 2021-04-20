@@ -4,6 +4,7 @@
     "baseUrl": "."
   },
   "angularCompilerOptions": {
-    "disableTypeScriptVersionCheck": true
+    "disableTypeScriptVersionCheck": true,
+    "strictMetadataEmit": false
   }
 }

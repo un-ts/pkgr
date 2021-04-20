@@ -7,11 +7,11 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=16.13.0"
+    "react": ">=16.0.0"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^17.0.1",
-    "@pkgr/webpack": "^0.5.1",
+    "@pkgr/webpack": "^0.8.0",
     "@svgr/webpack": "^5.4.0",
     "react-hot-loader": "^4.12.21"
   },

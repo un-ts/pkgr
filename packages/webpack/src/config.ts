@@ -36,7 +36,6 @@ import { GenerateSW } from 'workbox-webpack-plugin'
 
 import { InlineChunkHtmlPlugin } from './inline-chunk-html-plugin'
 
-// eslint-disable-next-line sonarjs/no-duplicate-string
 const NGTOOLS_WEBPACK = '@ngtools/webpack'
 
 const { AngularCompilerPlugin } = tryRequirePkg<{
@@ -454,6 +453,11 @@ ConfigOptions = {}) => {
         },
       },
     },
+    ignoreWarnings: [
+      {
+        message: /^Zone\.js does not support native async\/await/,
+      },
+    ],
   }
 
   info('config: %O', config)

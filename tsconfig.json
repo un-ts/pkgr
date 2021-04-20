@@ -1,7 +1,8 @@
 {
   "extends": "@1stg/tsconfig/tsconfig",
   "compilerOptions": {
-    "noEmit": true
+    "noEmit": true,
+    "lib": ["DOM", "ESNext"]
   },
   "references": [
     {
