@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.8.0...@pkgr/webpack@0.9.0) (2021-04-20)
+
+
+### Features
+
+* bump all (dev)Dependencies, update related usage ([113e909](https://github.com/rx-ts/pkgr/commit/113e909be27515c529f053c8c49a94ffbc821d33))
+
+
+
+
+
 # [0.8.0](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack@0.7.3...@pkgr/webpack@0.8.0) (2021-02-20)
 
 

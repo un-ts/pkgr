@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.6.0...@pkgr/utils@0.7.0) (2021-04-20)
+
+
+### Features
+
+* bump all (dev)Dependencies, update related usage ([113e909](https://github.com/rx-ts/pkgr/commit/113e909be27515c529f053c8c49a94ffbc821d33))
+
+
+
+
+
 # [0.6.0](https://github.com/rx-ts/pkgr/compare/@pkgr/utils@0.5.0...@pkgr/utils@0.6.0) (2021-02-19)
 
 
