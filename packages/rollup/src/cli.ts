@@ -108,6 +108,7 @@ const options = pick(
   'typescript',
   'postcss',
   'vue',
+  'define',
   'terser',
   'prod',
 ) as ConfigOptions
