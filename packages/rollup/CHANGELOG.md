@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.12.0...@pkgr/rollup@0.12.1) (2021-04-25)
+
+
+### Bug Fixes
+
+* rollback to open@7, add missing define option ([ffaeabf](https://github.com/rx-ts/pkgr/commit/ffaeabff8ea877eef09a285c8103fa313984cee2))
+
+
+
+
+
 # [0.12.0](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.11.3...@pkgr/rollup@0.12.0) (2021-04-20)
 
 
