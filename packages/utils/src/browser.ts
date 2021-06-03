@@ -39,10 +39,10 @@ function getBrowserEnv() {
 
 function executeNodeScript(scriptPath: string, url: string) {
   const extraArgs = process.argv.slice(2)
-  const child = spawn('node', [scriptPath, ...extraArgs, url], {
+  const child = spawn(process.execPath, [scriptPath, ...extraArgs, url], {
     stdio: 'inherit',
   })
-  child.on('close', (code: number) => {
+  child.on('close', code => {
     if (code !== 0) {
       console.log()
       console.log(
@@ -50,14 +50,15 @@ function executeNodeScript(scriptPath: string, url: string) {
           'The script specified as BROWSER environment variable failed.',
         ),
       )
-      console.log(`${chalk.cyan(scriptPath)} exited with code ${code}.\n`)
+      console.log(`${chalk.cyan(scriptPath)} exited with code ${code!}`)
+      console.log()
     }
   })
   return true
 }
 
 function startBrowserProcess(
-  browser: string | string[] | undefined,
+  browser: string[] | string | undefined,
   url: string,
   args: string[],
 ) {
@@ -65,22 +66,41 @@ function startBrowserProcess(
   // requested a different browser, we can try opening
   // Chrome with AppleScript. This lets us reuse an
   // existing tab when possible instead of creating a new one.
-  const shouldTryOpenChromeWithAppleScript =
+  const shouldTryOpenChromiumWithAppleScript =
     process.platform === 'darwin' &&
     (typeof browser !== 'string' || browser === OSX_CHROME)
 
-  if (shouldTryOpenChromeWithAppleScript) {
-    try {
-      // Try our best to reuse existing tab
-      // on OS X Google Chrome with AppleScript
-      execSync('ps cax | grep "Google Chrome"')
-      execSync('osascript ../openChrome.applescript "' + encodeURI(url) + '"', {
-        cwd: __dirname,
-        stdio: 'ignore',
-      })
-      return true
-    } catch {
-      // Ignore errors.
+  if (shouldTryOpenChromiumWithAppleScript) {
+    // Will use the first open browser found from list
+    const supportedChromiumBrowsers = [
+      'Google Chrome Canary',
+      'Google Chrome',
+      'Microsoft Edge',
+      'Brave Browser',
+      'Vivaldi',
+      'Chromium',
+    ]
+
+    for (const chromiumBrowser of supportedChromiumBrowsers) {
+      try {
+        // Try our best to reuse existing tab
+        // on OSX Chromium-based browser with AppleScript
+        execSync('ps cax | grep "' + chromiumBrowser + '"')
+        execSync(
+          'osascript ../openChrome.applescript "' +
+            encodeURI(url) +
+            '" "' +
+            chromiumBrowser +
+            '"',
+          {
+            cwd: __dirname,
+            stdio: 'ignore',
+          },
+        )
+        return true
+      } catch {
+        // Ignore errors.
+      }
     }
   }
 
@@ -92,18 +112,19 @@ function startBrowserProcess(
     browser = undefined
   }
 
-  // If there are arguments, they must be passed as array with the browser
-  if (typeof browser === 'string' && args.length > 0) {
-    browser = [browser, ...args]
-  }
-
   // Fallback to open
   // (It will always open new tab)
   // eslint-disable-next-line sonar/no-try-promise
   try {
-    const options = { app: browser, wait: false }
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    open(url, options).catch(() => {}) // Prevent `unhandledRejection` error.
+    open(url, {
+      app: browser
+        ? {
+            name: browser,
+            arguments: args,
+          }
+        : undefined,
+      wait: false,
+    }).catch(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function -- Prevent `unhandledRejection` error.
     return true
   } catch {
     return false

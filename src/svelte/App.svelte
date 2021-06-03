@@ -1,4 +1,4 @@
 <script>
-	let name = 'world';
+const name = 'world';
 </script>
 <h1>Hello {name}!</h1>

@@ -5,7 +5,6 @@ export type ModuleDefinition =
       exact?: boolean
     }
 
-// eslint-disable-next-line @typescript-eslint/no-type-alias
 export type ModuleDefinitions = Record<string, ModuleDefinition>
 
 export const MODULE_DEFINITIONS: ModuleDefinitions = {
@@ -28,7 +27,7 @@ const defEntries = Object.entries(MODULE_DEFINITIONS)
  */
 export const entries = defEntries.reduce<
   Array<{
-    find: string | RegExp
+    find: RegExp | string
     replacement: string
   }>
 >((acc, [module, definition]) => {

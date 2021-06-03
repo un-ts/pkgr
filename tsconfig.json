@@ -1,9 +1,5 @@
 {
-  "extends": "@1stg/tsconfig/tsconfig",
-  "compilerOptions": {
-    "noEmit": true,
-    "lib": ["DOM", "ESNext"]
-  },
+  "extends": "./tsconfig.base",
   "references": [
     {
       "path": "packages/es-modules"
@@ -26,7 +22,7 @@
   ],
   "ts-node": {
     "compilerOptions": {
-      "module": "commonjs"
+      "module": "CommonJS"
     }
   }
 }

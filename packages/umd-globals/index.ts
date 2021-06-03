@@ -21,7 +21,7 @@ export interface StringMap {
 }
 
 export const asIsReducer = (
-  globals: string | StringMap,
+  globals: StringMap | string,
   pkg?: string,
 ): StringMap => ({
   ...(typeof globals === 'string'
@@ -38,7 +38,7 @@ export const upperCamelCase = (pkg: string) =>
   pkg.replace(/(^|-)([a-z])/g, (_, _$1: string, $2: string) => $2.toUpperCase())
 
 export const upperCamelCaseReducer = (
-  globals: string | StringMap,
+  globals: StringMap | string,
   pkg?: string,
 ): StringMap => ({
   ...(typeof globals === 'string'
@@ -71,8 +71,8 @@ export const getGlobals = ({
   ...GLOBALS,
   ...AS_IS_PKGS.reduce(asIsReducer, {}),
   ...UPPER_CAMEL_CASE_PKGS.reduce(upperCamelCaseReducer, {}),
-  ...(asIsPkgs || []).reduce(asIsReducer, {}),
-  ...(upperCamelCasePkgs || []).reduce(upperCamelCaseReducer, {}),
+  ...(asIsPkgs ?? []).reduce(asIsReducer, {}),
+  ...(upperCamelCasePkgs ?? []).reduce(upperCamelCaseReducer, {}),
   ...globals,
 })
 

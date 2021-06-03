@@ -38,9 +38,9 @@ import { InlineChunkHtmlPlugin } from './inline-chunk-html-plugin'
 
 const NGTOOLS_WEBPACK = '@ngtools/webpack'
 
-const { AngularCompilerPlugin } = tryRequirePkg<{
-  AngularCompilerPlugin: typeof import('@ngtools/webpack').AngularCompilerPlugin
-}>(NGTOOLS_WEBPACK) || { AngularCompilerPlugin: null }
+const { AngularWebpackPlugin } = tryRequirePkg<{
+  AngularWebpackPlugin: typeof import('@ngtools/webpack').AngularWebpackPlugin
+}>(NGTOOLS_WEBPACK) ?? { AngularWebpackPlugin: null }
 const VueLoaderPlugin = tryRequirePkg<
   typeof import('vue-loader').VueLoaderPlugin
 >('vue-loader/lib/plugin')
@@ -71,8 +71,7 @@ const baseTsconfigFile = tryFile([
   tryPkg('@1stg/tsconfig')!,
 ])
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-const extraLoaderOptions: Record<string, {}> = {
+const extraLoaderOptions: Record<string, object> = {
   less: {
     javascriptEnabled: true,
   },
@@ -236,6 +235,7 @@ ConfigOptions = {}) => {
     resolve: {
       alias: {
         ...alias,
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         ...((prod && {}) ||
           (react && {
             'react-dom': '@hot-loader/react-dom',
@@ -259,7 +259,6 @@ ConfigOptions = {}) => {
         'fesm5',
         'main',
       ].filter(identify),
-      // @ts-ignore
       plugins: [
         isTsAvailable &&
           new TsconfigPathsWebpackPlugin({
@@ -376,7 +375,7 @@ ConfigOptions = {}) => {
       ].filter(identify),
     },
     // ignore temporarily due to webpack 4 compatible plugins
-    // @ts-ignore
+    // @ts-expect-error
     plugins: [
       new webpack.DefinePlugin({
         __DEV__: !prod && __DEV__,
@@ -426,16 +425,14 @@ ConfigOptions = {}) => {
         filename: filenamePrefix + 'css',
       }),
       angular &&
-        AngularCompilerPlugin &&
-        new AngularCompilerPlugin({
+        AngularWebpackPlugin &&
+        new AngularWebpackPlugin({
+          tsconfig:
+            tryFile(path.resolve(entry, '../tsconfig.json')) || tsconfigFile,
           compilerOptions: {
             emitDecoratorMetadata: true,
             target: 99, // represents esnext
           },
-          mainPath: entry,
-          tsConfigPath:
-            tryFile(path.resolve(entry, '../tsconfig.json')) || tsconfigFile,
-          sourceMap: !prod,
         }),
       vue && VueLoaderPlugin && new VueLoaderPlugin(),
     ].filter(identify),
