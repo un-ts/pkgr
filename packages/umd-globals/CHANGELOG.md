@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.6.2
+
+### Patch Changes
+
+- [#206](https://github.com/rx-ts/pkgr/pull/206) [`fdbb055`](https://github.com/rx-ts/pkgr/commit/fdbb055633227b51b0c907315854cafc007c6dc0) Thanks [@JounQin](https://github.com/JounQin)! - fix: build before release
+
 ## 0.6.1
 
 ### Patch Changes
