@@ -7,7 +7,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "engines": {
-    "node": ">=12"
+    "node": ">=v14.17.0"
   },
   "bin": {
     "i": "lib/cli.js"
