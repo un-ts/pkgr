@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.4
+
+### Patch Changes
+
+- [`d758a56`](https://github.com/rx-ts/pkgr/commit/d758a56d1331cf15804e15af98ae619037061ae7) Thanks [@JounQin](https://github.com/JounQin)! - fix(rollup): prevent rollup/replace warning
+
 ## 1.1.3
 
 ### Patch Changes
