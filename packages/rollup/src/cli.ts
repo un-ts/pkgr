@@ -71,9 +71,14 @@ program
     JSOX.parse,
   )
   .option(
-    '-t, --typescript <JSOX>',
-    'Overrides the TypeScript compiler options for `@rollup/plugin-typescript`',
+    '--esbuild <JSOX>',
+    'Overrides the esbuild options for `rollup-plugin-esbuild`',
     JSOX.parse,
+  )
+  .option(
+    '-t, --transformer [babel | esbuild]',
+    'Specify which transformer to use',
+    'esbuild',
   )
   .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
   .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', JSOX.parse)
@@ -105,7 +110,8 @@ const options = pick(
   'aliasEntries',
   'sourceMap',
   'babel',
-  'typescript',
+  'esbuild',
+  'transformer',
   'postcss',
   'vue',
   'define',
