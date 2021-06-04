@@ -429,7 +429,8 @@ ConfigOptions = {}): RollupOptions[] => {
           postcss(postcssOptions),
           ...[
             vue?.(vueOptions),
-            !useEsBuild && replace(defineValues),
+            !useEsBuild &&
+              replace({ preventAssignment: true, values: defineValues }),
             prod && !useEsBuild && terser(terserOptions),
           ],
         ].filter(identify),
