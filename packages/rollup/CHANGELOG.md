@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.3
+
+### Patch Changes
+
+- [`802fad9`](https://github.com/rx-ts/pkgr/commit/802fad95ea2ad32ccafd61650b77b6dfacbd9462) Thanks [@JounQin](https://github.com/JounQin)! - fix: support babel+typescript correctly
+
 ## 1.1.2
 
 ### Patch Changes
