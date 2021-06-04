@@ -6,9 +6,6 @@
 
 - [#201](https://github.com/rx-ts/pkgr/pull/201) [`e952854`](https://github.com/rx-ts/pkgr/commit/e95285419e60c01e79bade280f73b2389d98c6c5) Thanks [@JounQin](https://github.com/JounQin)! - feat: bump all (dev)Dependencies
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 # [0.6.0](https://github.com/rx-ts/pkgr/compare/@pkgr/imagemin@0.5.0...@pkgr/imagemin@0.6.0) (2021-04-20)
 
 ### Features

@@ -11,9 +11,6 @@
 - Updated dependencies [[`e952854`](https://github.com/rx-ts/pkgr/commit/e95285419e60c01e79bade280f73b2389d98c6c5)]:
   - @pkgr/webpack@1.0.0
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [0.5.2](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-angular@0.5.1...@pkgr/webpack-angular@0.5.2) (2021-05-01)
 
 **Note:** Version bump only for package @pkgr/webpack-angular

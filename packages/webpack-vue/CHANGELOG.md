@@ -11,9 +11,6 @@
 - Updated dependencies [[`e952854`](https://github.com/rx-ts/pkgr/commit/e95285419e60c01e79bade280f73b2389d98c6c5)]:
   - @pkgr/webpack@1.0.0
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [0.4.1](https://github.com/rx-ts/pkgr/compare/@pkgr/webpack-vue@0.4.0...@pkgr/webpack-vue@0.4.1) (2021-04-25)
 
 **Note:** Version bump only for package @pkgr/webpack-vue

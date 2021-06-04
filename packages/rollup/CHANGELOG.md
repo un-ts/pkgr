@@ -13,9 +13,6 @@
 - Updated dependencies [[`e952854`](https://github.com/rx-ts/pkgr/commit/e95285419e60c01e79bade280f73b2389d98c6c5), [`448ca4b`](https://github.com/rx-ts/pkgr/commit/448ca4be9fed6a38b42f37e6e74d077c8ad53fd4)]:
   - @pkgr/utils@1.0.0
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [0.12.1](https://github.com/rx-ts/pkgr/compare/@pkgr/rollup@0.12.0...@pkgr/rollup@0.12.1) (2021-04-25)
 
 ### Bug Fixes
