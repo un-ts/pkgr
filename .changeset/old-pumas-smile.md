@@ -5,7 +5,10 @@
 "@pkgr/umd-globals": patch
 "@pkgr/utils": major
 "@pkgr/webpack-angular": major
-"@pkgr/webpack-vue": patch
+"@pkgr/webpack-mdx": major
+"@pkgr/webpack-react": major
+"@pkgr/webpack-svelte": major
+"@pkgr/webpack-vue": major
 "@pkgr/webpack": major
 ---
 
