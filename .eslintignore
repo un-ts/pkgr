@@ -2,6 +2,5 @@ coverage
 dist
 lib
 packages/*/CHANGELOG.md
-packages/named-exports/index.ts
 node_modules
 !/.*.js
