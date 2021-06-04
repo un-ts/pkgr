@@ -1,3 +1,3 @@
 <template lang="pug">
-  #app Hello World!
+#app Hello World!
 </template>

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/unbound-method */
 import { tryRequirePkg } from '@pkgr/utils'
 import program from 'commander'
 import debug from 'debug'
@@ -76,11 +77,10 @@ program
   )
   .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
   .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', JSOX.parse)
-  // eslint-disable-next-line @typescript-eslint/ban-types
   .option<boolean | object>(
     '-d, --define [boolean | JSOX]',
     'options for `@rollup/plugin-replace`, enable `__DEV__` and `__PROD__` by default',
-    // @ts-ignore
+    // @ts-expect-error
     JSOX.parse,
     true,
   )

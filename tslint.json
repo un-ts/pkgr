@@ -4,10 +4,6 @@
     "no-useless-cast": false
   },
   "linterOptions": {
-    "exclude": [
-      "**/lib/**",
-      "**/node_modules/**",
-      "packages/named-exports/index.ts"
-    ]
+    "exclude": ["**/lib/**", "**/node_modules/**"]
   }
 }

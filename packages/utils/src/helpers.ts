@@ -34,7 +34,7 @@ export const isSvelteAvailable = isPkgAvailable('svelte')
 
 export const isVueAvailable = isPkgAvailable('vue')
 
-export const tryFile = (filePath?: string | string[], includeDir = false) => {
+export const tryFile = (filePath?: string[] | string, includeDir = false) => {
   if (typeof filePath === 'string') {
     return fs.existsSync(filePath) &&
       (includeDir || fs.statSync(filePath).isFile())
@@ -42,7 +42,7 @@ export const tryFile = (filePath?: string | string[], includeDir = false) => {
       : ''
   }
 
-  for (const file of filePath || []) {
+  for (const file of filePath ?? []) {
     if (tryFile(file, includeDir)) {
       return file
     }
@@ -59,11 +59,11 @@ export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
 export const tryGlob = (
   paths: string[],
   options:
+    | string
     | {
         absolute?: boolean
         baseDir?: string
-      }
-    | string = {},
+      } = {},
 ) => {
   const { absolute = true, baseDir = CWD } =
     typeof options === 'string' ? { baseDir: options } : options
@@ -86,8 +86,7 @@ export const identify = <T>(
   _: T,
 ): _ is Exclude<
   T,
-  // tslint:disable-next-line max-union-size
-  (T extends boolean ? false : boolean) | '' | null | undefined
+  '' | (T extends boolean ? false : boolean) | null | undefined
 > => !!_
 
 export const findUp = (searchEntry: string, searchFile = 'package.json') => {

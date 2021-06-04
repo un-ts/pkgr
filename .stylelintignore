@@ -1,0 +1,4 @@
+.type-coverage
+coverage
+dist
+node_modules

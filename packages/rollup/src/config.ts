@@ -49,12 +49,12 @@ import copy, { CopyOptions } from 'rollup-plugin-copy'
 import postcss, { PostCSSPluginConf } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
 
-// eslint-disable-next-line @typescript-eslint/no-type-alias
 type VuePluginOptions = import('rollup-plugin-vue').Options
 
-const vue = tryRequirePkg<(opts?: Partial<VuePluginOptions>) => Plugin>(
-  'rollup-plugin-vue',
-)
+const vue =
+  tryRequirePkg<(opts?: Partial<VuePluginOptions>) => Plugin>(
+    'rollup-plugin-vue',
+  )
 
 const info = debug('r:info')
 
@@ -107,9 +107,9 @@ const cjs = (sourceMap: boolean) =>
 
 const DEFAULT_FORMATS = ['cjs', 'es2015', 'esm']
 
-const regExpCacheMap = new Map<string, string | RegExp>()
+const regExpCacheMap = new Map<string, RegExp | string>()
 
-const tryRegExp = (exp: string | RegExp) => {
+const tryRegExp = (exp: RegExp | string) => {
   if (typeof exp === 'string' && (exp = exp.trim())) {
     const cached = regExpCacheMap.get(exp)
     if (cached != null) {
@@ -138,16 +138,16 @@ const onwarn = (warning: RollupWarning, warn: WarningHandler) => {
   warn(warning)
 }
 
-export type Format = 'cjs' | 'es2015' | 'es5' | 'esm' | 'umd'
+export type Format = 'cjs' | 'es5' | 'es2015' | 'esm' | 'umd'
 
 export type External =
-  | string
   | string[]
+  | string
   | ((id: string, collectedExternals?: string[]) => boolean)
 
 export interface ConfigOptions {
   formats?: ModuleFormat[]
-  monorepo?: boolean | string[]
+  monorepo?: string[] | boolean
   input?: string
   exclude?: string[]
   outputDir?: string
@@ -155,14 +155,14 @@ export interface ConfigOptions {
   external?: External
   externals?: External
   globals?: StringMap
-  aliasEntries?: StringMap | AliasOptions['entries']
-  copies?: StringMap | CopyOptions['targets'] | CopyOptions
+  aliasEntries?: AliasOptions['entries'] | StringMap
+  copies?: CopyOptions | CopyOptions['targets'] | StringMap
   sourceMap?: boolean
   babel?: RollupBabelInputPluginOptions
   typescript?: RollupTypescriptOptions
   postcss?: Readonly<PostCSSPluginConf>
   vue?: VuePluginOptions
-  define?: boolean | Record<string, string>
+  define?: Record<string, string> | boolean
   terser?: TerserOptions
   prod?: boolean
   watch?: boolean
@@ -192,7 +192,7 @@ export const config = ({
   outputDir = 'lib',
   exports,
   external,
-  externals = external || [],
+  externals = external ?? [],
   globals: umdGlobals,
   aliasEntries = [],
   copies = [],
@@ -243,7 +243,7 @@ ConfigOptions = {}): RollupOptions[] => {
         targets: Array.isArray(copies)
           ? copies
           : Object.entries(copies).map(
-              ([src, dest]: [string, string | string[]]) => ({
+              ([src, dest]: [string, string[] | string]) => ({
                 src,
                 dest,
               }),
@@ -260,7 +260,7 @@ ConfigOptions = {}): RollupOptions[] => {
       pkgInput = 'index'
     }
 
-    pkgInput = tryExtensions(path.resolve(pkg, pkgInput || 'src/index'))
+    pkgInput = tryExtensions(path.resolve(pkg, pkgInput ?? 'src/index'))
 
     if (pkgOutputDir && !pkgOutputDir.endsWith('/')) {
       pkgOutputDir = pkgOutputDir + '/'
@@ -309,6 +309,7 @@ ConfigOptions = {}): RollupOptions[] => {
         ? formats
         : DEFAULT_FORMATS.concat(node ? [] : 'umd')
     const pkgGlobals = collectedExternals.reduce((pkgGlobals, pkg) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (pkgGlobals[pkg] == null) {
         pkgGlobals[pkg] = upperCamelCase(normalizePkg(pkg))
       }
@@ -360,9 +361,7 @@ ConfigOptions = {}): RollupOptions[] => {
           alias(aliasOptions),
           isTsAvailable && isTsInput
             ? typescript({
-                // @ts-ignore
                 jsx: 'react',
-                // @ts-ignore
                 module: 'esnext',
                 tsconfig:
                   // FIXME: should prefer next one
@@ -401,7 +400,7 @@ ConfigOptions = {}): RollupOptions[] => {
           url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
           postcss(postcssOptions),
           ...[
-            vue && vue(vueOptions),
+            vue?.(vueOptions),
             // __DEV__ and __PROD__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
             define &&
               replace(

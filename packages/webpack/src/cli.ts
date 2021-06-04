@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/unbound-method */
 import { __DEV__, openBrowser } from '@pkgr/utils'
 import program from 'commander'
 import debug from 'debug'

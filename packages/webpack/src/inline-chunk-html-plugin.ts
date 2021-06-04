@@ -23,7 +23,7 @@ export class InlineChunkHtmlPlugin {
     assets: Compilation['assets'],
     tag: HtmlTagObject,
   ) {
-    if (tag.tagName !== 'script' || !(tag.attributes && tag.attributes.src)) {
+    if (tag.tagName !== 'script' || !tag.attributes.src) {
       return tag
     }
 
@@ -34,6 +34,7 @@ export class InlineChunkHtmlPlugin {
       return tag
     }
     const asset = assets[scriptName]
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (asset == null) {
       return tag
     }
