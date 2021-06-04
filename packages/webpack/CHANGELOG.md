@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.2
+
+### Patch Changes
+
+- [`025f1af`](https://github.com/rx-ts/pkgr/commit/025f1af9d78b90986cd63a70a1a7767629cbac3a) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump @1stg packages
+
 ## 1.0.1
 
 ### Patch Changes
