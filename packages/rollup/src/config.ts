@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
+import { DEFAULT_EXTENSIONS } from '@babel/core'
 import { entries } from '@pkgr/es-modules'
 import {
   StringMap,
@@ -392,13 +393,18 @@ ConfigOptions = {}): RollupOptions[] => {
               })
             : babel({
                 babelHelpers: 'runtime',
-                exclude: ['*.min.js', '*.prod.js', '*.production.js'],
+                exclude: babelOptions?.filter
+                  ? undefined
+                  : ['*.min.js', '*.prod.js', '*.production.js'],
+                extensions: isTsInput
+                  ? ['.ts', '.tsx', ...DEFAULT_EXTENSIONS]
+                  : undefined,
                 presets: [
                   [
                     '@babel/env',
                     {
                       bugfixes: true,
-                      corejs: '3.13',
+                      corejs: { version: '3.13', proposals: true },
                       shippedProposals: true,
                       useBuiltIns: 'usage',
                       targets: isEsVersion ? { esmodules: true } : undefined,
@@ -409,13 +415,7 @@ ConfigOptions = {}): RollupOptions[] => {
                     { allowDeclareFields: true, allowNamespaces: true },
                   ],
                 ].filter(identify),
-                plugins: [
-                  ['@babel/proposal-decorators', { legacy: true }],
-                  [
-                    '@babel/transform-runtime',
-                    { corejs: { proposals: true, version: 3 } },
-                  ],
-                ],
+                plugins: [['@babel/proposal-decorators', { legacy: true }]],
                 ...babelOptions,
               }),
           resolve({
