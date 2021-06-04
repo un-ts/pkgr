@@ -18,8 +18,15 @@ describe('umd globals', () => {
       Object.values(globals).every(_ => typeof _ === 'string'),
     ).toBeTruthy())
 
-  it('should be able to parse empty params', () =>
-    expect(getGlobals({})).toStrictEqual(globals))
+  it('should be able to parse empty params', () => {
+    expect(getGlobals({})).toStrictEqual(globals)
+    expect(
+      getGlobals({
+        asIsPkgs: [],
+        upperCamelCasePkgs: [],
+      }),
+    ).toStrictEqual(globals)
+  })
 
   it('should be able to override globals', () =>
     expect(
