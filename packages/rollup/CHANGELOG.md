@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- [#204](https://github.com/rx-ts/pkgr/pull/204) [`713ba16`](https://github.com/rx-ts/pkgr/commit/713ba1604891393d6d8a559cec0d027b71e2382c) Thanks [@JounQin](https://github.com/JounQin)! - feat: better babel+typescript support
+
 ## 1.0.0
 
 ### Major Changes
