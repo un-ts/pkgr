@@ -332,6 +332,7 @@ ConfigOptions = {}): RollupOptions[] => {
       )
     }
 
+    const isTsInput = /\.tsx?/.test(pkgInput)
     const useEsBuild = transformer === 'esbuild'
     const { jsxFactory } = esbuildOptions
     const esbuildVueJsx =
@@ -403,8 +404,13 @@ ConfigOptions = {}): RollupOptions[] => {
                       targets: isEsVersion ? { esmodules: true } : undefined,
                     },
                   ],
-                ],
+                  isTsInput && [
+                    '@babel/typescript',
+                    { allowDeclareFields: true, allowNamespaces: true },
+                  ],
+                ].filter(identify),
                 plugins: [
+                  ['@babel/proposal-decorators', { legacy: true }],
                   [
                     '@babel/transform-runtime',
                     { corejs: { proposals: true, version: 3 } },
