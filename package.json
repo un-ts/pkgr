@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "run-s build:ts build:r build:w",
-    "build:r": "ts-node --files packages/rollup/src/cli -d false --exclude webpack-* -p",
+    "build:r": "ts-node --files packages/rollup/src/cli -d false --exclude webpack-*",
     "build:ts": "tsc -b",
     "build:w": "rimraf dist && run-p build:w:*",
     "build:w:angular": "yarn w:build -e src/angular -o dist/angular -t angular -p",

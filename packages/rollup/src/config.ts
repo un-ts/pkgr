@@ -16,7 +16,6 @@ import {
   __PROD__,
   arrayify,
   identify,
-  isTsAvailable,
   monorepoPkgs,
   tryExtensions,
   tryFile,
@@ -29,7 +28,6 @@ import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
-import typescript, { RollupTypescriptOptions } from '@rollup/plugin-typescript'
 import url from '@rollup/plugin-url'
 import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
@@ -46,8 +44,10 @@ import {
   WarningHandler,
 } from 'rollup'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
+import esbuild, { Options as EsBuildOptions } from 'rollup-plugin-esbuild'
 import postcss, { PostCSSPluginConf } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
+import vueJsx, { Options as VueJsxOptions } from 'rollup-plugin-vue-jsx-compat'
 
 type VuePluginOptions = import('rollup-plugin-vue').Options
 
@@ -96,14 +96,7 @@ const resolve = ({ deps, node }: { deps: string[]; node?: boolean }) =>
     preferBuiltins: node,
   })
 
-const cjs = (sourceMap: boolean) =>
-  commonjs({
-    // TODO: add package @pkgr/cjs-ignore ?
-    // see also: https://github.com/rollup/rollup-plugin-commonjs/issues/244#issuecomment-536168280
-    // hard-coded temporarily
-    ignore: ['invariant', 'react-draggable'],
-    sourceMap,
-  })
+const cjs = (sourceMap: boolean) => commonjs({ sourceMap })
 
 const DEFAULT_FORMATS = ['cjs', 'es2015', 'esm']
 
@@ -159,7 +152,8 @@ export interface ConfigOptions {
   copies?: CopyOptions | CopyOptions['targets'] | StringMap
   sourceMap?: boolean
   babel?: RollupBabelInputPluginOptions
-  typescript?: RollupTypescriptOptions
+  esbuild?: EsBuildOptions
+  transformer?: 'babel' | 'esbuild'
   postcss?: Readonly<PostCSSPluginConf>
   vue?: VuePluginOptions
   define?: Record<string, string> | boolean
@@ -198,7 +192,8 @@ export const config = ({
   copies = [],
   sourceMap = false,
   babel: babelOptions,
-  typescript: typescriptOptions,
+  esbuild: esbuildOptions = {},
+  transformer = 'esbuild',
   postcss: postcssOptions = {},
   vue: vueOptions,
   define,
@@ -303,7 +298,6 @@ ConfigOptions = {}): RollupOptions[] => {
             ...(node ? [...deps, ...builtinModules] : []),
           ]
 
-    const isTsInput = /\.tsx?/.test(pkgInput)
     const pkgFormats =
       formats && formats.length > 0
         ? formats
@@ -319,14 +313,29 @@ ConfigOptions = {}): RollupOptions[] => {
     let defineValues: Record<string, string> | undefined
 
     if (define) {
-      defineValues = Object.entries(define).reduce(
+      defineValues = Object.entries(define).reduce<Record<string, string>>(
         (acc, [key, value]: [string, string]) =>
           Object.assign(acc, {
             [key]: JSON.stringify(value),
           }),
-        {},
+        // __DEV__ and __PROD__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
+        prod
+          ? {
+              __DEV__: JSON.stringify(false),
+              __PROD__: JSON.stringify(true),
+              'process.env.NODE_ENV': JSON.stringify(PROD),
+            }
+          : {
+              __DEV__: JSON.stringify(__DEV__),
+              __PROD__: JSON.stringify(__PROD__),
+            },
       )
     }
+
+    const useEsBuild = transformer === 'esbuild'
+    const { jsxFactory } = esbuildOptions
+    const esbuildVueJsx =
+      useEsBuild && vue && (!jsxFactory || jsxFactory === 'vueJsxCompat')
 
     return pkgFormats.map(format => {
       const isEsVersion = /^es(\d+|next)$/.test(format) && format !== 'es5'
@@ -359,17 +368,25 @@ ConfigOptions = {}): RollupOptions[] => {
         onwarn,
         plugins: [
           alias(aliasOptions),
-          isTsAvailable && isTsInput
-            ? typescript({
-                jsx: 'react',
-                module: 'esnext',
+          esbuildVueJsx && (vueJsx as (options?: VueJsxOptions) => Plugin)(),
+          useEsBuild
+            ? esbuild({
+                jsxFactory: esbuildVueJsx ? 'vueJsxCompat' : undefined,
                 tsconfig:
-                  // FIXME: should prefer next one
-                  tryFile('tsconfig.base.json') ||
                   tryFile(path.resolve(pkg, 'tsconfig.json')) ||
+                  tryFile('tsconfig.base.json') ||
                   tryPkg('@1stg/tsconfig'),
-                ...typescriptOptions,
-                target: isEsVersion ? format : 'es5',
+                define: defineValues,
+                minify: prod,
+                loaders: {
+                  '.js': 'jsx',
+                },
+                ...esbuildOptions,
+                /**
+                 * es5 is not supported temporarily
+                 * @see https://github.com/evanw/esbuild/issues/297
+                 */
+                target: isEsVersion ? format : 'es6',
                 sourceMap,
               })
             : babel({
@@ -378,16 +395,21 @@ ConfigOptions = {}): RollupOptions[] => {
                 presets: [
                   [
                     '@babel/env',
-                    isEsVersion
-                      ? {
-                          targets: {
-                            esmodules: true,
-                          },
-                        }
-                      : undefined,
+                    {
+                      bugfixes: true,
+                      corejs: '3.13',
+                      shippedProposals: true,
+                      useBuiltIns: 'usage',
+                      targets: isEsVersion ? { esmodules: true } : undefined,
+                    },
                   ],
                 ],
-                plugins: ['@babel/transform-runtime'],
+                plugins: [
+                  [
+                    '@babel/transform-runtime',
+                    { corejs: { proposals: true, version: 3 } },
+                  ],
+                ],
                 ...babelOptions,
               }),
           resolve({
@@ -401,25 +423,10 @@ ConfigOptions = {}): RollupOptions[] => {
           postcss(postcssOptions),
           ...[
             vue?.(vueOptions),
-            // __DEV__ and __PROD__ will always be replaced while `process.env.NODE_ENV` will be preserved except on production
-            define &&
-              replace(
-                prod
-                  ? {
-                      ...defineValues,
-                      __DEV__: JSON.stringify(false),
-                      __PROD__: JSON.stringify(true),
-                      'process.env.NODE_ENV': JSON.stringify(PROD),
-                    }
-                  : {
-                      ...defineValues,
-                      __DEV__: JSON.stringify(__DEV__),
-                      __PROD__: JSON.stringify(__PROD__),
-                    },
-              ),
-            prod && terser(terserOptions),
-          ].filter(identify),
-        ],
+            !useEsBuild && replace(defineValues),
+            prod && !useEsBuild && terser(terserOptions),
+          ],
+        ].filter(identify),
       }
     })
   })
