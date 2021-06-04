@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.2
+
+### Patch Changes
+
+- [`888117e`](https://github.com/rx-ts/pkgr/commit/888117e4b84159c6a9c1eb66cb4a737ca04855e6) Thanks [@JounQin](https://github.com/JounQin)! - chore: remove unused named-exports
+
 ## 1.1.1
 
 ### Patch Changes
