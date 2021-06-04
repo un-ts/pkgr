@@ -18,8 +18,8 @@
     "typings"
   ],
   "dependencies": {
-    "@1stg/babel-preset": "^1.8.4",
-    "@1stg/postcss-config": "^2.0.1",
+    "@1stg/babel-preset": "^2.0.0",
+    "@1stg/postcss-config": "^2.1.0",
     "@babel/core": "^7.14.3",
     "@pkgr/es-modules": "^0.4.0",
     "@pkgr/umd-globals": "^0.6.0",

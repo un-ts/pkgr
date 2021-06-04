@@ -41,8 +41,7 @@
     "w:dev": "ts-node -T --files packages/webpack/src/cli"
   },
   "devDependencies": {
-    "@1stg/app-config": "^2.1.0",
-    "@1stg/lib-config": "^2.1.0",
+    "@1stg/app-config": "^2.2.0",
     "@1stg/tslint-config": "^2.0.0",
     "@angular/common": "^12.0.3",
     "@angular/compiler": "^12.0.3",
@@ -81,6 +80,7 @@
     "@types/webpack-env": "^1.16.0",
     "@types/workbox-webpack-plugin": "^5.1.6",
     "core-js": "^3.13.1",
+    "jest": "^27.0.4",
     "postcss": "^8.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
