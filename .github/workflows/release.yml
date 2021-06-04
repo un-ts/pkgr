@@ -39,6 +39,10 @@ jobs:
           yarn --frozen-lockfile
           rm -rf .git/hooks/commit-msg
 
+        # `@pkgr/utils` is used by `@1stg/lint-staged`
+      - name: Build prerelease
+        run: yarn run-s build:ts build:r
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@master
