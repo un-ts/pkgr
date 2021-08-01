@@ -2702,10 +2702,10 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
-"@types/friendly-errors-webpack-plugin@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@types/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-0.1.3.tgz#fc0a62b09ec526be242623831cfb5c54dd6e7c75"
-  integrity sha512-JqGM96QDh8UfoxgD5QE5Kx2O8/iY7NJhQYI3WhuV/ORjDN4t8nVUhwLgXms3dCYsDeEJCvy+p9+QcgYqy1drAw==
+"@types/friendly-errors-webpack-plugin@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@types/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-0.1.4.tgz#6e96e6edb0c73e877132853a0469c48c0ab6b581"
+  integrity sha512-HyQ6v5LpJo87RQBu8Ck5o7obQRflmSrkotxzvtHgUBUJdXgDQw+PAF7rSglyRIj4WCcYp0GxqOGs71jY+T1ifA==
   dependencies:
     "@types/webpack" "^4"
 
