@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/es-modules",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "type": "module",
   "description": "Union collections of es modules mappings for pkgs without or with incorrect `module` field",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
@@ -9,7 +9,7 @@
   "license": "MIT",
   "exports": {
     "import": "./lib/index.js",
-    "require":"./lib/index.cjs"
+    "require": "./lib/index.cjs"
   },
   "types": "lib",
   "files": [

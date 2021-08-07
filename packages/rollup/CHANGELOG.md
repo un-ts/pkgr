@@ -1,5 +1,18 @@
 # Change Log
 
+## 2.0.0
+
+### Major Changes
+
+- [#220](https://github.com/rx-ts/pkgr/pull/220) [`106aaf6`](https://github.com/rx-ts/pkgr/commit/106aaf6d7096a90742992d9e0a069f2b08e78bf7) Thanks [@JounQin](https://github.com/JounQin)! - feat: migrate to native esm
+
+### Patch Changes
+
+- Updated dependencies [[`106aaf6`](https://github.com/rx-ts/pkgr/commit/106aaf6d7096a90742992d9e0a069f2b08e78bf7)]:
+  - @pkgr/es-modules@0.5.0
+  - @pkgr/umd-globals@0.7.0
+  - @pkgr/utils@2.0.0
+
 ## 1.1.4
 
 ### Patch Changes

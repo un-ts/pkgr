@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- [`a85170f`](https://github.com/rx-ts/pkgr/commit/a85170fddd062906084c1a1306406c03b9a1aec4) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`a85170f`](https://github.com/rx-ts/pkgr/commit/a85170fddd062906084c1a1306406c03b9a1aec4)]:
+  - @pkgr/webpack-react@1.1.0
+
 ## 1.0.0
 
 ### Major Changes
