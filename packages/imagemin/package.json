@@ -1,6 +1,7 @@
 {
   "name": "@pkgr/imagemin",
   "version": "1.0.1",
+  "type": "module",
   "description": "Seamless imagemin API wrapper to minify images, working perfectly with lint-staged also",
   "repository": "git@github.com:rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/imagemin",
@@ -12,10 +13,10 @@
   "bin": {
     "i": "lib/cli.js"
   },
-  "main": "lib/cjs",
-  "module": "lib",
-  "es2015": "lib/es2015",
-  "fesm5": "lib/esm",
+  "exports": {
+    "import": "./lib/index.js",
+    "require":"./lib/index.cjs"
+  },
   "types": "lib",
   "files": [
     "lib"
@@ -28,11 +29,11 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0",
-    "imagemin-upng": "^2.0.2",
+    "imagemin-upng": "^3.0.0",
     "imagemin-webp": "^6.0.0",
     "is-glob": "^4.0.1",
     "tiny-glob": "^0.2.9",
-    "tslib": "^2.2.0"
+    "tslib": "^2.3.0"
   },
   "publishConfig": {
     "access": "public"

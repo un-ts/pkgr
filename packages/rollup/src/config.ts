@@ -34,8 +34,7 @@ import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
 import debug from 'debug'
 import isGlob from 'is-glob'
-import flatMap from 'lodash/flatMap'
-import { isMatch } from 'micromatch'
+import { flatMap } from 'lodash-es'
 import {
   ModuleFormat,
   OutputOptions,
@@ -79,7 +78,15 @@ const IMAGE_EXTENSIONS = [
 ]
 const ASSETS_EXTENSIONS = STYLE_EXTENSIONS.concat(IMAGE_EXTENSIONS)
 
-const resolve = ({ deps, node }: { deps: string[]; node?: boolean }) =>
+const resolve = ({
+  deps,
+  node,
+  ts,
+}: {
+  deps: string[]
+  node?: boolean
+  ts?: boolean
+}) =>
   nodeResolve({
     dedupe: node ? [] : deps,
     mainFields: [
@@ -95,6 +102,9 @@ const resolve = ({ deps, node }: { deps: string[]; node?: boolean }) =>
       'main',
     ].filter(Boolean) as readonly string[],
     preferBuiltins: node,
+    ...(ts && {
+      extensions: EXTENSIONS,
+    }),
   })
 
 const cjs = (sourceMap: boolean) => commonjs({ sourceMap })
@@ -335,7 +345,7 @@ ConfigOptions = {}): RollupOptions[] => {
 
     const isTsInput = /\.tsx?/.test(pkgInput)
     const useEsBuild = transformer === 'esbuild'
-    const { jsxFactory } = esbuildOptions
+    const { jsxFactory, target } = esbuildOptions
     const esbuildVueJsx =
       useEsBuild && vue && (!jsxFactory || jsxFactory === 'vueJsxCompat')
 
@@ -346,7 +356,12 @@ ConfigOptions = {}): RollupOptions[] => {
         output: {
           file: path.resolve(
             pkg,
-            `${pkgOutputDir}${format}${prod ? '.min' : ''}.js`,
+            `${pkgOutputDir}${path.basename(
+              pkgInput!,
+              path.extname(pkgInput!),
+            )}.${format}${prod ? '.min' : ''}${
+              isEsVersion ? '.mjs' : format === 'cjs' ? '' : '.js'
+            }`,
           ),
           format: isEsVersion ? 'esm' : (format as ModuleFormat),
           name: pkgGlobals[name] || upperCamelCase(normalizePkg(name)),
@@ -363,7 +378,9 @@ ConfigOptions = {}): RollupOptions[] => {
             return pkgRegExp instanceof RegExp
               ? pkgRegExp.test(id)
               : isGlob(pkg)
-              ? isMatch(id, pkg)
+              ? tryRequirePkg<typeof import('micromatch')>(
+                  'micromatch',
+                )!.isMatch(id, pkg)
               : id === pkg || id.startsWith(`${pkg}/`)
           })
         },
@@ -381,6 +398,7 @@ ConfigOptions = {}): RollupOptions[] => {
                 define: defineValues,
                 minify: prod,
                 loaders: {
+                  '.json': 'json',
                   '.js': 'jsx',
                 },
                 ...esbuildOptions,
@@ -388,7 +406,7 @@ ConfigOptions = {}): RollupOptions[] => {
                  * es5 is not supported temporarily
                  * @see https://github.com/evanw/esbuild/issues/297
                  */
-                target: isEsVersion ? format : 'es6',
+                target: isEsVersion ? format : target ?? 'es6',
                 sourceMap,
               })
             : babel({
@@ -421,6 +439,7 @@ ConfigOptions = {}): RollupOptions[] => {
           resolve({
             deps,
             node: !!node,
+            ts: isTsInput,
           }),
           cjs(sourceMap),
           copy(copyOptions),

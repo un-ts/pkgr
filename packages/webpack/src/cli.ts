@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /* eslint-disable @typescript-eslint/unbound-method */
 import { __DEV__, openBrowser } from '@pkgr/utils'
-import program from 'commander'
+import { program } from 'commander'
 import debug from 'debug'
 import JSOX from 'jsox'
-import pick from 'lodash/pick'
+import { pick } from 'lodash'
 import webpack, { Compiler, StatsCompilation } from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 
@@ -13,8 +13,8 @@ import config, { ConfigOptions } from './config'
 const info = debug('w:info')
 
 program
-  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
-  .version(require('../package.json').version)
+  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
+  .version((require('../package.json') as { version: string }).version)
   .option('-e, --entry <filename>', 'input entry file path')
   .option(
     '-t, --type <enum>',

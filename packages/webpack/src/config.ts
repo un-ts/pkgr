@@ -29,7 +29,6 @@ import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import LazyCompileWebpackPlugin from 'lazy-compile-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { sync } from 'postcss-load-config'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import webpack, { Configuration } from 'webpack'
 import { GenerateSW } from 'workbox-webpack-plugin'
@@ -41,15 +40,13 @@ const NGTOOLS_WEBPACK = '@ngtools/webpack'
 const { AngularWebpackPlugin } = tryRequirePkg<{
   AngularWebpackPlugin: typeof import('@ngtools/webpack').AngularWebpackPlugin
 }>(NGTOOLS_WEBPACK) ?? { AngularWebpackPlugin: null }
-const VueLoaderPlugin = tryRequirePkg<
-  typeof import('vue-loader').VueLoaderPlugin
->('vue-loader/lib/plugin')
+const VueLoaderPlugin =
+  tryRequirePkg<typeof import('vue-loader')>('vue-loader')?.VueLoaderPlugin
 
 const info = debug('w:info')
 
 export interface ConfigOptions {
   entry?: string
-  // tslint:disable-next-line max-union-size
   type?: 'angular' | 'react' | 'svelte' | 'vue'
   outputDir?: string
   externals?: Configuration['externals']
@@ -78,8 +75,6 @@ const extraLoaderOptions: Record<string, object> = {
 }
 
 const configsPath = path.resolve(__dirname, '../.config')
-
-const CACHE_LOADER = 'cache-loader'
 
 export default ({
   entry = 'src',
@@ -135,15 +130,24 @@ ConfigOptions = {}) => {
           },
         ],
       ],
+      targets: {
+        esmodules: true,
+      },
     },
   }
 
-  const babelLoader = [CACHE_LOADER, 'thread-loader', baseBabelLoader]
+  const babelLoader = ['thread-loader', baseBabelLoader]
 
   let postcssConfig: string | undefined
 
   try {
-    postcssConfig = path.resolve(sync().file, '..') + path.sep
+    postcssConfig =
+      path.resolve(
+        tryRequirePkg<typeof import('postcss-load-config')>(
+          'postcss-load-config',
+        )!.sync().file,
+        '..',
+      ) + path.sep
   } catch {
     postcssConfig = configsPath + path.sep
   }
@@ -157,7 +161,6 @@ ConfigOptions = {}) => {
         : vue
         ? 'vue-style-loader'
         : 'style-loader',
-      CACHE_LOADER,
       {
         loader: 'css-loader',
         options: {
@@ -222,25 +225,21 @@ ConfigOptions = {}) => {
     mode: prod ? PROD : DEV,
     devtool: !prod && 'eval-cheap-module-source-map',
     devServer: {
-      clientLogLevel: 'warning',
+      client: {
+        logging: 'warn',
+      },
       host: '0.0.0.0',
       hot: true,
-      disableHostCheck: true,
+      // @ts-expect-error
+      allowedHosts: 'all',
       historyApiFallback: true,
     },
     entry: {
-      app: [!prod && react && 'react-hot-loader/patch', entry].filter(identify),
+      app: entry,
     },
     externals,
     resolve: {
-      alias: {
-        ...alias,
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        ...((prod && {}) ||
-          (react && {
-            'react-dom': '@hot-loader/react-dom',
-          })),
-      },
+      alias,
       extensions: [
         '.ts',
         '.tsx',
@@ -286,7 +285,7 @@ ConfigOptions = {}) => {
           oneOf: [
             angular && {
               test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-              use: [CACHE_LOADER, baseBabelLoader, NGTOOLS_WEBPACK],
+              use: [baseBabelLoader, NGTOOLS_WEBPACK],
             },
             {
               use: babelLoader,
@@ -375,7 +374,6 @@ ConfigOptions = {}) => {
       ].filter(identify),
     },
     // ignore temporarily due to webpack 4 compatible plugins
-    // @ts-expect-error
     plugins: [
       new webpack.DefinePlugin({
         __DEV__: !prod && __DEV__,

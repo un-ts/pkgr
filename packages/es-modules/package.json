@@ -1,17 +1,16 @@
 {
   "name": "@pkgr/es-modules",
   "version": "0.4.2",
+  "type": "module",
   "description": "Union collections of es modules mappings for pkgs without or with incorrect `module` field",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/es-modules",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
-  "main": "lib/cjs",
-  "module": "lib",
-  "es2015": "lib/es2015",
-  "fesm5": "lib/esm",
-  "jsdelivr": "lib/umd",
-  "unpkg": "lib/umd",
+  "exports": {
+    "import": "./lib/index.js",
+    "require":"./lib/index.cjs"
+  },
   "types": "lib",
   "files": [
     "lib",

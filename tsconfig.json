@@ -19,10 +19,5 @@
     {
       "path": "packages/webpack"
     }
-  ],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  ]
 }

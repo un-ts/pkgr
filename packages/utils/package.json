@@ -1,6 +1,7 @@
 {
   "name": "@pkgr/utils",
   "version": "1.0.1",
+  "type": "module",
   "description": "Shared utils for `@pkgr` packages or any package else",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/utils",
@@ -9,24 +10,22 @@
   "engines": {
     "node": ">=12"
   },
-  "main": "lib",
-  "module": "lib/esm",
-  "es2015": "lib/es2015",
-  "fesm5": "lib/esm",
-  "jsdelivr": "lib/umd",
-  "unpkg": "lib/umd",
+  "exports": {
+    "import": "./lib/index.js",
+    "require": "./lib/index.cjs"
+  },
   "types": "lib",
   "files": [
     "lib",
     "openChrome.applescript"
   ],
   "dependencies": {
-    "chalk": "^4.1.1",
+    "chalk": "^4.1.2",
     "cross-spawn": "^7.0.2",
     "is-glob": "^4.0.1",
-    "open": "^8.2.0",
+    "open": "^8.2.1",
     "tiny-glob": "^0.2.9",
-    "tslib": "^2.2.0"
+    "tslib": "^2.3.0"
   },
   "publishConfig": {
     "access": "public"

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-/* eslint-disable @typescript-eslint/unbound-method */
 import { tryRequirePkg } from '@pkgr/utils'
-import program from 'commander'
+import { program } from 'commander'
 import debug from 'debug'
-import JSOX from 'jsox'
-import pick from 'lodash/pick'
+// @ts-expect-error
+import { JSOX } from 'jsox'
+import { pick } from 'lodash-es'
 import { InputOptions, OutputOptions, rollup, watch } from 'rollup'
 
-import config, { ConfigOptions } from './config'
+import config, { ConfigOptions } from './config.js'
 
 const info = debug('r:info')
 
@@ -29,6 +29,7 @@ program
   .option(
     '-m, --monorepo <false | glob | paths>',
     'whether try to resolve the project as a monorepo automatically, or custom the packages path',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option(
@@ -44,16 +45,19 @@ program
   .option(
     '-g, --globals <JSOX>',
     'JSON string to be parsed as umd globals map',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option(
     '-a, --alias-entries <JSOX>',
     'entries setting for @rxts/rollup-plugin-alias, could be array or object',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option(
     '-c, --copies <JSOX>',
     'targets setting or whole CopyOptions for rollup-plugin-copy, could be array or object',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option(
@@ -68,11 +72,13 @@ program
   .option(
     '-b, --babel <JSOX>',
     'Overrides the Babel plugin options for `@rollup/plugin-babel`',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option(
     '--esbuild <JSOX>',
     'Overrides the esbuild options for `rollup-plugin-esbuild`',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option(
@@ -80,15 +86,18 @@ program
     'Specify which transformer to use',
     'esbuild',
   )
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', JSOX.parse)
   .option<boolean | object>(
     '-d, --define [boolean | JSOX]',
     'options for `@rollup/plugin-replace`, enable `__DEV__` and `__PROD__` by default',
-    // @ts-expect-error
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
     true,
   )
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   .option('--terser <JSOX>', 'options for `@rollup/plugin-terser`', JSOX.parse)
   .option(
     '-p, --prod [boolean]',
