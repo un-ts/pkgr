@@ -2,6 +2,7 @@
   "extends": "@1stg/tsconfig/lib",
   "compilerOptions": {
     "composite": true,
+    "module": "CommonJS",
     "rootDir": "src",
     "outDir": "lib"
   }

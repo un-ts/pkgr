@@ -11,7 +11,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "run-s build:lib",
+    "build": "run-s build:lib build:w",
     "build:lib": "run-s build:ts build:r",
     "build:r": "node --loader ts-node/esm packages/rollup/src/cli.ts -f cjs -d false --exclude webpack-*",
     "build:ts": "tsc -b",
@@ -38,8 +38,8 @@
     "serve": "serve dist",
     "test": "jest",
     "typecov": "type-coverage",
-    "w:build": "node --loader ts-node/esm packages/webpack/src/cli.ts",
-    "w:dev": "node --loader ts-node/esm packages/webpack/src/cli.ts"
+    "w:build": "ts-node packages/webpack/src/cli",
+    "w:dev": "ts-node packages/webpack/src/cli"
   },
   "devDependencies": {
     "@1stg/app-config": "^2.2.1",

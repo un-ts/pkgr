@@ -1,24 +1,20 @@
 #!/usr/bin/env node
-import { createRequire } from 'module'
-
+/* eslint-disable @typescript-eslint/unbound-method */
 import { __DEV__, openBrowser } from '@pkgr/utils'
 import { program } from 'commander'
 import debug from 'debug'
-// @ts-expect-error
-import { JSOX } from 'jsox'
-import { pick } from 'lodash-es'
+import JSOX from 'jsox'
+import { pick } from 'lodash'
 import webpack, { Compiler, StatsCompilation } from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 
-import config, { ConfigOptions } from './config.js'
+import config, { ConfigOptions } from './config'
 
 const info = debug('w:info')
 
-const cjsRequire =
-  typeof require === 'undefined' ? createRequire(import.meta.url) : require
-
 program
-  .version((cjsRequire('../package.json') as { version: string }).version)
+  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
+  .version((require('../package.json') as { version: string }).version)
   .option('-e, --entry <filename>', 'input entry file path')
   .option(
     '-t, --type <enum>',
@@ -28,19 +24,16 @@ program
   .option(
     '-x, --externals <JSOX>',
     'extra external packages, peerDependencies, and dependencies for node by default',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option(
     '-g, --globals <JSOX>',
     'JSON string to be parsed as umd globals map',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option(
     '-c, --copies <JSOX>',
     'targets setting or whole CopyOptions for copy-webpack-plugin, could be array or object',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     JSOX.parse,
   )
   .option('--preferCssModules <boolean>', 'prefer css modules or global styles')

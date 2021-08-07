@@ -1,7 +1,6 @@
 {
   "name": "@pkgr/webpack",
   "version": "1.0.2",
-  "type": "module",
   "description": "Seamless webpack bundler wrapper for apps and libraries",
   "repository": "git@github.com:rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack",
@@ -40,7 +39,7 @@
     "jsox": "^1.1.121",
     "lazy-compile-webpack-plugin": "^0.1.11",
     "less-loader": "^10.0.1",
-    "lodash-es": "^4.17.21",
+    "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.2.0",
     "postcss": "^8.3.6",
     "postcss-load-config": "^3.1.0",

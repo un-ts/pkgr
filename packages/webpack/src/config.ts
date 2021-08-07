@@ -30,11 +30,10 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import LazyCompileWebpackPlugin from 'lazy-compile-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
-import { fileURLToPath } from 'url'
 import webpack, { Configuration } from 'webpack'
 import { GenerateSW } from 'workbox-webpack-plugin'
 
-import { InlineChunkHtmlPlugin } from './inline-chunk-html-plugin.js'
+import { InlineChunkHtmlPlugin } from './inline-chunk-html-plugin'
 
 const NGTOOLS_WEBPACK = '@ngtools/webpack'
 
@@ -75,12 +74,7 @@ const extraLoaderOptions: Record<string, object> = {
   },
 }
 
-const _dirname =
-  typeof __dirname === 'undefined'
-    ? path.dirname(fileURLToPath(import.meta.url))
-    : __dirname
-
-const configsPath = path.resolve(_dirname, '../.config')
+const configsPath = path.resolve(__dirname, '../.config')
 
 export default ({
   entry = 'src',
@@ -136,6 +130,9 @@ ConfigOptions = {}) => {
           },
         ],
       ],
+      targets: {
+        esmodules: true,
+      },
     },
   }
 
@@ -213,7 +210,7 @@ ConfigOptions = {}) => {
 
   const template =
     tryExtensions(path.resolve(entry, '../index'), ['.pug', '.html', '.ejs']) ||
-    path.resolve(_dirname, '../index.pug')
+    path.resolve(__dirname, '../index.pug')
 
   const pkgFile = findUp(entry)
 
