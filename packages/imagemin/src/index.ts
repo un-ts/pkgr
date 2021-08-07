@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+import { Plugin } from 'imagemin'
+
 const plugins = (
   [
     [
@@ -50,13 +52,19 @@ const plugins = (
       },
     ],
   ] as const
-).map(
-  ([name, opts]) =>
-    // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-var-requires
-    require(`imagemin-${name}`)(opts) as import('imagemin').Plugin,
+).map(async ([name, opts]) =>
+  (
+    (await import(`imagemin-${name}`)) as {
+      default: (opts: unknown) => Plugin
+    }
+  ).default(opts),
 )
 
-export default (filename: string) =>
-  plugins
-    .reduce((acc, it) => acc.then(it), fs.promises.readFile(filename))
-    .then(it => fs.promises.writeFile(filename, it))
+export default async (filename: string) =>
+  fs.promises.writeFile(
+    filename,
+    await plugins.reduce(
+      async (acc, it) => (await it)(await acc),
+      fs.promises.readFile(filename),
+    ),
+  )

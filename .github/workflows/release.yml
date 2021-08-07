@@ -41,7 +41,7 @@ jobs:
 
         # `@pkgr/utils` is used by `@1stg/lint-staged`
       - name: Build prerelease
-        run: yarn run-s build:ts build:r
+        run: yarn build:lib
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets

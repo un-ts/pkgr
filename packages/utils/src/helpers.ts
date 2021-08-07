@@ -2,20 +2,19 @@ import fs from 'fs'
 import path from 'path'
 
 import isGlob from 'is-glob'
-import globSync from 'tiny-glob/sync'
 
-import { CWD, EXTENSIONS } from './constants'
+import { CWD, EXTENSIONS, cjsRequire } from './constants.js'
 
 export const tryPkg = (pkg: string) => {
   try {
-    return require.resolve(pkg)
+    return cjsRequire.resolve(pkg)
   } catch {}
 }
 
 export const tryRequirePkg = <T>(pkg: string): T | undefined => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-return
-    return require(pkg)
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return cjsRequire(pkg)
   } catch {}
 }
 
@@ -72,10 +71,13 @@ export const tryGlob = (
       [
         ...acc,
         ...(isGlob(pkg)
-          ? globSync(pkg, {
-              absolute,
-              cwd: baseDir,
-            })
+          ? tryRequirePkg<typeof import('tiny-glob/sync')>('tiny-glob/sync')!(
+              pkg,
+              {
+                absolute,
+                cwd: baseDir,
+              },
+            )
           : [tryFile(path.resolve(baseDir, pkg), true)]),
       ].filter(Boolean),
     [],

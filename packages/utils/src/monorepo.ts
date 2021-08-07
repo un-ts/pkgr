@@ -1,6 +1,6 @@
 import path from 'path'
 
-import { tryGlob, tryRequirePkg } from './helpers'
+import { tryGlob, tryRequirePkg } from './helpers.js'
 
 const pkg =
   tryRequirePkg<{ workspaces?: string[] }>(path.resolve('package.json')) ?? {}
