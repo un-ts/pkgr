@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.0
+
+### Minor Changes
+
+- [#220](https://github.com/rx-ts/pkgr/pull/220) [`106aaf6`](https://github.com/rx-ts/pkgr/commit/106aaf6d7096a90742992d9e0a069f2b08e78bf7) Thanks [@JounQin](https://github.com/JounQin)! - feat: migrate to native esm
+
 ## 0.4.2
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- [`a85170f`](https://github.com/rx-ts/pkgr/commit/a85170fddd062906084c1a1306406c03b9a1aec4) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`106aaf6`](https://github.com/rx-ts/pkgr/commit/106aaf6d7096a90742992d9e0a069f2b08e78bf7)]:
+  - @pkgr/es-modules@0.5.0
+  - @pkgr/umd-globals@0.7.0
+  - @pkgr/utils@2.0.0
+
 ## 1.0.2
 
 ### Patch Changes
