@@ -2,7 +2,7 @@
 import isGlob from 'is-glob'
 import glob from 'tiny-glob'
 
-import imagemin from '.'
+import imagemin from './index.js'
 
 process.argv
   .slice(2)
@@ -19,7 +19,7 @@ process.argv
     Promise.resolve<string[]>([]),
   )
   .then(files => Promise.all(files.map(imagemin)))
-  .catch((e: Error) => {
-    console.error(e)
+  .catch((err: Error) => {
+    console.error(err)
     process.exitCode = 1
   })

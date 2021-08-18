@@ -22,7 +22,7 @@
     "lib"
   ],
   "dependencies": {
-    "imagemin": "^8.0.0",
+    "imagemin": "^8.0.1",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
@@ -33,7 +33,7 @@
     "imagemin-webp": "^6.0.0",
     "is-glob": "^4.0.1",
     "tiny-glob": "^0.2.9",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.1"
   },
   "publishConfig": {
     "access": "public"
