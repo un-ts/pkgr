@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.2
+
+### Patch Changes
+
+- [#224](https://github.com/rx-ts/pkgr/pull/224) [`932a40f`](https://github.com/rx-ts/pkgr/commit/932a40fd6a29c74082ebfae854d8629c636f1314) Thanks [@JounQin](https://github.com/JounQin)! - fix(imagemin): use imagemin-svgo correctly
+
 ## 2.0.1
 
 ### Patch Changes
