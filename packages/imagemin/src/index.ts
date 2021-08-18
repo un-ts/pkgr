@@ -1,7 +1,6 @@
 import fs from 'fs'
 
 import { Plugin } from 'imagemin'
-import { extendDefaultPlugins } from 'svgo'
 
 const plugins = (
   [
@@ -35,12 +34,16 @@ const plugins = (
     [
       'svgo',
       {
-        plugins: extendDefaultPlugins([
+        plugins: [
           {
-            name: 'removeViewBox',
-            active: false,
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeViewBox: false,
+              },
+            },
           },
-        ]),
+        ],
       },
     ],
     ['webp'],
