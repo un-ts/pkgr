@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.3
+
+### Patch Changes
+
+- [#226](https://github.com/rx-ts/pkgr/pull/226) [`3935ca5`](https://github.com/rx-ts/pkgr/commit/3935ca5583c111c5d7ff0098626afacd98fe19bd) Thanks [@JounQin](https://github.com/JounQin)! - fix: use preset-default plugin instead
+
 ## 2.0.2
 
 ### Patch Changes
