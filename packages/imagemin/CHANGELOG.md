@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.1
+
+### Patch Changes
+
+- [#222](https://github.com/rx-ts/pkgr/pull/222) [`6c446dc`](https://github.com/rx-ts/pkgr/commit/6c446dc8b5080a610a8087b37d915337dada88dd) Thanks [@JounQin](https://github.com/JounQin)! - fix: should use ./index.js instaed of . for esm
+
 ## 2.0.0
 
 ### Major Changes
