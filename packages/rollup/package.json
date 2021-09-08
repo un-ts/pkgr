@@ -31,7 +31,7 @@
     "@rollup/plugin-replace": "^3.0.0",
     "@rollup/plugin-url": "^6.1.0",
     "@rxts/rollup-plugin-alias": "^0.1.1",
-    "builtin-modules": "^3.1.0",
+    "builtin-modules": "^3.2.0",
     "commander": "^8.1.0",
     "core-js": "^3.17.2",
     "debug": "^4.3.2",
