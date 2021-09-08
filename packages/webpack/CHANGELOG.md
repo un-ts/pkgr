@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.1
+
+### Patch Changes
+
+- [#232](https://github.com/rx-ts/pkgr/pull/232) [`8f71e49`](https://github.com/rx-ts/pkgr/commit/8f71e495000622b3eba875753ea5b9e7bea2103e) Thanks [@JounQin](https://github.com/JounQin)! - feat: bump deps, add postcss as r dep, fix w issues
+
 ## 1.1.0
 
 ### Minor Changes
