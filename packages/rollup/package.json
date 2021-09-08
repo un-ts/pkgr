@@ -24,7 +24,7 @@
     "@pkgr/es-modules": "^0.5.0",
     "@pkgr/umd-globals": "^0.7.0",
     "@pkgr/utils": "^2.0.0",
-    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.0.3",
     "@rollup/plugin-node-resolve": "^13.0.4",
