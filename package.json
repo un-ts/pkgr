@@ -68,7 +68,7 @@
     "@types/imagemin": "^7.0.1",
     "@types/is-glob": "^4.0.2",
     "@types/jest": "^27.0.1",
-    "@types/lodash-es": "^4.14.172",
+    "@types/lodash-es": "^4.17.4",
     "@types/micromatch": "^4.0.2",
     "@types/mini-css-extract-plugin": "^2.2.0",
     "@types/node": "^16.7.13",
