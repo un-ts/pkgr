@@ -8,7 +8,7 @@ import { pick } from 'lodash'
 import webpack, { Compiler, StatsCompilation } from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 
-import config, { ConfigOptions } from './config'
+import config, { ConfigOptions, port } from './config'
 
 const info = debug('w:info')
 
@@ -37,6 +37,7 @@ program
     JSOX.parse,
   )
   .option('--preferCssModules <boolean>', 'prefer css modules or global styles')
+  .option('--publicPath [path]', '`publicPath` setting for `output.publicPath`')
   .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js for lib) bundle together at the same time',
@@ -52,17 +53,20 @@ const options = pick(
   'globals',
   'copies',
   'preferCssModules',
+  'publicPath',
   'prod',
 ) as ConfigOptions
 
 info('options: %O', options)
 
-const DEFAULT_PROT = 8080
-const port = Number(process.env.PORT) || DEFAULT_PROT
+const handlerError = (error: Error | StatsCompilation) => {
+  console.error(error)
+  process.exitCode = 1
+}
 
 const startWatcher = (compiler: Compiler) => {
-  const devServer = new WebpackDevServer(compiler, compiler.options.devServer)
-  devServer.listen(port)
+  const devServer = new WebpackDevServer(compiler.options.devServer!, compiler)
+  devServer.start().catch(handlerError)
   let isFirstCompile = true
   compiler.hooks.done.tap('@pkgr/webpack watcher', () => {
     if (!isFirstCompile) {
@@ -76,11 +80,6 @@ const startWatcher = (compiler: Compiler) => {
 const webpackConfig = config(options)
 
 const compiler = webpack(webpackConfig)
-
-const handlerError = (error: Error | StatsCompilation) => {
-  console.error(error)
-  process.exitCode = 1
-}
 
 if (__DEV__ && !options.prod) {
   startWatcher(compiler)

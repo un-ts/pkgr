@@ -118,8 +118,11 @@ export const findUp = (searchEntry: string, searchFile = 'package.json') => {
   return ''
 }
 
-export const arrayify = <T, R = T extends Array<infer S> ? S : T>(
-  ...args: T[]
+export const arrayify = <
+  T,
+  R = T extends Array<infer S> ? NonNullable<S> : NonNullable<T>,
+>(
+  ...args: Array<R | R[]>
 ) =>
   args.reduce<R[]>((arr, curr) => {
     arr.push(...(Array.isArray(curr) ? curr : curr == null ? [] : [curr]))

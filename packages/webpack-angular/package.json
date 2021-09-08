@@ -10,7 +10,7 @@
     "@angular/core": "^12.2.4"
   },
   "dependencies": {
-    "@ngtools/webpack": "^12.2.1",
+    "@ngtools/webpack": "^12.2.4",
     "@pkgr/webpack": "^1.1.0"
   },
   "publishConfig": {
