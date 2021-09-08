@@ -31,7 +31,7 @@
     "core-js": "^3.17.2",
     "css-loader": "^6.2.0",
     "debug": "^4.3.2",
-    "file-loader": "^6.0.0",
+    "file-loader": "^6.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-loader": "^2.1.2",
     "html-webpack-harddisk-plugin": "^2.0.0",
