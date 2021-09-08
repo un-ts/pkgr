@@ -446,12 +446,10 @@ ConfigOptions = {}): RollupOptions[] => {
           json(),
           url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
           postcss(postcssOptions),
-          ...[
-            vue?.(vueOptions),
-            !useEsBuild &&
-              replace({ preventAssignment: true, values: defineValues }),
-            prod && !useEsBuild && terser(terserOptions),
-          ],
+          vue?.(vueOptions),
+          !useEsBuild &&
+            replace({ preventAssignment: true, values: defineValues }),
+          prod && !useEsBuild && terser(terserOptions),
         ].filter(identify),
       }
     })

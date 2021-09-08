@@ -27,7 +27,6 @@ import debug from 'debug'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import LazyCompileWebpackPlugin from 'lazy-compile-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import webpack, { Configuration } from 'webpack'
@@ -58,6 +57,7 @@ export interface ConfigOptions {
       }
   >
   preferCssModules?: boolean
+  publicPath?: string
   prod?: boolean
 }
 
@@ -76,6 +76,10 @@ const extraLoaderOptions: Record<string, object> = {
 
 const configsPath = path.resolve(__dirname, '../.config')
 
+const DEFAULT_PROT = 8080
+
+export const port = Number(process.env.PORT) || DEFAULT_PROT
+
 export default ({
   entry = 'src',
   outputDir = 'dist',
@@ -83,6 +87,7 @@ export default ({
   type,
   copies = [],
   preferCssModules,
+  publicPath = '/',
   prod = __PROD__,
 }: // eslint-disable-next-line sonarjs/cognitive-complexity
 ConfigOptions = {}) => {
@@ -230,7 +235,7 @@ ConfigOptions = {}) => {
       },
       host: '0.0.0.0',
       hot: true,
-      // @ts-expect-error
+      port,
       allowedHosts: 'all',
       historyApiFallback: true,
     },
@@ -268,6 +273,7 @@ ConfigOptions = {}) => {
     output: {
       filename: filenamePrefix + 'js',
       path: path.resolve(outputDir),
+      publicPath,
     },
     module: {
       rules: [
@@ -373,7 +379,6 @@ ConfigOptions = {}) => {
         },
       ].filter(identify),
     },
-    // ignore temporarily due to webpack 4 compatible plugins
     plugins: [
       new webpack.DefinePlugin({
         __DEV__: !prod && __DEV__,
@@ -409,16 +414,6 @@ ConfigOptions = {}) => {
       new HtmlWebpackHarddiskPlugin(),
       prod &&
         new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/^manifest.+\.js$/]),
-      __DEV__ &&
-        !prod &&
-        new LazyCompileWebpackPlugin({
-          ignores: angular
-            ? [
-                /\b(html|raw|to-string)-loader\b/,
-                /\bexports-loader[^?]*\?exports\.toString\(\)/,
-              ]
-            : undefined,
-        }),
       new MiniCssExtractPlugin({
         filename: filenamePrefix + 'css',
       }),
