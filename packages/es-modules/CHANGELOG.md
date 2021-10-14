@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.1
+
+### Patch Changes
+
+- [`7af1c4c`](https://github.com/rx-ts/pkgr/commit/7af1c4cf26f8065e6b2dff7211fa3b09f1961d9f) Thanks [@JounQin](https://github.com/JounQin)! - fix: add legacy fields as fallback
+
 ## 0.5.0
 
 ### Minor Changes
