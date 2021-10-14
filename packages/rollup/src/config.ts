@@ -76,7 +76,7 @@ const IMAGE_EXTENSIONS = [
   '.svg',
   '.webp',
 ]
-const ASSETS_EXTENSIONS = STYLE_EXTENSIONS.concat(IMAGE_EXTENSIONS)
+const ASSETS_EXTENSIONS = [...STYLE_EXTENSIONS, ...IMAGE_EXTENSIONS]
 
 const resolve = ({
   deps,
@@ -312,7 +312,7 @@ ConfigOptions = {}): RollupOptions[] => {
     const pkgFormats =
       formats && formats.length > 0
         ? formats
-        : DEFAULT_FORMATS.concat(node ? [] : 'umd')
+        : [...DEFAULT_FORMATS, ...(node ? [] : ['umd'])]
     const pkgGlobals = collectedExternals.reduce((pkgGlobals, pkg) => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (pkgGlobals[pkg] == null) {

@@ -10,6 +10,8 @@
   "engines": {
     "node": ">=12"
   },
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
   "exports": {
     "import": "./lib/index.js",
     "require": "./lib/index.cjs"
@@ -22,8 +24,8 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "cross-spawn": "^7.0.3",
-    "is-glob": "^4.0.1",
-    "open": "^8.2.1",
+    "is-glob": "^4.0.3",
+    "open": "^8.3.0",
     "tiny-glob": "^0.2.9",
     "tslib": "^2.3.1"
   },

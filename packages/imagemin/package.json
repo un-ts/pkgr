@@ -13,6 +13,8 @@
   "bin": {
     "i": "lib/cli.js"
   },
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
   "exports": {
     "import": "./lib/index.js",
     "require": "./lib/index.cjs"
@@ -28,10 +30,10 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^9.0.0",
+    "imagemin-svgo": "^10.0.0",
     "imagemin-upng": "^3.0.0",
     "imagemin-webp": "^6.0.0",
-    "is-glob": "^4.0.1",
+    "is-glob": "^4.0.3",
     "tiny-glob": "^0.2.9",
     "tslib": "^2.3.1"
   },

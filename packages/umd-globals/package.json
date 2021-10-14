@@ -7,6 +7,8 @@
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/umd-globals",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
   "exports": {
     "import": "./lib/index.js",
     "require": "./lib/index.cjs"
