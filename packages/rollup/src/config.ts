@@ -350,7 +350,7 @@ ConfigOptions = {}): RollupOptions[] => {
       useEsBuild && vue && (!jsxFactory || jsxFactory === 'vueJsxCompat')
 
     return pkgFormats.map(format => {
-      const isEsVersion = /^es(\d+|next)$/.test(format) && format !== 'es5'
+      const isEsVersion = /^es(\d+|m|next)$/.test(format) && format !== 'es5'
       return {
         input: pkgInput,
         output: {
@@ -359,8 +359,8 @@ ConfigOptions = {}): RollupOptions[] => {
             `${pkgOutputDir}${path.basename(
               pkgInput!,
               path.extname(pkgInput!),
-            )}.${format}${prod ? '.min' : ''}${
-              isEsVersion ? '.mjs' : format === 'cjs' ? '' : '.js'
+            )}${format === 'cjs' ? '' : '.' + format}${prod ? '.min' : ''}.${
+              isEsVersion ? 'mjs' : format === 'cjs' ? 'cjs' : 'js'
             }`,
           ),
           format: isEsVersion ? 'esm' : (format as ModuleFormat),
@@ -406,7 +406,11 @@ ConfigOptions = {}): RollupOptions[] => {
                  * es5 is not supported temporarily
                  * @see https://github.com/evanw/esbuild/issues/297
                  */
-                target: isEsVersion ? format : target ?? 'es6',
+                target: isEsVersion
+                  ? format === 'esm'
+                    ? 'es6'
+                    : format
+                  : target ?? 'es6',
                 sourceMap,
               })
             : babel({
