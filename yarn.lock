@@ -13245,10 +13245,10 @@ rollup-plugin-copy@^3.4.0:
     globby "10.0.1"
     is-plain-object "^3.0.0"
 
-rollup-plugin-esbuild@~4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-esbuild/-/rollup-plugin-esbuild-4.6.1.tgz#f423ebfd512401285e2d2ca83e24de51254eab90"
-  integrity sha512-FoAGRuPikslp8DvXGv7mQqvawnPaEw44ZnrnAh2u2kr0ZLHCa7GeScwkCEruilgDLD7q0p+vullUpH9+iVkvvw==
+rollup-plugin-esbuild@^4.7.2:
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-esbuild/-/rollup-plugin-esbuild-4.7.2.tgz#1a496a9f96257cdf5ed800e818932859232471f8"
+  integrity sha512-rBS2hTedtG+wL/yyIWQ84zju5rtfF15gkaCLN0vsWGmBdRd0UPm52meAwkmrsPQf3mB/H2o+k9Q8Ce8A66SE5A==
   dependencies:
     "@rollup/pluginutils" "^4.1.1"
     joycon "^3.0.1"
