@@ -87,7 +87,7 @@ export default ({
   type,
   copies = [],
   preferCssModules,
-  publicPath = '/',
+  publicPath,
   prod = __PROD__,
 }: // eslint-disable-next-line sonarjs/cognitive-complexity
 ConfigOptions = {}) => {

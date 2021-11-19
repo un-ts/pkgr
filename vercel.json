@@ -16,7 +16,7 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/react"
+      "destination": "/svelte"
     }
   ],
   "trailingSlash": true
