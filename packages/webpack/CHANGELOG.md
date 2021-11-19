@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.2
+
+### Patch Changes
+
+- [`363872f`](https://github.com/rx-ts/pkgr/commit/363872fc0d3ab1165591a5e8a9bb624619b47ac4) Thanks [@JounQin](https://github.com/JounQin)! - fix(webpack): unset default publicPath
+
 ## 1.1.1
 
 ### Patch Changes

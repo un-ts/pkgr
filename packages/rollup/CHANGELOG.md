@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.1
+
+### Patch Changes
+
+- [`30862c6`](https://github.com/rx-ts/pkgr/commit/30862c613e1ef67ab3cb6078d24e4ad231ffab19) Thanks [@JounQin](https://github.com/JounQin)! - fix(rollup): .min.cjs suffix for production
+
 ## 2.1.0
 
 ### Minor Changes
