@@ -7,7 +7,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/core": "^12.2.13"
+    "@angular/core": "^12.2.15"
   },
   "dependencies": {
     "@ngtools/webpack": "^12.2.13",
