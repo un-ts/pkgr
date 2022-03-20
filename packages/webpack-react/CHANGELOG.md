@@ -1,5 +1,16 @@
 # Change Log
 
+## 2.0.0
+
+### Major Changes
+
+- [#268](https://github.com/rx-ts/pkgr/pull/268) [`37fee6d`](https://github.com/rx-ts/pkgr/commit/37fee6d9acc51c7c20a02e7f8ff5a93a14878477) Thanks [@JounQin](https://github.com/JounQin)! - feat: migrate to native ESM for w
+
+### Patch Changes
+
+- Updated dependencies [[`37fee6d`](https://github.com/rx-ts/pkgr/commit/37fee6d9acc51c7c20a02e7f8ff5a93a14878477)]:
+  - @pkgr/webpack@2.0.0
+
 ## 1.1.0
 
 ### Minor Changes

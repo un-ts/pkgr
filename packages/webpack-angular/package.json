@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack-angular",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Seamless angular related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack-angular",
@@ -12,7 +12,7 @@
   "dependencies": {
     "@angular/compiler-cli": "^13.3.0",
     "@ngtools/webpack": "^13.3.0",
-    "@pkgr/webpack": "^1.1.0"
+    "@pkgr/webpack": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"
