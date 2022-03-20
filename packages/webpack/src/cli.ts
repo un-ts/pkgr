@@ -1,20 +1,37 @@
 #!/usr/bin/env node
 /* eslint-disable @typescript-eslint/unbound-method */
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
 import { __DEV__, openBrowser } from '@pkgr/utils'
 import { program } from 'commander'
 import debug from 'debug'
-import JSOX from 'jsox'
-import { pick } from 'lodash'
+import * as JSOX from 'jsox'
+import _ from 'lodash'
 import webpack, { Compiler, StatsCompilation } from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 
-import config, { ConfigOptions, port } from './config'
+import config, { ConfigOptions, port } from './config.js'
 
 const info = debug('w:info')
 
+const _dirname =
+  typeof __dirname === 'undefined'
+    ? path.dirname(fileURLToPath(import.meta.url))
+    : __dirname
+
 program
-  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-  .version((require('../package.json') as { version: string }).version)
+  .version(
+    (
+      JSON.parse(
+        // eslint-disable-next-line unicorn/prefer-json-parse-buffer
+        fs.readFileSync(path.resolve(_dirname, '../package.json'), 'utf8'),
+      ) as {
+        version: string
+      }
+    ).version,
+  )
   .option('-e, --entry <filename>', 'input entry file path')
   .option(
     '-t, --type <enum>',
@@ -44,7 +61,7 @@ program
   )
   .parse(process.argv)
 
-const options = pick(
+const options = _.pick(
   program.opts(),
   'entry',
   'type',
@@ -65,7 +82,7 @@ const handlerError = (error: Error | StatsCompilation) => {
 }
 
 const startWatcher = (compiler: Compiler) => {
-  const devServer = new WebpackDevServer(compiler.options.devServer!, compiler)
+  const devServer = new WebpackDevServer(compiler.options.devServer, compiler)
   devServer.start().catch(handlerError)
   let isFirstCompile = true
   compiler.hooks.done.tap('@pkgr/webpack watcher', () => {
@@ -77,20 +94,24 @@ const startWatcher = (compiler: Compiler) => {
   })
 }
 
-const webpackConfig = config(options)
+const main = async () => {
+  const webpackConfig = await config(options)
 
-const compiler = webpack(webpackConfig)
+  const compiler = webpack(webpackConfig)
 
-if (__DEV__ && !options.prod) {
-  startWatcher(compiler)
-} else {
-  compiler.run((error, stats) => {
-    if (error) {
-      return handlerError(error)
-    }
+  if (__DEV__ && !options.prod) {
+    startWatcher(compiler)
+  } else {
+    compiler.run((error, stats) => {
+      if (error) {
+        return handlerError(error)
+      }
 
-    if (stats?.hasErrors()) {
-      return handlerError(stats.toJson())
-    }
-  })
+      if (stats?.hasErrors()) {
+        return handlerError(stats.toJson())
+      }
+    })
+  }
 }
+
+main().catch(console.error)

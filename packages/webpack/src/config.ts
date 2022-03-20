@@ -1,4 +1,5 @@
 import path from 'path'
+import { fileURLToPath } from 'url'
 
 import { alias } from '@pkgr/es-modules'
 import {
@@ -32,15 +33,9 @@ import TsconfigPathsWebpackPlugin from 'tsconfig-paths-webpack-plugin'
 import webpack, { Configuration } from 'webpack'
 import { GenerateSW } from 'workbox-webpack-plugin'
 
-import { InlineChunkHtmlPlugin } from './inline-chunk-html-plugin'
+import { InlineChunkHtmlPlugin } from './inline-chunk-html-plugin.js'
 
 const NGTOOLS_WEBPACK = '@ngtools/webpack'
-
-const { AngularWebpackPlugin } = tryRequirePkg<{
-  AngularWebpackPlugin: typeof import('@ngtools/webpack').AngularWebpackPlugin
-}>(NGTOOLS_WEBPACK) ?? { AngularWebpackPlugin: null }
-const VueLoaderPlugin =
-  tryRequirePkg<typeof import('vue-loader')>('vue-loader')?.VueLoaderPlugin
 
 const info = debug('w:info')
 
@@ -74,13 +69,18 @@ const extraLoaderOptions: Record<string, object> = {
   },
 }
 
-const configsPath = path.resolve(__dirname, '../.config')
+const _dirname =
+  typeof __dirname === 'undefined'
+    ? path.dirname(fileURLToPath(import.meta.url))
+    : __dirname
+
+const configsPath = path.resolve(_dirname, '../.config')
 
 const DEFAULT_PROT = 8080
 
 export const port = Number(process.env.PORT) || DEFAULT_PROT
 
-export default ({
+export default async ({
   entry = 'src',
   outputDir = 'dist',
   externals,
@@ -135,6 +135,10 @@ ConfigOptions = {}) => {
           },
         ],
       ],
+      plugins: [
+        // eslint-disable-next-line unicorn/no-await-expression-member
+        angular && (await import('@angular/compiler-cli/linker/babel')).default,
+      ].filter(identify),
       targets: {
         esmodules: true,
       },
@@ -215,7 +219,7 @@ ConfigOptions = {}) => {
 
   const template =
     tryExtensions(path.resolve(entry, '../index'), ['.pug', '.html', '.ejs']) ||
-    path.resolve(__dirname, '../index.pug')
+    path.resolve(_dirname, '../index.pug')
 
   const pkgFile = findUp(entry)
 
@@ -287,16 +291,8 @@ ConfigOptions = {}) => {
           },
         },
         {
-          test: /\.(m?j|t)sx?$/,
-          oneOf: [
-            angular && {
-              test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-              use: [baseBabelLoader, NGTOOLS_WEBPACK],
-            },
-            {
-              use: babelLoader,
-            },
-          ].filter(identify),
+          test: /\.([cm]?j|t)sx?$/,
+          use: [baseBabelLoader, angular && NGTOOLS_WEBPACK].filter(identify),
           exclude: (file: string) =>
             NODE_MODULES_REG.test(file) &&
             !/\.(mjs|jsx|tsx?|vue\.js)$/.test(file),
@@ -418,8 +414,8 @@ ConfigOptions = {}) => {
         filename: filenamePrefix + 'css',
       }),
       angular &&
-        AngularWebpackPlugin &&
-        new AngularWebpackPlugin({
+        // eslint-disable-next-line unicorn/no-await-expression-member
+        new (await import('@ngtools/webpack')).AngularWebpackPlugin({
           tsconfig:
             tryFile(path.resolve(entry, '../tsconfig.json')) || tsconfigFile,
           compilerOptions: {
@@ -427,7 +423,8 @@ ConfigOptions = {}) => {
             target: 99, // represents esnext
           },
         }),
-      vue && VueLoaderPlugin && new VueLoaderPlugin(),
+      // eslint-disable-next-line unicorn/no-await-expression-member
+      vue && new (await import('vue-loader')).VueLoaderPlugin(),
     ].filter(identify),
     optimization: {
       runtimeChunk: {
