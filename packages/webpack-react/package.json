@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@pkgr/webpack": "^1.1.0",
-    "@svgr/webpack": "^5.5.0"
+    "@svgr/webpack": "^6.2.1"
   },
   "publishConfig": {
     "access": "public"
