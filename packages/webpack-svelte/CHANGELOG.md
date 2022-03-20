@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`37fee6d`](https://github.com/rx-ts/pkgr/commit/37fee6d9acc51c7c20a02e7f8ff5a93a14878477)]:
+  - @pkgr/webpack@2.0.0
+
 ## 1.1.0
 
 ### Minor Changes
