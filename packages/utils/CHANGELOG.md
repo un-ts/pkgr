@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.3
+
+### Patch Changes
+
+- [#270](https://github.com/rx-ts/pkgr/pull/270) [`9278142`](https://github.com/rx-ts/pkgr/commit/9278142f2d4867c611c558eaffe0383a48050062) Thanks [@JounQin](https://github.com/JounQin)! - fix(utils): should not use \_\_dirname directly
+
 ## 2.0.2
 
 ### Patch Changes
