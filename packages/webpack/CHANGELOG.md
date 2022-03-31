@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.3
+
+### Patch Changes
+
+- [#274](https://github.com/rx-ts/pkgr/pull/274) [`9220c69`](https://github.com/rx-ts/pkgr/commit/9220c692dbd98fed58c9eaefd1842bed4cbb9898) Thanks [@JounQin](https://github.com/JounQin)! - fix(webpack): search postcss config correctly
+
 ## 2.0.2
 
 ### Patch Changes
