@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-await-expression-member */
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -137,7 +138,6 @@ ConfigOptions = {}) => {
         ],
       ],
       plugins: [
-        // eslint-disable-next-line unicorn/no-await-expression-member
         angular && (await import('@angular/compiler-cli/linker/babel')).default,
       ].filter(identify),
       targets: {
@@ -149,15 +149,13 @@ ConfigOptions = {}) => {
   let postcssConfig: string | undefined
 
   try {
-    postcssConfig =
-      path.resolve(
-        tryRequirePkg<typeof import('postcss-load-config')>(
-          'postcss-load-config',
-        )!.sync().file,
-        '..',
-      ) + path.sep
+    postcssConfig = (
+      await tryRequirePkg<typeof import('postcss-load-config')>(
+        'postcss-load-config',
+      )!()
+    ).file
   } catch {
-    postcssConfig = configsPath + path.sep
+    postcssConfig = path.resolve(configsPath, '.postcssrc.cjs')
   }
 
   const baseCssLoaders = (modules = false, extraLoader?: string) =>
@@ -303,7 +301,6 @@ ConfigOptions = {}) => {
             {
               loader: '@mdx-js/loader',
               options: {
-                // eslint-disable-next-line unicorn/no-await-expression-member
                 remarkPlugins: [(await import('remark-gfm')).default],
               },
             },
@@ -422,7 +419,6 @@ ConfigOptions = {}) => {
         filename: filenamePrefix + 'css',
       }),
       angular &&
-        // eslint-disable-next-line unicorn/no-await-expression-member
         new (await import('@ngtools/webpack')).AngularWebpackPlugin({
           tsconfig:
             tryFile(path.resolve(entry, '../tsconfig.json')) || tsconfigFile,
@@ -431,7 +427,6 @@ ConfigOptions = {}) => {
             target: 99, // represents esnext
           },
         }),
-      // eslint-disable-next-line unicorn/no-await-expression-member
       vue && new (await import('vue-loader')).VueLoaderPlugin(),
     ].filter(identify),
     optimization: {

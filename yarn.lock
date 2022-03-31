@@ -2455,18 +2455,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@pkgr/utils@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.0.3.tgz#0dbf9d63730b40f9271b8fab41051f17b19896d5"
-  integrity sha512-KC71PGmGV19zSNknitq1x3yc5y4hx8ZKQZ09bpi0dwttzX5oXmVFeEceqsK+cipRV6QXsBHsZE2x0VzNLD/68g==
-  dependencies:
-    chalk "^4.1.2"
-    cross-spawn "^7.0.3"
-    is-glob "^4.0.3"
-    open "^8.4.0"
-    tiny-glob "^0.2.9"
-    tslib "^2.3.1"
-
 "@prettier/plugin-pug@^1.20.0":
   version "1.20.0"
   resolved "https://registry.yarnpkg.com/@prettier/plugin-pug/-/plugin-pug-1.20.0.tgz#c54a5a396b9a307a23aa8a5da3c5a42b0cc76fd9"
