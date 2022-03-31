@@ -155,7 +155,7 @@ ConfigOptions = {}) => {
       )!()
     ).file
   } catch {
-    postcssConfig = path.resolve(configsPath, '.postcssrc.cjs')
+    postcssConfig = configsPath
   }
 
   const baseCssLoaders = (modules = false, extraLoader?: string) =>
