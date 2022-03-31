@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.4
+
+### Patch Changes
+
+- [#276](https://github.com/rx-ts/pkgr/pull/276) [`6553038`](https://github.com/rx-ts/pkgr/commit/65530385628be0b7a91b5dc666e5e18d7d63128e) Thanks [@JounQin](https://github.com/JounQin)! - fix: set NODE_ENV automatically on prod mode
+
 ## 2.0.3
 
 ### Patch Changes
