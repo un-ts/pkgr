@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.2
+
+### Patch Changes
+
+- [#272](https://github.com/rx-ts/pkgr/pull/272) [`e34e826`](https://github.com/rx-ts/pkgr/commit/e34e82669bb7278c415c7fb59f2d1ec997f3f7b3) Thanks [@JounQin](https://github.com/JounQin)! - fix(mdx): remove thread-loader due to loader options
+
 ## 2.0.1
 
 ### Patch Changes
