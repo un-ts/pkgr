@@ -8,7 +8,8 @@
   "license": "MIT",
   "dependencies": {
     "@mdx-js/loader": "^2.1.0",
-    "@pkgr/webpack-react": "^2.0.0"
+    "@pkgr/webpack-react": "^2.0.0",
+    "remark-gfm": "^3.0.1"
   },
   "publishConfig": {
     "access": "public"
