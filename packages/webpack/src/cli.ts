@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import { __DEV__, openBrowser } from '@pkgr/utils'
+import { __DEV__, openBrowser, PROD } from '@pkgr/utils'
 import { program } from 'commander'
 import debug from 'debug'
 import * as JSOX from 'jsox'
@@ -95,6 +95,10 @@ const startWatcher = (compiler: Compiler) => {
 }
 
 const main = async () => {
+  if (options.prod && !process.env.NODE_ENV) {
+    process.env.NODE_ENV = PROD
+  }
+
   const webpackConfig = await config(options)
 
   const compiler = webpack(webpackConfig)
