@@ -119,10 +119,11 @@ ConfigOptions = {}) => {
   const tsconfigFile =
     (prod && tryFile('tsconfig.prod.json')) || baseTsconfigFile
 
-  const baseBabelLoader = {
+  const babelLoader = {
     loader: 'babel-loader',
     options: {
       cacheDirectory: true,
+      rootMode: 'upward-optional',
       presets: [
         [
           '@1stg',
@@ -144,8 +145,6 @@ ConfigOptions = {}) => {
       },
     },
   }
-
-  const babelLoader = ['thread-loader', baseBabelLoader]
 
   let postcssConfig: string | undefined
 
@@ -292,14 +291,23 @@ ConfigOptions = {}) => {
         },
         {
           test: /\.([cm]?j|t)sx?$/,
-          use: [baseBabelLoader, angular && NGTOOLS_WEBPACK].filter(identify),
+          use: [babelLoader, angular && NGTOOLS_WEBPACK].filter(identify),
           exclude: (file: string) =>
             NODE_MODULES_REG.test(file) &&
             !/\.(mjs|jsx|tsx?|vue\.js)$/.test(file),
         },
         mdx && {
           test: /\.mdx?$/,
-          use: [...babelLoader, '@mdx-js/loader'],
+          use: [
+            babelLoader,
+            {
+              loader: '@mdx-js/loader',
+              options: {
+                // eslint-disable-next-line unicorn/no-await-expression-member
+                remarkPlugins: [(await import('remark-gfm')).default],
+              },
+            },
+          ],
         },
         svelte && {
           test: /\.svelte$/,
