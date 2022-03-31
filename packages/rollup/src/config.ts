@@ -371,7 +371,7 @@ ConfigOptions = {}): RollupOptions[] => {
         },
         external(id: string) {
           if (typeof externals === 'function') {
-            return externals.call(this, id, collectedExternals)
+            return externals(id, collectedExternals)
           }
           return collectedExternals.some(pkg => {
             const pkgRegExp = tryRegExp(pkg)
