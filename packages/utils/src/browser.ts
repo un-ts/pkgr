@@ -1,6 +1,8 @@
 // based on https://github.com/facebook/create-react-app/blob/master/packages/react-dev-utils/openBrowser.js
 
 import { execSync } from 'child_process'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 import chalk from 'chalk'
 import spawn from 'cross-spawn'
@@ -81,6 +83,11 @@ function startBrowserProcess(
       'Chromium',
     ]
 
+    const _dirname =
+      typeof __dirname === 'undefined'
+        ? path.dirname(fileURLToPath(import.meta.url))
+        : __dirname
+
     for (const chromiumBrowser of supportedChromiumBrowsers) {
       try {
         // Try our best to reuse existing tab
@@ -93,7 +100,7 @@ function startBrowserProcess(
             chromiumBrowser +
             '"',
           {
-            cwd: __dirname,
+            cwd: _dirname,
             stdio: 'ignore',
           },
         )
