@@ -17,10 +17,10 @@
     "lib"
   ],
   "dependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-proposal-decorators": "^7.16.4",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-typescript": "^7.16.0",
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-proposal-decorators": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
     "@pkgr/es-modules": "^0.5.0",
     "@pkgr/umd-globals": "^0.7.0",
     "@pkgr/utils": "^2.0.0",
