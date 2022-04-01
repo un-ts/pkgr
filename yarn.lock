@@ -2477,7 +2477,7 @@
     "@xml-tools/parser" "^1.0.11"
     prettier ">=2.4.0"
 
-"@rollup/plugin-babel@^5.2.0":
+"@rollup/plugin-babel@^5.2.0", "@rollup/plugin-babel@^5.3.1":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz#04bc0608f4aa4b2e4b1aebf284344d0f68fda283"
   integrity sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==
