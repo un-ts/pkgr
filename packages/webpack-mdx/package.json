@@ -7,7 +7,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "dependencies": {
-    "@mdx-js/loader": "^2.1.0",
+    "@mdx-js/loader": "^2.1.1",
     "@pkgr/webpack-react": "^2.0.0",
     "remark-gfm": "^3.0.1"
   },
