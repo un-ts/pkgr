@@ -16,8 +16,6 @@ export const MODULE_DEFINITIONS: ModuleDefinitions = {
     target: 'lodash-es',
     exact: false,
   },
-  marked: 'marked/lib/marked.esm',
-  systemjs: 'systemjs/dist/system',
 }
 
 const defEntries = Object.entries(MODULE_DEFINITIONS)
