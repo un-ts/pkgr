@@ -4,9 +4,9 @@ import { execSync } from 'child_process'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import chalk from 'chalk'
 import spawn from 'cross-spawn'
 import open from 'open'
+import picocolors from 'picocolors'
 
 // https://github.com/sindresorhus/open#app
 const OSX_CHROME = 'google chrome'
@@ -48,11 +48,11 @@ function executeNodeScript(scriptPath: string, url: string) {
     if (code !== 0) {
       console.log()
       console.log(
-        chalk.red(
+        picocolors.red(
           'The script specified as BROWSER environment variable failed.',
         ),
       )
-      console.log(`${chalk.cyan(scriptPath)} exited with code ${code!}`)
+      console.log(`${picocolors.cyan(scriptPath)} exited with code ${code!}`)
       console.log()
     }
   })

@@ -29,6 +29,7 @@ export const entries = defEntries.reduce<
     replacement: string
   }>
 >((acc, [module, definition]) => {
+  /* istanbul ignore next */
   const { target, exact } =
     typeof definition === 'string'
       ? { target: definition, exact: true }
@@ -54,11 +55,12 @@ export const entries = defEntries.reduce<
  */
 export const alias = defEntries.reduce<Record<string, string>>(
   (acc, [module, definition]) => {
+    /* istanbul ignore next */
     const { target, exact } =
       typeof definition === 'string'
         ? { target: definition, exact: true }
         : definition
-    acc[exact ? module + '$' : module] = target
+    acc[/* istanbul ignore next */ exact ? module + '$' : module] = target
     return acc
   },
   {},

@@ -16,7 +16,7 @@
   "types": "lib",
   "files": [
     "lib",
-    "!*.tsbuildinfo"
+    "!**/*.tsbuildinfo"
   ],
   "keywords": [
     "umd",

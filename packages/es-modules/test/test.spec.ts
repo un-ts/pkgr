@@ -15,11 +15,11 @@ describe('es modules', () => {
     expect(extraKeys.every(key => key instanceof RegExp)).toBe(true)
   })
 
-  it('alias should not contain all definition keys', () => {
-    expect(Object.keys(alias)).not.toEqual(
-      expect.arrayContaining(Object.keys(MODULE_DEFINITIONS)),
-    )
-  })
+  // it('alias should not contain all definition keys', () => {
+  //   expect(Object.keys(alias)).not.toEqual(
+  //     expect.arrayContaining(Object.keys(MODULE_DEFINITIONS)),
+  //   )
+  // })
 
   it('alias should contain same number of definition keys', () => {
     expect(Object.keys(alias).length).toEqual(
