@@ -28,7 +28,7 @@
     "lint:es": "eslint . --cache -f friendly",
     "lint:style": "stylelint --cache './**/*.{html,js,scss,ts,vue}'",
     "lint:tsc": "tsc --noEmit",
-    "prelint": "yarn build:lib",
+    "prelint": "yarn build",
     "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer && t || exit 0",
     "prerelease": "yarn build",
     "pretest": "yarn clean",
