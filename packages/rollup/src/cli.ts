@@ -29,7 +29,6 @@ program
   .version(
     (
       JSON.parse(
-        // eslint-disable-next-line unicorn/prefer-json-parse-buffer
         fs.readFileSync(path.resolve(_dirname, '../package.json'), 'utf8'),
       ) as {
         version: string

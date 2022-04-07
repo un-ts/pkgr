@@ -15,8 +15,8 @@ describe('es modules', () => {
     expect(extraKeys.every(key => key instanceof RegExp)).toBe(true)
   })
 
-  it('alias should not contain all definition keys', () => {
-    expect(Object.keys(alias)).not.toEqual(
+  it('alias should contain all definition keys', () => {
+    expect(Object.keys(alias)).toEqual(
       expect.arrayContaining(Object.keys(MODULE_DEFINITIONS)),
     )
   })
