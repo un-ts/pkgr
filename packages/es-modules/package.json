@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/es-modules",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "type": "module",
   "description": "Union collections of es modules mappings for pkgs without or with incorrect `module` field",
   "repository": "git+https://github.com/rx-ts/pkgr.git",

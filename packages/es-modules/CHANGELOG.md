@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.2
+
+### Patch Changes
+
+- [#282](https://github.com/rx-ts/pkgr/pull/282) [`0b06f95`](https://github.com/rx-ts/pkgr/commit/0b06f95b1d93f987ea5f3ca452a125e97bbd7218) Thanks [@JounQin](https://github.com/JounQin)! - fix(es-modules): remove marked and systemjs
+
 ## 0.5.1
 
 ### Patch Changes

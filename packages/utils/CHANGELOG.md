@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.0
+
+### Minor Changes
+
+- [#282](https://github.com/rx-ts/pkgr/pull/282) [`0b06f95`](https://github.com/rx-ts/pkgr/commit/0b06f95b1d93f987ea5f3ca452a125e97bbd7218) Thanks [@JounQin](https://github.com/JounQin)! - chore(utils): replace `chalk` with `picocolors`
+
 ## 2.0.3
 
 ### Patch Changes
