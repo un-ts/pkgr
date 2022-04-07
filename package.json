@@ -30,7 +30,6 @@
     "lint:tsc": "tsc --noEmit",
     "prelint": "yarn build",
     "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer && t || exit 0",
-    "prerelease": "yarn build",
     "pretest": "yarn clean",
     "release": "changeset publish",
     "serve": "serve dist",

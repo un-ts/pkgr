@@ -25,9 +25,13 @@ jobs:
       - name: Install Dependencies
         run: yarn --frozen-lockfile
 
+      # `@pkgr/utils` is used by `@1stg/lint-staged`
+      - name: Build prerelease
+        run: yarn build
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@master
+        uses: changesets/action@v1
         with:
           commit: 'chore: release package(s)'
           title: 'chore: release package(s)'
