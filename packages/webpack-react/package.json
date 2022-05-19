@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack-react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Seamless react related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/rx-ts/pkgr.git",
   "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/webpack-react",
@@ -10,7 +10,7 @@
     "react": ">=16.0.0"
   },
   "dependencies": {
-    "@pkgr/webpack": "^2.0.0",
+    "@pkgr/webpack": "^3.0.0",
     "@svgr/webpack": "^6.2.1"
   },
   "publishConfig": {

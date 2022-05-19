@@ -1,5 +1,18 @@
 # Change Log
 
+## 3.1.0
+
+### Minor Changes
+
+- [`d578cb3`](https://github.com/rx-ts/pkgr/commit/d578cb3477bc69b4a306db6df41016a75819baa6) Thanks [@JounQin](https://github.com/JounQin)! - chore!: bump (dev)Dependencies, update ts usage
+
+### Patch Changes
+
+- Updated dependencies [[`d578cb3`](https://github.com/rx-ts/pkgr/commit/d578cb3477bc69b4a306db6df41016a75819baa6)]:
+  - @pkgr/es-modules@0.6.0
+  - @pkgr/umd-globals@0.8.0
+  - @pkgr/utils@2.2.0
+
 ## 3.0.1
 
 ### Patch Changes
