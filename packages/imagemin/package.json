@@ -16,10 +16,11 @@
   "main": "./lib/index.cjs",
   "module": "./lib/index.js",
   "exports": {
+    "types": "./lib/index.d.ts",
     "import": "./lib/index.js",
     "require": "./lib/index.cjs"
   },
-  "types": "lib",
+  "types": "./lib/index.d.ts",
   "files": [
     "lib"
   ],
@@ -35,7 +36,7 @@
     "imagemin-webp": "^7.0.0",
     "is-glob": "^4.0.3",
     "tiny-glob": "^0.2.9",
-    "tslib": "^2.3.1"
+    "tslib": "^2.4.0"
   },
   "publishConfig": {
     "access": "public"

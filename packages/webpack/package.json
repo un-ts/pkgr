@@ -8,7 +8,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "bin": {
     "w": "lib/cli.js"
@@ -20,17 +20,17 @@
     "typings"
   ],
   "dependencies": {
-    "@1stg/babel-preset": "^2.2.0",
-    "@1stg/postcss-config": "^2.3.3",
-    "@babel/core": "^7.17.9",
+    "@1stg/babel-preset": "^3.0.0",
+    "@1stg/postcss-config": "^3.1.0",
+    "@babel/core": "^7.17.12",
     "@pkgr/es-modules": "^0.5.0",
     "@pkgr/umd-globals": "^0.7.0",
     "@pkgr/utils": "^2.0.0",
-    "babel-loader": "^8.2.4",
+    "babel-loader": "^8.2.5",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
-    "commander": "^9.1.0",
-    "copy-webpack-plugin": "^10.0.0",
-    "core-js": "^3.19.1",
+    "commander": "^9.2.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "core-js": "^3.22.5",
     "css-loader": "^6.5.1",
     "debug": "^4.3.2",
     "file-loader": "^6.2.0",
@@ -39,27 +39,27 @@
     "html-webpack-harddisk-plugin": "^2.0.0",
     "html-webpack-plugin": "^5.5.0",
     "jsox": "^1.2.111",
-    "less-loader": "^10.2.0",
+    "less-loader": "^11.0.0",
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.4.5",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.14",
     "postcss-load-config": "^3.1.4",
-    "postcss-loader": "^6.2.0",
+    "postcss-loader": "^7.0.0",
     "pug": "^3.0.2",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.1.0",
     "raw-loader": "^4.0.2",
-    "sass": "^1.50.0",
-    "sass-loader": "^12.3.0",
+    "sass": "^1.51.0",
+    "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",
     "stylus": "^0.57.0",
-    "stylus-loader": "^6.2.0",
+    "stylus-loader": "^7.0.0",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
-    "tslib": "^2.3.1",
+    "tslib": "^2.4.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.72.0",
-    "webpack-dev-server": "^4.8.1",
-    "workbox-webpack-plugin": "^6.5.2"
+    "webpack": "^5.72.1",
+    "webpack-dev-server": "^4.9.0",
+    "workbox-webpack-plugin": "^6.5.3"
   },
   "publishConfig": {
     "access": "public"

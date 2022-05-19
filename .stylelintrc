@@ -1,16 +1,3 @@
 {
-  "extends": "@1stg/stylelint-config",
-  "overrides": [
-    {
-      "files": [
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.cjs",
-        "**/*.mjs",
-        "**/*.ts",
-        "**/*.tsx"
-      ],
-      "customSyntax": "@stylelint/postcss-css-in-js"
-    }
-  ]
+  "extends": "@1stg/stylelint-config"
 }

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access */
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+/// <reference path="../shim.d.ts" />
+
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { program } from 'commander'
 import debug from 'debug'
-// @ts-expect-error
 import { JSOX } from 'jsox'
 import { pick } from 'lodash-es'
 import { InputOptions, OutputOptions, rollup, watch } from 'rollup'
@@ -24,6 +24,8 @@ const parseArrayArgs = (curr: string, prev?: string[]) => {
   const next = curr.split(',')
   return prev ? [...prev, ...next] : next
 }
+
+const jsoxParse = <T>(text: string) => JSOX.parse(text) as T
 
 program
   .version(
@@ -46,7 +48,7 @@ program
   .option(
     '-m, --monorepo <false | glob | paths>',
     'whether try to resolve the project as a monorepo automatically, or custom the packages path',
-    JSOX.parse,
+    jsoxParse,
   )
   .option(
     '-e, --exports <mode>',
@@ -61,17 +63,17 @@ program
   .option(
     '-g, --globals <JSOX>',
     'JSON string to be parsed as umd globals map',
-    JSOX.parse,
+    jsoxParse,
   )
   .option(
     '-a, --alias-entries <JSOX>',
     'entries setting for @rxts/rollup-plugin-alias, could be array or object',
-    JSOX.parse,
+    jsoxParse,
   )
   .option(
     '-c, --copies <JSOX>',
     'targets setting or whole CopyOptions for rollup-plugin-copy, could be array or object',
-    JSOX.parse,
+    jsoxParse,
   )
   .option(
     '-s, --source-map <boolean>',
@@ -85,12 +87,12 @@ program
   .option(
     '-b, --babel <JSOX>',
     'Overrides the Babel plugin options for `@rollup/plugin-babel`',
-    JSOX.parse,
+    jsoxParse,
   )
   .option(
     '--esbuild <JSOX>',
     'Overrides the esbuild options for `rollup-plugin-esbuild`',
-    JSOX.parse,
+    jsoxParse,
   )
   .option(
     '-t, --transformer [babel | esbuild]',
@@ -98,17 +100,17 @@ program
     'esbuild',
   )
 
-  .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', JSOX.parse)
+  .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', jsoxParse)
 
-  .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', JSOX.parse)
-  .option<boolean | object>(
+  .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', jsoxParse)
+  .option(
     '-d, --define [boolean | JSOX]',
     'options for `@rollup/plugin-replace`, enable `__DEV__` and `__PROD__` by default',
-    JSOX.parse,
+    jsoxParse,
     true,
   )
 
-  .option('--terser <JSOX>', 'options for `@rollup/plugin-terser`', JSOX.parse)
+  .option('--terser <JSOX>', 'options for `@rollup/plugin-terser`', jsoxParse)
   .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js) bundle together at the same time',

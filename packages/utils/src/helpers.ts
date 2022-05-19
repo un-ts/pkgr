@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 import isGlob from 'is-glob'
 
@@ -22,10 +22,11 @@ export const isPkgAvailable = (pkg: string) => !!tryPkg(pkg)
 
 export const isTsAvailable = isPkgAvailable('typescript')
 
-export const isAngularAvailable = isPkgAvailable('@angular/core')
+export const isAngularAvailable = isPkgAvailable('@angular/core/package.json')
 
 export const isMdxAvailable =
-  isPkgAvailable('@mdx/mdx') || isPkgAvailable('@mdx/react')
+  isPkgAvailable('@mdx-js/mdx/package.json') ||
+  isPkgAvailable('@mdx-js/react/package.json')
 
 export const isReactAvailable = isPkgAvailable('react')
 

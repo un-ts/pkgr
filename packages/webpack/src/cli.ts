@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-/* eslint-disable @typescript-eslint/unbound-method */
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+/// <reference path="../shim.d.ts" />
+
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { __DEV__, openBrowser, PROD } from '@pkgr/utils'
 import { program } from 'commander'
 import debug from 'debug'
-import * as JSOX from 'jsox'
+import { JSOX } from 'jsox'
 import _ from 'lodash'
 import webpack, { Compiler, StatsCompilation } from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
@@ -20,6 +21,8 @@ const _dirname =
   typeof __dirname === 'undefined'
     ? path.dirname(fileURLToPath(import.meta.url))
     : __dirname
+
+const jsoxParse = <T>(text: string) => JSOX.parse(text) as T
 
 program
   .version(
@@ -40,17 +43,17 @@ program
   .option(
     '-x, --externals <JSOX>',
     'extra external packages, peerDependencies, and dependencies for node by default',
-    JSOX.parse,
+    jsoxParse,
   )
   .option(
     '-g, --globals <JSOX>',
     'JSON string to be parsed as umd globals map',
-    JSOX.parse,
+    jsoxParse,
   )
   .option(
     '-c, --copies <JSOX>',
     'targets setting or whole CopyOptions for copy-webpack-plugin, could be array or object',
-    JSOX.parse,
+    jsoxParse,
   )
   .option('--preferCssModules <boolean>', 'prefer css modules or global styles')
   .option('--publicPath [path]', '`publicPath` setting for `output.publicPath`')

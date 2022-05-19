@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/no-await-expression-member */
-import path from 'path'
-import { fileURLToPath } from 'url'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { alias } from '@pkgr/es-modules'
 import {
@@ -257,11 +257,16 @@ ConfigOptions = {}) => {
       mainFields: [
         svelte && 'svelte',
         'browser',
-        'module',
-        'esnext',
+        'es2020',
+        'esm2020',
+        'fesm2020',
         'es2015',
-        'fesm',
+        'esm2015',
+        'fesm2015',
+        'esm5',
         'fesm5',
+        'module',
+        'jsnext:main',
         'main',
       ].filter(identify),
       plugins: [

@@ -1,8 +1,8 @@
 // based on https://github.com/facebook/create-react-app/blob/master/packages/react-dev-utils/openBrowser.js
 
 import { execSync } from 'child_process'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import spawn from 'cross-spawn'
 import open from 'open'

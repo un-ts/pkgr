@@ -10,9 +10,9 @@ jobs:
     strategy:
       matrix:
         node:
-          - 12
           - 14
           - 16
+          - 18
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -41,13 +41,11 @@ jobs:
           PARSER_NO_WATCH: true
 
       - name: Codecov
-        if: matrix.node == 14 # only report coverage once per commit
+        uses: codecov/codecov-action@v3
+
+      - name: Codacy Coverage
         run: |
-          yarn global add codecov codacy-coverage
-          codecov
-          cat ./coverage/lcov.info | codacy-coverage -u rx-ts -n pkgr
+          bash <(curl -Ls https://coverage.codacy.com/get.sh)
         env:
-          CI: 'true'
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           CODACY_ACCOUNT_TOKEN: ${{ secrets.CODACY_ACCOUNT_TOKEN }}
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}

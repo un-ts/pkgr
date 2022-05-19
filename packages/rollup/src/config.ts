@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 import { DEFAULT_EXTENSIONS } from '@babel/core'
 import { entries } from '@pkgr/es-modules'
@@ -24,13 +24,13 @@ import {
   tryPkg,
   tryRequirePkg,
 } from '@pkgr/utils'
+import alias, { Alias, RollupAliasOptions } from '@rollup/plugin-alias'
 import babel, { RollupBabelInputPluginOptions } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import url from '@rollup/plugin-url'
-import alias, { AliasOptions } from '@rxts/rollup-plugin-alias'
 import builtinModules from 'builtin-modules'
 import debug from 'debug'
 import isGlob from 'is-glob'
@@ -47,7 +47,9 @@ import copy, { CopyOptions } from 'rollup-plugin-copy'
 import esbuild, { Options as EsBuildOptions } from 'rollup-plugin-esbuild'
 import postcss, { PostCSSPluginConf } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
+import unassert from 'rollup-plugin-unassert'
 import vueJsx, { Options as VueJsxOptions } from 'rollup-plugin-vue-jsx-compat'
+import unassertjs from 'unassert'
 
 type VuePluginOptions = import('rollup-plugin-vue').Options
 
@@ -92,6 +94,9 @@ const resolve = ({
     mainFields: [
       !node && 'browser',
       'esnext',
+      'es2020',
+      'esm2020',
+      'fesm2020',
       'es2015',
       'esm2015',
       'fesm2015',
@@ -159,7 +164,7 @@ export interface ConfigOptions {
   external?: External
   externals?: External
   globals?: StringMap
-  aliasEntries?: AliasOptions['entries'] | StringMap
+  aliasEntries?: RollupAliasOptions['entries']
   copies?: CopyOptions | CopyOptions['targets'] | StringMap
   sourceMap?: boolean
   babel?: RollupBabelInputPluginOptions
@@ -231,14 +236,16 @@ ConfigOptions = {}): RollupOptions[] => {
     resolve: [...EXTENSIONS, ...ASSETS_EXTENSIONS],
     entries: [
       ...(Array.isArray(aliasEntries)
-        ? aliasEntries.map(({ find, replacement }) => ({
+        ? (aliasEntries as Alias[]).map(({ find, replacement }) => ({
             find: tryRegExp(find),
             replacement,
           }))
-        : Object.entries(aliasEntries).map(([find, replacement]) => ({
-            find: tryRegExp(find),
-            replacement,
-          }))),
+        : Object.entries(aliasEntries as StringMap).map(
+            ([find, replacement]) => ({
+              find: tryRegExp(find),
+              replacement,
+            }),
+          )),
       ...entries,
     ],
   }
@@ -449,6 +456,13 @@ ConfigOptions = {}): RollupOptions[] => {
           copy(copyOptions),
           json(),
           url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
+          unassert({
+            importPatterns: [
+              ...unassertjs.defaultOptions().importPatterns,
+              "import * as assert from 'uvu/assert'",
+              "import { ok as assert } from 'uvu/assert'",
+            ],
+          }),
           postcss(postcssOptions),
           vue?.(vueOptions),
           !useEsBuild &&
