@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.0
+
+### Minor Changes
+
+- [`d578cb3`](https://github.com/rx-ts/pkgr/commit/d578cb3477bc69b4a306db6df41016a75819baa6) Thanks [@JounQin](https://github.com/JounQin)! - chore!: bump (dev)Dependencies, update ts usage
+
 ## 2.1.0
 
 ### Minor Changes
