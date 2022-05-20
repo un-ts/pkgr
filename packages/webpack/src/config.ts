@@ -52,6 +52,7 @@ export interface ConfigOptions {
         to?: string
       }
   >
+  disableDotRule?: boolean
   preferCssModules?: boolean
   publicPath?: string
   prod?: boolean
@@ -87,6 +88,7 @@ export default async ({
   externals,
   type,
   copies = [],
+  disableDotRule,
   preferCssModules,
   publicPath,
   prod = __PROD__,
@@ -238,7 +240,7 @@ ConfigOptions = {}) => {
       hot: true,
       port,
       allowedHosts: 'all',
-      historyApiFallback: true,
+      historyApiFallback: !disableDotRule || { disableDotRule },
     },
     entry: {
       app: entry,

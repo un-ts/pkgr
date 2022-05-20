@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /// <reference path="../shim.d.ts" />
 
-import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { tryRequirePkg } from '@pkgr/utils'
 import { program } from 'commander'
 import debug from 'debug'
 import { JSOX } from 'jsox'
@@ -29,13 +29,9 @@ const jsoxParse = <T>(text: string) => JSOX.parse(text) as T
 
 program
   .version(
-    (
-      JSON.parse(
-        fs.readFileSync(path.resolve(_dirname, '../package.json'), 'utf8'),
-      ) as {
-        version: string
-      }
-    ).version,
+    tryRequirePkg<{ version: string }>(
+      path.resolve(_dirname, '../package.json'),
+    )!.version,
   )
   .option('-i, --input <filename>', 'input entry file path')
   .option('--exclude <path>', 'exclude package(s) for monorepo', parseArrayArgs)

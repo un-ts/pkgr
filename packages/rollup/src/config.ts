@@ -331,7 +331,9 @@ ConfigOptions = {}): RollupOptions[] => {
     let defineValues: Record<string, string> | undefined
 
     if (define) {
-      defineValues = Object.entries(define).reduce<Record<string, string>>(
+      defineValues = Object.entries(define === true ? {} : define).reduce<
+        Record<string, string>
+      >(
         (acc, [key, value]: [string, string]) =>
           Object.assign(acc, {
             [key]: JSON.stringify(value),

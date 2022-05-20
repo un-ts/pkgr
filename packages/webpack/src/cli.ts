@@ -1,11 +1,8 @@
 #!/usr/bin/env node
-/// <reference path="../shim.d.ts" />
-
-import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { __DEV__, openBrowser, PROD } from '@pkgr/utils'
+import { __DEV__, openBrowser, PROD, tryRequirePkg } from '@pkgr/utils'
 import { program } from 'commander'
 import debug from 'debug'
 import { JSOX } from 'jsox'
@@ -26,13 +23,9 @@ const jsoxParse = <T>(text: string) => JSOX.parse(text) as T
 
 program
   .version(
-    (
-      JSON.parse(
-        fs.readFileSync(path.resolve(_dirname, '../package.json'), 'utf8'),
-      ) as {
-        version: string
-      }
-    ).version,
+    tryRequirePkg<{
+      version: string
+    }>(path.resolve(_dirname, '../package.json'))!.version,
   )
   .option('-e, --entry <filename>', 'input entry file path')
   .option(
@@ -54,6 +47,10 @@ program
     '-c, --copies <JSOX>',
     'targets setting or whole CopyOptions for copy-webpack-plugin, could be array or object',
     jsoxParse,
+  )
+  .option(
+    '--disableDotRule [boolean]',
+    'whether to enable `disableDotRule` for `history-api-fallback`',
   )
   .option('--preferCssModules <boolean>', 'prefer css modules or global styles')
   .option('--publicPath [path]', '`publicPath` setting for `output.publicPath`')
