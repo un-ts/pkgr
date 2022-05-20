@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.1.1
+
+### Patch Changes
+
+- [`879a4dc`](https://github.com/rx-ts/pkgr/commit/879a4dc95d553e1efbde80917a150b16cd7ed50c) Thanks [@JounQin](https://github.com/JounQin)! - fix(rollup): ts typing error
+
 ## 3.1.0
 
 ### Minor Changes
