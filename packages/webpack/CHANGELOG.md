@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.2
+
+### Patch Changes
+
+- [`388dd94`](https://github.com/rx-ts/pkgr/commit/388dd9413555ec155296de5e42b5c83718378fc6) Thanks [@JounQin](https://github.com/JounQin)! - fix(webpack): get options correctly
+
 ## 3.0.1
 
 ### Patch Changes
