@@ -6,7 +6,6 @@ import { __DEV__, openBrowser, PROD, tryRequirePkg } from '@pkgr/utils'
 import { program } from 'commander'
 import debug from 'debug'
 import { JSOX } from 'jsox'
-import _ from 'lodash'
 import webpack, { Compiler, StatsCompilation } from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 
@@ -60,18 +59,7 @@ program
   )
   .parse(process.argv)
 
-const options = _.pick(
-  program.opts(),
-  'entry',
-  'type',
-  'outputDir',
-  'externals',
-  'globals',
-  'copies',
-  'preferCssModules',
-  'publicPath',
-  'prod',
-) as ConfigOptions
+const options = program.opts<ConfigOptions>()
 
 info('options: %O', options)
 
