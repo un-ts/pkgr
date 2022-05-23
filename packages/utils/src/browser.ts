@@ -1,6 +1,6 @@
 // based on https://github.com/facebook/create-react-app/blob/master/packages/react-dev-utils/openBrowser.js
 
-import { execSync } from 'child_process'
+import { execSync } from 'node:child_process'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
