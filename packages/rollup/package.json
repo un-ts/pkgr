@@ -33,7 +33,7 @@
     "@rollup/plugin-url": "^7.0.0",
     "builtin-modules": "^3.3.0",
     "commander": "^9.2.0",
-    "core-js": "^3.22.5",
+    "core-js": "^3.22.6",
     "debug": "^4.3.2",
     "esbuild": "^0.14.39",
     "is-glob": "^4.0.3",
