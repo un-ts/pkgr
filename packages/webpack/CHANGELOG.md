@@ -1,5 +1,15 @@
 # Change Log
 
+## 3.1.0
+
+### Minor Changes
+
+- [`5e1f49a`](https://github.com/rx-ts/pkgr/commit/5e1f49adceffd0edee6375c8733837247ef5498d) Thanks [@JounQin](https://github.com/JounQin)! - chore(deps): upgrade angular to v14
+
+### Patch Changes
+
+- [`f1b249c`](https://github.com/rx-ts/pkgr/commit/f1b249c934a1e259bdd3ae920cdb7dddeccdd882) Thanks [@JounQin](https://github.com/JounQin)! - fix(webpack): upgrade postcss-load-config
+
 ## 3.0.2
 
 ### Patch Changes
