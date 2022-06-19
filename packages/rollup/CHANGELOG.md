@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.1.2
+
+### Patch Changes
+
+- [`5e1f49a`](https://github.com/rx-ts/pkgr/commit/5e1f49adceffd0edee6375c8733837247ef5498d) Thanks [@JounQin](https://github.com/JounQin)! - chore(deps): upgrade all (dev)Dependencies
+
 ## 3.1.1
 
 ### Patch Changes

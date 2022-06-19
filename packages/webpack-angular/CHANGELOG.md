@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.0.0
+
+### Major Changes
+
+- [`5e1f49a`](https://github.com/rx-ts/pkgr/commit/5e1f49adceffd0edee6375c8733837247ef5498d) Thanks [@JounQin](https://github.com/JounQin)! - chore(deps): upgrade angular to v14
+
+### Patch Changes
+
+- Updated dependencies [[`5e1f49a`](https://github.com/rx-ts/pkgr/commit/5e1f49adceffd0edee6375c8733837247ef5498d), [`f1b249c`](https://github.com/rx-ts/pkgr/commit/f1b249c934a1e259bdd3ae920cdb7dddeccdd882)]:
+  - @pkgr/webpack@3.1.0
+
 ## 2.0.2
 
 ### Patch Changes
