@@ -40,7 +40,7 @@
     "w:dev": "ts-node-esm packages/webpack/src/cli"
   },
   "devDependencies": {
-    "@1stg/app-config": "^4.2.0",
+    "@1stg/app-config": "^4.2.1",
     "@angular/common": "^14.0.2",
     "@angular/compiler": "^14.0.2",
     "@angular/compiler-cli": "^14.0.2",
