@@ -4,21 +4,7 @@
   "description": "Seamless angular related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/webpack-angular",
-  "funding": "https://opencollective.com/unts",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
-  "license": "MIT",
-  "peerDependencies": {
-    "@angular/core": "^14.0.0"
-  },
-  "dependencies": {
-    "@angular/compiler-cli": "^14.0.2",
-    "@ngtools/webpack": "^14.0.2",
-    "@pkgr/webpack": "^3.1.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
   "donate": {
     "recipients": [
       {
@@ -49,5 +35,19 @@
         ]
       }
     ]
-  }
+  },
+  "funding": "https://opencollective.com/unts",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": "^14.0.0"
+  },
+  "dependencies": {
+    "@angular/compiler-cli": "^14.0.4",
+    "@ngtools/webpack": "^14.0.4",
+    "@pkgr/webpack": "^3.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
 }

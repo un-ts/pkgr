@@ -5,44 +5,7 @@
   "description": "Seamless imagemin API wrapper to minify images, working perfectly with lint-staged also",
   "repository": "git@github.com:un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/imagemin",
-  "funding": "https://opencollective.com/unts",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
-  "license": "MIT",
-  "engines": {
-    "node": "^12.20.0 || ^14.18.0 || >=16.0.0"
-  },
-  "bin": {
-    "i": "lib/cli.js"
-  },
-  "main": "./lib/index.cjs",
-  "module": "./lib/index.js",
-  "exports": {
-    "types": "./lib/index.d.ts",
-    "import": "./lib/index.js",
-    "require": "./lib/index.cjs"
-  },
-  "types": "./lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
-  "dependencies": {
-    "imagemin": "^8.0.1",
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-jpegtran": "^7.0.0",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-optipng": "^8.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^10.0.0",
-    "imagemin-upng": "^3.0.0",
-    "imagemin-webp": "^7.0.0",
-    "is-glob": "^4.0.3",
-    "tiny-glob": "^0.2.9",
-    "tslib": "^2.4.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
   "donate": {
     "recipients": [
       {
@@ -73,5 +36,42 @@
         ]
       }
     ]
-  }
+  },
+  "funding": "https://opencollective.com/unts",
+  "license": "MIT",
+  "engines": {
+    "node": "^12.20.0 || ^14.18.0 || >=16.0.0"
+  },
+  "bin": {
+    "i": "lib/cli.js"
+  },
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.js",
+    "require": "./lib/index.cjs"
+  },
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "imagemin-upng": "^3.0.0",
+    "imagemin-webp": "^7.0.0",
+    "is-glob": "^4.0.3",
+    "tiny-glob": "^0.2.9",
+    "tslib": "^2.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
 }

@@ -5,58 +5,7 @@
   "description": "Seamless Rollup bundler wrapper for libraries",
   "repository": "git@github.com:un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/rollup",
-  "funding": "https://opencollective.com/unts",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
-  "license": "MIT",
-  "engines": {
-    "node": "^12.20.0 || ^14.18.0 || >=16.0.0"
-  },
-  "bin": {
-    "r": "lib/cli.js"
-  },
-  "files": [
-    "lib"
-  ],
-  "dependencies": {
-    "@babel/core": "^7.18.5",
-    "@babel/plugin-proposal-decorators": "^7.18.2",
-    "@babel/preset-env": "^7.18.2",
-    "@babel/preset-typescript": "^7.17.12",
-    "@pkgr/es-modules": "^0.6.0",
-    "@pkgr/umd-globals": "^0.8.0",
-    "@pkgr/utils": "^2.2.0",
-    "@rollup/plugin-alias": "^3.1.9",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-json": "^4.0.3",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-replace": "^4.0.0",
-    "@rollup/plugin-url": "^7.0.0",
-    "builtin-modules": "^3.3.0",
-    "commander": "^9.3.0",
-    "core-js": "^3.23.1",
-    "debug": "^4.3.2",
-    "esbuild": "^0.14.46",
-    "is-glob": "^4.0.3",
-    "jsox": "^1.2.111",
-    "lodash-es": "^4.17.21",
-    "micromatch": "^4.0.5",
-    "postcss": "^8.4.14",
-    "rollup": "^2.75.6",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-esbuild": "^4.9.1",
-    "rollup-plugin-postcss": "^4.0.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-unassert": "^0.4.0",
-    "rollup-plugin-vue": "^6.0.0",
-    "rollup-plugin-vue-jsx-compat": "^0.0.6",
-    "tslib": "^2.4.0",
-    "unassert": "^1.6.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
   "donate": {
     "recipients": [
       {
@@ -87,5 +36,56 @@
         ]
       }
     ]
-  }
+  },
+  "funding": "https://opencollective.com/unts",
+  "license": "MIT",
+  "engines": {
+    "node": "^12.20.0 || ^14.18.0 || >=16.0.0"
+  },
+  "bin": {
+    "r": "lib/cli.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@pkgr/es-modules": "^0.6.0",
+    "@pkgr/umd-globals": "^0.8.0",
+    "@pkgr/utils": "^2.2.0",
+    "@rollup/plugin-alias": "^3.1.9",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-url": "^7.0.0",
+    "builtin-modules": "^3.3.0",
+    "commander": "^9.3.0",
+    "core-js": "^3.23.3",
+    "debug": "^4.3.4",
+    "esbuild": "^0.14.48",
+    "is-glob": "^4.0.3",
+    "jsox": "^1.2.113",
+    "lodash-es": "^4.17.21",
+    "micromatch": "^4.0.5",
+    "postcss": "^8.4.14",
+    "rollup": "^2.75.7",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-unassert": "^0.4.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "rollup-plugin-vue-jsx-compat": "^0.0.6",
+    "tslib": "^2.4.0",
+    "unassert": "^1.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
 }
