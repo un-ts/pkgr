@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack-vue",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Seamless vue related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/webpack-vue",

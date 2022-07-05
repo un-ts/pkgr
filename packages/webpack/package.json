@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "type": "module",
   "description": "Seamless webpack bundler wrapper for apps and libraries",
   "repository": "git@github.com:un-ts/pkgr.git",
@@ -57,7 +57,7 @@
     "@babel/core": "^7.18.6",
     "@pkgr/es-modules": "^0.6.0",
     "@pkgr/umd-globals": "^0.8.0",
-    "@pkgr/utils": "^2.2.0",
+    "@pkgr/utils": "^2.3.0",
     "babel-loader": "^8.2.5",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "commander": "^9.3.0",
