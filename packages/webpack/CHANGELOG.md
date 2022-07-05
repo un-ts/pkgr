@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.1.1
+
+### Patch Changes
+
+- [#295](https://github.com/un-ts/pkgr/pull/295) [`9454c9b`](https://github.com/un-ts/pkgr/commit/9454c9b64db8fb79f83fabd591ad8287738df5c1) Thanks [@JounQin](https://github.com/JounQin)! - chore: add donate and funding fields
+
+- Updated dependencies [[`9454c9b`](https://github.com/un-ts/pkgr/commit/9454c9b64db8fb79f83fabd591ad8287738df5c1), [`9454c9b`](https://github.com/un-ts/pkgr/commit/9454c9b64db8fb79f83fabd591ad8287738df5c1)]:
+  - @pkgr/utils@2.3.0
+
 ## 3.1.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/rollup",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "type": "module",
   "description": "Seamless Rollup bundler wrapper for libraries",
   "repository": "git@github.com:un-ts/pkgr.git",
@@ -55,7 +55,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@pkgr/es-modules": "^0.6.0",
     "@pkgr/umd-globals": "^0.8.0",
-    "@pkgr/utils": "^2.2.0",
+    "@pkgr/utils": "^2.3.0",
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.1",
