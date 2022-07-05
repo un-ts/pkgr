@@ -17,3 +17,15 @@ export const cjsRequire =
 
 // eslint-disable-next-line n/no-deprecated-api, sonar/deprecation
 export const EXTENSIONS = ['.ts', '.tsx', ...Object.keys(cjsRequire.extensions)]
+
+export const SCRIPT_RUNNERS = {
+  npm: 'npx',
+  pnpm: 'pnpm',
+  yarn: 'yarn',
+} as const
+
+export const SCRIPT_EXECUTORS = {
+  npm: 'npx',
+  pnpm: 'pnpx', // same as 'pnpm dlx'
+  yarn: 'yarn dlx',
+} as const

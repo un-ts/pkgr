@@ -5,66 +5,7 @@
   "description": "Seamless webpack bundler wrapper for apps and libraries",
   "repository": "git@github.com:un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/webpack",
-  "funding": "https://opencollective.com/unts",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
-  "license": "MIT",
-  "engines": {
-    "node": ">=14"
-  },
-  "bin": {
-    "w": "lib/cli.js"
-  },
-  "files": [
-    ".config",
-    "index.pug",
-    "lib",
-    "typings"
-  ],
-  "dependencies": {
-    "@1stg/babel-preset": "^3.0.0",
-    "@1stg/postcss-config": "^3.1.0",
-    "@babel/core": "^7.18.5",
-    "@pkgr/es-modules": "^0.6.0",
-    "@pkgr/umd-globals": "^0.8.0",
-    "@pkgr/utils": "^2.2.0",
-    "babel-loader": "^8.2.5",
-    "case-sensitive-paths-webpack-plugin": "^2.4.0",
-    "commander": "^9.3.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "core-js": "^3.23.1",
-    "css-loader": "^6.5.1",
-    "debug": "^4.3.2",
-    "file-loader": "^6.2.0",
-    "friendly-errors-webpack-plugin": "^1.7.0",
-    "html-loader": "^3.1.2",
-    "html-webpack-harddisk-plugin": "^2.0.0",
-    "html-webpack-plugin": "^5.5.0",
-    "jsox": "^1.2.111",
-    "less-loader": "^11.0.0",
-    "mini-css-extract-plugin": "^2.6.1",
-    "postcss": "^8.4.14",
-    "postcss-load-config": "^4.0.1",
-    "postcss-loader": "^7.0.0",
-    "pug": "^3.0.2",
-    "pug-loader": "^2.4.0",
-    "pug-plain-loader": "^1.1.0",
-    "raw-loader": "^4.0.2",
-    "sass": "^1.52.3",
-    "sass-loader": "^13.0.0",
-    "style-loader": "^3.3.1",
-    "stylus": "^0.58.1",
-    "stylus-loader": "^7.0.0",
-    "tsconfig-paths-webpack-plugin": "^3.5.2",
-    "tslib": "^2.4.0",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.73.0",
-    "webpack-dev-server": "^4.9.2",
-    "workbox-webpack-plugin": "^6.5.3"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
   "donate": {
     "recipients": [
       {
@@ -95,5 +36,64 @@
         ]
       }
     ]
-  }
+  },
+  "funding": "https://opencollective.com/unts",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "bin": {
+    "w": "lib/cli.js"
+  },
+  "files": [
+    ".config",
+    "index.pug",
+    "lib",
+    "typings"
+  ],
+  "dependencies": {
+    "@1stg/babel-preset": "^3.1.2",
+    "@1stg/postcss-config": "^3.2.2",
+    "@babel/core": "^7.18.6",
+    "@pkgr/es-modules": "^0.6.0",
+    "@pkgr/umd-globals": "^0.8.0",
+    "@pkgr/utils": "^2.2.0",
+    "babel-loader": "^8.2.5",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "commander": "^9.3.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "core-js": "^3.23.3",
+    "css-loader": "^6.7.1",
+    "debug": "^4.3.4",
+    "file-loader": "^6.2.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-loader": "^3.1.2",
+    "html-webpack-harddisk-plugin": "^2.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jsox": "^1.2.113",
+    "less-loader": "^11.0.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.1",
+    "postcss-loader": "^7.0.0",
+    "pug": "^3.0.2",
+    "pug-loader": "^2.4.0",
+    "pug-plain-loader": "^1.1.0",
+    "raw-loader": "^4.0.2",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "stylus": "^0.58.1",
+    "stylus-loader": "^7.0.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
+    "tslib": "^2.4.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.73.0",
+    "webpack-dev-server": "^4.9.3",
+    "workbox-webpack-plugin": "^6.5.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
 }

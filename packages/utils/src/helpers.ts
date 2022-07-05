@@ -3,7 +3,13 @@ import path from 'node:path'
 
 import isGlob from 'is-glob'
 
-import { CWD, EXTENSIONS, cjsRequire } from './constants.js'
+import {
+  CWD,
+  EXTENSIONS,
+  cjsRequire,
+  SCRIPT_RUNNERS,
+  SCRIPT_EXECUTORS,
+} from './constants.js'
 
 export const tryPkg = (pkg: string) => {
   try {
@@ -129,3 +135,45 @@ export const arrayify = <
     arr.push(...(Array.isArray(curr) ? curr : curr == null ? [] : [curr]))
     return arr
   }, [])
+
+export const getPackageManager = () => {
+  const execPath = process.env.npm_execpath
+
+  if (!execPath) {
+    return
+  }
+
+  if (/\byarn\b/.test(execPath)) {
+    return 'yarn'
+  }
+
+  if (/\bpnpm\b/.test(execPath)) {
+    return 'pnpm'
+  }
+
+  if (/\bnpm\b/.test(execPath)) {
+    return 'npm'
+  }
+
+  console.warn('unknown package manager:', execPath)
+}
+
+export const getScriptRunner = () => {
+  const pm = getPackageManager()
+
+  if (!pm) {
+    return
+  }
+
+  return SCRIPT_RUNNERS[pm]
+}
+
+export const getScriptExecutor = () => {
+  const pm = getPackageManager()
+
+  if (!pm) {
+    return
+  }
+
+  return SCRIPT_EXECUTORS[pm]
+}

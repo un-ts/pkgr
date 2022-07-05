@@ -4,18 +4,7 @@
   "description": "Seamless mdx related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/webpack-mdx",
-  "funding": "https://opencollective.com/unts",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
-  "license": "MIT",
-  "dependencies": {
-    "@mdx-js/loader": "^2.1.2",
-    "@pkgr/webpack-react": "^2.0.0",
-    "remark-gfm": "^3.0.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
   "donate": {
     "recipients": [
       {
@@ -46,5 +35,16 @@
         ]
       }
     ]
-  }
+  },
+  "funding": "https://opencollective.com/unts",
+  "license": "MIT",
+  "dependencies": {
+    "@mdx-js/loader": "^2.1.2",
+    "@pkgr/webpack-react": "^2.0.1",
+    "remark-gfm": "^3.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
 }

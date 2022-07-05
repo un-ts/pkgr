@@ -5,34 +5,7 @@
   "description": "Union collections of es modules mappings for pkgs without or with incorrect `module` field",
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/es-modules",
-  "funding": "https://opencollective.com/unts",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
-  "license": "MIT",
-  "main": "./lib/index.cjs",
-  "module": "./lib/index.js",
-  "exports": {
-    "types": "./lib/index.d.ts",
-    "import": "./lib/index.js",
-    "require": "./lib/index.cjs"
-  },
-  "types": "./lib/index.d.ts",
-  "files": [
-    "lib",
-    "!**/*.tsbuildinfo"
-  ],
-  "keywords": [
-    "alias",
-    "es",
-    "modules",
-    "rollup",
-    "rollup-config",
-    "webpack",
-    "webpack-config"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
   "donate": {
     "recipients": [
       {
@@ -63,5 +36,32 @@
         ]
       }
     ]
-  }
+  },
+  "funding": "https://opencollective.com/unts",
+  "license": "MIT",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.js",
+    "require": "./lib/index.cjs"
+  },
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "!**/*.tsbuildinfo"
+  ],
+  "keywords": [
+    "alias",
+    "es",
+    "modules",
+    "rollup",
+    "rollup-config",
+    "webpack",
+    "webpack-config"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
 }

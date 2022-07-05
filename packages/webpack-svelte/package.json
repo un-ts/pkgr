@@ -4,20 +4,7 @@
   "description": "Seamless svelte related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/webpack-svelte",
-  "funding": "https://opencollective.com/unts",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
-  "license": "MIT",
-  "peerDependencies": {
-    "svelte": ">=3.0.0"
-  },
-  "dependencies": {
-    "@pkgr/webpack": "^3.0.0",
-    "svelte-loader": "^3.1.3"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
   "donate": {
     "recipients": [
       {
@@ -48,5 +35,18 @@
         ]
       }
     ]
-  }
+  },
+  "funding": "https://opencollective.com/unts",
+  "license": "MIT",
+  "peerDependencies": {
+    "svelte": ">=3.0.0"
+  },
+  "dependencies": {
+    "@pkgr/webpack": "^3.1.0",
+    "svelte-loader": "^3.1.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
 }
