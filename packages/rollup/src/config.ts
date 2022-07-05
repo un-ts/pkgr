@@ -359,7 +359,7 @@ ConfigOptions = {}): RollupOptions[] => {
       useEsBuild && vue && (!jsxFactory || jsxFactory === 'vueJsxCompat')
 
     return pkgFormats.map(format => {
-      const isEsVersion = /^es(\d+|m|next)$/.test(format) && format !== 'es5'
+      const isEsVersion = /^es(?:\d+|m|next)$/.test(format) && format !== 'es5'
       return {
         input: pkgInput,
         output: {

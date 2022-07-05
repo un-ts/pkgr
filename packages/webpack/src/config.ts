@@ -299,7 +299,7 @@ ConfigOptions = {}) => {
           use: [babelLoader, angular && NGTOOLS_WEBPACK].filter(identify),
           exclude: (file: string) =>
             NODE_MODULES_REG.test(file) &&
-            !/\.(mjs|jsx|tsx?|vue\.js)$/.test(file),
+            !/\.(?:m[jt]s|jsx|svelte|tsx?|vue\.js)$/.test(file),
         },
         mdx && {
           test: /\.mdx?$/,
