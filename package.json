@@ -1,10 +1,10 @@
 {
-  "name": "@rxts/pkgr",
+  "name": "@unts/pkgr",
   "version": "0.0.0",
   "description": "Simple but incredible utilities for package bundlers like rollup, webpack.",
-  "repository": "git@github.com:rx-ts/pkgr.git",
-  "homepage": "https://pkgr.now.sh",
-  "author": "JounQin <admin@1stg.me>",
+  "repository": "git+https://github.com/un-ts/pkgr.git",
+  "homepage": "https://pkgr.vercel.app",
+  "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
   "license": "MIT",
   "private": true,
   "workspaces": [

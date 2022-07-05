@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "rx-ts/pkgr"
+      "repo": "un-ts/pkgr"
     }
   ],
   "commit": false,

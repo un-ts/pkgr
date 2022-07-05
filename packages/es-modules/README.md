@@ -4,9 +4,9 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@pkgr/es-modules)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@pkgr/es-modules)
 
-[![David Peer](https://img.shields.io/david/peer/rx-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/rx-ts/pkgr?path=packages/es-modules&type=peer)
-[![David](https://img.shields.io/david/rx-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/rx-ts/pkgr?path=packages/es-modules)
-[![David Dev](https://img.shields.io/david/dev/rx-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/rx-ts/pkgr?path=packages/es-modules&type=dev)
+[![David Peer](https://img.shields.io/david/peer/un-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/un-ts/pkgr?path=packages/es-modules&type=peer)
+[![David](https://img.shields.io/david/un-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/un-ts/pkgr?path=packages/es-modules)
+[![David Dev](https://img.shields.io/david/dev/un-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/un-ts/pkgr?path=packages/es-modules&type=dev)
 
 > Union collections of es modules mappings for pkgs without or with incorrect `module` field.
 

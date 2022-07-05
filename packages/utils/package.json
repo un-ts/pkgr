@@ -3,12 +3,13 @@
   "version": "2.2.0",
   "type": "module",
   "description": "Shared utils for `@pkgr` packages or any package else",
-  "repository": "git+https://github.com/rx-ts/pkgr.git",
-  "homepage": "https://github.com/rx-ts/pkgr/blob/master/packages/utils",
-  "author": "JounQin <admin@1stg.me>",
+  "repository": "git+https://github.com/un-ts/pkgr.git",
+  "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/utils",
+  "funding": "https://opencollective.com/unts",
+  "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
   "license": "MIT",
   "engines": {
-    "node": ">=12"
+    "node": "^12.20.0 || ^14.18.0 || >=16.0.0"
   },
   "main": "./lib/index.cjs",
   "module": "./lib/index.js",
@@ -33,5 +34,36 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "donate": {
+    "recipients": [
+      {
+        "name": "unts",
+        "platform": "opencollective",
+        "address": "https://opencollective.com/unts",
+        "weight": 60
+      },
+      {
+        "name": "rxts",
+        "platform": "opencollective",
+        "address": "https://opencollective.com/rxts",
+        "weight": 20
+      },
+      {
+        "name": "1stG",
+        "email": "i@1stg.me",
+        "weight": 20,
+        "platforms": [
+          {
+            "platform": "opencollective",
+            "address": "https://opencollective.com/1stG"
+          },
+          {
+            "platform": "patreon",
+            "address": "https://www.patreon.com/1stG"
+          }
+        ]
+      }
+    ]
+  }
 }
