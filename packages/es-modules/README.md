@@ -3,10 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@pkgr/es-modules.svg)](https://www.npmjs.com/package/@pkgr/es-modules)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@pkgr/es-modules)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@pkgr/es-modules)
-
-[![David Peer](https://img.shields.io/david/peer/un-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/un-ts/pkgr?path=packages/es-modules&type=peer)
-[![David](https://img.shields.io/david/un-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/un-ts/pkgr?path=packages/es-modules)
-[![David Dev](https://img.shields.io/david/dev/un-ts/pkgr.svg?path=packages/es-modules)](https://david-dm.org/un-ts/pkgr?path=packages/es-modules&type=dev)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
 > Union collections of es modules mappings for pkgs without or with incorrect `module` field.
 

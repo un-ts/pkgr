@@ -23,10 +23,10 @@ import {
   tryPkg,
   tryRequirePkg,
 } from '@pkgr/utils'
+import FriendlyErrorsWebpackPlugin from '@soda/friendly-errors-webpack-plugin'
 import CaseSensitivePathsWebpackPlugin from 'case-sensitive-paths-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import debug from 'debug'
-import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
@@ -120,7 +120,11 @@ ConfigOptions = {}) => {
   const sourceMap = !prod
 
   const tsconfigFile =
-    (prod && tryFile('tsconfig.prod.json')) || baseTsconfigFile
+    (prod && tryFile(path.resolve(entry, '../tsconfig.prod.json'))) ||
+    tryFile('tsconfig.prod.json') ||
+    tryFile(path.resolve(entry, '../tsconfig.app.json')) ||
+    tryFile(path.resolve(entry, '../tsconfig.json')) ||
+    baseTsconfigFile
 
   const babelLoader = {
     loader: 'babel-loader',
@@ -427,8 +431,7 @@ ConfigOptions = {}) => {
       }),
       angular &&
         new (await import('@ngtools/webpack')).AngularWebpackPlugin({
-          tsconfig:
-            tryFile(path.resolve(entry, '../tsconfig.json')) || tsconfigFile,
+          tsconfig: tsconfigFile,
           compilerOptions: {
             emitDecoratorMetadata: true,
             target: 99, // represents esnext

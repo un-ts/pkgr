@@ -40,7 +40,7 @@
   "license": "MIT",
   "dependencies": {
     "@mdx-js/loader": "^2.1.2",
-    "@pkgr/webpack-react": "^2.0.1",
+    "@pkgr/webpack-react": "^2.0.2",
     "remark-gfm": "^3.0.1"
   },
   "publishConfig": {
