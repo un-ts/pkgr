@@ -42,9 +42,9 @@
     "@angular/core": "^14.0.0"
   },
   "dependencies": {
-    "@angular/compiler-cli": "^14.0.4",
-    "@ngtools/webpack": "^14.0.4",
-    "@pkgr/webpack": "^3.1.0"
+    "@angular/compiler-cli": "^14.0.5",
+    "@ngtools/webpack": "^14.0.5",
+    "@pkgr/webpack": "^3.1.1"
   },
   "publishConfig": {
     "access": "public"

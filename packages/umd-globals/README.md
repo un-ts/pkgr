@@ -3,10 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@pkgr/umd-globals.svg)](https://www.npmjs.com/package/@pkgr/umd-globals)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@pkgr/umd-globals)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@pkgr/umd-globals)
-
-[![David Peer](https://img.shields.io/david/peer/un-ts/pkgr.svg?path=packages/umd-globals)](https://david-dm.org/un-ts/pkgr?path=packages/umd-globals&type=peer)
-[![David](https://img.shields.io/david/un-ts/pkgr.svg?path=packages/umd-globals)](https://david-dm.org/un-ts/pkgr?path=packages/umd-globals)
-[![David Dev](https://img.shields.io/david/dev/un-ts/pkgr.svg?path=packages/umd-globals)](https://david-dm.org/un-ts/pkgr?path=packages/umd-globals&type=dev)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
 > Union collections of umd globals mappings.
 
