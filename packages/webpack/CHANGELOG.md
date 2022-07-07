@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.1.2
+
+### Patch Changes
+
+- [#297](https://github.com/un-ts/pkgr/pull/297) [`b4b8aa8`](https://github.com/un-ts/pkgr/commit/b4b8aa8c85efc47bbc9df3fef87e886113ad8c20) Thanks [@JounQin](https://github.com/JounQin)! - fix: correct resolving tsconfig filepath
+
+- [#297](https://github.com/un-ts/pkgr/pull/297) [`b4b8aa8`](https://github.com/un-ts/pkgr/commit/b4b8aa8c85efc47bbc9df3fef87e886113ad8c20) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump deps
+
 ## 3.1.1
 
 ### Patch Changes
