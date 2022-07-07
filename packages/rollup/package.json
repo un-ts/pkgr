@@ -46,7 +46,8 @@
     "r": "lib/cli.js"
   },
   "files": [
-    "lib"
+    "lib",
+    "shim.d.ts"
   ],
   "dependencies": {
     "@babel/core": "^7.18.6",

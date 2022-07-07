@@ -48,8 +48,7 @@
   "files": [
     ".config",
     "index.pug",
-    "lib",
-    "typings"
+    "lib"
   ],
   "dependencies": {
     "@1stg/babel-preset": "^3.1.3",
