@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack-react",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Seamless react related plugin for @pkgr/webpack",
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/webpack-react",
