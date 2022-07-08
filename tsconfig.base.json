@@ -1,6 +1,3 @@
 {
-  "extends": "@1stg/tsconfig/lib",
-  "compilerOptions": {
-    "lib": ["DOM", "ESNext"]
-  }
+  "extends": "@1stg/tsconfig/lib"
 }
