@@ -10,6 +10,7 @@
   "workspaces": [
     "packages/*"
   ],
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "build": "run-s build:ts build:r",
     "build:r": "tsx packages/rollup/src/cli.ts -f cjs -d false --exclude webpack-*",
@@ -26,7 +27,7 @@
     "dev:vue": "yarn w:dev -e src/vue -t vue",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache -f friendly",
-    "lint:style": "stylelint --cache './**/*.{cjs,html,js,md,scss,ts,vue}'",
+    "lint:style": "stylelint . --cache",
     "lint:tsc": "tsc --noEmit",
     "prelint": "yarn build",
     "prepare": "patch-package && simple-git-hooks && yarn-deduplicate --strategy fewer && t || exit 0",
