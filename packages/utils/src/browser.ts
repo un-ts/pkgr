@@ -94,7 +94,7 @@ function startBrowserProcess(
         // on OSX Chromium-based browser with AppleScript
         execSync('ps cax | grep "' + chromiumBrowser + '"')
         execSync(
-          'osascript ../openChrome.applescript "' +
+          'osascript ../openChrome.applescript "' + // lgtm [js/shell-command-constructed-from-input]
             encodeURI(url) +
             '" "' +
             chromiumBrowser +
