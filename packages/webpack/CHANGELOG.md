@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.2.0
+
+### Minor Changes
+
+- [#299](https://github.com/un-ts/pkgr/pull/299) [`011733e`](https://github.com/un-ts/pkgr/commit/011733e8b1c0f9b01419daf57c81e651783ab0b8) Thanks [@JounQin](https://github.com/JounQin)! - chore(deps): bump `html-loader` to `v4`
+
 ## 3.1.2
 
 ### Patch Changes
