@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.2.0
+
+### Minor Changes
+
+- [#303](https://github.com/un-ts/pkgr/pull/303) [`a7ed650`](https://github.com/un-ts/pkgr/commit/a7ed6502c386bad68cc7612737c6df197503fff9) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump `unassert@v2`, update related usage
+
 ## 3.1.4
 
 ### Patch Changes

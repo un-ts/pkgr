@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.2.0
+
+### Minor Changes
+
+- [#303](https://github.com/un-ts/pkgr/pull/303) [`a7ed650`](https://github.com/un-ts/pkgr/commit/a7ed6502c386bad68cc7612737c6df197503fff9) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump `stylus@v0.59` and `tsconfig-paths-webpack-plugin@v4`
+
+### Patch Changes
+
+- Updated dependencies [[`a7ed650`](https://github.com/un-ts/pkgr/commit/a7ed6502c386bad68cc7612737c6df197503fff9)]:
+  - @pkgr/webpack@3.3.0
+
 ## 1.1.4
 
 ### Patch Changes
