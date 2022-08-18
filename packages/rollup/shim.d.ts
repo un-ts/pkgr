@@ -1,8 +1,6 @@
 declare module 'unassert' {
   export interface UnassertOptions {
-    assertionPatterns?: string[]
-    requirePatterns?: string[]
-    importPatterns?: string[]
+    modules?: string[]
   }
 
   export const defaultOptions: () => Required<UnassertOptions>

@@ -49,7 +49,7 @@ import postcss, { PostCSSPluginConf } from 'rollup-plugin-postcss'
 import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
 import unassert from 'rollup-plugin-unassert'
 import vueJsx, { Options as VueJsxOptions } from 'rollup-plugin-vue-jsx-compat'
-import unassertjs from 'unassert'
+import { defaultOptions } from 'unassert'
 
 type VuePluginOptions = import('rollup-plugin-vue').Options
 
@@ -459,11 +459,7 @@ ConfigOptions = {}): RollupOptions[] => {
           json(),
           url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
           unassert({
-            importPatterns: [
-              ...unassertjs.defaultOptions().importPatterns,
-              "import * as assert from 'uvu/assert'",
-              "import { ok as assert } from 'uvu/assert'",
-            ],
+            modules: [...defaultOptions().modules, 'uvu/assert'],
           }),
           postcss(postcssOptions),
           vue?.(vueOptions),
