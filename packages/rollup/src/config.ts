@@ -279,7 +279,8 @@ ConfigOptions = {}): RollupOptions[] => {
       pkgOutputDir = pkgOutputDir + '/'
     }
 
-    if (!pkgInput || !pkgInput.startsWith(pkg)) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- TODO: seems to be a bug
+    if (!pkgInput?.startsWith(pkg)) {
       return []
     }
 
