@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.1
+
+### Patch Changes
+
+- [#306](https://github.com/un-ts/pkgr/pull/306) [`d85a311`](https://github.com/un-ts/pkgr/commit/d85a311d0432581c0dfdf474f13b80ec30850fa4) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump all (dev)Dependencies, fix related usage
+
 ## 2.1.0
 
 ### Minor Changes
