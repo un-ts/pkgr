@@ -313,6 +313,12 @@ ConfigOptions = {}) => {
               loader: '@mdx-js/loader',
               options: {
                 remarkPlugins: [(await import('remark-gfm')).default],
+                rehypePlugins: [
+                  [
+                    (await import('rehype-raw')).default,
+                    { passThrough: (await import('@mdx-js/mdx')).nodeTypes },
+                  ],
+                ],
               },
             },
           ],
