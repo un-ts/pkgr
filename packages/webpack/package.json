@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/webpack",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "type": "module",
   "description": "Seamless webpack bundler wrapper for apps and libraries",
   "repository": "git@github.com:un-ts/pkgr.git",

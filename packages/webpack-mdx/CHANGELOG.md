@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.0
+
+### Minor Changes
+
+- [#308](https://github.com/un-ts/pkgr/pull/308) [`fe6a8be`](https://github.com/un-ts/pkgr/commit/fe6a8be6b9639a80bd49bf0935bf17aaa6df4a0b) Thanks [@JounQin](https://github.com/JounQin)! - feat: enable `rehype-raw` for web components in .md files
+
 ## 2.1.1
 
 ### Patch Changes
