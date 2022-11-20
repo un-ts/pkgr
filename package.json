@@ -41,7 +41,7 @@
     "w:dev": "tsx packages/webpack/src/cli"
   },
   "devDependencies": {
-    "@1stg/app-config": "^7.2.0",
+    "@1stg/app-config": "^7.3.0",
     "@angular/common": "^14.1.3",
     "@angular/compiler": "^14.1.3",
     "@angular/compiler-cli": "^14.1.3",
