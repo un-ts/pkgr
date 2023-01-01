@@ -67,7 +67,7 @@
     "@types/node": "^18.7.13",
     "@types/prettier": "^2.7.0",
     "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
+    "@types/react-dom": "^18.0.10",
     "@types/soda__friendly-errors-webpack-plugin": "npm:@types/friendly-errors-webpack-plugin@^0.1.4",
     "@types/web": "^0.0.72",
     "@types/webpack-env": "^1.18.0",
