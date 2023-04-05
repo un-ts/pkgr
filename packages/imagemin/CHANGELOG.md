@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.0
+
+### Major Changes
+
+- [`e893720`](https://github.com/un-ts/pkgr/commit/e8937204e7ddcb25b9ee7d48c81bbd6e47284e48) Thanks [@JounQin](https://github.com/JounQin)! - feat!: bump deps
+
 ## 3.1.2
 
 ### Patch Changes
