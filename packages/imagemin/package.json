@@ -33,11 +33,11 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^10.0.1",
-    "imagemin-upng": "^3.0.0",
-    "imagemin-webp": "^7.0.0",
+    "imagemin-upng": "^4.0.0",
+    "imagemin-webp": "^8.0.0",
     "is-glob": "^4.0.3",
     "tiny-glob": "^0.2.9",
-    "tslib": "^2.4.0"
+    "tslib": "^2.5.0"
   },
   "publishConfig": {
     "access": "public"

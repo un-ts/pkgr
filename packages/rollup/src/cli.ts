@@ -81,23 +81,10 @@ program
     'whether to enable watch mode for development',
   )
   .option(
-    '-b, --babel <JSOX>',
-    'Overrides the Babel plugin options for `@rollup/plugin-babel`',
-    jsoxParse,
-  )
-  .option(
     '--esbuild <JSOX>',
     'Overrides the esbuild options for `rollup-plugin-esbuild`',
     jsoxParse,
   )
-  .option(
-    '-t, --transformer [babel | esbuild]',
-    'Specify which transformer to use',
-    'esbuild',
-  )
-
-  .option('--postcss <JSOX>', 'options for `rollup-plugin-postcss`', jsoxParse)
-
   .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', jsoxParse)
   .option(
     '-d, --define [boolean | JSOX]',
@@ -105,8 +92,6 @@ program
     jsoxParse,
     true,
   )
-
-  .option('--terser <JSOX>', 'options for `@rollup/plugin-terser`', jsoxParse)
   .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js) bundle together at the same time',
@@ -126,13 +111,9 @@ const options = pick(
   'globals',
   'aliasEntries',
   'sourceMap',
-  'babel',
   'esbuild',
-  'transformer',
-  'postcss',
   'vue',
   'define',
-  'terser',
   'prod',
 ) as ConfigOptions
 
@@ -142,15 +123,18 @@ const startWatcher = (configs: InputOptions[]) => {
   const watcher = watch(configs)
   watcher.on('event', event => {
     switch (event.code) {
-      case 'START':
+      case 'START': {
         info('🚀 (re)starting...')
         break
-      case 'END':
+      }
+      case 'END': {
         info('🎉 bundled successfully.')
         break
-      case 'ERROR':
+      }
+      case 'ERROR': {
         console.error(event)
         break
+      }
     }
   })
 }

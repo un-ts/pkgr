@@ -1,3 +1,7 @@
+declare module 'jsox' {
+  export const JSOX: typeof JSON
+}
+
 declare module 'unassert' {
   export interface UnassertOptions {
     modules?: string[]

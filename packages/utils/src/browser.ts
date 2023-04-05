@@ -145,14 +145,18 @@ function startBrowserProcess(
 export function openBrowser(url: string) {
   const { action, value, args } = getBrowserEnv()
   switch (action) {
-    case Action.NONE:
+    case Action.NONE: {
       // Special case: BROWSER="none" will prevent opening completely.
       return false
-    case Action.SCRIPT:
+    }
+    case Action.SCRIPT: {
       return executeNodeScript(value!, url)
-    case Action.BROWSER:
+    }
+    case Action.BROWSER: {
       return startBrowserProcess(value, url, args)
-    default:
+    }
+    default: {
       throw new Error('Not implemented.')
+    }
   }
 }

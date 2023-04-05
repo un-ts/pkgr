@@ -1,7 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-import { DEFAULT_EXTENSIONS } from '@babel/core'
 import { entries } from '@pkgr/es-modules'
 import {
   StringMap,
@@ -25,11 +24,9 @@ import {
   tryRequirePkg,
 } from '@pkgr/utils'
 import alias, { Alias, RollupAliasOptions } from '@rollup/plugin-alias'
-import babel, { RollupBabelInputPluginOptions } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
-import replace from '@rollup/plugin-replace'
 import url from '@rollup/plugin-url'
 import builtinModules from 'builtin-modules'
 import debug from 'debug'
@@ -45,8 +42,6 @@ import {
 } from 'rollup'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
 import esbuild, { Options as EsBuildOptions } from 'rollup-plugin-esbuild'
-import postcss, { PostCSSPluginConf } from 'rollup-plugin-postcss'
-import { Options as TerserOptions, terser } from 'rollup-plugin-terser'
 import unassert from 'rollup-plugin-unassert'
 import vueJsx, { Options as VueJsxOptions } from 'rollup-plugin-vue-jsx-compat'
 import { defaultOptions } from 'unassert'
@@ -167,13 +162,9 @@ export interface ConfigOptions {
   aliasEntries?: RollupAliasOptions['entries']
   copies?: CopyOptions | CopyOptions['targets'] | StringMap
   sourceMap?: boolean
-  babel?: RollupBabelInputPluginOptions
   esbuild?: EsBuildOptions
-  transformer?: 'babel' | 'esbuild'
-  postcss?: Readonly<PostCSSPluginConf>
   vue?: VuePluginOptions
   define?: Record<string, string> | boolean
-  terser?: TerserOptions
   prod?: boolean
   watch?: boolean
 }
@@ -207,13 +198,9 @@ export const config = ({
   aliasEntries = [],
   copies = [],
   sourceMap = false,
-  babel: babelOptions,
   esbuild: esbuildOptions = {},
-  transformer = 'esbuild',
-  postcss: postcssOptions = {},
   vue: vueOptions,
   define,
-  terser: terserOptions,
   prod = __PROD__,
 }: // eslint-disable-next-line sonarjs/cognitive-complexity
 ConfigOptions = {}): RollupOptions[] => {
@@ -279,8 +266,7 @@ ConfigOptions = {}): RollupOptions[] => {
       pkgOutputDir = pkgOutputDir + '/'
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- TODO: seems to be a bug
-    if (!pkgInput?.startsWith(pkg)) {
+    if (!pkgInput.startsWith(pkg)) {
       return []
     }
 
@@ -354,10 +340,8 @@ ConfigOptions = {}): RollupOptions[] => {
     }
 
     const isTsInput = /\.tsx?/.test(pkgInput)
-    const useEsBuild = transformer === 'esbuild'
     const { jsxFactory, target } = esbuildOptions
-    const esbuildVueJsx =
-      useEsBuild && vue && (!jsxFactory || jsxFactory === 'vueJsxCompat')
+    const esbuildVueJsx = vue && (!jsxFactory || jsxFactory === 'vueJsxCompat')
 
     return pkgFormats.map(format => {
       const isEsVersion = /^es(?:\d+|m|next)$/.test(format) && format !== 'es5'
@@ -398,58 +382,30 @@ ConfigOptions = {}): RollupOptions[] => {
         plugins: [
           alias(aliasOptions),
           esbuildVueJsx && (vueJsx as (options?: VueJsxOptions) => Plugin)(),
-          useEsBuild
-            ? esbuild({
-                jsxFactory: esbuildVueJsx ? 'vueJsxCompat' : undefined,
-                tsconfig:
-                  tryFile(path.resolve(pkg, 'tsconfig.json')) ||
-                  tryFile('tsconfig.base.json') ||
-                  tryPkg('@1stg/tsconfig'),
-                define: defineValues,
-                minify: prod,
-                loaders: {
-                  '.json': 'json',
-                  '.js': 'jsx',
-                },
-                ...esbuildOptions,
-                /**
-                 * es5 is not supported temporarily
-                 * @see https://github.com/evanw/esbuild/issues/297
-                 */
-                target: isEsVersion
-                  ? format === 'esm'
-                    ? 'es6'
-                    : format
-                  : target ?? 'es6',
-                sourceMap,
-              })
-            : babel({
-                babelHelpers: 'runtime',
-                exclude: babelOptions?.filter
-                  ? undefined
-                  : ['*.min.js', '*.prod.js', '*.production.js'],
-                extensions: isTsInput
-                  ? ['.ts', '.tsx', ...DEFAULT_EXTENSIONS]
-                  : undefined,
-                presets: [
-                  [
-                    '@babel/env',
-                    {
-                      bugfixes: true,
-                      corejs: { version: '3.13', proposals: true },
-                      shippedProposals: true,
-                      useBuiltIns: 'usage',
-                      targets: isEsVersion ? { esmodules: true } : undefined,
-                    },
-                  ],
-                  isTsInput && [
-                    '@babel/typescript',
-                    { allowDeclareFields: true, allowNamespaces: true },
-                  ],
-                ].filter(identify),
-                plugins: [['@babel/proposal-decorators', { legacy: true }]],
-                ...babelOptions,
-              }),
+          esbuild({
+            jsxFactory: esbuildVueJsx ? 'vueJsxCompat' : undefined,
+            tsconfig:
+              tryFile(path.resolve(pkg, 'tsconfig.json')) ||
+              tryFile('tsconfig.base.json') ||
+              tryPkg('@1stg/tsconfig'),
+            define: defineValues,
+            minify: prod,
+            loaders: {
+              '.json': 'json',
+              '.js': 'jsx',
+            },
+            ...esbuildOptions,
+            /**
+             * es5 is not supported temporarily
+             * @see https://github.com/evanw/esbuild/issues/297
+             */
+            target: isEsVersion
+              ? format === 'esm'
+                ? 'es6'
+                : format
+              : target ?? 'es6',
+            sourceMap,
+          }),
           resolve({
             deps,
             node: !!node,
@@ -462,11 +418,7 @@ ConfigOptions = {}): RollupOptions[] => {
           unassert({
             modules: [...defaultOptions().modules, 'uvu/assert'],
           }),
-          postcss(postcssOptions),
           vue?.(vueOptions),
-          !useEsBuild &&
-            replace({ preventAssignment: true, values: defineValues }),
-          prod && !useEsBuild && terser(terserOptions),
         ].filter(identify),
       }
     })

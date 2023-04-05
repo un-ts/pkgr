@@ -15,9 +15,6 @@
     },
     {
       "path": "packages/rollup"
-    },
-    {
-      "path": "packages/webpack"
     }
   ]
 }
