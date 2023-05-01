@@ -35,7 +35,7 @@
     "@types/debug": "^4.1.7",
     "@types/imagemin": "^8.0.1",
     "@types/is-glob": "^4.0.2",
-    "@types/jest": "^29.5.0",
+    "@types/jest": "^29.5.1",
     "@types/lodash-es": "^4.17.7",
     "@types/micromatch": "^4.0.2",
     "@types/node": "^18.15.11",
