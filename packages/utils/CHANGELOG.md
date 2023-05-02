@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.4.0
+
+### Minor Changes
+
+- [#325](https://github.com/un-ts/pkgr/pull/325) [`9ddbed4`](https://github.com/un-ts/pkgr/commit/9ddbed49a99404619ec184076e698462b20d5cbc) Thanks [@JounQin](https://github.com/JounQin)! - feat: replace tiny-glob with fast-glob
+
+- [#325](https://github.com/un-ts/pkgr/pull/325) [`9ddbed4`](https://github.com/un-ts/pkgr/commit/9ddbed49a99404619ec184076e698462b20d5cbc) Thanks [@JounQin](https://github.com/JounQin)! - feat: upgrade ESM only `open` package
+
 ## 2.3.1
 
 ### Patch Changes
