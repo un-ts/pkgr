@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.0
+
+### Minor Changes
+
+- [#327](https://github.com/un-ts/pkgr/pull/327) [`735e9ff`](https://github.com/un-ts/pkgr/commit/735e9ffe9acca5cb3fff4adc713d39b66873dba2) Thanks [@JounQin](https://github.com/JounQin)! - feat(imagemin): replace tiny-glob with fast-glob
+
 ## 4.0.0
 
 ### Major Changes
