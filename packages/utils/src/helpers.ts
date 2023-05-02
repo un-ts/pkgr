@@ -78,13 +78,11 @@ export const tryGlob = (
       [
         ...acc,
         ...(isGlob(pkg)
-          ? tryRequirePkg<typeof import('tiny-glob/sync')>('tiny-glob/sync')!(
-              pkg,
-              {
-                absolute,
-                cwd: baseDir,
-              },
-            )
+          ? tryRequirePkg<typeof import('fast-glob')>('fast-glob')!.sync(pkg, {
+              absolute,
+              cwd: baseDir,
+              onlyFiles: false,
+            })
           : [tryFile(path.resolve(baseDir, pkg), true)]),
       ].filter(Boolean),
     [],
