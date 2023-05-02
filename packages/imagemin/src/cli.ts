@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+
+import glob from 'fast-glob'
 import isGlob from 'is-glob'
-import glob from 'tiny-glob'
 
 import imagemin from './index.js'
 
@@ -9,12 +10,10 @@ process.argv
   .reduce(
     (files, file) =>
       isGlob(file)
-        ? Promise.all([
-            files,
-            glob(file, {
-              filesOnly: true,
-            }),
-          ]).then(([files, matched]) => [...files, ...matched])
+        ? Promise.all([files, glob(file)]).then(([files, matched]) => [
+            ...files,
+            ...matched,
+          ])
         : files.then(files => [...files, file]),
     Promise.resolve<string[]>([]),
   )
