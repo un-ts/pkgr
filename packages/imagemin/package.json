@@ -9,7 +9,7 @@
   "funding": "https://opencollective.com/unts",
   "license": "MIT",
   "engines": {
-    "node": "^12.20.0 || ^14.18.0 || >=16.0.0"
+    "node": ">=16.0.0"
   },
   "bin": {
     "i": "lib/cli.js"
@@ -26,6 +26,7 @@
     "lib"
   ],
   "dependencies": {
+    "fast-glob": "^3.2.12",
     "imagemin": "^8.0.1",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
@@ -36,7 +37,6 @@
     "imagemin-upng": "^4.0.0",
     "imagemin-webp": "^8.0.0",
     "is-glob": "^4.0.3",
-    "tiny-glob": "^0.2.9",
     "tslib": "^2.5.0"
   },
   "publishConfig": {

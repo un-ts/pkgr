@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import fs from 'node:fs/promises'
 
 import { Plugin } from 'imagemin'
 
@@ -57,10 +57,10 @@ const plugins = (
 )
 
 export default async (filename: string) =>
-  fs.promises.writeFile(
+  fs.writeFile(
     filename,
     await plugins.reduce(
       async (acc, it) => (await it)(await acc),
-      fs.promises.readFile(filename),
+      fs.readFile(filename),
     ),
   )
