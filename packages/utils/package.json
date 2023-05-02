@@ -25,10 +25,10 @@
   ],
   "dependencies": {
     "cross-spawn": "^7.0.3",
+    "fast-glob": "^3.2.12",
     "is-glob": "^4.0.3",
-    "open": "^8.4.0",
+    "open": "^9.1.0",
     "picocolors": "^1.0.0",
-    "tiny-glob": "^0.2.9",
     "tslib": "^2.5.0"
   },
   "publishConfig": {

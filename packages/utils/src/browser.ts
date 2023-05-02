@@ -5,7 +5,6 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import spawn from 'cross-spawn'
-import open from 'open'
 import picocolors from 'picocolors'
 
 // https://github.com/sindresorhus/open#app
@@ -59,7 +58,7 @@ function executeNodeScript(scriptPath: string, url: string) {
   return true
 }
 
-function startBrowserProcess(
+async function startBrowserProcess(
   browser: string[] | string | undefined,
   url: string,
   args: string[],
@@ -121,8 +120,9 @@ function startBrowserProcess(
 
   // Fallback to open
   // (It will always open new tab)
-  // eslint-disable-next-line sonar/no-try-promise
   try {
+    // eslint-disable-next-line unicorn/no-await-expression-member
+    const open = (await import('open')).default
     open(url, {
       app: browser
         ? {
@@ -142,7 +142,7 @@ function startBrowserProcess(
  * Reads the BROWSER environment variable and decides what to do with it. Returns
  * true if it opened a browser or ran a node.js script, otherwise false.
  */
-export function openBrowser(url: string) {
+export async function openBrowser(url: string) {
   const { action, value, args } = getBrowserEnv()
   switch (action) {
     case Action.NONE: {
