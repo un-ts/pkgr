@@ -1,5 +1,16 @@
 # Change Log
 
+## 4.1.0
+
+### Minor Changes
+
+- [`3976173`](https://github.com/un-ts/pkgr/commit/397617327db4efc4cf54b151da86b5fb4959c850) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump @pkgr/utils
+
+### Patch Changes
+
+- Updated dependencies [[`9ddbed4`](https://github.com/un-ts/pkgr/commit/9ddbed49a99404619ec184076e698462b20d5cbc), [`9ddbed4`](https://github.com/un-ts/pkgr/commit/9ddbed49a99404619ec184076e698462b20d5cbc)]:
+  - @pkgr/utils@2.4.0
+
 ## 4.0.0
 
 ### Major Changes
