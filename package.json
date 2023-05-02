@@ -24,8 +24,7 @@
     "pretest": "yarn clean",
     "release": "changeset publish",
     "test": "jest",
-    "typecov": "type-coverage",
-    "vercel-build": "yarn build"
+    "typecov": "type-coverage"
   },
   "devDependencies": {
     "@1stg/common-config": "^8.1.0",
