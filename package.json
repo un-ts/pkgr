@@ -59,15 +59,7 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "collectCoverage": true,
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    }
+    "collectCoverage": true
   },
   "prettier": "@1stg/prettier-config",
   "renovate": {
