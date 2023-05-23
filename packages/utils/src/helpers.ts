@@ -74,17 +74,18 @@ export const tryGlob = (
   const { absolute = true, baseDir = CWD } =
     typeof options === 'string' ? { baseDir: options } : options
   return paths.reduce<string[]>(
-    (acc, pkg) =>
-      [
+    (acc, pkg) => {
+      const pkgJsonPath = `${pkg}/package.json`;
+      return [
         ...acc,
         ...(isGlob(pkg)
-          ? tryRequirePkg<typeof import('fast-glob')>('fast-glob')!.sync(pkg, {
+          ? tryRequirePkg<typeof import('fast-glob')>('fast-glob')!.sync(pkgJsonPath, {
               absolute,
               cwd: baseDir,
-              onlyFiles: false,
             })
-          : [tryFile(path.resolve(baseDir, pkg), true)]),
-      ].filter(Boolean),
+          : [tryFile(path.resolve(baseDir, pkgJsonPath), true)]),
+      ].filter(Boolean)
+    },
     [],
   )
 }
