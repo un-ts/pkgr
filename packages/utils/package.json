@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/utils",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "type": "module",
   "description": "Shared utils for `@pkgr` packages or any package else",
   "repository": "git+https://github.com/un-ts/pkgr.git",

@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.1
+
+### Patch Changes
+
+- [#330](https://github.com/un-ts/pkgr/pull/330) [`52c7f39`](https://github.com/un-ts/pkgr/commit/52c7f39c211ba3b1d41f5c9fa0aff5990054bdac) Thanks [@tjx666](https://github.com/tjx666)! - fix: only resolve package.json files for mono packages pattern - close #329
+
 ## 4.1.0
 
 ### Minor Changes
