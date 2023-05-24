@@ -69,10 +69,14 @@ export const tryGlob = (
     | {
         absolute?: boolean
         baseDir?: string
+        ignore?: [string]
       } = {},
 ) => {
-  const { absolute = true, baseDir = CWD } =
-    typeof options === 'string' ? { baseDir: options } : options
+  const {
+    absolute = true,
+    baseDir = CWD,
+    ignore = ['**/node_modules/**'],
+  } = typeof options === 'string' ? { baseDir: options } : options
   return paths.reduce<string[]>(
     (acc, pkg) =>
       [
@@ -81,6 +85,7 @@ export const tryGlob = (
           ? tryRequirePkg<typeof import('fast-glob')>('fast-glob')!.sync(pkg, {
               absolute,
               cwd: baseDir,
+              ignore,
               onlyFiles: false,
             })
           : [tryFile(path.resolve(baseDir, pkg), true)]),
