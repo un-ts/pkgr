@@ -208,8 +208,14 @@ ConfigOptions = {}): RollupOptions[] => {
     monorepo === false
       ? [CWD]
       : Array.isArray(monorepo)
-      ? tryGlob(monorepo)
+      ? tryGlob(
+          monorepo.map(pkg =>
+            pkg.endsWith('/package.json') ? pkg : `${pkg}/package.json`,
+          ),
+        )
       : monorepoPkgs
+
+  pkgs = pkgs.map(pkg => pkg.replace(/\/package\.json$/, ''))
 
   if (monorepo == null && pkgs.length === 0) {
     pkgs = [CWD]

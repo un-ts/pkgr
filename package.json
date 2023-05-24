@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/**"
   ],
   "packageManager": "yarn@1.22.19",
   "scripts": {

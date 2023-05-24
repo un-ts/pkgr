@@ -12,4 +12,10 @@ const pkgsPath = lernaConfig.packages ?? pkg.workspaces ?? []
 
 export const isMonorepo = Array.isArray(pkgsPath) && pkgsPath.length > 0
 
-export const monorepoPkgs = isMonorepo ? tryGlob(pkgsPath) : []
+export const monorepoPkgs = isMonorepo
+  ? tryGlob(
+      pkgsPath.map(pkg =>
+        pkg.endsWith('/package.json') ? pkg : `${pkg}/package.json`,
+      ),
+    )
+  : []
