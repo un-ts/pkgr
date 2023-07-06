@@ -15,7 +15,7 @@
     "build": "run-s build:ts build:r",
     "build:r": "tsx packages/rollup/src/cli.ts -f cjs -d false",
     "build:ts": "tsc -b",
-    "clean": "rimraf packages/*/{lib,*.tsbuildinfo}",
+    "clean": "rimraf --glob packages/*/{lib,*.tsbuildinfo}",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache -f friendly",
     "lint:tsc": "tsc --noEmit",
