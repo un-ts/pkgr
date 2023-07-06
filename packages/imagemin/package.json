@@ -26,7 +26,7 @@
     "lib"
   ],
   "dependencies": {
-    "fast-glob": "^3.2.12",
+    "fast-glob": "^3.3.0",
     "imagemin": "^8.0.1",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
@@ -37,7 +37,7 @@
     "imagemin-upng": "^4.0.0",
     "imagemin-webp": "^8.0.0",
     "is-glob": "^4.0.3",
-    "tslib": "^2.5.0"
+    "tslib": "^2.6.0"
   },
   "publishConfig": {
     "access": "public"
