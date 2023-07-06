@@ -271,6 +271,8 @@ ConfigOptions = {}): RollupOptions[] => {
       pkgOutputDir = pkgOutputDir + '/'
     }
 
+    console.debug(pkgInput, pkg, monorepo, monorepoPkgs)
+
     if (!pkgInput.startsWith(pkg)) {
       return []
     }
