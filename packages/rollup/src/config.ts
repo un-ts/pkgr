@@ -37,8 +37,7 @@ import {
   OutputOptions,
   Plugin,
   RollupOptions,
-  RollupWarning,
-  WarningHandler,
+  WarningHandlerWithDefault,
 } from 'rollup'
 import copy, { CopyOptions } from 'rollup-plugin-copy'
 import esbuild, { Options as EsBuildOptions } from 'rollup-plugin-esbuild'
@@ -135,7 +134,7 @@ const tryRegExp = (exp: RegExp | string) => {
   return exp
 }
 
-const onwarn = (warning: RollupWarning, warn: WarningHandler) => {
+const onwarn: WarningHandlerWithDefault = (warning, warn) => {
   if (warning.code === 'THIS_IS_UNDEFINED') {
     return
   }
@@ -256,7 +255,7 @@ ConfigOptions = {}): RollupOptions[] => {
             ),
       }
 
-  const configs = flatMap(pkgs, pkg => {
+  const configs: RollupOptions[] = flatMap(pkgs, pkg => {
     const srcPath = path.resolve(pkg, 'src')
 
     let pkgInput = input
