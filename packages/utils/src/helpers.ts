@@ -82,12 +82,14 @@ export const tryGlob = (
       [
         ...acc,
         ...(isGlob(pkg)
-          ? tryRequirePkg<typeof import('fast-glob')>('fast-glob')!.sync(pkg, {
-              absolute,
-              cwd: baseDir,
-              ignore,
-              onlyFiles: false,
-            })
+          ? tryRequirePkg<typeof import('fast-glob')>('fast-glob')!
+              .sync(pkg, {
+                cwd: baseDir,
+                ignore,
+                onlyFiles: false,
+              })
+              // https://github.com/mrmlnc/fast-glob/issues/379
+              .map(file => (absolute ? path.resolve(baseDir, file) : file))
           : [tryFile(path.resolve(baseDir, pkg), true)]),
       ].filter(Boolean),
     [],
