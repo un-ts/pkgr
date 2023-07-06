@@ -35,6 +35,7 @@ export const asIsReducer = (
 })
 
 export const upperCamelCase = (pkg: string) =>
+  // eslint-disable-next-line unicorn/prefer-string-replace-all
   pkg.replace(/(^|-)([a-z])/g, (_, _$1: string, $2: string) => $2.toUpperCase())
 
 export const upperCamelCaseReducer = (
