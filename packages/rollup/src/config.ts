@@ -214,7 +214,7 @@ ConfigOptions = {}): RollupOptions[] => {
         )
       : monorepoPkgs
 
-  pkgs = pkgs.map(pkg => pkg.replace(/\/package\.json$/, ''))
+  pkgs = pkgs.map(pkg => pkg.replace(/[/\\]package\.json$/, ''))
 
   if (monorepo == null && pkgs.length === 0) {
     pkgs = [CWD]
