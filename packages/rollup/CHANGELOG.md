@@ -1,5 +1,14 @@
 # Change Log
 
+## 4.1.2
+
+### Patch Changes
+
+- [#338](https://github.com/un-ts/pkgr/pull/338) [`d4fc228`](https://github.com/un-ts/pkgr/commit/d4fc228049ea67626913da0a408f9382b42eaaa3) Thanks [@JounQin](https://github.com/JounQin)! - fix: match correct package.json path on windows
+
+- Updated dependencies [[`d4fc228`](https://github.com/un-ts/pkgr/commit/d4fc228049ea67626913da0a408f9382b42eaaa3)]:
+  - @pkgr/utils@2.4.2
+
 ## 4.1.1
 
 ### Patch Changes
