@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.3
+
+### Patch Changes
+
+- [#340](https://github.com/un-ts/pkgr/pull/340) [`79ea1bd`](https://github.com/un-ts/pkgr/commit/79ea1bd83b66927c6c49d4fd0a09cf4c53fae700) Thanks [@JounQin](https://github.com/JounQin)! - fix: json files should handled by @rollup/plugin-json
+
 ## 4.1.2
 
 ### Patch Changes
