@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/rollup",
-  "version": "4.1.2",
+  "version": "4.1.3",
   "type": "module",
   "description": "Seamless Rollup bundler wrapper for libraries",
   "repository": "git@github.com:un-ts/pkgr.git",
