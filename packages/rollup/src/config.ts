@@ -396,7 +396,6 @@ ConfigOptions = {}): RollupOptions[] => {
             define: defineValues,
             minify: prod,
             loaders: {
-              '.json': 'json',
               '.js': 'jsx',
             },
             ...esbuildOptions,
