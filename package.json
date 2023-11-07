@@ -33,7 +33,7 @@
     "@types/cross-spawn": "^6.0.2",
     "@types/debug": "^4.1.8",
     "@types/imagemin": "^8.0.1",
-    "@types/is-glob": "^4.0.2",
+    "@types/is-glob": "^4.0.4",
     "@types/jest": "^29.5.3",
     "@types/lodash-es": "^4.17.8",
     "@types/micromatch": "^4.0.2",
