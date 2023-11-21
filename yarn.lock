@@ -3057,10 +3057,10 @@
   dependencies:
     "@types/unist" "^2"
 
-"@types/imagemin@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@types/imagemin/-/imagemin-8.0.1.tgz#83795a10cdbe31a42ab304a7f8425588212c6a81"
-  integrity sha512-DSpM//dRPzme7doePGkmR1uoquHi0h0ElaA5qFnxHECfFcB8z/jhMI8eqmxWNpHn9ZG18p4PC918sZLhR0cr5A==
+"@types/imagemin@^8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@types/imagemin/-/imagemin-8.0.5.tgz#5ff8e1832af416729f31dbb0cee1d614ff489184"
+  integrity sha512-tah3dm+5sG+fEDAz6CrQ5evuEaPX9K6DF3E5a01MPOKhA2oGBoC+oA5EJzSugB905sN4DE19EDzldT2Cld2g6Q==
   dependencies:
     "@types/node" "*"
 

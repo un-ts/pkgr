@@ -32,7 +32,7 @@
     "@changesets/cli": "^2.26.2",
     "@types/cross-spawn": "^6.0.2",
     "@types/debug": "^4.1.8",
-    "@types/imagemin": "^8.0.1",
+    "@types/imagemin": "^8.0.5",
     "@types/is-glob": "^4.0.2",
     "@types/jest": "^29.5.3",
     "@types/lodash-es": "^4.17.8",
