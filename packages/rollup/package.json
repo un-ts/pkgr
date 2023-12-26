@@ -22,7 +22,7 @@
     "@pkgr/es-modules": "^0.6.3",
     "@pkgr/umd-globals": "^0.8.3",
     "@pkgr/utils": "^2.4.2",
-    "@rollup/plugin-alias": "^5.0.0",
+    "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^25.0.3",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
