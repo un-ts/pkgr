@@ -1,5 +1,18 @@
 # Change Log
 
+## 5.0.0
+
+### Major Changes
+
+- [#356](https://github.com/un-ts/pkgr/pull/356) [`59ccda9`](https://github.com/un-ts/pkgr/commit/59ccda9a8b0766bb1bf3d021f3ac5d2dfc124751) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump `rollup` v4 and related dependencies
+
+- [#357](https://github.com/un-ts/pkgr/pull/357) [`c2bd834`](https://github.com/un-ts/pkgr/commit/c2bd834549c28f347cf4885ff4289a32e348cf97) Thanks [@JounQin](https://github.com/JounQin)! - feat!: change some variables into functions
+
+### Patch Changes
+
+- Updated dependencies [[`686238a`](https://github.com/un-ts/pkgr/commit/686238a3993649f8bfab6ac4e7f5ef22d547aa5a)]:
+  - @pkgr/utils@3.0.0
+
 ## 4.1.3
 
 ### Patch Changes
