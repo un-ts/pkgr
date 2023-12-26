@@ -75,6 +75,7 @@
     "ignoreFiles": [
       "*.d.ts"
     ],
+    "ignoreNested": true,
     "strict": true,
     "update": true
   }
