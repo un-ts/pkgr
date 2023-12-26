@@ -48,6 +48,7 @@
     "yarn-deduplicate": "^6.0.2"
   },
   "resolutions": {
+    "@pkgr/utils": "link:packages/utils",
     "prettier": "^2.8.8"
   },
   "commitlint": {
