@@ -12,19 +12,18 @@ export const tryRequirePkg = <T>(pkg: string): T | undefined => {
   } catch {}
 }
 
-export const isTsAvailable = isPkgAvailable('typescript')
+export const isTsAvailable = () => isPkgAvailable('typescript')
 
-export const isAngularAvailable = isPkgAvailable('@angular/core/package.json')
+export const isAngularAvailable = () => isPkgAvailable('@angular/core')
 
-export const isMdxAvailable =
-  isPkgAvailable('@mdx-js/mdx/package.json') ||
-  isPkgAvailable('@mdx-js/react/package.json')
+export const isMdxAvailable = () =>
+  isPkgAvailable('@mdx-js/mdx') || isPkgAvailable('@mdx-js/react')
 
-export const isReactAvailable = isPkgAvailable('react')
+export const isReactAvailable = () => isPkgAvailable('react')
 
-export const isSvelteAvailable = isPkgAvailable('svelte')
+export const isSvelteAvailable = () => isPkgAvailable('svelte')
 
-export const isVueAvailable = isPkgAvailable('vue')
+export const isVueAvailable = () => isPkgAvailable('vue')
 
 export const tryGlob = (
   paths: string[],
@@ -60,6 +59,9 @@ export const tryGlob = (
   )
 }
 
+/**
+ * type guard for non-empty values
+ */
 export const identify = <T>(
   _: T,
 ): _ is Exclude<
@@ -67,6 +69,9 @@ export const identify = <T>(
   '' | (T extends boolean ? false : boolean) | null | undefined
 > => !!_
 
+/**
+ * flat array and remove nullish values
+ */
 export const arrayify = <
   T,
   R = T extends Array<infer S> ? NonNullable<S> : NonNullable<T>,
@@ -74,7 +79,11 @@ export const arrayify = <
   ...args: Array<R | R[]>
 ) =>
   args.reduce<R[]>((arr, curr) => {
-    arr.push(...(Array.isArray(curr) ? curr : curr == null ? [] : [curr]))
+    if (curr != null) {
+      arr.push(
+        ...(Array.isArray(curr) ? curr.filter(it => it != null) : [curr]),
+      )
+    }
     return arr
   }, [])
 

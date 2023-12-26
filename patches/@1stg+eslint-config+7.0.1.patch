@@ -1,0 +1,47 @@
+diff --git a/node_modules/@1stg/eslint-config/_util.js b/node_modules/@1stg/eslint-config/_util.js
+index 050e160..790fa33 100644
+--- a/node_modules/@1stg/eslint-config/_util.js
++++ b/node_modules/@1stg/eslint-config/_util.js
+@@ -4,12 +4,12 @@ const { preferPrettier } = require('@1stg/config')
+ const {
+   isMonorepo,
+   isPkgAvailable,
+-  monorepoPkgs,
++  getMonorepoPkgs,
+   tryRequirePkg,
+ } = require('@pkgr/utils')
+ 
+-if (isMonorepo) {
+-  exports.allowModules = monorepoPkgs.reduce((acc, pkg) => {
++if (isMonorepo()) {
++  exports.allowModules = getMonorepoPkgs().reduce((acc, pkg) => {
+     const pkgJson = tryRequirePkg(path.resolve(pkg, 'package.json'))
+     if (!pkgJson) {
+       return acc
+diff --git a/node_modules/@1stg/eslint-config/overrides.js b/node_modules/@1stg/eslint-config/overrides.js
+index 3c54ff2..f48f293 100644
+--- a/node_modules/@1stg/eslint-config/overrides.js
++++ b/node_modules/@1stg/eslint-config/overrides.js
+@@ -550,15 +550,15 @@ exports.overrides = []
+   // eslint-disable-next-line unicorn/prefer-spread
+   .concat(
+     isPkgAvailable('@babel/core') && exports.js,
+-    isTsAvailable && exports.ts,
+-    isReactAvailable && exports.react,
+-    isReactAvailable && exports.reactHooks,
+-    isReactAvailable && exports.reactTs,
++    isTsAvailable() && exports.ts,
++    isReactAvailable() && exports.react,
++    isReactAvailable() && exports.reactHooks,
++    isReactAvailable() && exports.reactTs,
+     // The order matters, the later should to be preferred
+     exports.markup,
+-    isAngularAvailable && exports.angular,
+-    isVueAvailable && exports.vue,
+-    isSvelteAvailable && exports.svelte,
++    isAngularAvailable() && exports.angular,
++    isVueAvailable() && exports.vue,
++    isSvelteAvailable() && exports.svelte,
+     exports.md,
+     exports.mdx,
+     isPkgAvailable('jest') && exports.jest,

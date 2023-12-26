@@ -16,7 +16,7 @@ import {
   __PROD__,
   arrayify,
   identify,
-  monorepoPkgs,
+  getMonorepoPkgs,
   tryExtensions,
   tryFile,
   tryGlob,
@@ -212,7 +212,7 @@ ConfigOptions = {}): RollupOptions[] => {
             pkg.endsWith('/package.json') ? pkg : `${pkg}/package.json`,
           ),
         )
-      : monorepoPkgs
+      : getMonorepoPkgs()
 
   pkgs = pkgs.map(pkg => pkg.replace(/[/\\]package\.json$/, ''))
 
