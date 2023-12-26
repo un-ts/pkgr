@@ -1,21 +1,9 @@
-import fs from 'node:fs'
 import path from 'node:path'
 
+import { CWD, cjsRequire, isPkgAvailable, tryFile } from '@pkgr/core'
 import isGlob from 'is-glob'
 
-import {
-  CWD,
-  EXTENSIONS,
-  cjsRequire,
-  SCRIPT_RUNNERS,
-  SCRIPT_EXECUTORS,
-} from './constants.js'
-
-export const tryPkg = (pkg: string) => {
-  try {
-    return cjsRequire.resolve(pkg)
-  } catch {}
-}
+import { SCRIPT_RUNNERS, SCRIPT_EXECUTORS } from './constants.js'
 
 export const tryRequirePkg = <T>(pkg: string): T | undefined => {
   try {
@@ -23,8 +11,6 @@ export const tryRequirePkg = <T>(pkg: string): T | undefined => {
     return cjsRequire(pkg)
   } catch {}
 }
-
-export const isPkgAvailable = (pkg: string) => !!tryPkg(pkg)
 
 export const isTsAvailable = isPkgAvailable('typescript')
 
@@ -39,28 +25,6 @@ export const isReactAvailable = isPkgAvailable('react')
 export const isSvelteAvailable = isPkgAvailable('svelte')
 
 export const isVueAvailable = isPkgAvailable('vue')
-
-export const tryFile = (filePath?: string[] | string, includeDir = false) => {
-  if (typeof filePath === 'string') {
-    return fs.existsSync(filePath) &&
-      (includeDir || fs.statSync(filePath).isFile())
-      ? filePath
-      : ''
-  }
-
-  for (const file of filePath ?? []) {
-    if (tryFile(file, includeDir)) {
-      return file
-    }
-  }
-
-  return ''
-}
-
-export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
-  const ext = [...extensions, ''].find(ext => tryFile(filepath + ext))
-  return ext == null ? '' : filepath + ext
-}
 
 export const tryGlob = (
   paths: string[],
@@ -102,33 +66,6 @@ export const identify = <T>(
   T,
   '' | (T extends boolean ? false : boolean) | null | undefined
 > => !!_
-
-export const findUp = (searchEntry: string, searchFile = 'package.json') => {
-  console.assert(path.isAbsolute(searchEntry))
-
-  if (
-    !tryFile(searchEntry, true) ||
-    (searchEntry !== CWD && !searchEntry.startsWith(CWD + path.sep))
-  ) {
-    return ''
-  }
-
-  searchEntry = path.resolve(
-    fs.statSync(searchEntry).isDirectory()
-      ? searchEntry
-      : path.resolve(searchEntry, '..'),
-  )
-
-  do {
-    const searched = tryFile(path.resolve(searchEntry, searchFile))
-    if (searched) {
-      return searched
-    }
-    searchEntry = path.resolve(searchEntry, '..')
-  } while (searchEntry === CWD || searchEntry.startsWith(CWD + path.sep))
-
-  return ''
-}
 
 export const arrayify = <
   T,

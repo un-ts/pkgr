@@ -5,6 +5,12 @@
       "path": "packages/es-modules"
     },
     {
+      "path": "packages/browser"
+    },
+    {
+      "path": "packages/core"
+    },
+    {
       "path": "packages/utils"
     },
     {

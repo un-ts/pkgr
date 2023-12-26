@@ -10,7 +10,7 @@
   "workspaces": [
     "packages/**"
   ],
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "yarn@1.22.21",
   "scripts": {
     "build": "run-s build:ts build:r",
     "build:r": "tsx packages/rollup/src/cli.ts -f cjs -d false",
