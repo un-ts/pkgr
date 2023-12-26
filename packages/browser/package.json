@@ -25,9 +25,9 @@
   ],
   "dependencies": {
     "cross-spawn": "^7.0.3",
-    "open": "^9.1.0",
+    "open": "^8.4.2 || ^9.1.0 || ^10.0.1",
     "picocolors": "^1.0.0",
-    "tslib": "^2.6.1"
+    "tslib": "^2.6.2"
   },
   "publishConfig": {
     "access": "public"
