@@ -16,6 +16,7 @@
     "build:r": "tsx packages/rollup/src/cli.ts -f cjs -d false",
     "build:ts": "tsc -b",
     "clean": "rimraf --glob packages/*/{lib,*.tsbuildinfo}",
+    "codesandbox:install": "yarn --ignore-engines",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache -f friendly",
     "lint:tsc": "tsc --noEmit",
