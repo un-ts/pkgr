@@ -33,7 +33,11 @@ export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
   return ext == null ? '' : filepath + ext
 }
 
-export const findUp = (searchEntry: string, searchFile = 'package.json') => {
+export const findUp = (
+  searchEntry: string,
+  searchFileOrIncludeDir?: boolean | string,
+  includeDir?: boolean,
+) => {
   console.assert(path.isAbsolute(searchEntry))
 
   if (
@@ -49,8 +53,15 @@ export const findUp = (searchEntry: string, searchFile = 'package.json') => {
       : path.resolve(searchEntry, '..'),
   )
 
+  const isSearchFile = typeof searchFileOrIncludeDir === 'string'
+
+  const searchFile = isSearchFile ? searchFileOrIncludeDir : 'package.json'
+
   do {
-    const searched = tryFile(path.resolve(searchEntry, searchFile))
+    const searched = tryFile(
+      path.resolve(searchEntry, searchFile),
+      isSearchFile && includeDir,
+    )
     if (searched) {
       return searched
     }
