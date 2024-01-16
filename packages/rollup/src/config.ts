@@ -207,12 +207,12 @@ ConfigOptions = {}): RollupOptions[] => {
     monorepo === false
       ? [CWD]
       : Array.isArray(monorepo)
-      ? tryGlob(
-          monorepo.map(pkg =>
-            pkg.endsWith('/package.json') ? pkg : `${pkg}/package.json`,
-          ),
-        )
-      : getMonorepoPkgs()
+        ? tryGlob(
+            monorepo.map(pkg =>
+              pkg.endsWith('/package.json') ? pkg : `${pkg}/package.json`,
+            ),
+          )
+        : getMonorepoPkgs()
 
   pkgs = pkgs.map(pkg => pkg.replace(/[/\\]package\.json$/, ''))
 
@@ -377,10 +377,10 @@ ConfigOptions = {}): RollupOptions[] => {
             return pkgRegExp instanceof RegExp
               ? pkgRegExp.test(id)
               : isGlob(pkg)
-              ? tryRequirePkg<typeof import('micromatch')>(
-                  'micromatch',
-                )!.isMatch(id, pkg)
-              : id === pkg || id.startsWith(`${pkg}/`)
+                ? tryRequirePkg<typeof import('micromatch')>(
+                    'micromatch',
+                  )!.isMatch(id, pkg)
+                : id === pkg || id.startsWith(`${pkg}/`)
           })
         },
         onwarn,
