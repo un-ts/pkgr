@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import { builtinModules } from 'node:module'
 import path from 'node:path'
 
 import { entries } from '@pkgr/es-modules'
@@ -28,29 +29,20 @@ import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import url from '@rollup/plugin-url'
-import builtinModules from 'builtin-modules'
+import type { Options as VuePluginOptions } from '@vitejs/plugin-vue'
+import type { Options as VueJsxPluginOptions } from '@vitejs/plugin-vue-jsx'
 import debug from 'debug'
 import isGlob from 'is-glob'
-import { flatMap } from 'lodash-es'
-import {
+import type {
   ModuleFormat,
   OutputOptions,
-  Plugin,
   RollupOptions,
   WarningHandlerWithDefault,
 } from 'rollup'
-import copy, { CopyOptions } from 'rollup-plugin-copy'
-import esbuild, { Options as EsBuildOptions } from 'rollup-plugin-esbuild'
+import copy, { type CopyOptions } from 'rollup-plugin-copy'
+import esbuild, { type Options as EsBuildOptions } from 'rollup-plugin-esbuild'
 import unassert from 'rollup-plugin-unassert'
-import vueJsx, { Options as VueJsxOptions } from 'rollup-plugin-vue-jsx-compat'
 import { defaultOptions } from 'unassert'
-
-type VuePluginOptions = import('rollup-plugin-vue').Options
-
-const vue =
-  tryRequirePkg<(opts?: Partial<VuePluginOptions>) => Plugin>(
-    'rollup-plugin-vue',
-  )
 
 const info = debug('r:info')
 
@@ -63,6 +55,7 @@ const STYLE_EXTENSIONS = [
   '.styl',
   '.stylus',
 ]
+
 const IMAGE_EXTENSIONS = [
   '.bmp',
   '.gif',
@@ -72,6 +65,7 @@ const IMAGE_EXTENSIONS = [
   '.svg',
   '.webp',
 ]
+
 const ASSETS_EXTENSIONS = [...STYLE_EXTENSIONS, ...IMAGE_EXTENSIONS]
 
 const resolve = ({
@@ -162,7 +156,8 @@ export interface ConfigOptions {
   copies?: CopyOptions | CopyOptions['targets'] | StringMap
   sourceMap?: boolean
   esbuild?: EsBuildOptions
-  vue?: VuePluginOptions
+  vue?: VuePluginOptions | boolean
+  vueJsx?: VueJsxPluginOptions | boolean
   define?: Record<string, string> | boolean
   prod?: boolean
   watch?: boolean
@@ -184,7 +179,10 @@ const isCopyOptions = (
     COPY_OPTIONS_KEYS.includes(key as keyof CopyOptions),
   )
 
-export const config = ({
+let vue: (typeof import('@vitejs/plugin-vue'))['default'] | undefined
+let vueJsx: (typeof import('@vitejs/plugin-vue-jsx'))['default'] | undefined
+
+export const config = async ({
   formats,
   monorepo,
   input,
@@ -199,10 +197,11 @@ export const config = ({
   sourceMap = false,
   esbuild: esbuildOptions = {},
   vue: vueOptions,
+  vueJsx: vueJsxOptions,
   define,
   prod = __PROD__,
 }: // eslint-disable-next-line sonarjs/cognitive-complexity
-ConfigOptions = {}): RollupOptions[] => {
+ConfigOptions = {}): Promise<RollupOptions[]> => {
   let pkgs =
     monorepo === false
       ? [CWD]
@@ -255,7 +254,20 @@ ConfigOptions = {}): RollupOptions[] => {
             ),
       }
 
-  const configs: RollupOptions[] = flatMap(pkgs, pkg => {
+  if (vueOptions) {
+    if (vueOptions === true) {
+      vueOptions = {}
+    }
+    ;({ default: vue } = await import('@vitejs/plugin-vue'))
+  }
+  if (vueJsxOptions) {
+    if (vueJsxOptions === true) {
+      vueJsxOptions = {}
+    }
+    ;({ default: vueJsx } = await import('@vitejs/plugin-vue-jsx'))
+  }
+
+  const configs: RollupOptions[] = pkgs.flatMap(pkg => {
     const srcPath = path.resolve(pkg, 'src')
 
     let pkgInput = input
@@ -345,8 +357,7 @@ ConfigOptions = {}): RollupOptions[] => {
     }
 
     const isTsInput = /\.tsx?/.test(pkgInput)
-    const { jsxFactory, target } = esbuildOptions
-    const esbuildVueJsx = vue && (!jsxFactory || jsxFactory === 'vueJsxCompat')
+    const { target } = esbuildOptions
 
     return pkgFormats.map(format => {
       const isEsVersion = /^es(?:\d+|m|next)$/.test(format) && format !== 'es5'
@@ -386,9 +397,9 @@ ConfigOptions = {}): RollupOptions[] => {
         onwarn,
         plugins: [
           alias(aliasOptions),
-          esbuildVueJsx && (vueJsx as (options?: VueJsxOptions) => Plugin)(),
+          vue?.(vueOptions as VuePluginOptions),
+          vueJsx?.(vueJsxOptions as VueJsxPluginOptions),
           esbuild({
-            jsxFactory: esbuildVueJsx ? 'vueJsxCompat' : undefined,
             tsconfig:
               tryFile(path.resolve(pkg, 'tsconfig.json')) ||
               tryFile('tsconfig.base.json') ||
@@ -422,7 +433,6 @@ ConfigOptions = {}): RollupOptions[] => {
           unassert({
             modules: [...defaultOptions().modules, 'uvu/assert'],
           }),
-          vue?.(vueOptions),
         ].filter(identify),
       }
     })
@@ -436,10 +446,10 @@ ConfigOptions = {}): RollupOptions[] => {
   return configs
 }
 
-export default (options: ConfigOptions = {}) => {
+export default async (options: ConfigOptions = {}) => {
   const configs = [
-    ...config(options),
-    ...(options.prod ? config({ ...options, prod: false }) : []),
+    ...(await config(options)),
+    ...(options.prod ? await config({ ...options, prod: false }) : []),
   ]
 
   info('configs: %O', configs)
