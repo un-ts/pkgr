@@ -8,10 +8,9 @@ import { tryRequirePkg } from '@pkgr/utils'
 import { program } from 'commander'
 import debug from 'debug'
 import { JSOX } from 'jsox'
-import { pick } from 'lodash-es'
-import { InputOptions, OutputOptions, rollup, watch } from 'rollup'
+import { type InputOptions, type OutputOptions, rollup, watch } from 'rollup'
 
-import config, { ConfigOptions } from './config.js'
+import config, { type ConfigOptions } from './config.js'
 
 const info = debug('r:info')
 
@@ -26,6 +25,46 @@ const parseArrayArgs = (curr: string, prev?: string[]) => {
 }
 
 const jsoxParse = <T>(text: string) => JSOX.parse(text) as T
+
+const main = async () => {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+  const options = program.opts() as ConfigOptions
+
+  info('options: %O', options)
+
+  const startWatcher = (configs: InputOptions[]) => {
+    const watcher = watch(configs)
+    watcher.on('event', event => {
+      switch (event.code) {
+        case 'START': {
+          info('🚀 (re)starting...')
+          break
+        }
+        case 'END': {
+          info('🎉 bundled successfully.')
+          break
+        }
+        case 'ERROR': {
+          console.error(event)
+          break
+        }
+      }
+    })
+  }
+
+  const configs = await config(options)
+
+  if (options.watch) {
+    startWatcher(configs)
+  } else {
+    await Promise.allSettled(
+      configs.map(async opts => {
+        const bundle = await rollup(opts)
+        return bundle.write(opts.output as OutputOptions)
+      }),
+    )
+  }
+}
 
 program
   .version(
@@ -85,71 +124,25 @@ program
     'Overrides the esbuild options for `rollup-plugin-esbuild`',
     jsoxParse,
   )
-  .option('--vue <JSOX>', 'options for `rollup-plugin-vue`', jsoxParse)
+  .option(
+    '--vue [boolean | JSOX]',
+    'options for `@vitejs/plugin-vue`, you need to install it manually',
+    jsoxParse,
+  )
+  .option(
+    '--vue-jsx [boolean | JSOX]',
+    'options for `@vitejs/plugin-vue-jsx`, you need to install it manually',
+    jsoxParse,
+  )
   .option(
     '-d, --define [boolean | JSOX]',
     'options for `@rollup/plugin-replace`, enable `__DEV__` and `__PROD__` by default',
     jsoxParse,
     true,
   )
+  .action(main)
   .option(
     '-p, --prod [boolean]',
     'whether to enable production(.min.js) bundle together at the same time',
   )
   .parse(process.argv)
-
-const options = pick(
-  program.opts(),
-  'input',
-  'exclude',
-  'outputDir',
-  'formats',
-  'monorepo',
-  'exports',
-  'external',
-  'externals',
-  'globals',
-  'aliasEntries',
-  'sourceMap',
-  'esbuild',
-  'vue',
-  'define',
-  'prod',
-) as ConfigOptions
-
-info('options: %O', options)
-
-const startWatcher = (configs: InputOptions[]) => {
-  const watcher = watch(configs)
-  watcher.on('event', event => {
-    switch (event.code) {
-      case 'START': {
-        info('🚀 (re)starting...')
-        break
-      }
-      case 'END': {
-        info('🎉 bundled successfully.')
-        break
-      }
-      case 'ERROR': {
-        console.error(event)
-        break
-      }
-    }
-  })
-}
-
-const configs = config(options)
-
-if (options.watch) {
-  startWatcher(configs)
-} else {
-  Promise.all(
-    configs.map(opts =>
-      rollup(opts).then(bundle => bundle.write(opts.output as OutputOptions)),
-    ),
-  ).catch((e: Error) => {
-    console.error(e)
-    process.exitCode = 1
-  })
-}
