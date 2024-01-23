@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.0
+
+### Major Changes
+
+- [#363](https://github.com/un-ts/pkgr/pull/363) [`2bf2fb9`](https://github.com/un-ts/pkgr/commit/2bf2fb9338a2d0c3bd08a4528071b8d06b81b34f) Thanks [@JounQin](https://github.com/JounQin)! - feat!: use `@vitejs/plugin-vue(-jsx)` to replace `rollup-plugin-vue`
+
 ## 5.0.0
 
 ### Major Changes
