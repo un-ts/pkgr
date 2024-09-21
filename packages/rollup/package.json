@@ -46,7 +46,7 @@
     "is-glob": "^4.0.3",
     "jsox": "^1.2.119",
     "micromatch": "^4.0.5",
-    "rollup": "^4.9.1",
+    "rollup": "^4.22.4",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-esbuild": "^6.1.0",
     "rollup-plugin-unassert": "^0.6.0",
