@@ -91,9 +91,11 @@ async function startBrowserProcess(
       try {
         // Try our best to reuse existing tab
         // on OSX Chromium-based browser with AppleScript
+        // eslint-disable-next-line sonarjs/os-command
         execSync('ps cax | grep "' + chromiumBrowser + '"')
+        // eslint-disable-next-line sonarjs/os-command
         execSync(
-          'osascript ../openChrome.applescript "' + // lgtm [js/shell-command-constructed-from-input]
+          'osascript ../openChrome.applescript "' +
             encodeURI(url) +
             '" "' +
             chromiumBrowser +
@@ -124,12 +126,7 @@ async function startBrowserProcess(
     // eslint-disable-next-line unicorn/no-await-expression-member
     const open = (await import('open')).default
     open(url, {
-      app: browser
-        ? {
-            name: browser,
-            arguments: args,
-          }
-        : undefined,
+      app: browser ? { name: browser, arguments: args } : undefined,
       wait: false,
     }).catch(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function -- Prevent `unhandledRejection` error.
     return true

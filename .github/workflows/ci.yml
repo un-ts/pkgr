@@ -4,19 +4,24 @@ on:
   - push
   - pull_request
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   ci:
     name: Lint and Test with Node.js ${{ matrix.node }} on ${{ matrix.os }}
     strategy:
       matrix:
         node:
-          - 16
           - 18
           - 20
+          - 22
         os:
           - macos-latest
           - ubuntu-latest
           - windows-latest
+      fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Repo
@@ -29,13 +34,19 @@ jobs:
           cache: yarn
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile --ignore-engines
+        run: yarn --immutable
 
-      - name: Build, Lint and Test
+      # `@pkgr/utils` is used by `@1stg/eslint-config`
+      - name: Build
+        run: yarn build
+
+      - name: Lint and Test
         run: yarn run-s lint typecov test
         env:
           EFF_NO_LINK_RULES: true
           PARSER_NO_WATCH: true
 
       - name: Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

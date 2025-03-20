@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises'
 
-import { Plugin } from 'imagemin'
+import type { Plugin } from 'imagemin'
 
 const plugins = (
   [
@@ -56,11 +56,13 @@ const plugins = (
   ).default(opts),
 )
 
-export default async (filename: string) =>
+const imagemin = async (filename: string) =>
   fs.writeFile(
     filename,
-    await plugins.reduce(
+    await plugins.reduce<Promise<Uint8Array>>(
       async (acc, it) => (await it)(await acc),
       fs.readFile(filename),
     ),
   )
+
+export default imagemin

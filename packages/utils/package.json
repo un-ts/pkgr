@@ -3,9 +3,9 @@
   "version": "3.0.0",
   "type": "module",
   "description": "Shared utils for `@pkgr` packages or any package else",
-  "repository": "git+https://github.com/un-ts/pkgr.git",
+  "repository": "https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/utils",
-  "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
+  "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
   "funding": "https://opencollective.com/unts",
   "license": "MIT",
   "engines": {
@@ -23,9 +23,8 @@
     "lib"
   ],
   "dependencies": {
-    "@pkgr/core": "^0.1.0",
-    "fast-glob": "^3.3.2",
-    "is-glob": "^4.0.3"
+    "@pkgr/core": "^0.1.1",
+    "tinyglobby": "^0.2.12"
   },
   "publishConfig": {
     "access": "public"

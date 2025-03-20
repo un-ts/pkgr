@@ -3,9 +3,9 @@
   "version": "0.1.1",
   "type": "module",
   "description": "Shared core module for `@pkgr` packages or any package else",
-  "repository": "git+https://github.com/un-ts/pkgr.git",
+  "repository": "https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/core",
-  "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
+  "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
   "funding": "https://opencollective.com/unts",
   "license": "MIT",
   "engines": {
