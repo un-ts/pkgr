@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.6.4
+
+### Patch Changes
+
+- [#378](https://github.com/un-ts/pkgr/pull/378) [`5d7afb5`](https://github.com/un-ts/pkgr/commit/5d7afb5135484ab079ccbdf0bd992016ac997862) Thanks [@JounQin](https://github.com/JounQin)! - chore: hourcekeeping, bump all (dev) deps, replace `fast-glob` with `tinyglobby`
+
 ## 0.6.3
 
 ### Patch Changes
