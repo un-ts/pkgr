@@ -23,7 +23,8 @@
     "prepare": "patch-package && simple-git-hooks && yarn-berry-deduplicate || exit 0",
     "release": "changeset publish",
     "test": "vitest run --coverage",
-    "typecov": "type-coverage"
+    "typecov": "type-coverage",
+    "version": "changeset version && yarn --no-immutable"
   },
   "devDependencies": {
     "@1stg/common-config": "^11.0.4",
