@@ -1,5 +1,14 @@
 # Change Log
 
+## 6.0.1
+
+### Patch Changes
+
+- [#378](https://github.com/un-ts/pkgr/pull/378) [`5d7afb5`](https://github.com/un-ts/pkgr/commit/5d7afb5135484ab079ccbdf0bd992016ac997862) Thanks [@JounQin](https://github.com/JounQin)! - chore: hourcekeeping, bump all (dev) deps, replace `fast-glob` with `tinyglobby`
+
+- Updated dependencies [[`5d7afb5`](https://github.com/un-ts/pkgr/commit/5d7afb5135484ab079ccbdf0bd992016ac997862)]:
+  - @pkgr/es-modules@0.6.4
+
 ## 6.0.0
 
 ### Major Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/browser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Shared browser utils for `@pkgr` packages or any package else",
   "repository": "https://github.com/un-ts/pkgr.git",

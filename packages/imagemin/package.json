@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/imagemin",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "type": "module",
   "description": "Seamless imagemin API wrapper to minify images, working perfectly with lint-staged also",
   "repository": "git@github.com:un-ts/pkgr.git",

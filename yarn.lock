@@ -3832,7 +3832,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pkgr/es-modules@npm:^0.6.3, @pkgr/es-modules@workspace:packages/es-modules":
+"@pkgr/es-modules@npm:^0.6.4, @pkgr/es-modules@workspace:packages/es-modules":
   version: 0.0.0-use.local
   resolution: "@pkgr/es-modules@workspace:packages/es-modules"
   languageName: unknown
@@ -3862,7 +3862,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pkgr/rollup@workspace:packages/rollup"
   dependencies:
-    "@pkgr/es-modules": "npm:^0.6.3"
+    "@pkgr/es-modules": "npm:^0.6.4"
     "@pkgr/umd-globals": "npm:^0.8.3"
     "@pkgr/utils": "npm:^3.0.0"
     "@rollup/plugin-alias": "npm:^5.1.1"
