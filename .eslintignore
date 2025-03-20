@@ -1,6 +1,0 @@
-coverage
-dist
-lib
-packages/*/CHANGELOG.md
-node_modules
-!/.*.js

@@ -1,24 +1,20 @@
 #!/usr/bin/env node
 
-import glob from 'fast-glob'
-import isGlob from 'is-glob'
+import { isDynamicPattern, glob } from 'tinyglobby'
 
 import imagemin from './index.js'
 
-process.argv
+const files = await process.argv
   .slice(2)
   .reduce(
     (files, file) =>
-      isGlob(file)
-        ? Promise.all([files, glob(file)]).then(([files, matched]) => [
-            ...files,
-            ...matched,
-          ])
+      isDynamicPattern(file)
+        ? Promise.all([
+            files,
+            glob(file, { ignore: '**/node_modules/**' }),
+          ]).then(([files, matched]) => [...files, ...matched])
         : files.then(files => [...files, file]),
     Promise.resolve<string[]>([]),
   )
-  .then(files => Promise.all(files.map(imagemin)))
-  .catch((err: Error) => {
-    console.error(err)
-    process.exitCode = 1
-  })
+
+await Promise.all(files.map(imagemin))

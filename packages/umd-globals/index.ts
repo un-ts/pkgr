@@ -79,4 +79,4 @@ export const getGlobals = ({
 
 export const globals = getGlobals()
 
-export { globals as default }
+export default globals

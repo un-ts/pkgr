@@ -1,7 +1,0 @@
-{
-  "root": true,
-  "extends": "@1stg",
-  "rules": {
-    "unicorn/prefer-top-level-await": "off"
-  }
-}

@@ -10,7 +10,7 @@ import debug from 'debug'
 import { JSOX } from 'jsox'
 import { type InputOptions, type OutputOptions, rollup, watch } from 'rollup'
 
-import config, { type ConfigOptions } from './config.js'
+import getConfigs, { type ConfigOptions } from './config.js'
 
 const info = debug('r:info')
 
@@ -52,7 +52,7 @@ const main = async () => {
     })
   }
 
-  const configs = await config(options)
+  const configs = await getConfigs(options)
 
   if (options.watch) {
     startWatcher(configs)
@@ -91,7 +91,7 @@ program
     'auto',
   )
   .option(
-    '-x, --external, --externals <package>',
+    '-x, --external <package>',
     'extra external packages, peerDependencies, and dependencies for node by default',
     parseArrayArgs,
   )

@@ -1,3 +1,6 @@
 {
-  "extends": "@1stg/tsconfig/lib.json"
+  "extends": "@1stg/tsconfig/lib",
+  "compilerOptions": {
+    "target": "ES2020"
+  }
 }

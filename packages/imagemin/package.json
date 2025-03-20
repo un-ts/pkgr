@@ -5,7 +5,7 @@
   "description": "Seamless imagemin API wrapper to minify images, working perfectly with lint-staged also",
   "repository": "git@github.com:un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/imagemin",
-  "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
+  "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
   "funding": "https://opencollective.com/unts",
   "license": "MIT",
   "engines": {
@@ -26,18 +26,17 @@
     "lib"
   ],
   "dependencies": {
-    "fast-glob": "^3.3.2",
-    "imagemin": "^8.0.1",
+    "imagemin": "^9.0.1",
     "imagemin-gifsicle": "^7.0.0",
-    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-jpegtran": "^8.0.0",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-optipng": "^8.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^10.0.1",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-svgo": "^11.0.1",
     "imagemin-upng": "^4.0.0",
     "imagemin-webp": "^8.0.0",
-    "is-glob": "^4.0.3",
-    "tslib": "^2.6.2"
+    "tinyglobby": "^0.2.12",
+    "tslib": "^2.8.1"
   },
   "publishConfig": {
     "access": "public"
