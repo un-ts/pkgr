@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   release:
     name: Release
@@ -23,9 +27,9 @@ jobs:
           cache: yarn
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
 
-      # `@pkgr/utils` is used by `@1stg/lint-staged`
+      # `@pkgr/core` is used by `@1stg/lint-staged`
       - name: Build
         run: yarn build
 

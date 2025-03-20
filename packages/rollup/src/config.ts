@@ -4,7 +4,7 @@ import path from 'node:path'
 
 import { entries } from '@pkgr/es-modules'
 import {
-  StringMap,
+  type StringMap,
   getGlobals,
   normalizePkg,
   upperCamelCase,
@@ -24,7 +24,10 @@ import {
   tryPkg,
   tryRequirePkg,
 } from '@pkgr/utils'
-import alias, { Alias, RollupAliasOptions } from '@rollup/plugin-alias'
+import alias, {
+  type Alias,
+  type RollupAliasOptions,
+} from '@rollup/plugin-alias'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
@@ -32,7 +35,6 @@ import url from '@rollup/plugin-url'
 import type { Options as VuePluginOptions } from '@vitejs/plugin-vue'
 import type { Options as VueJsxPluginOptions } from '@vitejs/plugin-vue-jsx'
 import debug from 'debug'
-import isGlob from 'is-glob'
 import type {
   ModuleFormat,
   OutputOptions,
@@ -42,6 +44,7 @@ import type {
 import copy, { type CopyOptions } from 'rollup-plugin-copy'
 import esbuild, { type Options as EsBuildOptions } from 'rollup-plugin-esbuild'
 import unassert from 'rollup-plugin-unassert'
+import { isDynamicPattern } from 'tinyglobby'
 import { defaultOptions } from 'unassert'
 
 const info = debug('r:info')
@@ -106,6 +109,7 @@ const DEFAULT_FORMATS = ['cjs', 'es2015', 'esm']
 
 const regExpCacheMap = new Map<string, RegExp | string>()
 
+// eslint-disable-next-line sonarjs/function-return-type
 const tryRegExp = (exp: RegExp | string) => {
   if (typeof exp === 'string' && (exp = exp.trim())) {
     const cached = regExpCacheMap.get(exp)
@@ -182,6 +186,19 @@ const isCopyOptions = (
 let vue: (typeof import('@vitejs/plugin-vue'))['default'] | undefined
 let vueJsx: (typeof import('@vitejs/plugin-vue-jsx'))['default'] | undefined
 
+const isExternal = (id: string, collectedExternals: string[]) =>
+  collectedExternals.some(pkg => {
+    const pkgRegExp = tryRegExp(pkg)
+    return pkgRegExp instanceof RegExp
+      ? pkgRegExp.test(id)
+      : isDynamicPattern(pkg)
+        ? tryRequirePkg<typeof import('micromatch')>('micromatch')!.isMatch(
+            id,
+            pkg,
+          )
+        : id === pkg || id.startsWith(`${pkg}/`)
+  })
+
 export const config = async ({
   formats,
   monorepo,
@@ -200,8 +217,7 @@ export const config = async ({
   vueJsx: vueJsxOptions,
   define,
   prod = __PROD__,
-}: // eslint-disable-next-line sonarjs/cognitive-complexity
-ConfigOptions = {}): Promise<RollupOptions[]> => {
+}: ConfigOptions = {}): Promise<RollupOptions[]> => {
   let pkgs =
     monorepo === false
       ? [CWD]
@@ -267,6 +283,7 @@ ConfigOptions = {}): Promise<RollupOptions[]> => {
     ;({ default: vueJsx } = await import('@vitejs/plugin-vue-jsx'))
   }
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   const configs: RollupOptions[] = pkgs.flatMap(pkg => {
     const srcPath = path.resolve(pkg, 'src')
 
@@ -367,8 +384,8 @@ ConfigOptions = {}): Promise<RollupOptions[]> => {
           file: path.resolve(
             pkg,
             `${pkgOutputDir}${path.basename(
-              pkgInput!,
-              path.extname(pkgInput!),
+              pkgInput,
+              path.extname(pkgInput),
             )}${format === 'cjs' ? '' : '.' + format}${prod ? '.min' : ''}.${
               isEsVersion ? 'mjs' : format === 'cjs' ? 'cjs' : 'js'
             }`,
@@ -379,21 +396,11 @@ ConfigOptions = {}): Promise<RollupOptions[]> => {
           exports,
           sourcemap: sourceMap,
         },
-        external(id: string) {
-          if (typeof externals === 'function') {
-            return externals(id, collectedExternals)
-          }
-          return collectedExternals.some(pkg => {
-            const pkgRegExp = tryRegExp(pkg)
-            return pkgRegExp instanceof RegExp
-              ? pkgRegExp.test(id)
-              : isGlob(pkg)
-                ? tryRequirePkg<typeof import('micromatch')>(
-                    'micromatch',
-                  )!.isMatch(id, pkg)
-                : id === pkg || id.startsWith(`${pkg}/`)
-          })
-        },
+        external: id =>
+          (typeof externals === 'function' ? externals : isExternal)(
+            id,
+            collectedExternals,
+          ),
         onwarn,
         plugins: [
           alias(aliasOptions),
@@ -418,7 +425,7 @@ ConfigOptions = {}): Promise<RollupOptions[]> => {
               ? format === 'esm'
                 ? 'es6'
                 : format
-              : target ?? 'es6',
+              : (target ?? 'es6'),
             sourceMap,
           }),
           resolve({
@@ -446,7 +453,7 @@ ConfigOptions = {}): Promise<RollupOptions[]> => {
   return configs
 }
 
-export default async (options: ConfigOptions = {}) => {
+const configs = async (options: ConfigOptions = {}) => {
   const configs = [
     ...(await config(options)),
     ...(options.prod ? await config({ ...options, prod: false }) : []),
@@ -456,3 +463,5 @@ export default async (options: ConfigOptions = {}) => {
 
   return configs
 }
+
+export default configs

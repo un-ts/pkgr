@@ -11,17 +11,23 @@ export const tryPkg = (pkg: string) => {
 
 export const isPkgAvailable = (pkg: string) => !!tryPkg(pkg)
 
-export const tryFile = (filePath?: string[] | string, includeDir = false) => {
-  if (typeof filePath === 'string') {
-    return fs.existsSync(filePath) &&
-      (includeDir || fs.statSync(filePath).isFile())
-      ? filePath
+export const tryFile = (
+  filename?: string[] | string,
+  includeDir = false,
+  base = CWD,
+): string => {
+  if (typeof filename === 'string') {
+    const filepath = path.resolve(base, filename)
+    return fs.existsSync(filepath) &&
+      (includeDir || fs.statSync(filepath).isFile())
+      ? filepath
       : ''
   }
 
-  for (const file of filePath ?? []) {
-    if (tryFile(file, includeDir)) {
-      return file
+  for (const file of filename ?? []) {
+    const filepath = tryFile(file, includeDir, base)
+    if (filepath) {
+      return filepath
     }
   }
 

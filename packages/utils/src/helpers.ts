@@ -1,7 +1,7 @@
 import path from 'node:path'
 
 import { CWD, cjsRequire, isPkgAvailable, tryFile } from '@pkgr/core'
-import isGlob from 'is-glob'
+import { isDynamicPattern, globSync } from 'tinyglobby'
 
 import { SCRIPT_RUNNERS, SCRIPT_EXECUTORS } from './constants.js'
 
@@ -44,16 +44,15 @@ export const tryGlob = (
     (acc, pkg) =>
       [
         ...acc,
-        ...(isGlob(pkg)
-          ? tryRequirePkg<typeof import('fast-glob')>('fast-glob')!
-              .sync(pkg, {
-                cwd: baseDir,
-                ignore,
-                onlyFiles: false,
-              })
-              // https://github.com/mrmlnc/fast-glob/issues/379
+        ...(isDynamicPattern(pkg)
+          ? globSync(pkg, {
+              cwd: baseDir,
+              ignore,
+              onlyFiles: false,
+            })
+              // https://github.com/SuperchupuDev/tinyglobby/issues/102
               .map(file => (absolute ? path.resolve(baseDir, file) : file))
-          : [tryFile(path.resolve(baseDir, pkg), true)]),
+          : [tryFile(pkg, true, baseDir)]),
       ].filter(Boolean),
     [],
   )
@@ -104,6 +103,10 @@ export const getPackageManager = () => {
 
   if (/\bnpm\b/.test(execPath)) {
     return 'npm'
+  }
+
+  if (/\bbun\b/.test(execPath)) {
+    return 'bun'
   }
 
   console.warn('unknown package manager:', execPath)
