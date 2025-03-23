@@ -3826,7 +3826,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pkgr/core@npm:^0.1.0, @pkgr/core@npm:^0.1.1, @pkgr/core@workspace:packages/core":
+"@pkgr/core@npm:^0.1.0, @pkgr/core@npm:^0.1.1":
+  version: 0.1.2
+  resolution: "@pkgr/core@npm:0.1.2"
+  checksum: 10c0/fd4acc154c8f1b5c544b6dd152b7ce68f6cbb8b92e9abf2e5d756d6e95052d08d0d693a668dea67af1386d62635b50adfe463cce03c5620402b468498cc7592f
+  languageName: node
+  linkType: hard
+
+"@pkgr/core@npm:^0.2.0, @pkgr/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@pkgr/core@workspace:packages/core"
   languageName: unknown
@@ -3906,7 +3913,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pkgr/utils@workspace:packages/utils"
   dependencies:
-    "@pkgr/core": "npm:^0.1.1"
+    "@pkgr/core": "npm:^0.2.0"
     tinyglobby: "npm:^0.2.12"
   languageName: unknown
   linkType: soft

@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/core",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "type": "module",
   "description": "Shared core module for `@pkgr` packages or any package else",
   "repository": "https://github.com/un-ts/pkgr.git",

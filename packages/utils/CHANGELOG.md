@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.1.0
+
+### Minor Changes
+
+- [#380](https://github.com/un-ts/pkgr/pull/380) [`48dbdd8`](https://github.com/un-ts/pkgr/commit/48dbdd8ce9fc276d7e7a7b3c7beeda3c74c8d260) Thanks [@JounQin](https://github.com/JounQin)! - feat(core): use custom `CjsRequire` for typings
+
+### Patch Changes
+
+- Updated dependencies [[`48dbdd8`](https://github.com/un-ts/pkgr/commit/48dbdd8ce9fc276d7e7a7b3c7beeda3c74c8d260)]:
+  - @pkgr/core@0.2.0
+
 ## 3.0.0
 
 ### Major Changes
