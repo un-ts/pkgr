@@ -7,8 +7,7 @@ import { SCRIPT_RUNNERS, SCRIPT_EXECUTORS } from './constants.js'
 
 export const tryRequirePkg = <T>(pkg: string): T | undefined => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return cjsRequire(pkg)
+    return cjsRequire<T>(pkg)
   } catch {}
 }
 
