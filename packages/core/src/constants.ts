@@ -1,8 +1,14 @@
+/// <reference types="node" preserve="true" />
+
 import { createRequire } from 'node:module'
 
 export const CWD = process.cwd()
 
-export const cjsRequire =
+export interface CjsRequire extends NodeJS.Require {
+  <T>(id: string): T
+}
+
+export const cjsRequire: CjsRequire =
   typeof require === 'undefined' ? createRequire(import.meta.url) : require
 
 // eslint-disable-next-line sonarjs/deprecation
