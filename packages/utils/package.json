@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/utils",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "type": "module",
   "description": "Shared utils for `@pkgr` packages or any package else",
   "repository": "https://github.com/un-ts/pkgr.git",
@@ -23,7 +23,7 @@
     "lib"
   ],
   "dependencies": {
-    "@pkgr/core": "^0.1.1",
+    "@pkgr/core": "^0.2.0",
     "tinyglobby": "^0.2.12"
   },
   "publishConfig": {
