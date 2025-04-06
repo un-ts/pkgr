@@ -41,7 +41,7 @@ jobs:
         run: yarn build
 
       - name: Lint and Test
-        run: yarn run-p lint typecov test
+        run: yarn run-p lint test typecov
         env:
           PARSER_NO_WATCH: true
 

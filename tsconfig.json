@@ -2,25 +2,25 @@
   "extends": "./tsconfig.base",
   "references": [
     {
-      "path": "packages/es-modules"
+      "path": "./packages/es-modules"
     },
     {
-      "path": "packages/browser"
+      "path": "./packages/browser"
     },
     {
-      "path": "packages/core"
+      "path": "./packages/core"
     },
     {
-      "path": "packages/utils"
+      "path": "./packages/utils"
     },
     {
-      "path": "packages/umd-globals"
+      "path": "./packages/umd-globals"
     },
     {
-      "path": "packages/imagemin"
+      "path": "./packages/imagemin"
     },
     {
-      "path": "packages/rollup"
+      "path": "./packages/rollup"
     }
   ]
 }
