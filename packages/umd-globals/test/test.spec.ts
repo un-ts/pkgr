@@ -5,7 +5,7 @@ import _, {
   normalizePkg,
   upperCamelCase,
   upperCamelCaseReducer,
-} from '..'
+} from '../index.js'
 
 const UPPER_CAMEL_CASE = 'upper-camel-case'
 

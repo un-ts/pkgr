@@ -1,8 +1,8 @@
 {
-  "extends": "@1stg/tsconfig/lib",
+  "extends": "../../tsconfig.base",
   "compilerOptions": {
     "composite": true,
     "outDir": "lib"
   },
-  "exclude": ["lib", "test"]
+  "include": ["./index.ts"]
 }

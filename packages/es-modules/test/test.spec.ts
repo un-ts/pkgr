@@ -1,4 +1,4 @@
-import { MODULE_DEFINITIONS, alias, entries } from '..'
+import { MODULE_DEFINITIONS, alias, entries } from '../index.js'
 
 describe('es modules', () => {
   it('entries should contain all definition keys', () => {

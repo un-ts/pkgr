@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "alias": [
+    "pkgr.vercel.app"
+  ],
+  "github": {
+    "silent": true
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
