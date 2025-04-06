@@ -3370,13 +3370,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pkgr/core@npm:^0.2.0, @pkgr/core@workspace:packages/core":
+"@pkgr/core@npm:^0.2.0, @pkgr/core@npm:^0.2.1, @pkgr/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@pkgr/core@workspace:packages/core"
   languageName: unknown
   linkType: soft
 
-"@pkgr/es-modules@npm:^0.6.4, @pkgr/es-modules@workspace:packages/es-modules":
+"@pkgr/es-modules@npm:^0.6.5, @pkgr/es-modules@workspace:packages/es-modules":
   version: 0.0.0-use.local
   resolution: "@pkgr/es-modules@workspace:packages/es-modules"
   languageName: unknown
@@ -3406,9 +3406,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pkgr/rollup@workspace:packages/rollup"
   dependencies:
-    "@pkgr/es-modules": "npm:^0.6.4"
-    "@pkgr/umd-globals": "npm:^0.8.3"
-    "@pkgr/utils": "npm:^3.0.0"
+    "@pkgr/es-modules": "npm:^0.6.5"
+    "@pkgr/umd-globals": "npm:^0.8.4"
+    "@pkgr/utils": "npm:^3.1.1"
     "@rollup/plugin-alias": "npm:^5.1.1"
     "@rollup/plugin-commonjs": "npm:^28.0.3"
     "@rollup/plugin-json": "npm:^6.1.0"
@@ -3440,17 +3440,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pkgr/umd-globals@npm:^0.8.3, @pkgr/umd-globals@workspace:packages/umd-globals":
+"@pkgr/umd-globals@npm:^0.8.4, @pkgr/umd-globals@workspace:packages/umd-globals":
   version: 0.0.0-use.local
   resolution: "@pkgr/umd-globals@workspace:packages/umd-globals"
   languageName: unknown
   linkType: soft
 
-"@pkgr/utils@npm:^3.0.0, @pkgr/utils@npm:^3.1.0, @pkgr/utils@workspace:packages/utils":
+"@pkgr/utils@npm:^3.1.0, @pkgr/utils@npm:^3.1.1, @pkgr/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@pkgr/utils@workspace:packages/utils"
   dependencies:
-    "@pkgr/core": "npm:^0.2.0"
+    "@pkgr/core": "npm:^0.2.1"
     tinyglobby: "npm:^0.2.12"
   languageName: unknown
   linkType: soft
