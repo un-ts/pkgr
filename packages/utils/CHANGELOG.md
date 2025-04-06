@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.1.1
+
+### Patch Changes
+
+- [#384](https://github.com/un-ts/pkgr/pull/384) [`2559cb1`](https://github.com/un-ts/pkgr/commit/2559cb1b9a751d59722480e028c1963f076c019d) Thanks [@JounQin](https://github.com/JounQin)! - fix: incorrect typing for `cjs` entry, add `module-sync` entry
+
+- Updated dependencies [[`2559cb1`](https://github.com/un-ts/pkgr/commit/2559cb1b9a751d59722480e028c1963f076c019d)]:
+  - @pkgr/core@0.2.1
+
 ## 3.1.0
 
 ### Minor Changes
