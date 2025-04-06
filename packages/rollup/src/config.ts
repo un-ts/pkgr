@@ -45,6 +45,7 @@ import copy, { type CopyOptions } from 'rollup-plugin-copy'
 import esbuild, { type Options as EsBuildOptions } from 'rollup-plugin-esbuild'
 import unassert from 'rollup-plugin-unassert'
 import { isDynamicPattern } from 'tinyglobby'
+import { __importStar } from 'tslib'
 import { defaultOptions } from 'unassert'
 
 const info = debug('r:info')
@@ -80,7 +81,7 @@ const resolve = ({
   node?: boolean
   ts?: boolean
 }) =>
-  nodeResolve({
+  __importStar(nodeResolve).default({
     dedupe: node ? [] : deps,
     mainFields: [
       !node && 'browser',
@@ -103,7 +104,8 @@ const resolve = ({
     }),
   })
 
-const cjs = (sourceMap: boolean) => commonjs({ sourceMap })
+const cjs = (sourceMap: boolean) =>
+  __importStar(commonjs).default({ sourceMap })
 
 const DEFAULT_FORMATS = ['cjs', 'es2015', 'esm']
 
@@ -403,7 +405,7 @@ export const config = async ({
           ),
         onwarn,
         plugins: [
-          alias(aliasOptions),
+          __importStar(alias).default(aliasOptions),
           vue?.(vueOptions as VuePluginOptions),
           vueJsx?.(vueJsxOptions as VueJsxPluginOptions),
           esbuild({
@@ -434,9 +436,11 @@ export const config = async ({
             ts: isTsInput,
           }),
           cjs(sourceMap),
-          copy(copyOptions),
-          json(),
-          url({ include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`) }),
+          __importStar(copy).default(copyOptions),
+          __importStar(json).default(),
+          __importStar(url).default({
+            include: IMAGE_EXTENSIONS.map(ext => `**/*${ext}`),
+          }),
           unassert({
             modules: [...defaultOptions().modules, 'uvu/assert'],
           }),

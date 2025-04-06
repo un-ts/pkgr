@@ -1,11 +1,15 @@
+*.iml
 *.log
 *.tsbuildinfo
 .*cache
+.idea
 .type-coverage
+.vercel
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
 coverage
+dist
 lib
 node_modules
 report.*.json

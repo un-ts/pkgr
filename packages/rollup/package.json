@@ -3,7 +3,7 @@
   "version": "6.0.1",
   "type": "module",
   "description": "Seamless Rollup bundler wrapper for libraries",
-  "repository": "git@github.com:un-ts/pkgr.git",
+  "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/rollup",
   "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
   "funding": "https://opencollective.com/unts",
@@ -15,12 +15,12 @@
     "r": "lib/cli.js"
   },
   "files": [
-    "lib",
-    "shim.d.ts"
+    "index.d.cts",
+    "lib"
   ],
   "peerDependencies": {
     "@vitejs/plugin-vue": "^5.0.0",
-    "@vitejs/plugin-vue-jsx": "^3.0.0"
+    "@vitejs/plugin-vue-jsx": "^3.0.0 || ^4.0.0"
   },
   "peerDependenciesMeta": {
     "@vitejs/plugin-vue": {
@@ -42,10 +42,10 @@
     "commander": "^13.1.0",
     "core-js": "^3.41.0",
     "debug": "^4.4.0",
-    "esbuild": "^0.25.1",
+    "esbuild": "^0.25.2",
     "jsox": "^1.2.121",
     "micromatch": "^4.0.8",
-    "rollup": "^4.36.0",
+    "rollup": "^4.39.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-esbuild": "^6.2.1",
     "rollup-plugin-unassert": "^0.6.0",

@@ -7,4 +7,10 @@ export default [
       'sonarjs/no-nested-conditional': 'off',
     },
   },
+  {
+    files: ['**/*.tsx'],
+    rules: {
+      '@eslint-react/jsx-uses-react': 'off',
+    },
+  },
 ]
