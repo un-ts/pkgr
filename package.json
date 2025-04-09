@@ -11,7 +11,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@4.8.1",
+  "packageManager": "yarn@4.9.0",
   "scripts": {
     "build": "run-s build:ts build:r",
     "build:r": "tsx packages/rollup/src/cli.ts -f cjs -d false -e named",
@@ -36,7 +36,7 @@
     "@commitlint/cli": "^19.8.0",
     "@mdx-js/rollup": "^3.1.0",
     "@shikijs/rehype": "^3.2.1",
-    "@swc/core": "^1.11.16",
+    "@swc/core": "^1.11.18",
     "@types/cross-spawn": "^6.0.6",
     "@types/debug": "^4.1.12",
     "@types/imagemin": "^9.0.1",
@@ -45,7 +45,7 @@
     "@types/micromatch": "^4.0.9",
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
     "@types/web": "^0.0.216",
     "@vercel/analytics": "^1.5.0",
     "@vitejs/plugin-react-swc": "^3.8.1",
@@ -74,6 +74,7 @@
     "yarn-berry-deduplicate": "^6.1.1"
   },
   "resolutions": {
+    "es5-ext": "npm:@unes/es5-ext@latest",
     "prettier": "^3.5.3"
   },
   "commitlint": {
