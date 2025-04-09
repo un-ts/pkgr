@@ -19,7 +19,7 @@ jobs:
 
       - name: Check Branch
         id: branch
-        if: ${{ github.ref  == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
         run: |
           echo "args=--prod" >> $GITHUB_OUTPUT
           echo "comment=false" >> $GITHUB_OUTPUT
