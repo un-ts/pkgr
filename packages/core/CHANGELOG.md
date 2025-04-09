@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.2
+
+### Patch Changes
+
+- [#387](https://github.com/un-ts/pkgr/pull/387) [`e392649`](https://github.com/un-ts/pkgr/commit/e3926498d7d431ef48d9222c483e1078842d47a5) Thanks [@JounQin](https://github.com/JounQin)! - fix(core): incorrect typing for `cjs` entry
+
 ## 0.2.1
 
 ### Patch Changes
