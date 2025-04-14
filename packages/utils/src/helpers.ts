@@ -57,9 +57,7 @@ export const tryGlob = (
   )
 }
 
-/**
- * type guard for non-empty values
- */
+// Type guard for non-empty values
 export const identify = <T>(
   _: T,
 ): _ is Exclude<
@@ -67,9 +65,7 @@ export const identify = <T>(
   '' | (T extends boolean ? false : boolean) | null | undefined
 > => !!_
 
-/**
- * flat array and remove nullish values
- */
+// Flat array and remove nullish values
 export const arrayify = <
   T,
   R = T extends Array<infer S> ? NonNullable<S> : NonNullable<T>,

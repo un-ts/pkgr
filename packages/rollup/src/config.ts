@@ -420,7 +420,8 @@ export const config = async ({
             },
             ...esbuildOptions,
             /**
-             * es5 is not supported temporarily
+             * ES5 is not supported temporarily
+             *
              * @see https://github.com/evanw/esbuild/issues/297
              */
             target: isEsVersion

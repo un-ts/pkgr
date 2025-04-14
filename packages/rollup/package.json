@@ -6,7 +6,7 @@
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/rollup",
   "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
-  "funding": "https://opencollective.com/unts",
+  "funding": "https://opencollective.com/pkgr",
   "license": "MIT",
   "engines": {
     "node": ">=16.0.0"
@@ -43,9 +43,9 @@
     "core-js": "^3.41.0",
     "debug": "^4.4.0",
     "esbuild": "^0.25.2",
-    "jsox": "^1.2.121",
+    "jsox": "^1.2.123",
     "micromatch": "^4.0.8",
-    "rollup": "^4.39.0",
+    "rollup": "^4.40.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-esbuild": "^6.2.1",
     "rollup-plugin-unassert": "^0.6.0",

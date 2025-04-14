@@ -6,7 +6,7 @@
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/utils",
   "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
-  "funding": "https://opencollective.com/unts",
+  "funding": "https://opencollective.com/pkgr",
   "license": "MIT",
   "engines": {
     "node": "^12.20.0 || ^14.18.0 || >=16.0.0"
@@ -16,10 +16,6 @@
   "module": "./lib/index.js",
   "exports": {
     "import": {
-      "types": "./lib/index.d.ts",
-      "default": "./lib/index.js"
-    },
-    "module-sync": {
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },

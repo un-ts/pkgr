@@ -20,9 +20,7 @@ export const MODULE_DEFINITIONS: ModuleDefinitions = {
 
 const defEntries = Object.entries(MODULE_DEFINITIONS)
 
-/**
- * `entries` option for `rollup-plugin-alias`
- */
+// `entries` option for `rollup-plugin-alias`
 export const entries = defEntries.reduce<
   Array<{
     find: RegExp | string
@@ -50,9 +48,7 @@ export const entries = defEntries.reduce<
   return acc
 }, [])
 
-/**
- * `alias` option for `resolve` property of `webpack` configuration
- */
+// `alias` option for `resolve` property of `webpack` configuration
 export const alias = defEntries.reduce<Record<string, string>>(
   (acc, [module, definition]) => {
     /* istanbul ignore next */
