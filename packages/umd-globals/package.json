@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/umd-globals",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "type": "module",
   "description": "Union collections of umd globals mappings",
   "repository": "git+https://github.com/un-ts/pkgr.git",

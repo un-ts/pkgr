@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.6.6
+
+### Patch Changes
+
+- [#392](https://github.com/un-ts/pkgr/pull/392) [`cc36a0b`](https://github.com/un-ts/pkgr/commit/cc36a0b3c03fe880676f356be440a5ebca9b93d6) Thanks [@JounQin](https://github.com/JounQin)! - fix: remove buggy `module-sync` entries
+
 ## 0.6.5
 
 ### Patch Changes
