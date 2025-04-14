@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.0.3
+
+### Patch Changes
+
+- [#392](https://github.com/un-ts/pkgr/pull/392) [`cc36a0b`](https://github.com/un-ts/pkgr/commit/cc36a0b3c03fe880676f356be440a5ebca9b93d6) Thanks [@JounQin](https://github.com/JounQin)! - fix: remove buggy `module-sync` entries
+
+- Updated dependencies [[`cc36a0b`](https://github.com/un-ts/pkgr/commit/cc36a0b3c03fe880676f356be440a5ebca9b93d6)]:
+  - @pkgr/es-modules@0.6.6
+  - @pkgr/umd-globals@0.8.5
+  - @pkgr/utils@3.1.2
+
 ## 6.0.2
 
 ### Patch Changes
