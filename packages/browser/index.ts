@@ -136,8 +136,9 @@ async function startBrowserProcess(
 }
 
 /**
- * Reads the BROWSER environment variable and decides what to do with it. Returns
- * true if it opened a browser or ran a node.js script, otherwise false.
+ * Reads the BROWSER environment variable and decides what to do with it.
+ * Returns true if it opened a browser or ran a node.js script, otherwise
+ * false.
  */
 export async function openBrowser(url: string) {
   const { action, value, args } = getBrowserEnv()
