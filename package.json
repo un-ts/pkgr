@@ -46,7 +46,7 @@
     "@types/node": "^22.14.1",
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",
-    "@types/web": "^0.0.217",
+    "@types/web": "^0.0.218",
     "@vercel/analytics": "^1.5.0",
     "@vitejs/plugin-react-swc": "^3.8.1",
     "@vitejs/plugin-vue": "^5.2.3",
