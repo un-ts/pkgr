@@ -11,5 +11,7 @@ export interface CjsRequire extends NodeJS.Require {
 export const cjsRequire: CjsRequire =
   typeof require === 'undefined' ? createRequire(import.meta.url) : require
 
+export const EVAL_FILENAMES = new Set(['[eval]', '[worker eval]'])
+
 // eslint-disable-next-line sonarjs/deprecation
 export const EXTENSIONS = ['.ts', '.tsx', ...Object.keys(cjsRequire.extensions)]
