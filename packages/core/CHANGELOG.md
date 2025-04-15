@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.4
+
+### Patch Changes
+
+- [#399](https://github.com/un-ts/pkgr/pull/399) [`b30ce6e`](https://github.com/un-ts/pkgr/commit/b30ce6e05bcb77c0ef192c6a9ef140257ec54f25) Thanks [@JounQin](https://github.com/JounQin)! - chore: add `EVAL_FILENAMES` for reusing
+
 ## 0.2.3
 
 ### Patch Changes
