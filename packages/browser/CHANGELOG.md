@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.0
+
+### Minor Changes
+
+- [#406](https://github.com/un-ts/pkgr/pull/406) [`7f30c63`](https://github.com/un-ts/pkgr/commit/7f30c6357a48ea9a07cd3029af0627b9e4741171) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump to Node 18 ES2022 to drop tslib
+
 ## 0.1.4
 
 ### Patch Changes

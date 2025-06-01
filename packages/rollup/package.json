@@ -1,6 +1,6 @@
 {
   "name": "@pkgr/rollup",
-  "version": "6.0.4",
+  "version": "7.0.0",
   "type": "module",
   "description": "Seamless Rollup bundler wrapper for libraries",
   "repository": "git+https://github.com/un-ts/pkgr.git",
@@ -33,7 +33,7 @@
   "dependencies": {
     "@pkgr/es-modules": "^0.6.6",
     "@pkgr/umd-globals": "^0.8.5",
-    "@pkgr/utils": "^3.1.2",
+    "@pkgr/utils": "^4.0.0",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-json": "^6.1.0",
