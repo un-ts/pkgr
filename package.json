@@ -24,7 +24,7 @@
     "lint:es": "eslint . --cache",
     "lint:tsc": "tsc --noEmit",
     "prepare": "simple-git-hooks && yarn-berry-deduplicate || exit 0",
-    "release": "changeset publish",
+    "release": "changeset publish --tag release-0.2",
     "test": "vitest run",
     "typecov": "type-coverage",
     "version": "changeset version && yarn --no-immutable"

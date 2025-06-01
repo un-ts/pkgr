@@ -44,15 +44,6 @@ export const findUp = (
   searchFileOrIncludeDir?: boolean | string,
   includeDir?: boolean,
 ) => {
-  console.assert(path.isAbsolute(searchEntry))
-
-  if (
-    !tryFile(searchEntry, true) ||
-    (searchEntry !== CWD && !searchEntry.startsWith(CWD + path.sep))
-  ) {
-    return ''
-  }
-
   searchEntry = path.resolve(
     fs.statSync(searchEntry).isDirectory()
       ? searchEntry
@@ -63,16 +54,20 @@ export const findUp = (
 
   const searchFile = isSearchFile ? searchFileOrIncludeDir : 'package.json'
 
+  let lastSearchEntry: string | undefined
+
   do {
     const searched = tryFile(
-      path.resolve(searchEntry, searchFile),
+      searchFile,
       isSearchFile && includeDir,
+      searchEntry,
     )
     if (searched) {
       return searched
     }
+    lastSearchEntry = searchEntry
     searchEntry = path.resolve(searchEntry, '..')
-  } while (searchEntry === CWD || searchEntry.startsWith(CWD + path.sep))
+  } while (!lastSearchEntry || lastSearchEntry !== searchEntry)
 
   return ''
 }
