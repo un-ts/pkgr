@@ -63,7 +63,7 @@ export const tryFileStats = (
 export const tryFile = (
   filename?: string[] | string,
   type: FileTypes = 'file',
-  base = CWD,
+  base?: string,
 ): string => tryFileStats(filename, type, base)?.filepath ?? ''
 
 export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
@@ -102,12 +102,6 @@ export const findUp = (
   } = options ?? {}
 
   search = Array.isArray(search) ? search : [search]
-
-  for (const item of search) {
-    if (path.isAbsolute(item)) {
-      return tryFile(item, type)
-    }
-  }
 
   if (stop) {
     const stopStats = tryFileStats(stop, ['file', 'directory'])
