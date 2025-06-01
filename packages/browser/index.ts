@@ -82,10 +82,11 @@ async function startBrowserProcess(
       'Chromium',
     ]
 
-    const _dirname =
-      typeof __dirname === 'undefined'
-        ? path.dirname(fileURLToPath(import.meta.url))
-        : __dirname
+    const importMetaUrl = import.meta.url
+
+    const _dirname = importMetaUrl
+      ? path.dirname(fileURLToPath(importMetaUrl))
+      : __dirname
 
     for (const chromiumBrowser of supportedChromiumBrowsers) {
       try {
@@ -123,7 +124,7 @@ async function startBrowserProcess(
   // Fallback to open
   // (It will always open new tab)
   try {
-    // eslint-disable-next-line unicorn/no-await-expression-member
+    // eslint-disable-next-line unicorn-x/no-await-expression-member
     const open = (await import('open')).default
     open(url, {
       app: browser ? { name: browser, arguments: args } : undefined,
