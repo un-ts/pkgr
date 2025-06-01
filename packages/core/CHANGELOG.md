@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.1
+
+### Patch Changes
+
+- [#409](https://github.com/un-ts/pkgr/pull/409) [`ef997c9`](https://github.com/un-ts/pkgr/commit/ef997c95f2f13dca0fc7eaa96e6eb260b78f458b) Thanks [@JounQin](https://github.com/JounQin)! - feat: support array type of `search`
+
 ## 0.3.0
 
 ### Minor Changes
