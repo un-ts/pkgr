@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.4
+
+### Patch Changes
+
+- [#404](https://github.com/un-ts/pkgr/pull/404) [`3d28918`](https://github.com/un-ts/pkgr/commit/3d28918eed96a217a3056c059fc371bdb3922416) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies, fix cjs env detection
+
 ## 0.1.3
 
 ### Patch Changes
