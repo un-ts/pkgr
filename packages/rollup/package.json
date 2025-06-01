@@ -39,7 +39,7 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-url": "^8.0.2",
-    "commander": "^13.1.0",
+    "commander": "^14.0.0",
     "core-js": "^3.41.0",
     "debug": "^4.4.0",
     "esbuild": "^0.25.2",
