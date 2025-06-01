@@ -4119,10 +4119,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/web@npm:^0.0.236":
-  version: 0.0.236
-  resolution: "@types/web@npm:0.0.236"
-  checksum: 10c0/4614a89f2d61539e88b87832267092a473865d43bde8a06dadcf58e82d865e632c4c1832e49d05e20fb8b5d7837bab057fa65852e6343ac9827795eac336e61b
+"@types/web@npm:^0.0.237":
+  version: 0.0.237
+  resolution: "@types/web@npm:0.0.237"
+  checksum: 10c0/d23a6b87bcc93acfb91afecdc0da6b9568372530fe0b0c594d5034a690bce1550e22f4935fc783a66588507c550b9d5d7425bb42905bd4ce215d16fcdf672058
   languageName: node
   linkType: hard
 
@@ -4415,7 +4415,7 @@ __metadata:
     "@types/node": "npm:^22.15.29"
     "@types/react": "npm:^19.1.6"
     "@types/react-dom": "npm:^19.1.5"
-    "@types/web": "npm:^0.0.236"
+    "@types/web": "npm:^0.0.237"
     "@vercel/analytics": "npm:^1.5.0"
     "@vitejs/plugin-react-swc": "npm:^3.10.0"
     "@vitejs/plugin-vue": "npm:^5.2.4"
