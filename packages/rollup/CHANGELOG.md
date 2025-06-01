@@ -1,5 +1,16 @@
 # Change Log
 
+## 7.0.0
+
+### Major Changes
+
+- [#406](https://github.com/un-ts/pkgr/pull/406) [`7f30c63`](https://github.com/un-ts/pkgr/commit/7f30c6357a48ea9a07cd3029af0627b9e4741171) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump to Node 18 ES2022 to drop tslib
+
+### Patch Changes
+
+- Updated dependencies [[`a9eb417`](https://github.com/un-ts/pkgr/commit/a9eb417f170b7804d91aeb8294c718e9ef1cb48b)]:
+  - @pkgr/utils@4.0.0
+
 ## 6.0.4
 
 ### Patch Changes

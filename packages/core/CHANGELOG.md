@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.0
+
+### Minor Changes
+
+- [#408](https://github.com/un-ts/pkgr/pull/408) [`a9eb417`](https://github.com/un-ts/pkgr/commit/a9eb417f170b7804d91aeb8294c718e9ef1cb48b) Thanks [@JounQin](https://github.com/JounQin)! - refactor!: change `findUp` signature, support search root
+
 ## 0.2.5
 
 ### Patch Changes
