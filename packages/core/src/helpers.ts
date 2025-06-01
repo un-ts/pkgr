@@ -44,12 +44,6 @@ export const findUp = (
   searchFileOrIncludeDir?: boolean | string,
   includeDir?: boolean,
 ) => {
-  searchEntry = path.resolve(
-    fs.statSync(searchEntry).isDirectory()
-      ? searchEntry
-      : path.resolve(searchEntry, '..'),
-  )
-
   const isSearchFile = typeof searchFileOrIncludeDir === 'string'
 
   const searchFile = isSearchFile ? searchFileOrIncludeDir : 'package.json'
@@ -66,7 +60,7 @@ export const findUp = (
       return searched
     }
     lastSearchEntry = searchEntry
-    searchEntry = path.resolve(searchEntry, '..')
+    searchEntry = path.dirname(searchEntry)
   } while (!lastSearchEntry || lastSearchEntry !== searchEntry)
 
   return ''
