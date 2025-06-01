@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "@pkgr/core": "^0.2.3",
-    "tinyglobby": "^0.2.12"
+    "tinyglobby": "^0.2.14"
   },
   "publishConfig": {
     "access": "public"
