@@ -73,8 +73,8 @@ export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
 
 export interface FindUpOptions {
   entry?: string
-  search?: string
-  type?: FileType
+  search?: string[] | string
+  type?: FileTypes
   stop?: string
   throwOnStopNotFound?: boolean
   throwOnInvalidStop?: boolean
@@ -101,8 +101,12 @@ export const findUp = (
     throwOnInvalidStop,
   } = options ?? {}
 
-  if (path.isAbsolute(search)) {
-    return tryFile(search, type)
+  search = Array.isArray(search) ? search : [search]
+
+  for (const item of search) {
+    if (path.isAbsolute(item)) {
+      return tryFile(item, type)
+    }
   }
 
   if (stop) {
@@ -142,7 +146,7 @@ export const findUp = (
     : path.dirname(entryStats.filepath)
 
   do {
-    const searched = tryFile(path.resolve(entry, search), type)
+    const searched = tryFile(search, type, entry)
     if (searched) {
       return searched
     }
