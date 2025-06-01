@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import fs, { type Stats } from 'node:fs'
 import path from 'node:path'
 
 import { CWD, EXTENSIONS, cjsRequire } from './constants.js'
@@ -9,70 +9,149 @@ export const tryPkg = (pkg: string) => {
   } catch {}
 }
 
-export const isPkgAvailable = (pkg: string) => !!tryPkg(pkg)
+export const isPkgAvailable = (pkg: string) => Boolean(tryPkg(pkg))
 
-export const tryFile = (
+export type FileTypeBase =
+  | 'blockDevice'
+  | 'characterDevice'
+  | 'directory'
+  | 'FIFO'
+  | 'file'
+  | 'socket'
+  | 'symbolicLink'
+
+export type FileType = Capitalize<FileTypeBase> | FileTypeBase
+
+export type FileTypes = FileType | FileType[] | boolean | 'any'
+
+const ANY_FILE_TYPES = new Set(['any', true])
+
+const isAnyFileType = (type: FileTypes): type is 'any' | true =>
+  ANY_FILE_TYPES.has(type as boolean | string)
+
+export const tryFileStats = (
   filename?: string[] | string,
-  includeDir = false,
+  type: FileTypes = 'file',
   base = CWD,
-): string => {
+): { filepath: string; stats: Stats } | undefined => {
+  if (!type) {
+    type = 'file'
+  }
+
   if (typeof filename === 'string') {
     const filepath = path.resolve(base, filename)
-    return fs.existsSync(filepath) &&
-      (includeDir || fs.statSync(filepath).isFile())
-      ? filepath
-      : ''
+    const stats = fs.statSync(filepath, { throwIfNoEntry: false })
+    return stats &&
+      (isAnyFileType(type) ||
+        (Array.isArray(type) ? type : [type]).some(type =>
+          stats[
+            `is${type[0].toUpperCase()}${type.slice(1)}` as `is${Capitalize<FileTypeBase>}`
+          ](),
+        ))
+      ? { filepath, stats }
+      : undefined
   }
 
   for (const file of filename ?? []) {
-    const filepath = tryFile(file, includeDir, base)
-    if (filepath) {
-      return filepath
+    const result = tryFileStats(file, type, base)
+    if (result) {
+      return result
     }
   }
-
-  return ''
 }
+
+export const tryFile = (
+  filename?: string[] | string,
+  type: FileTypes = 'file',
+  base = CWD,
+): string => tryFileStats(filename, type, base)?.filepath ?? ''
 
 export const tryExtensions = (filepath: string, extensions = EXTENSIONS) => {
   const ext = [...extensions, ''].find(ext => tryFile(filepath + ext))
   return ext == null ? '' : filepath + ext
 }
 
-export const findUp = (
-  searchEntry: string,
-  searchFileOrIncludeDir?: boolean | string,
-  includeDir?: boolean,
-) => {
-  console.assert(path.isAbsolute(searchEntry))
+export interface FindUpOptions {
+  entry?: string
+  search?: string
+  type?: FileType
+  stop?: string
+  throwOnStopNotFound?: boolean
+  throwOnInvalidStop?: boolean
+}
 
-  if (
-    !tryFile(searchEntry, true) ||
-    (searchEntry !== CWD && !searchEntry.startsWith(CWD + path.sep))
-  ) {
+export const findUp = (
+  entryOrOptions?: FindUpOptions | string,
+  options?: FindUpOptions,
+  // eslint-disable-next-line sonarjs/cognitive-complexity
+) => {
+  if (typeof entryOrOptions === 'string') {
+    options = {
+      entry: entryOrOptions,
+      ...options,
+    }
+  }
+
+  let {
+    entry = CWD,
+    search = 'package.json',
+    type,
+    stop,
+    throwOnStopNotFound,
+    throwOnInvalidStop,
+  } = options ?? {}
+
+  if (path.isAbsolute(search)) {
+    return tryFile(search, type)
+  }
+
+  if (stop) {
+    const stopStats = tryFileStats(stop, ['file', 'directory'])
+    if (!stopStats) {
+      const message = `Cannot find stop path: ${stop}`
+      if (throwOnStopNotFound) {
+        throw new Error(message)
+      } else if (throwOnStopNotFound !== false) {
+        console.warn(message)
+      }
+      return ''
+    }
+    stop = stopStats.stats.isDirectory()
+      ? stopStats.filepath
+      : path.dirname(stopStats.filepath)
+
+    if (entry !== stop && !entry.startsWith(stop + path.sep)) {
+      const message = `Invalid stop path: ${stop} is not a parent of ${entry}`
+      if (throwOnInvalidStop) {
+        throw new Error(message)
+      } else if (throwOnInvalidStop !== false) {
+        console.warn(message)
+      }
+      return ''
+    }
+  }
+
+  const entryStats = tryFileStats(entry, ['file', 'directory'])
+
+  if (!entryStats) {
     return ''
   }
 
-  searchEntry = path.resolve(
-    fs.statSync(searchEntry).isDirectory()
-      ? searchEntry
-      : path.resolve(searchEntry, '..'),
-  )
-
-  const isSearchFile = typeof searchFileOrIncludeDir === 'string'
-
-  const searchFile = isSearchFile ? searchFileOrIncludeDir : 'package.json'
+  entry = entryStats.stats.isDirectory()
+    ? entryStats.filepath
+    : path.dirname(entryStats.filepath)
 
   do {
-    const searched = tryFile(
-      path.resolve(searchEntry, searchFile),
-      isSearchFile && includeDir,
-    )
+    const searched = tryFile(path.resolve(entry, search), type)
     if (searched) {
       return searched
     }
-    searchEntry = path.resolve(searchEntry, '..')
-  } while (searchEntry === CWD || searchEntry.startsWith(CWD + path.sep))
+    const lastEntry = entry
+    entry = path.dirname(entry)
+    if (entry === lastEntry) {
+      break
+    }
+  } while (!stop || entry !== stop)
 
   return ''
 }
