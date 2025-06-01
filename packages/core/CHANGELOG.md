@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.7
+
+### Patch Changes
+
+- [#414](https://github.com/un-ts/pkgr/pull/414) [`d3bcc06`](https://github.com/un-ts/pkgr/commit/d3bcc068c62cf6c559220d024867f927b0fd31aa) Thanks [@JounQin](https://github.com/JounQin)! - fix: `findUp` should never throw
+
 ## 0.2.6
 
 ### Patch Changes
