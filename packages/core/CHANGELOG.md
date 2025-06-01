@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.6
+
+### Patch Changes
+
+- [#412](https://github.com/un-ts/pkgr/pull/412) [`75f1109`](https://github.com/un-ts/pkgr/commit/75f110949a81327f7fe95b1c3ce77f4ba187e6d6) Thanks [@JounQin](https://github.com/JounQin)! - fix: `findUp` should not stop on `CWD`
+
 ## 0.2.5
 
 ### Patch Changes
