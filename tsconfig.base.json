@@ -1,3 +1,7 @@
 {
-  "extends": "@1stg/tsconfig/node16"
+  "extends": "@1stg/tsconfig/node16",
+  "compilerOptions": {
+    // https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping#node-18
+    "target": "ES2022"
+  }
 }

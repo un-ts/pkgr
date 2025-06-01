@@ -9,7 +9,7 @@
   "funding": "https://opencollective.com/pkgr",
   "license": "MIT",
   "engines": {
-    "node": "^12.20.0 || ^14.18.0 || >=16.0.0"
+    "node": ">=18"
   },
   "main": "./lib/index.cjs",
   "types": "./index.d.cts",
@@ -31,9 +31,8 @@
   ],
   "dependencies": {
     "cross-spawn": "^7.0.6",
-    "open": "^8.4.2 || ^9.1.0 || ^10.1.2",
-    "picocolors": "^1.1.1",
-    "tslib": "^2.8.1"
+    "open": "^10.1.2",
+    "picocolors": "^1.1.1"
   },
   "publishConfig": {
     "access": "public"
