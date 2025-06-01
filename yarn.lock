@@ -3099,9 +3099,8 @@ __metadata:
   resolution: "@pkgr/browser@workspace:packages/browser"
   dependencies:
     cross-spawn: "npm:^7.0.6"
-    open: "npm:^8.4.2 || ^9.1.0 || ^10.1.2"
+    open: "npm:^10.1.2"
     picocolors: "npm:^1.1.1"
-    tslib: "npm:^2.8.1"
   languageName: unknown
   linkType: soft
 
@@ -3131,7 +3130,6 @@ __metadata:
     imagemin-upng: "npm:^4.0.0"
     imagemin-webp: "npm:^8.0.0"
     tinyglobby: "npm:^0.2.14"
-    tslib: "npm:^2.8.1"
   bin:
     i: lib/cli.js
   languageName: unknown
@@ -3160,7 +3158,6 @@ __metadata:
     rollup-plugin-esbuild: "npm:^6.2.1"
     rollup-plugin-unassert: "npm:^0.6.0"
     tinyglobby: "npm:^0.2.14"
-    tslib: "npm:^2.8.1"
     unassert: "npm:^2.0.2"
   peerDependencies:
     "@vitejs/plugin-vue": ^5.0.0
@@ -12223,7 +12220,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"open@npm:^8.4.2 || ^9.1.0 || ^10.1.2":
+"open@npm:^10.1.2":
   version: 10.1.2
   resolution: "open@npm:10.1.2"
   dependencies:

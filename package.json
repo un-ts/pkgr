@@ -14,7 +14,7 @@
   "packageManager": "yarn@4.9.1",
   "scripts": {
     "build": "run-s build:ts build:r",
-    "build:r": "tsx packages/rollup/src/cli.ts -f cjs -d false -e named",
+    "build:r": "yarn r -f cjs -d false -e named --esbuild '{target:es2022}'",
     "build:ts": "tsc -b",
     "clean": "rimraf -g .type-coverage coverage dist '.*cache' 'packages/*/{lib,*.tsbuildinfo}'",
     "docs": "vite",
@@ -24,6 +24,7 @@
     "lint:es": "eslint . --cache",
     "lint:tsc": "tsc --noEmit",
     "prepare": "simple-git-hooks && yarn-berry-deduplicate || exit 0",
+    "r": "tsx packages/rollup/src/cli.ts",
     "release": "changeset publish",
     "test": "vitest run",
     "typecov": "type-coverage",
