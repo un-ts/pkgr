@@ -40,7 +40,10 @@ export const tryFileStats = (
 
   if (typeof filename === 'string') {
     const filepath = path.resolve(base, filename)
-    const stats = fs.statSync(filepath, { throwIfNoEntry: false })
+    let stats: Stats | undefined
+    try {
+      stats = fs.statSync(filepath, { throwIfNoEntry: false })
+    } catch {}
     return stats &&
       (isAnyFileType(type) ||
         (Array.isArray(type) ? type : [type]).some(type =>
@@ -76,14 +79,11 @@ export interface FindUpOptions {
   search?: string[] | string
   type?: FileTypes
   stop?: string
-  throwOnStopNotFound?: boolean
-  throwOnInvalidStop?: boolean
 }
 
 export const findUp = (
   entryOrOptions?: FindUpOptions | string,
   options?: FindUpOptions,
-  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   if (typeof entryOrOptions === 'string') {
     options = {
@@ -92,52 +92,9 @@ export const findUp = (
     }
   }
 
-  let {
-    entry = CWD,
-    search = 'package.json',
-    type,
-    stop,
-    throwOnStopNotFound,
-    throwOnInvalidStop,
-  } = options ?? {}
+  let { entry = CWD, search = 'package.json', type, stop } = options ?? {}
 
   search = Array.isArray(search) ? search : [search]
-
-  if (stop) {
-    const stopStats = tryFileStats(stop, ['file', 'directory'])
-    if (!stopStats) {
-      const message = `Cannot find stop path: ${stop}`
-      if (throwOnStopNotFound) {
-        throw new Error(message)
-      } else if (throwOnStopNotFound !== false) {
-        console.warn(message)
-      }
-      return ''
-    }
-    stop = stopStats.stats.isDirectory()
-      ? stopStats.filepath
-      : path.dirname(stopStats.filepath)
-
-    if (entry !== stop && !entry.startsWith(stop + path.sep)) {
-      const message = `Invalid stop path: ${stop} is not a parent of ${entry}`
-      if (throwOnInvalidStop) {
-        throw new Error(message)
-      } else if (throwOnInvalidStop !== false) {
-        console.warn(message)
-      }
-      return ''
-    }
-  }
-
-  const entryStats = tryFileStats(entry, ['file', 'directory'])
-
-  if (!entryStats) {
-    return ''
-  }
-
-  entry = entryStats.stats.isDirectory()
-    ? entryStats.filepath
-    : path.dirname(entryStats.filepath)
 
   do {
     const searched = tryFile(search, type, entry)
