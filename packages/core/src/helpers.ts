@@ -90,6 +90,8 @@ export const findUp = (
       entry: entryOrOptions,
       ...options,
     }
+  } else if (entryOrOptions) {
+    options = options ? { ...entryOrOptions, ...options } : entryOrOptions
   }
 
   let { entry = CWD, search = 'package.json', type, stop } = options ?? {}
