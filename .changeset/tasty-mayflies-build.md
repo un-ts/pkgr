@@ -2,4 +2,4 @@
 "@pkgr/core": patch
 ---
 
-fix: hadnle findUp `options` correctly
+fix: handle findUp `options` correctly
