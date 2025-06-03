@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.3
+
+### Patch Changes
+
+- [#418](https://github.com/un-ts/pkgr/pull/418) [`b858867`](https://github.com/un-ts/pkgr/commit/b858867c340b4b99c72533695a37c6844d214aad) Thanks [@JounQin](https://github.com/JounQin)! - fix: handle findUp `options` correctly
+
 ## 0.3.2
 
 ### Patch Changes
