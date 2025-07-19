@@ -1,6 +1,6 @@
 import path from 'node:path'
 
-import { CWD, cjsRequire, isPkgAvailable, tryFile } from '@pkgr/core'
+import { cjsRequire, isPkgAvailable, tryFile } from '@pkgr/core'
 import { isDynamicPattern, globSync } from 'tinyglobby'
 
 import { SCRIPT_RUNNERS, SCRIPT_EXECUTORS } from './constants.js'
@@ -36,7 +36,7 @@ export const tryGlob = (
 ) => {
   const {
     absolute = true,
-    baseDir = CWD,
+    baseDir = process.cwd(),
     ignore = ['**/node_modules/**'],
   } = typeof options === 'string' ? { baseDir: options } : options
   return paths.reduce<string[]>(

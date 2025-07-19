@@ -10,7 +10,6 @@ import {
   upperCamelCase,
 } from '@pkgr/umd-globals'
 import {
-  CWD,
   EXTENSIONS,
   PROD,
   __DEV__,
@@ -222,7 +221,7 @@ export const config = async ({
 }: ConfigOptions = {}): Promise<RollupOptions[]> => {
   let pkgs =
     monorepo === false
-      ? [CWD]
+      ? [process.cwd()]
       : Array.isArray(monorepo)
         ? tryGlob(
             monorepo.map(pkg =>
@@ -234,7 +233,7 @@ export const config = async ({
   pkgs = pkgs.map(pkg => pkg.replace(/[/\\]package\.json$/, ''))
 
   if (monorepo == null && pkgs.length === 0) {
-    pkgs = [CWD]
+    pkgs = [process.cwd()]
   }
 
   const globals = getGlobals({

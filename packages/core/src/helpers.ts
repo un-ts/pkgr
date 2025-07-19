@@ -1,7 +1,7 @@
 import fs, { type Stats } from 'node:fs'
 import path from 'node:path'
 
-import { CWD, EXTENSIONS, cjsRequire } from './constants.js'
+import { EXTENSIONS, cjsRequire } from './constants.js'
 
 export const tryPkg = (pkg: string) => {
   try {
@@ -32,7 +32,7 @@ const isAnyFileType = (type: FileTypes): type is 'any' | true =>
 export const tryFileStats = (
   filename?: string[] | string,
   type: FileTypes = 'file',
-  base = CWD,
+  base = process.cwd(),
 ): { filepath: string; stats: Stats } | undefined => {
   if (!type) {
     type = 'file'
@@ -94,7 +94,12 @@ export const findUp = (
     options = options ? { ...entryOrOptions, ...options } : entryOrOptions
   }
 
-  let { entry = CWD, search = 'package.json', type, stop } = options ?? {}
+  let {
+    entry = process.cwd(),
+    search = 'package.json',
+    type,
+    stop,
+  } = options ?? {}
 
   search = Array.isArray(search) ? search : [search]
 
