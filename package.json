@@ -11,7 +11,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@4.9.1",
+  "packageManager": "yarn@4.9.2",
   "scripts": {
     "build": "run-s build:ts build:r",
     "build:r": "yarn r -f cjs -d false -e named --esbuild '{target:es2022}'",
