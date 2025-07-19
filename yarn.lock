@@ -3172,8 +3172,8 @@ __metadata:
     tinyglobby: "npm:^0.2.14"
     unassert: "npm:^2.0.2"
   peerDependencies:
-    "@vitejs/plugin-vue": ^5.0.0
-    "@vitejs/plugin-vue-jsx": ^3.0.0 || ^4.0.0
+    "@vitejs/plugin-vue": ^6.0.0
+    "@vitejs/plugin-vue-jsx": ^5.0.0
   peerDependenciesMeta:
     "@vitejs/plugin-vue":
       optional: true
