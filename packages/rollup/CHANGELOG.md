@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.1
+
+### Patch Changes
+
+- [#423](https://github.com/un-ts/pkgr/pull/423) [`539c650`](https://github.com/un-ts/pkgr/commit/539c650506ae79e821fef8f9451c0602a08644fe) Thanks [@JounQin](https://github.com/JounQin)! - fix: cleanup constants
+
 ## 7.0.0
 
 ### Major Changes
