@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.1
+
+### Patch Changes
+
+- [#426](https://github.com/un-ts/pkgr/pull/426) [`4db894d`](https://github.com/un-ts/pkgr/commit/4db894d9886b98826bb0375b419ed593a2f782f1) Thanks [@JounQin](https://github.com/JounQin)! - fix: rebuild `@pkgr/utils` with new `@pkgr/core` correctly
+
 ## 4.0.0
 
 ### Major Changes
