@@ -48,7 +48,7 @@ jobs:
           commit: 'chore: release package(s)'
           title: 'chore: release package(s)'
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: yarn release
+          publish: npm run release
           version: yarn run version
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
