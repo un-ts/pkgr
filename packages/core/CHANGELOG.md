@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.10
+
+### Patch Changes
+
+- [#435](https://github.com/un-ts/pkgr/pull/435) [`532811a`](https://github.com/un-ts/pkgr/commit/532811aa3a3d7120daf1870ff451b8381c2dbec8) Thanks [@JounQin](https://github.com/JounQin)! - fix: deprecated `require.extensions` could be `undefined`
+
 ## 0.2.7
 
 ### Patch Changes
