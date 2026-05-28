@@ -2,4 +2,4 @@
 "@pkgr/core": patch
 ---
 
-fix `undefined` type in deprecated required extensions
+fix: deprecated `require.extensions` could be `undefined`
