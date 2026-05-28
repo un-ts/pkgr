@@ -5,9 +5,20 @@ import { isDynamicPattern, globSync } from 'tinyglobby'
 
 import { SCRIPT_RUNNERS, SCRIPT_EXECUTORS } from './constants.js'
 
-export const tryRequirePkg = <T>(pkg: string): T | undefined => {
+export const tryRequirePkg = <T>(
+  pkg: string,
+  preferDefault?: boolean,
+): T | undefined => {
   try {
-    return cjsRequire<T>(pkg)
+    const mod = cjsRequire(pkg)
+    return (
+      preferDefault &&
+      mod != null &&
+      typeof mod === 'object' &&
+      'default' in mod
+        ? mod.default
+        : mod
+    ) as T
   } catch {}
 }
 
