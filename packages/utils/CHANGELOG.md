@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.0
+
+### Minor Changes
+
+- [#437](https://github.com/un-ts/pkgr/pull/437) [`135d0d2`](https://github.com/un-ts/pkgr/commit/135d0d2f5937f1a2a3c315d52a32250350e2dba3) Thanks [@JounQin](https://github.com/JounQin)! - Add a `preferDefault` option to `tryRequirePkg` for resolving default exports.
+
 ## 4.0.1
 
 ### Patch Changes
