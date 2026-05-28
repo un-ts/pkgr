@@ -10,4 +10,4 @@ export const cjsRequire: CjsRequire =
   typeof require === 'function' ? require : createRequire(import.meta.url)
 
 // eslint-disable-next-line sonarjs/deprecation
-export const EXTENSIONS = ['.ts', '.tsx', ...Object.keys(cjsRequire.extensions)]
+export const EXTENSIONS = ['.ts', '.tsx', ...Object.keys(cjsRequire.extensions || {})]
