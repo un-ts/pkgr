@@ -1,3 +1,4 @@
+import { strict as assert } from 'node:assert'
 import fs from 'node:fs'
 import { builtinModules } from 'node:module'
 import path from 'node:path'
@@ -29,7 +30,7 @@ import alias, {
 } from '@rollup/plugin-alias'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
-import nodeResolve from '@rollup/plugin-node-resolve'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import url from '@rollup/plugin-url'
 import type { Options as VuePluginOptions } from '@vitejs/plugin-vue'
 import type { Options as VueJsxPluginOptions } from '@vitejs/plugin-vue-jsx'
@@ -37,6 +38,7 @@ import debug from 'debug'
 import type {
   ModuleFormat,
   OutputOptions,
+  Plugin,
   RollupOptions,
   WarningHandlerWithDefault,
 } from 'rollup'
@@ -80,7 +82,7 @@ const resolve = ({
   node?: boolean
   ts?: boolean
 }) =>
-  __importStar(nodeResolve).default({
+  nodeResolve({
     dedupe: node ? [] : deps,
     mainFields: [
       !node && 'browser',
@@ -377,7 +379,7 @@ export const config = async ({
     const isTsInput = /\.tsx?/.test(pkgInput)
     const { target } = esbuildOptions
 
-    return pkgFormats.map(format => {
+    return pkgFormats.map((format): RollupOptions => {
       const isEsVersion = /^es(?:\d+|m|next)$/.test(format) && format !== 'es5'
       return {
         input: pkgInput,
@@ -404,9 +406,9 @@ export const config = async ({
           ),
         onwarn,
         plugins: [
-          __importStar(alias).default(aliasOptions),
-          vue?.(vueOptions as VuePluginOptions),
-          vueJsx?.(vueJsxOptions as VueJsxPluginOptions),
+          alias(aliasOptions),
+          vue?.(vueOptions as VuePluginOptions) as Plugin,
+          vueJsx?.(vueJsxOptions as VueJsxPluginOptions) as Plugin,
           esbuild({
             tsconfig:
               tryFile(path.resolve(pkg, 'tsconfig.json')) ||
@@ -449,7 +451,7 @@ export const config = async ({
     })
   })
 
-  console.assert(
+  assert.ok(
     configs.length,
     "No configuration resolved, mark sure you've setup correctly",
   )
