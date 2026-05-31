@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/react'
 import { createRoot } from 'react-dom/client'
 
 import { App } from './App.js'
@@ -9,9 +8,4 @@ app.classList.add('markdown-body')
 
 const root = createRoot(app)
 
-root.render(
-  <>
-    <App />
-    <Analytics />
-  </>,
-)
+root.render(<App />)
