@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.0
+
+### Minor Changes
+
+- [#425](https://github.com/un-ts/pkgr/pull/425) [`875b086`](https://github.com/un-ts/pkgr/commit/875b086a7caf08efa83d1cf7f228ba98d3e65c91) Thanks [@renovate](https://github.com/apps/renovate)! - Support the latest Vite and Rollup plugin ecosystem updates.
+
 ## 7.0.1
 
 ### Patch Changes
