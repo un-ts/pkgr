@@ -25,7 +25,7 @@ jobs:
           echo "comment=false" >> $GITHUB_OUTPUT
 
       - name: Deploy
-        uses: amondnet/vercel-action@de09aeac2ace6599ec9b11ef87558759a496bac4 # v42
+        uses: amondnet/vercel-action@de09aeac2ace6599ec9b11ef87558759a496bac4 # v42.3.0
         with:
           vercel-args: ${{ steps.branch.outputs.args }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
