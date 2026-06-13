@@ -42,7 +42,7 @@
     "commander": "^15.0.0",
     "core-js": "^3.49.0",
     "debug": "^4.4.3",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "jsox": "^1.2.125",
     "micromatch": "^4.0.8",
     "rollup": "^4.60.4",
