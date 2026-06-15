@@ -94,5 +94,8 @@
     "ignoreNested": true,
     "strict": true,
     "update": true
+  },
+  "bugs": {
+    "url": "https://github.com/un-ts/pkgr/issues"
   }
 }
