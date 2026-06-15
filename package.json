@@ -5,6 +5,9 @@
   "description": "Simple but incredible utilities for package bundlers like rollup",
   "repository": "https://github.com/un-ts/pkgr.git",
   "homepage": "https://pkgr.1stG.me",
+  "bugs": {
+    "url": "https://github.com/un-ts/pkgr/issues"
+  },
   "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
   "license": "MIT",
   "private": true,
@@ -94,8 +97,5 @@
     "ignoreNested": true,
     "strict": true,
     "update": true
-  },
-  "bugs": {
-    "url": "https://github.com/un-ts/pkgr/issues"
   }
 }

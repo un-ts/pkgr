@@ -5,6 +5,9 @@
   "description": "Seamless imagemin API wrapper to minify images, working perfectly with lint-staged also",
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/imagemin",
+  "bugs": {
+    "url": "https://github.com/un-ts/pkgr/issues"
+  },
   "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
   "funding": "https://opencollective.com/pkgr",
   "license": "MIT",
@@ -46,8 +49,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": false,
-  "bugs": {
-    "url": "https://github.com/un-ts/pkgr/issues"
-  }
+  "sideEffects": false
 }

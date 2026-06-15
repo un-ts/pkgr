@@ -5,6 +5,9 @@
   "description": "Union collections of es modules mappings for pkgs without or with incorrect `module` field",
   "repository": "git+https://github.com/un-ts/pkgr.git",
   "homepage": "https://github.com/un-ts/pkgr/blob/master/packages/es-modules",
+  "bugs": {
+    "url": "https://github.com/un-ts/pkgr/issues"
+  },
   "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
   "funding": "https://opencollective.com/pkgr",
   "license": "MIT",
@@ -38,8 +41,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": false,
-  "bugs": {
-    "url": "https://github.com/un-ts/pkgr/issues"
-  }
+  "sideEffects": false
 }
