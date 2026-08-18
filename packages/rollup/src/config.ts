@@ -145,9 +145,7 @@ const onwarn: WarningHandlerWithDefault = (warning, warn) => {
 export type Format = 'cjs' | 'es5' | 'es2015' | 'esm' | 'umd'
 
 export type External =
-  | string[]
-  | string
-  | ((id: string, collectedExternals?: string[]) => boolean)
+  string[] | string | ((id: string, collectedExternals?: string[]) => boolean)
 
 export interface ConfigOptions {
   formats?: ModuleFormat[]
