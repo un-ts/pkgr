@@ -92,9 +92,7 @@ async function startBrowserProcess(
       try {
         // Try our best to reuse existing tab
         // on OSX Chromium-based browser with AppleScript
-        // eslint-disable-next-line sonarjs/os-command
         execSync('ps cax | grep "' + chromiumBrowser + '"')
-        // eslint-disable-next-line sonarjs/os-command
         execSync(
           'osascript ../openChrome.applescript "' +
             encodeURI(url) +

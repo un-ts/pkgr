@@ -5,6 +5,7 @@ export default [
   {
     rules: {
       'sonarjs/no-nested-conditional': 'off',
+      'sonarjs/no-redundant-optional': 'off',
       'unicorn-x/no-nested-ternary': 'off',
     },
   },
