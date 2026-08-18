@@ -45,10 +45,10 @@ jobs:
         id: changesets
         uses: changesets/action@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
         with:
-          commit: 'chore: release package(s)'
-          title: 'chore: release package(s)'
+          commit-message: 'chore: release package(s)'
+          pr-title: 'chore: release package(s)'
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: yarn release
-          version: yarn run version
+          publish-script: yarn release
+          version-script: yarn run version
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

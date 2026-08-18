@@ -41,7 +41,7 @@
     "imagemin-svgo": "^12.0.0",
     "imagemin-upng": "^4.0.0",
     "imagemin-webp": "^8.0.0",
-    "tinyglobby": "^0.2.16"
+    "tinyglobby": "^0.2.17"
   },
   "publishConfig": {
     "access": "public"
